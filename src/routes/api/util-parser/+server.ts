@@ -10,7 +10,13 @@ export const GET = (async ({ url }) => {
 	});
 
 	const util = await findUtilByPath(path);
-	if (!util) return json({ status: 204 })
+	console.log(util);
+	if (!util) return json({
+		status: 204,
+		content: {
+			path: ""
+		}
+	});
 
 	return json({
 		status: 200,

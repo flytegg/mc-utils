@@ -18,5 +18,5 @@
     {/await}
 {:else}
     <!-- TODO: proper error page with thing about suggesting new util and joining discord -->
-    <h1>No util</h1>
+    <h1 class="text-white">No util</h1>
 {/if}
