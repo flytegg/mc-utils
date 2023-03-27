@@ -1,4 +1,4 @@
-import { existsSync, readFileSync, readdirSync } from "fs-extra";
+import { existsSync, readFileSync, readdirSync } from "fs";
 
 const dir = "src/lib/util";
 const nameRegex = /const name = /;
@@ -13,7 +13,7 @@ type Util = {
 
 export const utilList = async () => {
     const utils: Util[] = [];
-    readdirSync(`${dir}/component`).forEach((fileName) => {
+    readdirSync(`${dir}/component`).forEach((fileName: string) => {
         const path = fileName.replace(".svelte", "");
         let name: string = "";
         let description: string = "";
