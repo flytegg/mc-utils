@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 @layer base {
+    @font-face {
+        font-family: 'Minecraft';
+        src: url('/font/minecraft.woff2') format('woff2');
+    }
+
     body {
         background-color: #1a1b1e;
     }
