@@ -14,8 +14,8 @@
         <h1>Loading...</h1>
     {:then module}
         <!-- TODO: look cooler, some spacing maybe -->
-        <h1 class="text-white font-bold">{data.util.name}</h1>
-        <h2 class="text-[#3C414B]">{data.util.description}</h2>
+        <h1 class="text-white font-bold text-[40px]">{data.util.name}</h1>
+        <h2 class="text-[#3C414B] text-[24px] text-center">{@html data.util.description}</h2>
         <!-- TODO: how the fuck do i type this shit -->
         <svelte:component this={module.default} />
     {/await}
