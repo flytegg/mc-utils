@@ -39,7 +39,8 @@ export const GET = (async ({ fetch, params }) => {
         renders: {
             avatar: `https://crafatar.com/avatars/${id}`,
             head: `https://crafatar.com/renders/head/${id}`,
-            body: `https://crafatar.com/renders/body/${id}`
+            body: `https://crafatar.com/renders/body/${id}`,
+            skin: `https://crafatar.com/skins/${id}`,
         }
 	})
 }) satisfies RequestHandler
