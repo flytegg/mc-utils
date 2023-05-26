@@ -10,6 +10,7 @@
     let searchElement
     let currentSearch: string
     let currentSkin: string
+    let applySkin: string
     let skinViewer: SkinViewer.SkinViewer
 
     onMount(async () => {
@@ -35,18 +36,19 @@
         const response = await fetch(`https://api.ashcon.app/mojang/v2/user/${username}`)
         const data = await response.json()
 
-        getSkinUrl(data.uuid)
+        await getSkinUrl(data.uuid)
 
         skinViewer.loadSkin("https://crafatar.com/skins/" + data.uuid)
         skinViewer.nameTag = username
     }
 
-
     const getSkinUrl = async (uuid: string) => {
         const response = await fetch(`/api/skin?uuid=${uuid}`)
         const data = await response.json()
         currentSkin = data.content
+        applySkin = "https://www.minecraft.net/profile/skin/remote?url=" + data.url
         console.log(currentSkin)
+        console.log(data)
     }
 
     
@@ -54,4 +56,7 @@
 
 <Search bind:this={searchElement} placeholder="Enter someone's username" search={(query) => updateSkin(query)} />
 <canvas id="skin_container"></canvas>
-<a href={currentSkin} download=""><Button text="hallo" click={() => ""} /></a>
+<div class="flex">
+    <a href={applySkin} target="_blank"><Button text="Apply Skin"/></a>
+    <a href={currentSkin} download=""><Button text="Download Skin"/></a>
+</div>
