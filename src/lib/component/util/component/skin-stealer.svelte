@@ -37,6 +37,10 @@
         skinViewer.loadSkin("https://crafatar.com/skins/" + data.uuid)
         skinViewer.nameTag = username
     }
+
+    const downloadSkin = async (username: string) => {
+
+    }
 </script>
 
 <Search placeholder="Enter someone's username" search={(query) => updateSkin(query)} />
