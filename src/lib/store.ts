@@ -8,3 +8,4 @@ type Util = {
 }
 
 export const UtilList = writable([] as Util[])
+export const Favourites = writable([] as Util[])
