@@ -22,7 +22,7 @@
         skinViewer.fov = 70
         skinViewer.zoom = 0.6
 
-        await updateSkin("stxphen")
+        await updateSkin("Notch")
     })
 
     const updateSkin = async (username: string) => {
