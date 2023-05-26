@@ -10,7 +10,6 @@
     let searchElement
     let currentSearch: string
     let currentSkin: string
-    let applySkin: string
     let skinViewer: SkinViewer.SkinViewer
 
     onMount(async () => {
@@ -29,6 +28,7 @@
 
     const updateSkin = async (username: string) => {
         if (username.length > 16) return
+        if (!/^[a-zA-Z0-9]+$/.test(username)) return
         if (username == currentSearch) return
 
         currentSearch = username
@@ -38,7 +38,11 @@
 
         await getSkinUrl(data.uuid)
 
-        skinViewer.loadSkin("https://crafatar.com/skins/" + data.uuid)
+        if () {
+            skinViewer.loadSkin("https://i.imgur.com/wfYNMgd.png")
+        } else {
+            skinViewer.loadSkin("https://crafatar.com/skins/" + data.uuid)
+        }
         skinViewer.nameTag = username
     }
 
@@ -46,7 +50,6 @@
         const response = await fetch(`/api/skin?uuid=${uuid}`)
         const data = await response.json()
         currentSkin = data.content
-        applySkin = "https://www.minecraft.net/profile/skin/remote?url=" + data.url
         console.log(currentSkin)
         console.log(data)
     }
@@ -56,7 +59,7 @@
 
 <Search bind:this={searchElement} placeholder="Enter someone's username" search={(query) => updateSkin(query)} />
 <canvas id="skin_container"></canvas>
-<div class="flex">
-    <a href={applySkin} target="_blank"><Button text="Apply Skin"/></a>
+<div class="flex gap-6 mt-[-30px]">
     <a href={currentSkin} download=""><Button text="Download Skin"/></a>
+    <a href="https://www.minecraft.net/profile/skin/remote?url=undefined" target="_blank"><Button text="Apply Skin"/></a> <!-- Mojang broke passing the image through the URL. NameMC removed it & other sites don't work either. So just sending a template link -->
 </div>
