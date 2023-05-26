@@ -83,17 +83,4 @@ We also need to specify the util page title (the one that shows up for the name 
 </svelte:head>
 ```
 
-So, at this point our entire file should look something like:
-
-```svelte
-<script lang="ts">
-    const name = "JSON Parser"
-    const description = "Validate your JSON structure"
-</script>
-
-<svelte:head>
-    <title>{name} | MC Utils</title>
-</svelte:head>
-```
-
 TBC
