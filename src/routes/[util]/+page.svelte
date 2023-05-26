@@ -13,7 +13,7 @@
 {#if data.status === 200}
     {#await component()}
         <!-- TODO: cool spinny loader thing -->
-        <h1>Loading...</h1>
+<!--        <h1>Loading...</h1>-->
     {:then module}
         <h1 class="text-white font-bold text-[40px] mt-10">{data.util.name}</h1>
         <h2 class="text-[#3C414B] text-[24px] text-center mb-10">{@html data.util.description}</h2>
