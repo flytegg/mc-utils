@@ -75,12 +75,6 @@ We can do this by adding the following in a `<script>` tag like so:
 </script>
 ```
 
-We also need to specify the util page title (the one that shows up for the name of the tab), which we do with:
+From here you just write your util in Svelte using HTML & JS/TS.
 
-```svelte
-<svelte:head>
-    <title>{name} | MC Utils</title>
-</svelte:head>
-```
-
-TBC
+If you want to take a look, here's a link to an existing util, [Skin Stealer](https://github.com/flytegg/mcu-website/blob/master/src/lib/component/util/component/skin-stealer.svelte).
