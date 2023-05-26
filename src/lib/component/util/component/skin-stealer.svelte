@@ -7,8 +7,9 @@
     const name = "Skin Stealer"
     const description = `Yoink someone's skin`
 
+    let searchElement
     let currentSearch: string
-
+    let currentSkin: string
     let skinViewer: SkinViewer.SkinViewer
 
     onMount(async () => {
@@ -32,17 +33,25 @@
         currentSearch = username
 
         const response = await fetch(`https://api.ashcon.app/mojang/v2/user/${username}`)
-        const data = await response.json();
+        const data = await response.json()
+
+        getSkinUrl(data.uuid)
 
         skinViewer.loadSkin("https://crafatar.com/skins/" + data.uuid)
         skinViewer.nameTag = username
-
-
     }
 
-    let searchElement;
+
+    const getSkinUrl = async (uuid: string) => {
+        const response = await fetch(`/api/skin?uuid=${uuid}`)
+        const data = await response.json()
+        currentSkin = data.content
+        console.log(currentSkin)
+    }
+
+    
 </script>
 
 <Search bind:this={searchElement} placeholder="Enter someone's username" search={(query) => updateSkin(query)} />
 <canvas id="skin_container"></canvas>
-<a href="https://i.imgur.com/cK3aGFy.png" download><Button text="Download Skin"/></a>
+<a href={currentSkin} download=""><Button text="hallo" click={() => ""} /></a>
