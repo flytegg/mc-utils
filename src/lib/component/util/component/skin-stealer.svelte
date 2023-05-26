@@ -36,6 +36,8 @@
 
         skinViewer.loadSkin("https://crafatar.com/skins/" + data.uuid)
         skinViewer.nameTag = username
+
+
     }
 
     let searchElement;
@@ -43,4 +45,4 @@
 
 <Search bind:this={searchElement} placeholder="Enter someone's username" search={(query) => updateSkin(query)} />
 <canvas id="skin_container"></canvas>
-<Button text="hallo" click={() => console.log("hallo")} />
+<a href="https://i.imgur.com/cK3aGFy.png" download><Button text="Download Skin"/></a>
