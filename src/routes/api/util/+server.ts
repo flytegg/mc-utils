@@ -8,7 +8,7 @@ export const GET = (async ({ url }) => {
 
 	if (query && path) return json({
 		status: 400,
-		content: "Specify either path or query, not both."
+		content: "Specify either path or query."
 	})
 
 	if (path) {
