@@ -7,6 +7,8 @@
     const name = "Skin Stealer"
     const description = `Yoink someone's skin`
 
+    const defaultSkin = "https://crafatar.com/skins/d556fff2-8f3c-43b3-9111-c288204f16e2?default=MHF_Steve"
+
     let searchElement
     let currentSearch: string
     let currentSkin: string
@@ -33,28 +35,18 @@
 
         currentSearch = username
 
-        const response = await fetch(`https://api.ashcon.app/mojang/v2/user/${username}`)
+        const response = await fetch(`/api/profile/${username}`)
         const data = await response.json()
 
-        await getSkinUrl(data.uuid)
-
-        if () {
-            skinViewer.loadSkin("https://i.imgur.com/wfYNMgd.png")
+        if (data.status) {
+            skinViewer.loadSkin(defaultSkin)
         } else {
-            skinViewer.loadSkin("https://crafatar.com/skins/" + data.uuid)
+            currentSkin = data.skin.data
+            skinViewer.loadSkin(data.renders.skin)
         }
+
         skinViewer.nameTag = username
     }
-
-    const getSkinUrl = async (uuid: string) => {
-        const response = await fetch(`/api/skin?uuid=${uuid}`)
-        const data = await response.json()
-        currentSkin = data.content
-        console.log(currentSkin)
-        console.log(data)
-    }
-
-    
 </script>
 
 <Search bind:this={searchElement} placeholder="Enter someone's username" search={(query) => updateSkin(query)} />
