@@ -17,6 +17,7 @@ export const GET = (async ({ fetch, url }) => {
 
 	return json({
 		status: 200,
-		content: `data:image/png;base64,${response.textures.skin.data}`
+		content: `data:image/png;base64,${response.textures.skin.data}`,
+		url: response.textures.skin.url
 	})
 }) satisfies RequestHandler
