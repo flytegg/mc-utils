@@ -1,12 +1,14 @@
 <script lang="ts">
-    import type { PageData } from './$types';
-    import Navbar from "$lib/Navbar.svelte";
-    export let data: PageData;
-    const components = import.meta.glob(`/src/lib/util/component/*.svelte`);
-    const component = components[`/src/lib/util/component/${data.util.path}.svelte`];
+    import type { PageData } from './$types'
+    export let data: PageData
+
+    const components = import.meta.glob(`/src/lib/component/util/component/*.svelte`)
+    const component = components[`/src/lib/component/util/component/${data.util.path}.svelte`]
 </script>
 
-<Navbar />
+<svelte:head>
+    <title>{data.util.name} | MC Utils</title>
+</svelte:head>
 
 {#if data.status === 200}
     {#await component()}
