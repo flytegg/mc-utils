@@ -76,3 +76,5 @@ We can do this by adding the following in a `<script>` tag like so:
 ```
 
 From here you just write your util in Svelte using HTML & JS/TS.
+
+If you want to take a look, here's a link to an existing util, [Skin Stealer](https://github.com/flytegg/mcu-website/blob/master/src/lib/component/util/component/skin-stealer.svelte).
