@@ -1,6 +1,6 @@
-import { utilList, findUtilByPath } from '$lib/utils'
-import { json } from '@sveltejs/kit'
-import type { RequestHandler } from './$types'
+import { utilList, findUtilByPath } from "$lib/utils"
+import { json } from "@sveltejs/kit"
+import type { RequestHandler } from "./$types"
 
 export const GET = (async ({ url }) => {
 	const path = url.searchParams.get("path")
