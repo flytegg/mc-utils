@@ -5,7 +5,7 @@
 
     const name = "Skin Stealer"
     const description = `Yoink someone's skin`
-    const navDescription = "addwaw"
+    const shortDescription = "addwaw"
 
     const defaultSkin = "https://crafatar.com/skins/d556fff2-8f3c-43b3-9111-c288204f16e2?default=MHF_Steve"
 
@@ -30,7 +30,7 @@
 
     const updateSkin = async (username: string) => {
         if (username.length > 16) return
-        if (!/^[a-zA-Z0-9]+$/.test(username)) return
+        if (!/^[a-zA-Z0-9_]+$/.test(username)) return
         if (username == currentSearch) return
 
         currentSearch = username

@@ -28,7 +28,7 @@
                             <img src="{util.icon}" alt="" class="h-10 self-center">
                             <div class="flex flex-col">
                                 <h2 class="text-[#AEB2BC] font-semibold text-[20px]">{util.name}</h2>
-                                <p class="text-[#3C414B]">{util.navDescription}</p>
+                                <p class="text-[#3C414B]">{util.shortDescription}</p>
                             </div>
                         </a>
                     </td>
