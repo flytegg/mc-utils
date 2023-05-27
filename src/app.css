@@ -7,6 +7,10 @@
         src: url('/font/minecraft.woff2') format('woff2');
     }
 
+    button {
+        @apply text-xl font-medium border-2 rounded-xl py-2 px-4 border-[#626875] text-[#626875] transition duration-100 hover:bg-[#3C414B] hover:border-[#3C414B] hover:text-[#1A1B1E];
+    }
+
     body {
         background-color: #1a1b1e;
     }
@@ -20,15 +24,15 @@
     }
 
     ::-webkit-scrollbar-track-piece{
-        background-color: #1d1f24;
+        background-color: #1a1b1e;
     }
 
     ::-webkit-scrollbar-thumb{
-        background-color: #1d1f24;
+        background-color: #7c7e85;
         border-radius: 5px;
     }
 
     ::-webkit-scrollbar-thumb:hover{
-        background-color: #1d1f24;
+        background-color: #7c7e85;
     }
 }

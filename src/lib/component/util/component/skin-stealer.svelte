@@ -1,5 +1,4 @@
 <script lang="ts">
-    import Button from "$lib/component/element/Button.svelte"
     import Search from "$lib/component/element/Search.svelte"
     import * as SkinViewer from "skinview3d"
     import { onMount } from "svelte"
@@ -53,6 +52,6 @@
 <Search bind:this={searchElement} placeholder="Enter someone's username" search={(query) => updateSkin(query)} />
 <canvas id="skin_container"></canvas>
 <div class="flex gap-6 mt-[-30px]">
-    <a href={currentSkin} download=""><Button text="Download Skin"/></a>
-    <a href="https://www.minecraft.net/profile/skin/remote?url=undefined" target="_blank"><Button text="Apply Skin"/></a> <!-- Mojang broke passing the image through the URL. NameMC removed it & other sites don't work either. So just sending a template link -->
+    <a href={currentSkin} download=""><button>Download Skin</button></a>
+    <a href="https://www.minecraft.net/profile/skin/remote?url=undefined" target="_blank"><button>Apply Skin</button></a> <!-- Mojang broke passing the image through the URL. NameMC removed it & other sites don't work either. So just sending a template link -->
 </div>
