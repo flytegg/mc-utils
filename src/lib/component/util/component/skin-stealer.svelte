@@ -31,7 +31,7 @@
 
     const updateSkin = async (username: string) => {
         if (username.length > 16) return
-        if (!/^[a-zA-Z0-9]+$/.test(username)) return
+        if (!/^[a-zA-Z0-9_]+$/.test(username)) return
         if (username == currentSearch) return
 
         currentSearch = username
