@@ -3,7 +3,7 @@
     const description = "Download existing jar files for<br>popular server software."
     const shortDescription = "addw3dwaw"
 
-    let selectedType = "paper"
+    let selectedType = "spigot"
 
     const info = [
         {
@@ -636,7 +636,7 @@
 <div class="place-items-center text-center items-start grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-10">
     <div class="flex flex-col">
         <h3 class="font-medium text-white text-[20px] text-left">Type</h3>
-        <select bind:value={selectedType} id="type" class="w-[130px] py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+        <select bind:value={selectedType} id="type" class="w-[100px] py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-200 text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
             <option value="paper" class="bg-red-500">Paper</option>
             <option value="spigot">Spigot</option>
             <option value="bukkit">Bukkit</option>
@@ -644,7 +644,7 @@
     </div>
     <div class="flex flex-col">
         <h3 class="font-medium text-white text-[20px] text-left">Version</h3>
-        <select id="underline_select2" class="w-[130px] py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-200 text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+        <select id="underline_select2" class="w-[100px] py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-200 text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
             <option value="spadwigot" class="bg-[#3C414B] text-gray-400 hover:text-white hover:bg-[#626875]">1.19.4</option>
             <option value="bukdkit">1.19.3</option>
             <option value="papedwr">1.19.2</option>
@@ -653,21 +653,21 @@
     <button class="button h-fit self-center">Download</button>
 </div>
 
-<table class="w-[60%] text-white">
+<table class="w-[60%] text-white mt-12">
     <tr class="bg-[#1d1f24]">
-        <th class="font-medium text-[20px] text-left">Version</th>
+        <th class="rounded-tl-lg rounded-bl-lg p-2 pl-6 font-medium text-[20px] text-left">Version</th>
         <th class="font-medium text-[20px] text-left">Release Date</th>
-        <th class="font-medium text-[20px] text-left">Size</th>
-        <th class="font-medium text-[20px] text-left bg-[#1a1b1e]"></th>
+        <th class="rounded-tr-lg rounded-br-lg font-medium text-[20px] text-left">Size</th>
+        <th class="font-medium text-[20px] text-left bg-[#1a1b1e] "></th>
     </tr>
     {#each info.find(item => item.platform === selectedType).jars as jar}
-        <tr>
-            <td>{jar.version}</td>
-            <td>{jar.release}</td>
-            <td>{jar.size}</td>
+        <tr class="">
+            <td class="pl-6 p-1.5 border-b-2 border-b-[#1D1F24] text-gray-400">{jar.version}</td>
+            <td class="border-b-2 border-b-[#1D1F24] text-gray-400">{jar.release}</td>
+            <td class="border-b-2 border-b-[#1D1F24] text-gray-400">{jar.size}</td>
             <td>
                 <a href="/">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="fill-[#626875] h-4"><path d="M32 480c-17.7 0-32-14.3-32-32s14.3-32 32-32H352c17.7 0 32 14.3 32 32s-14.3 32-32 32H32zM214.6 342.6c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 242.7V64c0-17.7 14.3-32 32-32s32 14.3 32 32V242.7l73.4-73.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3l-128 128z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="fill-[#626875] pl-4 h-5"><path d="M32 480c-17.7 0-32-14.3-32-32s14.3-32 32-32H352c17.7 0 32 14.3 32 32s-14.3 32-32 32H32zM214.6 342.6c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 242.7V64c0-17.7 14.3-32 32-32s32 14.3 32 32V242.7l73.4-73.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3l-128 128z"/></svg>
                 </a>
             </td>
         </tr>
