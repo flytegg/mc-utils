@@ -74,8 +74,6 @@ Next we can add the icon for our util to the `static/component/icon` folder and 
 
 Finally, navigate to the `src/lib/component/util` folder, where you can create your util component, remember this needs to be named the same as `path`.
 
-Naming matters here, in this example we are going to create a JSON Parser util, so we'll create a new file called `json-parser.svelte`.
-
 From here you just write your util in Svelte using HTML & JS/TS.
 
 If you want to take a look, here's a link to an existing util, [Skin Stealer](https://github.com/flytegg/mcu-website/blob/master/src/lib/component/util/skin-stealer.svelte).
