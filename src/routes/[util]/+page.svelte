@@ -2,8 +2,8 @@
     import type { PageData } from './$types'
     export let data: PageData
 
-    const components = import.meta.glob(`/src/lib/component/util/component/*.svelte`)
-    const component = components[`/src/lib/component/util/component/${data.util.path}.svelte`]
+    const components = import.meta.glob(`/src/lib/component/util/*.svelte`)
+    const component = components[`/src/lib/component/util/${data.util.path}.svelte`]
 </script>
 
 <svelte:head>
