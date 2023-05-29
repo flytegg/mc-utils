@@ -10,7 +10,7 @@
     <div class="mt-[10%] mb-[10%]">
         <div class="flex flex-col items-center justify-evenly gap-24 w-[100%]">
             <div class="flex flex-col">
-                <img src="/img/logo.png" alt="MC Utils Logo" class="h-20 w-fit self-center">
+                <img src="/img/logo.png" alt="MC Utils Logo" class="h-20 self-center">
                 <h1 class="text-[#3C414B] text-[27px] text-center leading-tight">
                     The community powered one stop shop for Minecraft<br>
                     utilities supporting developers, builders & players.

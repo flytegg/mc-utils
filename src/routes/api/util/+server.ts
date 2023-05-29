@@ -12,7 +12,7 @@ export const GET = (async ({ url }) => {
 	})
 
 	if (path) {
-		const util = await findUtilByPath(path);
+		const util = await findUtilByPath(path)
 		if (!util) return json({
 			status: 204,
 			content: {
