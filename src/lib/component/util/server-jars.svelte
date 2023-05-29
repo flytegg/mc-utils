@@ -1,8 +1,4 @@
 <script lang="ts">
-    const name = "Server Jars"
-    const description = "Download existing jar files for<br>popular server software."
-    const shortDescription = "addw3dwaw"
-
     let selectedType = "spigot"
 
     const info = [

@@ -3,10 +3,6 @@
     import * as SkinViewer from "skinview3d"
     import { onMount } from "svelte"
 
-    const name = "Skin Stealer"
-    const description = `Yoink someone's skin`
-    const shortDescription = "addwaw"
-
     const defaultSkin = "https://crafatar.com/skins/d556fff2-8f3c-43b3-9111-c288204f16e2?default=MHF_Steve"
 
     let searchElement
