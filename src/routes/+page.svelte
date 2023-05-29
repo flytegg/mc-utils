@@ -41,7 +41,7 @@
                     <p>.</p>
                 </div>
             </div>
-            <a href="https://discord.gg/CGmMQwfXXN" target="_blank"><button class="bg-[#767ADE] text-[#1a1b1e] hover:bg-[#8A8FFF] transition-colors">Join our Discord</button></a>
+            <a href="https://discord.gg/CGmMQwfXXN" target="_blank"><button class="bg-[#767ADE] text-[#1a1b1e] hover:bg-[#8A8FFF] transition-colors">Join Discord</button></a>
         </div>
     </div>
 </div>
