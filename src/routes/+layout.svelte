@@ -20,7 +20,7 @@
             <a href="/"><img src="/img/logo.png" alt="MC Utils Logo" class="h-11"></a>
             <Search placeholder="What are you looking for?" search={(query) => filterUtils(query)} instant={true}/>
         </div>
-        <div class="flex flex-col space-y-1">
+        <div data-sveltekit-reload class="flex flex-col space-y-1">
             {#each $UtilList as util}
                 <a href="/{util.path}" class="flex space-x-4">
                     <img src="{util.icon}" alt="" class="h-10 self-center">
