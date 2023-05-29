@@ -1,4 +1,4 @@
-import { existsSync, readFileSync, readdirSync } from "fs"
+import { existsSync, readFileSync, readdirSync } from "node:fs"
 import { Favourites } from "./store"
 import type { Cookies } from "@sveltejs/kit"
 
