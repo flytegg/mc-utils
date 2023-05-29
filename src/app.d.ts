@@ -3,7 +3,6 @@
 import type { SvelteComponentTyped } from "svelte"
 import type { Util } from "$lib/util.ts"
 
-
 // for information about these interfaces
 declare global {
 	namespace App {
