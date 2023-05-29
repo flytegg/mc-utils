@@ -1,4 +1,6 @@
 import { existsSync, readFileSync, readdirSync } from "fs"
+import { Favourites } from "./store"
+import type { Cookies } from "@sveltejs/kit"
 
 const dir = "src/lib/component/util"
 const nameRegex = /const name = /
