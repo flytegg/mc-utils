@@ -52,9 +52,9 @@
         <h3 class="font-medium text-white text-[20px] text-left">RAM</h3>
         <input type="text" inputmode="numeric" pattern="[0-9]*" bind:value={ram} on:input={updateStorageValue} class="w-[160px] py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-200 text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
     </div>
-    <div class="flex flex-col">
+    <div class="flex flex-col w-[160px]">
         <h3 class="font-medium text-white text-[20px] text-left">Flags</h3>
-        <select bind:value={flags} id="flags" class="w-[160px] py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-200 text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+        <select bind:value={flags} id="flags" class=" py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-200 text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
             <option value="none" class="bg-[#3C414B] text-gray-400 hover:text-white hover:bg-[#626875]" >None</option>
             <option value="aikar" class="bg-[#3C414B] text-gray-400 hover:text-white hover:bg-[#626875]">Aikar's Flags</option>
             <option value="proxy" class="bg-[#3C414B] text-gray-400 hover:text-white hover:bg-[#626875]">Proxy Flags</option>
