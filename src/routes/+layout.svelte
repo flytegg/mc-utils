@@ -23,7 +23,7 @@
         <div data-sveltekit-reload class="flex flex-col space-y-1">
             {#each $UtilList as util}
                 <a href="{util.path}" class="flex space-x-4">
-                    <img src="/src/lib/component/util/icon/{util.path}.png" alt="" class="h-10 self-center">
+                    <img src="/component/icon/{util.path}.png" alt="" class="h-10 self-center">
                     <div class="flex flex-col">
                         <h2 class="text-[#AEB2BC] font-semibold text-[20px]">{util.name}</h2>
                         <p class="text-[#3C414B]">{util.shortDescription}</p>
