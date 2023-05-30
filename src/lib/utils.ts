@@ -8,9 +8,15 @@ const utils: Util[] = [
     {
         path: "server-jars",
         name: "Server Jars",
-        description: "Download a specific server jar",
+        description: "Download existing jar files for<br>popular server software.",
         shortDescription: "wdawdwadad"
-    }
+    },
+    {
+        path: "start-file-generator",
+        name: "Start File Generator",
+        description: "Generate server start file with<br>varying settings and flags.",
+        shortDescription: "wdawdwadad"
+    },
 ]
 
 type Util = {
