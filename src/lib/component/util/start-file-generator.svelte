@@ -7,7 +7,7 @@
             content: '',
         },
         {
-            name: 'Linux/Mac',
+            name: 'Linux/MacOS',
             content: '',
         }
     ];
