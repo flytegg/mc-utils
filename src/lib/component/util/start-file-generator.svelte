@@ -4,11 +4,11 @@
     const tabData = [
         {
             name: 'Windows',
-            content: 'java -Xms4096M -Xmx4096M --add-modules=jdk.incubator.vector -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -jar server.jar --nogui',
+            content: '',
         },
         {
             name: 'Linux/Mac',
-            content: 'Content for Tab Two',
+            content: '',
         }
     ];
 
@@ -19,12 +19,32 @@
     let autoRestart = false
 
     function calculateResult() {
-        alert(serverJarName)
-        alert(ram)
-        alert(flags)
-        alert(gui)
-        alert(autoRestart)
+        let java = "java %ram% %flags% -jar %filename% %gui%"
+        java = java.replace(" %ram%", " -Xmx" + ram.replace("GB","G"))
+        java = java.replace(" %flags%",
+            flags === "none" ? "" :
+                (flags === "aikar" ? " --add-modules=jdk.incubator.vector -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcutils.com -Daikars.new.flags=true -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20" :
+                    " -XX:+UseG1GC -XX:G1HeapRegionSize=4M -XX:+UnlockExperimentalVMOptions -XX:+ParallelRefProcEnabled -XX:+AlwaysPreTouch -XX:MaxInlineLevel=15"))
+        java = java.replace(" %filename%", " " + serverJarName)
+        java = java.replace(" %gui%", gui ? "" : " --nogui")
+
+        let windows = java
+        if (autoRestart) {
+            windows = ":start<br>" + windows + "<br><br>echo Server restarting...<br>goto :start";
+        }
+        tabData[0].content = windows
+
+        let linuxMac
+        if (autoRestart) {
+            linuxMac = "#!/bin/bash<br><br>while [ true ]; do<br>&emsp;&emsp;&emsp;&emsp;" + java + "<br><br>&emsp;&emsp;&emsp;&emsp;echo Server restarting...<br>done"
+        } else {
+            linuxMac = "#!/bin/bash<br><br>" + java
+        }
+
+        tabData[1].content = linuxMac
     }
+
+    calculateResult()
 
     function setActiveTab(index) {
         activeTab = index;
@@ -36,17 +56,29 @@
             inputValue = inputValue.slice(0, 3); // Limit the total length to 3 characters
         }
         ram = inputValue + 'GB';
+        calculateResult()
     }
 
     function copyValue() {
         navigator.clipboard.writeText(tabData[activeTab].content)
+    }
+
+    function downloadStartBat() {
+        const content = tabData[activeTab].content.replace(/<br>/g, '\n').replace(/&emsp;/g, ' ')
+        const blob = new Blob([content], { type: "text/plain" });
+        const anchor = document.createElement("a");
+        anchor.href = URL.createObjectURL(blob);
+        anchor.download = "start." + (activeTab == 0 ? "bat" : "sh");
+        document.body.appendChild(anchor);
+        anchor.click();
+        document.body.removeChild(anchor);
     }
 </script>
 
 <div class="place-items-center text-center items-start grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 mt-3">
     <div class="flex flex-col">
         <h3 class="font-medium text-white text-[20px] text-left">Server Jar Name</h3>
-        <input bind:this={serverJarName} value="server.jar" id="serverJarName" class="w-[160px] py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-200 text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+        <input bind:value={serverJarName} on:input={calculateResult} id="serverJarName" class="w-[160px] py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-200 text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
     </div>
     <div class="flex flex-col">
         <h3 class="font-medium text-white text-[20px] text-left">RAM</h3>
@@ -54,7 +86,7 @@
     </div>
     <div class="flex flex-col w-[160px]">
         <h3 class="font-medium text-white text-[20px] text-left">Flags</h3>
-        <select bind:value={flags} id="flags" class=" py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-200 text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+        <select bind:value={flags} on:change={calculateResult} id="flags" class=" py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-200 text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
             <option value="none" class="bg-[#3C414B] text-gray-400 hover:text-white hover:bg-[#626875]" >None</option>
             <option value="aikar" class="bg-[#3C414B] text-gray-400 hover:text-white hover:bg-[#626875]">Aikar's Flags</option>
             <option value="proxy" class="bg-[#3C414B] text-gray-400 hover:text-white hover:bg-[#626875]">Proxy Flags</option>
@@ -62,7 +94,7 @@
     </div>
     <div class="flex flex-col">
         <label class="relative inline-flex items-center mb-4 cursor-pointer">
-            <input bind:this={gui} id="gui" type="checkbox" value="" class="sr-only peer">
+            <input bind:checked={gui} on:change={calculateResult} id="gui" type="checkbox" class="sr-only peer">
             <div class="w-11 h-6 bg-[#374151] rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
             <p class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
                 <a href="#"
@@ -72,7 +104,7 @@
             </p>
         </label>
         <label class="relative inline-flex items-center mb-4 cursor-pointer">
-            <input bind:this={autoRestart} id="autoRestart" type="checkbox" value="" class="sr-only peer">
+            <input bind:checked={autoRestart} on:change={calculateResult} id="autoRestart" type="checkbox" class="sr-only peer">
             <div class="w-11 h-6 bg-[#374151] rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
             <p class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
                 <a href="#"
@@ -100,14 +132,14 @@
             {#each tabData as tab, index}
                 {#if index === activeTab}
                     <code class="inline-block w-full text-sm text-gray-400 font-mono rounded-md p-2 bg-[#141517]">
-                        {tab.content}
+                        {@html tab.content}
                     </code>
                 {/if}
             {/each}
         </div>
         <div class="flex gap-3 mt-3">
             <button class="w-fit text-sm px-2 py-1.5" on:click={copyValue}>Copy</button>
-            <button class="w-fit text-sm px-2 py-1.5">Download</button>
+            <button class="w-fit text-sm px-2 py-1.5" on:click={downloadStartBat}>Download</button>
         </div>
     </div>
 </div>
