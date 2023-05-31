@@ -13,13 +13,13 @@
     onMount(async () => {
         skinViewer = new SkinViewer.SkinViewer({
             canvas: document.getElementById("skin_container") as HTMLCanvasElement,
-            height: 500,
+            height: 400,
             width: 500
         })
 
         skinViewer.autoRotate = false
-        skinViewer.fov = 70
-        skinViewer.zoom = 0.6
+        skinViewer.fov = 10
+        skinViewer.zoom = 0.70
 
         await updateSkin("Notch")
     })
@@ -46,8 +46,8 @@
 </script>
 
 <Search bind:this={searchElement} placeholder="Enter someone's username" search={(query) => updateSkin(query)} />
-<canvas id="skin_container"></canvas>
-<div class="flex gap-6 mt-[-30px]">
+<canvas id="skin_container" class="mt-10 mb-10"></canvas>
+<div class="flex gap-6">
     <a href={currentSkin} download=""><button>Download Skin</button></a>
     <a href="https://www.minecraft.net/profile/skin/remote?url=undefined" target="_blank"><button>Apply Skin</button></a> <!-- Mojang broke passing the image through the URL. NameMC removed it & other sites don't work either. So just sending a template link -->
 </div>
