@@ -17,6 +17,12 @@ const utils: Util[] = [
         description: "Generate server start file with<br>varying settings and flags.",
         shortDescription: "wdawdwadad"
     },
+    {
+        path: "note-block-songs",
+        name: "Note Block Songs",
+        description: "Largest collection of Note Block Songs (.nbs files)<br>on the web to use with <a href='https://www.spigotmc.org/resources/noteblockapi.19287/' target='_blank' class='underline decoration-dotted'>NoteblockAPI</a>.",
+        shortDescription: "wdawdwadad"
+    },
 ]
 
 type Util = {

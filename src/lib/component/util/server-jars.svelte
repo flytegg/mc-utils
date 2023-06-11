@@ -1,5 +1,6 @@
 <script lang="ts">
     let selectedType = "spigot"
+    let selectedVersion = "1.19.4"
 
     const info = [
         {
@@ -1011,13 +1012,13 @@
     </div>
     <div class="flex flex-col">
         <h3 class="font-medium text-white text-[20px] text-left">Version</h3>
-        <select id="underline_select2" class="w-[120px] py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-200 text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+        <select bind:value={selectedVersion} id="underline_select2" class="w-[120px] py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-200 text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
             {#each info.find(item => item.platform === selectedType).jars as jar}
                 <option value="{jar.version}" class="bg-[#3C414B] text-gray-400 hover:text-white hover:bg-[#626875]">{jar.version}</option>
             {/each}
         </select>
     </div>
-    <button class="button h-fit self-center">Download</button>
+    <a href="https://cdn.mcutils.com/jars/{selectedType}-{selectedVersion}.jar"><button class="button h-fit self-center">Download</button></a>
 </div>
 
 <table class="w-[60%] text-white mt-12 mb-12">
@@ -1033,7 +1034,7 @@
             <td class="border-b-2 border-b-[#1D1F24] text-gray-400">{jar.release}</td>
             <td class="border-b-2 border-b-[#1D1F24] text-gray-400">{jar.size}</td>
             <td>
-                <a href="/">
+                <a href="https://cdn.mcutils.com/jars/{selectedType}-{jar.version}.jar">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="fill-[#626875] pl-4 h-5"><path d="M32 480c-17.7 0-32-14.3-32-32s14.3-32 32-32H352c17.7 0 32 14.3 32 32s-14.3 32-32 32H32zM214.6 342.6c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 242.7V64c0-17.7 14.3-32 32-32s32 14.3 32 32V242.7l73.4-73.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3l-128 128z"/></svg>
                 </a>
             </td>
