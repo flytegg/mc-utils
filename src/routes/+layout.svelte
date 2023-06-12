@@ -97,7 +97,7 @@
             </div>
         </div>
     </div>
-    <div class="flex flex-col justify-start items-center w-full">
+    <div class="flex flex-col justify-start items-center w-full mb-20">
         <slot/>
     </div>
 </div>

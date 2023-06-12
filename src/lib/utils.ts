@@ -23,6 +23,12 @@ const utils: Util[] = [
         description: "Largest collection of Note Block Songs (.nbs files)<br>on the web to use with <a href='https://www.spigotmc.org/resources/noteblockapi.19287/' target='_blank' class='underline decoration-dotted'>NoteblockAPI</a>.",
         shortDescription: "wdawdwadad"
     },
+    {
+        path: "inventory-slots",
+        name: "Inventory Slots",
+        description: "awdeadwadwwad",
+        shortDescription: "wdwdwddwdwdw"
+    }
 ]
 
 type Util = {
