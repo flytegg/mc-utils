@@ -49,7 +49,21 @@ Currently we only have a Search component and a slightly different way of using 
 
 Search
 ```svelte
-<Search placeholder="Enter your query" search={(query) => doSomething(query)} classes="specify override classes here" disabled={false} /> // You can use disabled to prevent use of the element
+<script>
+    let searchValue: string
+
+    const handleKeyPress = (event: KeyboardEvent) => {
+        if (event.key === "Enter") updateSkin(searchValue)
+    }
+
+    const handleInput = () => {
+        updateSkin(searchValue)
+    }
+</script>
+<div class="search">
+    <SearchIcon />
+    <input bind:value={searchValue} type="text" placeholder="Enter someone's username" on:keypress={handleKeyPress} on:blur={handleInput}>
+</div>
 ```
 
 Button

@@ -1,11 +1,10 @@
 <script lang="ts">
-    import Search from "$lib/component/element/Search.svelte"
+    import SearchIcon from "$lib/component/icon/SearchIcon.svelte";
     import * as SkinViewer from "skinview3d"
     import { onMount } from "svelte"
 
     const defaultSkin = "https://crafatar.com/skins/d556fff2-8f3c-43b3-9111-c288204f16e2?default=MHF_Steve"
 
-    let searchElement
     let currentSearch: string
     let currentSkin: string
     let skinViewer: SkinViewer.SkinViewer
@@ -43,9 +42,22 @@
 
         skinViewer.nameTag = username
     }
+
+    let searchValue: string
+
+    const handleKeyPress = (event: KeyboardEvent) => {
+        if (event.key === "Enter") updateSkin(searchValue)
+    }
+
+    const handleInput = () => {
+        updateSkin(searchValue)
+    }
 </script>
 
-<Search bind:this={searchElement} placeholder="Enter someone's username" search={(query) => updateSkin(query)} />
+<div class="search">
+    <SearchIcon />
+    <input bind:value={searchValue} type="text" placeholder="Enter someone's username" on:keypress={handleKeyPress} on:blur={handleInput}>
+</div>
 <canvas id="skin_container" class="mt-10 mb-10"></canvas>
 <div class="flex gap-6">
     <a href={currentSkin} download=""><button>Download Skin</button></a>

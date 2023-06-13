@@ -11,6 +11,18 @@
         @apply text-xl font-medium border-2 rounded-xl py-2 px-4 border-[#626875] text-[#626875] transition duration-100 hover:bg-[#3C414B] hover:border-[#3C414B] hover:text-[#1A1B1E];
     }
 
+    .search {
+        @apply flex text-xl border-[2px] rounded-3xl border-[#626875] text-[#626875] items-center px-6 py-2;
+    }
+
+    .search input {
+        @apply bg-transparent -mt-1 placeholder-[#626875] focus:outline-none;
+    }
+
+    .search svg {
+        @apply w-5 h-5 fill-[#626875];
+    }
+
     .scroll {
         @apply py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-200 text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200;
     }

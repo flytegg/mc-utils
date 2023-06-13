@@ -4,15 +4,11 @@
     import type { LayoutData } from "./$types"
     export let data: LayoutData
 
-	import Search from "$lib/component/element/Search.svelte"
+	import SearchIcon from "$lib/component/icon/SearchIcon.svelte"
     import { Favourites, UtilList } from "$lib/store"
     import { onMount } from "svelte";
 
     UtilList.set(data.utils)
-
-    const filterUtils = (query: string) => {
-        UtilList.set(data.utils.filter((util: { name: string }) => util.name.toLowerCase().includes(query.toLowerCase())))
-    }
 
     // Load favourites from cookies on page load
     onMount(() => {
@@ -50,13 +46,30 @@
     const favouriteUtilsFromArray = (favourites: string[]) => {
         return data.utils.filter((util: { path: string }) => favourites.includes(util.path))
     }
+
+    const filterUtils = (query: string) => {
+        UtilList.set(data.utils.filter((util: { name: string }) => util.name.toLowerCase().includes(query.toLowerCase())))
+    }
+
+    let searchValue: string
+
+    const handleKeyPress = (event: KeyboardEvent) => {
+        if (event.key === "Enter") filterUtils(searchValue)
+    }
+
+    const handleInput = () => {
+        filterUtils(searchValue)
+    }
 </script>
 
 <div class="flex">
     <div class="bg-[#1D1F24] min-w-[20rem] min-h-screen px-4 flex flex-col space-y-5">
         <div class="flex w-full items-center flex-col space-y-4 mt-10">
             <a href="/"><img src="/img/logo.png" alt="" class="h-11"></a>
-            <Search placeholder="What are you looking for?" search={(query) => filterUtils(query)} instant={true}/>
+            <div class="search">
+                <SearchIcon />
+                <input bind:value={searchValue} on:input={handleInput} type="text" placeholder="What are you looking for?" on:keypress={handleKeyPress} on:blur={handleInput}>
+            </div>
         </div>
         <div data-sveltekit-reload>
             {#if $Favourites.length > 0}

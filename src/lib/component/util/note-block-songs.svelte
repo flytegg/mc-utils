@@ -1,24 +1,26 @@
 <script lang="ts">
-    import Search from "$lib/component/element/Search.svelte";
-    import {onMount} from "svelte";
+    import SearchIcon from "$lib/component/icon/SearchIcon.svelte";
+    import {onMount} from "svelte"
 
-    let searchElement
-    let currentSearch
+    let searchResults: Song[]
 
-    let searchResults
+    type Song = {
+        fileName: string,
+        downloadUrl: string
+    }
 
-    let songs = [];
+    let songs: Song[] = []
 
     async function fetchFilesFromRepo() {
         const owner = 'flytegg';
         const repo = 'nbs-songs';
-        const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents`;
+        const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents`
 
         const response = await fetch(apiUrl);
         const filesData = await response.json();
 
         if (!Array.isArray(filesData)) {
-            throw new Error('Invalid response. Expected an array of files.');
+            throw new Error('Invalid response. Expected an array of files.')
         }
 
         songs = filesData
@@ -26,7 +28,7 @@
             .map(file => ({
                 fileName: file.name,
                 downloadUrl: file.download_url,
-            }));
+            }))
     }
 
     onMount(fetchFilesFromRepo);
@@ -34,9 +36,22 @@
     const updateSearch = async (query: string) => {
         searchResults = songs.filter(song => song.fileName.toLowerCase().includes(query.toLowerCase()))
     }
+
+    let searchValue: string
+
+    const handleKeyPress = (event: KeyboardEvent) => {
+        if (event.key === "Enter") updateSearch(searchValue)
+    }
+
+    const handleInput = () => {
+        updateSearch(searchValue)
+    }
 </script>
 
-<Search placeholder="Enter song title..." search={(query) => updateSearch(query)} instant={true}/>
+<div class="search">
+    <SearchIcon />
+    <input bind:value={searchValue} on:input={handleInput} type="text" placeholder="Enter someone's username" on:keypress={handleKeyPress} on:blur={handleInput}>
+</div>
 
 <table class="w-[60%] text-white mt-12">
     <tr class="bg-[#1d1f24]">
