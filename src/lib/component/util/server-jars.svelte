@@ -1030,7 +1030,7 @@
             {/each}
         </select>
     </div>
-    <a href="https://cdn.mcutils.com/jars/{selectedType}-{selectedVersion}.jar" class="self-center"><button class="button h-fit" on:click={downloadSuccess}>Download</button></a>
+    <a href="https://cdn.mcutils.com/jars/{selectedType}-{selectedVersion}.jar" class="self-end"><button class="button h-fit" on:click={downloadSuccess}>Download</button></a>
 </div>
 
 <table class="w-[90%] lg:w-[60%] text-white mt-12">
