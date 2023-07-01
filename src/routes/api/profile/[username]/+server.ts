@@ -8,7 +8,7 @@ export const GET = (async ({ fetch, params }) => {
 
     if (response.code) {
         let message = "An unknown error occured."
-        if (response.code == 404) message = "The profile 't' was not found."
+        if (response.code == 404) message = `The profile '${params.username}' was not found.`
         return json({
             status: response.code,
             message: message
