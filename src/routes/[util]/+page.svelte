@@ -1,7 +1,5 @@
 <script lang="ts">
     import type { PageData } from './$types'
-    import {page} from "$app/stores";
-    import * as url from "url";
     export let data: PageData
 
     const components = import.meta.glob(`/src/lib/component/util/*.svelte`)
