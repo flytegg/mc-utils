@@ -61,8 +61,8 @@
     <div class="w-[60%] m-auto">
         <div class="flex flex-col gap-3 mt-11">
             <img src="/img/logo.svg" alt="MC Utils Logo" class="h-20 self-center">
-            <h1 class="text-[#3C414B] text-[27px] text-center leading-tight">
-                The community powered one stop shop for Minecraft<br>
+            <h1 class="text-[#3C414B] text-[27px] text-center leading-tight lg:w-[70%] w-[90%] mx-auto">
+                The community powered one stop shop for Minecraft
                 utilities supporting developers, builders & players.
             </h1>
         </div>
@@ -92,8 +92,8 @@
                 </svg>
             </button></a>
         </div>
-        <div class="flex flex-col text-[#3C414B] text-[18px] mt-11">
-            <p class="text-center break-after-all">This service is provided free by the passionate team at <a href="https://flyte.gg" target="_blank" class="underline decoration-dotted">Flyte</a>—<br>and through our wonderful contributor community.</p>
+        <div class="flex flex-col text-[#3C414B] text-[18px] mt-11 lg:w-[55%] w-[90%] mx-auto">
+            <p class="text-center">This service is provided free by the passionate team at <a href="https://flyte.gg" target="_blank" class="underline decoration-dotted">Flyte</a>— and through our wonderful contributor community.</p>
         </div>
     </div>
 </div>
