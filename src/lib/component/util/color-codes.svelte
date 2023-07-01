@@ -1,0 +1,200 @@
+<script lang="ts">
+    const colors = [
+        {
+            "name": "Black",
+            "hex": "#000000",
+            "code": "§0",
+            "motd": "\\u00A70"
+        },
+        {
+            "name": "Dark Blue",
+            "hex": "#0000AA",
+            "code": "§1",
+            "motd": "\\u00A71"
+        },
+        {
+            "name": "Dark Green",
+            "hex": "#00AA00",
+            "code": "§2",
+            "motd": "\\u00A72"
+        },
+        {
+            "name": "Dark Aqua",
+            "hex": "#00AAAA",
+            "code": "§3",
+            "motd": "\\u00A73"
+        },
+        {
+            "name": "Dark Red",
+            "hex": "#AA0000",
+            "code": "§4",
+            "motd": "\\u00A74"
+        },
+        {
+            "name": "Dark Purple",
+            "hex": "#AA00AA",
+            "code": "§5",
+            "motd": "\\u00A75"
+        },
+        {
+            "name": "Gold",
+            "hex": "#FFAA00",
+            "code": "§6",
+            "motd": "\\u00A76"
+        },
+        {
+            "name": "Gray",
+            "hex": "#AAAAAA",
+            "code": "§7",
+            "motd": "\\u00A77"
+        },
+        {
+            "name": "Dark Gray",
+            "hex": "#555555",
+            "code": "§8",
+            "motd": "\\u00A78"
+        },
+        {
+            "name": "Blue",
+            "hex": "#5555FF",
+            "code": "§9",
+            "motd": "\\u00A79"
+        },
+        {
+            "name": "Green",
+            "hex": "#55FF55",
+            "code": "§a",
+            "motd": "\\u00A7a"
+        },
+        {
+            "name": "Aqua",
+            "hex": "#55FFFF",
+            "code": "§b",
+            "motd": "\\u00A7b"
+        },
+        {
+            "name": "Red",
+            "hex": "#FF5555",
+            "code": "§c",
+            "motd": "\\u00A7c"
+        },
+        {
+            "name": "Light Purple",
+            "hex": "#FF55FF",
+            "code": "§d",
+            "motd": "\\u00A7d"
+        },
+        {
+            "name": "Yellow",
+            "hex": "#FFFF55",
+            "code": "§e",
+            "motd": "\\u00A7e"
+        },
+        {
+            "name": "White",
+            "hex": "#FFFFFF",
+            "code": "§f",
+            "motd": "\\u00A7f"
+        }
+    ]
+
+    const formats = [
+        {
+            effect: "<span class='font-bold'>MC Utils</span>",
+            name: "Bold",
+            code: "§l",
+            motd: "\\u00A7l"
+        },
+        {
+            effect: "<span class='underline'>MC Utils</span>",
+            name: "Underline",
+            code: "§n",
+            motd: "\\u00A7n"
+        },
+        {
+            effect: "<span class='italic'>MC Utils</span>",
+            name: "Italic",
+            code: "§o",
+            motd: "\\u00A7o"
+        },
+        {
+            effect: "<span class='line-through'>MC Utils</span>",
+            name: "Strikethrough",
+            code: "§m",
+            motd: "\\u00A7m"
+        },
+        {
+            effect: "",
+            name: "Magic",
+            code: "§k",
+            motd: "\\u00A7k"
+        },
+        {
+            effect: "MC Utils",
+            name: "Reset",
+            code: "§r",
+            motd: "\\u00A7r"
+        }
+    ]
+
+    let obfuscated = "MCUtils"
+
+    function getRandomLetter() {
+        const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+        const randomIndex = Math.floor(Math.random() * alphabet.length);
+        return alphabet[randomIndex];
+    }
+
+    function obfuscateString() {
+        let newString = "";
+        for (let i = 0; i < obfuscated.length; i++) {
+            const char = obfuscated[i];
+            if (char !== " ") {
+                newString += getRandomLetter();
+            } else {
+                newString += " ";
+            }
+        }
+        obfuscated = newString;
+    }
+
+    setInterval(obfuscateString, 80);
+</script>
+
+<table class="w-[90%] lg:w-[60%] text-white">
+    <tr class="bg-[#1d1f24]">
+        <th class="rounded-tl-lg rounded-bl-lg p-2 pl-6 font-medium text-[20px] text-left">Effect</th>
+        <th class="rounded-tr-lg rounded-br-lg font-medium text-[20px] text-left">Name</th>
+        <th class="rounded-tr-lg rounded-br-lg font-medium text-[20px] text-left">Chat Code</th>
+        <th class="rounded-tr-lg rounded-br-lg font-medium text-[20px] text-left">MOTD</th>
+        <th class="rounded-tr-lg rounded-br-lg font-medium text-[20px] text-left">Hex</th>
+    </tr>
+    {#each colors as color}
+        <tr class="">
+            <td class="pl-6 p-1.5 border-b-2 border-b-[#1D1F24] text-gray-400">
+                <div class="bg-[{color.hex}] rounded-md w-[90px] h-[25px]"></div>
+            </td>
+            <td class="border-b-2 border-b-[#1D1F24] text-gray-400">{color.name}</td>
+            <td class="border-b-2 border-b-[#1D1F24] text-gray-400">{color.code}</td>
+            <td class="border-b-2 border-b-[#1D1F24] text-gray-400">{color.motd}</td>
+            <td class="border-b-2 border-b-[#1D1F24] text-gray-400">{color.hex}</td>
+        </tr>
+    {/each}
+
+    {#each formats as format}
+        <tr class="">
+            <td class="border-b-2 border-b-[#1D1F24] text-gray-400 pl-6 p-1.5">
+                {#if format.name === "Magic"}
+                    {@html obfuscated}
+                {:else}
+                    {@html format.effect}
+                {/if}
+            </td>
+            <td class="border-b-2 border-b-[#1D1F24] text-gray-400">{format.name}</td>
+            <td class="border-b-2 border-b-[#1D1F24] text-gray-400">{format.code}</td>
+            <td class="border-b-2 border-b-[#1D1F24] text-gray-400">{format.motd}</td>
+            <td class="border-b-2 border-b-[#1D1F24] text-gray-400"></td>
+        </tr>
+    {/each}
+
+</table>

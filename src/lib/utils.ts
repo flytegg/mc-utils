@@ -1,11 +1,5 @@
 const utils: Util[] = [
     {
-        path: "skin-stealer",
-        name: "Skin Stealer",
-        description: "Steal a player's skin from their IGN.",
-        shortDescription: "Steal another player's skin"
-    },
-    {
         path: "server-jars",
         name: "Server Jars",
         description: "Download existing jar files for<br> popular server software.",
@@ -24,10 +18,22 @@ const utils: Util[] = [
         shortDescription: "Largest .nbs file collection"
     },
     {
+        path: "skin-stealer",
+        name: "Skin Stealer",
+        description: "Steal a player's skin from their IGN.",
+        shortDescription: "Steal another player's skin"
+    },
+    {
         path: "inventory-slots",
         name: "Inventory Slots",
         description: "Slot numbers for every inventory type.",
         shortDescription: "Numbers for all inventories"
+    },
+    {
+        path: "color-codes",
+        name: "Color Codes",
+        description: "List of built in color and format codes.",
+        shortDescription: "All default color codes"
     },
     {
         path: "color-text-generator",
@@ -36,28 +42,22 @@ const utils: Util[] = [
         shortDescription: "Create text with color codes"
     },
     {
-        path: "unicode-symbols",
-        name: "Unicode Symbols",
-        description: "The full collection of all allowed<br> in-game unicode characters.",
-        shortDescription: "All allowed unicode symbols"
-    },
-    {
         path: "gradient-generator",
         name: "Gradient Generator",
         description: "Generate a gradient between two<br> colors for in-game text.",
         shortDescription: "Create chat color gradient"
     },
     {
+        path: "unicode-symbols",
+        name: "Unicode Symbols",
+        description: "The full collection of all allowed<br> in-game unicode characters.",
+        shortDescription: "All allowed unicode symbols"
+    },
+    {
         path: "server-info",
         name: "Server Info",
         description: "Ping an address to get live server data.",
         shortDescription: "Ping server for info"
-    },
-    {
-        path: "armor-color",
-        name: "Armor Color Generator",
-        description: "Generate Leather armor using any color.",
-        shortDescription: "Generate Leather colored armor"
     }
 ]
 
