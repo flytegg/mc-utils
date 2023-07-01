@@ -1,5 +1,10 @@
 <svelte:head>
     <title>MC Utils</title>
+    <meta content="MC Utils" property="og:title" />
+    <meta content="The community powered one stop shop for Minecraft utilities supporting developers, builders & players." property="og:description" />
+    <meta content="https://mcutils.com" property="og:url" />
+    <meta content="https://mcutils.com/favicon.png" property="og:image" />
+    <meta content="#2b2d31" data-react-helmet="true" name="theme-color" />
 </svelte:head>
 
 <script lang="ts">

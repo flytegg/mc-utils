@@ -10,7 +10,7 @@
     <title>{data.util.name ? data.util.name : "Not Found"} | MC Utils</title>
     <meta content="{data.util.name ? data.util.name : 'Not Found'} (MC Utils)" property="og:title" />
     <meta content="{data.util.description ? data.util.description : ''}" property="og:description" />
-    <meta content="https://embed.com/this-is-the-site-url" property="og:url" />
+    <meta content="https://mcutils.com" property="og:url" />
     <meta content="https://mcutils.com/favicon.png" property="og:image" />
     <meta content="#2b2d31" data-react-helmet="true" name="theme-color" />
 </svelte:head>
