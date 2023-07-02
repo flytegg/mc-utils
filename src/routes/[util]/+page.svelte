@@ -13,6 +13,7 @@
     <meta content="https://mcutils.com" property="og:url" />
     <meta content="https://mcutils.com/favicon.png" property="og:image" />
     <meta content="#2b2d31" data-react-helmet="true" name="theme-color" />
+    <meta name="description" content="{data.util.description}">
 </svelte:head>
 
 
