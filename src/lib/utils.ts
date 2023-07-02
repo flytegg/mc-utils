@@ -1,21 +1,21 @@
 const utils: Util[] = [
     {
-        path: "server-jars",
-        name: "Server Jars",
-        description: "Download existing jar files for<br> popular server software.",
-        shortDescription: "Download server software jar"
-    },
-    {
         path: "start-file-generator",
         name: "Start File Generator",
         description: "Generate server start file with<br> varying settings and flags.",
         shortDescription: "Generate server jar start file"
     },
     {
-        path: "note-block-songs",
-        name: "Note Block Songs",
-        description: "Largest collection of Note Block Songs<br> (.nbs files) to use with <a href='https://www.spigotmc.org/resources/noteblockapi.19287/' target='_blank' class='underline decoration-dotted'>NoteblockAPI</a>.",
-        shortDescription: "Largest .nbs file collection"
+        path: "server-jars",
+        name: "Server Jars",
+        description: "Download existing jar files for<br> popular server software.",
+        shortDescription: "Download server software jar"
+    },
+    {
+        path: "server-info",
+        name: "Server Info",
+        description: "Ping an address to get live server data.",
+        shortDescription: "Ping server for info"
     },
     {
         path: "skin-stealer",
@@ -54,10 +54,10 @@ const utils: Util[] = [
         shortDescription: "All allowed unicode symbols"
     },
     {
-        path: "server-info",
-        name: "Server Info",
-        description: "Ping an address to get live server data.",
-        shortDescription: "Ping server for info"
+        path: "note-block-songs",
+        name: "Note Block Songs",
+        description: "Largest collection of Note Block Songs<br> (.nbs files) to use with <a href='https://www.spigotmc.org/resources/noteblockapi.19287/' target='_blank' class='underline decoration-dotted'>NoteblockAPI</a>.",
+        shortDescription: "Largest .nbs file collection"
     }
 ]
 
