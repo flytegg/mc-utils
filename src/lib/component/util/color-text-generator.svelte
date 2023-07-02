@@ -100,7 +100,7 @@
 
     import ColorPicker from 'svelte-awesome-color-picker';
 
-    let hex; // or hsv or hex
+    let color; // or hsv or hex
 </script>
 
 <main class="w-[60%]">
@@ -130,9 +130,9 @@
             </div>
             <div class="flex-col flex gap-1">
                 <div class="self-center text-[#626875] font-medium">
-                    <ColorPicker bind:hex label="Choose Color" />
+                    <input type="color" bind:value={color} class="rounded-full bg-transparent border-none self-center"/>
                 </div>
-                <button class="button w-[100%] h-8 text-sm flex items-center justify-center" on:click={() => {text += "&" + hex}}>Add Hex Code</button>
+                <button class="button w-[100%] h-8 text-sm flex items-center justify-center" on:click={() => {text += "&" + color}}>Add Hex Code</button>
             </div>
             <div class="flex gap-1">
                 <div class="flex-col flex gap-1">
@@ -324,4 +324,9 @@
         word-wrap: break-word;
     }
 
+    input::-webkit-color-swatch {
+        border: none;
+        border-radius: 6px;
+        height: 120%
+    }
 </style>
