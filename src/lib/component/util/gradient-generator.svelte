@@ -23,7 +23,7 @@
             const char = text[i];
 
             if (char.match(/[a-z]/i)) {
-                output += colors[hexIndex % colors.length];
+                output += "&" + colors[hexIndex % colors.length];
                 hexIndex++;
             }
 
@@ -32,7 +32,7 @@
         outputText = output
         outputMinimessage = `<gradient:${color1}:${color2}>${text}</gradient>`
 
-        const regex = /#([A-Fa-f0-9]{6})/g;
+        const regex = /&#([A-Fa-f0-9]{6})/g;
         previewText = outputText.replace(regex, (match, color) => `<span style="color: #${color}">`);
     }
 
@@ -48,6 +48,7 @@
             }
         })
     }
+
     function copyMinimessageValue() {
         navigator.clipboard.writeText(outputMinimessage)
         toast.push('Copied successfully!', {
