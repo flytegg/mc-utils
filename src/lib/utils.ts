@@ -56,7 +56,7 @@ const utils: Util[] = [
     {
         path: "note-block-songs",
         name: "Note Block Songs",
-        description: "Largest collection of Note Block Songs<br> (.nbs files) to use with <a href='https://www.spigotmc.org/resources/noteblockapi.19287/' target='_blank' class='underline decoration-dotted'>NoteblockAPI</a>.",
+        description: "Largest collection of Note Block Songs<br> (.nbs files) to use with <a href='https://www.spigotmc.org/resources/noteblockapi.19287/' aria-label='NoteblockAPI' target='_blank' class='underline decoration-dotted'>NoteblockAPI</a>.",
         shortDescription: "Largest .nbs file collection"
     }
 ]
