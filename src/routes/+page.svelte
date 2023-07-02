@@ -98,7 +98,7 @@
             </button></a>
         </div>
         <div class="flex flex-col text-[#3C414B] text-[18px] mt-11 lg:w-[55%] w-[90%] mx-auto">
-            <p class="text-center">This service is provided free by the passionate team at <a href="https://flyte.gg" target="_blank" class="underline decoration-dotted">Flyte</a>— and through our wonderful contributor community.</p>
+            <p class="text-center">This service is provided free by the passionate team at <a href="https://flyte.gg" target="_blank" class="underline decoration-dotted">Flyte</a>— and through our wonderful <a class="underline decoration-dotted" target="_blank" href="https://github.com/flytegg/mcu-website/issues">contributor community</a>.</p>
         </div>
     </div>
 </div>
