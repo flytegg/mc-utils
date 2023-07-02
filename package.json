@@ -12,6 +12,7 @@
 	"devDependencies": {
 		"@sveltejs/adapter-cloudflare": "^2.0.0",
 		"@sveltejs/kit": "^1.5.0",
+		"@types/javascript-color-gradient": "^2.4.0",
 		"@types/node": "^18.15.10",
 		"@zerodevx/svelte-toast": "^0.9.3",
 		"autoprefixer": "^10.4.14",
@@ -26,6 +27,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"javascript-color-gradient": "^2.4.4",
 		"minecraft-server-status": "^1.0.1",
 		"minecraft-status": "^1.1.0",
 		"minecraft-text-js": "^1.1.3",

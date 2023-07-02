@@ -1,35 +1,40 @@
 <script lang="ts">
-    import ColorPicker from "svelte-awesome-color-picker";
     import {toast} from "@zerodevx/svelte-toast";
-    import {afterUpdate} from "svelte";
+    import Gradient from "javascript-color-gradient";
 
-    let text = "awddwawad"
-    let hex;
-    let rgb;
-    
+    let text = "MC Utils"
+
     let outputText = ""
     let previewText = ""
 
+    let color1 = "#0040FF"
+    let color2 = "#00FBFF"
+
     function calculateResult() {
+        const colors = new Gradient()
+            .setColorGradient(color1, color2)
+            .setMidpoint(text.replace(/\s/g, "").length)
+            .getColors()
 
-        const numSteps = text.length;
-        const startColor = parseInt(hex.slice(1), 16);
-        alert("lading")
-        const endColor = parseInt(hex.slice(1), 16);
-        let gradientString = '';
+        let hexIndex = 0;
+        let output = ""
+        for (let i = 0; i < text.length; i++) {
+            const char = text[i];
 
-        alert("lading")
+            if (char.match(/[a-z]/i)) {
+                output += colors[hexIndex % colors.length];
+                hexIndex++;
+            }
 
-        for (let i = 0; i < numSteps; i++) {
-            const ratio = i / (numSteps - 1);
-            const color = Math.floor(startColor * (1 - ratio) + endColor * ratio);
-            const hex = color.toString(16).padStart(6, '0');
-            const colorCode = `&#${hex}`;
-            gradientString += colorCode + text[i];
+            output += char;
         }
+        outputText = output
 
-        outputText = gradientString
+        const regex = /#([A-Fa-f0-9]{6})/g;
+        previewText = outputText.replace(regex, (match, color) => `<span style="color: #${color}">`);
     }
+
+    calculateResult()
 
     function copyValue() {
         navigator.clipboard.writeText(outputText)
@@ -41,10 +46,6 @@
             }
         })
     }
-
-    let color1 = "#0040FF"
-    let color2 = "#00FBFF"
-
 </script>
 
 <main class="w-[60%]">
@@ -56,23 +57,23 @@
         <div class="flex gap-6">
             <div class="flex flex-col">
                 <h3 class="font-medium text-white text-20px text-left">Color #1</h3>
-                <input type="color" bind:value={color1} class="rounded-full bg-transparent border-none self-center" />
+                <input type="color" bind:value={color1} on:input={calculateResult} class="rounded-full bg-transparent border-none self-center" />
             </div>
             <div class="flex flex-col h-full">
                 <h3 class="font-medium text-white text-20px text-left">Color #2</h3>
-                <input type="color" bind:value={color2} class="rounded-full bg-transparent border-none self-center" />
+                <input type="color" bind:value={color2} on:input={calculateResult} class="rounded-full bg-transparent border-none self-center" />
             </div>
         </div>
     </div>
 
     <div class="flex gap-3">
         <input bind:value={outputText} class="inline-block text-sm text-gray-400 font-mono rounded-md p-2 bg-[#141517] mt-8 h-[35px] w-[100%] max-w-[100%] " disabled>
-        <button class="w-fit text-sm px-2 py-1.5 button h-fit inline-block mt-8">Copy</button>
+        <button class="w-fit text-sm px-2 py-1.5 button h-fit inline-block mt-8" on:click={copyValue}>Copy</button>
     </div>
 
     <div class="flex flex-col">
-        <h3 class="font-medium text-white text-[20px] mt-8 text-center mb-5">Preview</h3>
-        <p class="font-['Minecraft'] break-all text-2xl text-center mt-8" style="white-space: pre-wrap">{@html previewText}</p>
+        <h3 class="font-medium text-white text-[20px] mt-8 text-center">Preview</h3>
+        <p class="font-['Minecraft'] break-all text-2xl text-center mt-5" style="white-space: pre-wrap">{@html previewText}</p>
     </div>
 </main>
 
