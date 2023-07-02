@@ -1040,7 +1040,7 @@
             {/each}
         </select>
     </div>
-    <a href="https://cdn.mcutils.com/jars/{selectedType}-{selectedVersion}.jar" class="self-end"><button class="button h-fit" on:click={downloadSuccess}>Download</button></a>
+    <a href="https://cdn.mcutils.com/jars/{selectedType}-{selectedVersion}.jar" aria-label='Download Jar' class="self-end"><button class="button h-fit" on:click={downloadSuccess}>Download</button></a>
 </div>
 
 <table class="w-[90%] lg:w-[60%] text-white mt-12">
@@ -1056,7 +1056,7 @@
             <td class="border-b-2 border-b-[#1D1F24] text-gray-400">{jar.release}</td>
             <td class="border-b-2 border-b-[#1D1F24] text-gray-400">{jar.size}</td>
             <td>
-                <a href="https://cdn.mcutils.com/jars/{selectedType}-{jar.version}.jar">
+                <a aria-label='Download Jar' href="https://cdn.mcutils.com/jars/{selectedType}-{jar.version}.jar">
                     <button on:click={downloadSuccess}>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="fill-[#626875] pl-4 h-5"><path d="M32 480c-17.7 0-32-14.3-32-32s14.3-32 32-32H352c17.7 0 32 14.3 32 32s-14.3 32-32 32H32zM214.6 342.6c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 242.7V64c0-17.7 14.3-32 32-32s32 14.3 32 32V242.7l73.4-73.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3l-128 128z"/></svg>
                     </button>

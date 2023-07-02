@@ -17,7 +17,7 @@
 
 
 {#if data.status === 200}
-    <a href="https://github.com/flytegg/mcu-website/issues" target="_blank" class="bg-[#50282a] text-[#F55050] py-2 w-full text-center text-lg justify-center gap-1.5 hidden lg:flex">
+    <a href="https://github.com/flytegg/mcu-website/issues" aria-label='GitHub' target="_blank" class="bg-[#50282a] text-[#F55050] py-2 w-full text-center text-lg justify-center gap-1.5 hidden lg:flex">
         <p class="self-center">MC Utils is currently in beta! Please report <span class="underline decoration-dotted">issues or suggestions</span> on GitHub</p>
         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" fill="#F55050" class="self-center h-4 fill-[#F55050]"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32H320zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"/></svg>
     </a>
@@ -31,7 +31,7 @@
     {/await}
 {:else}
     <div class="flex flex-col w-full">
-        <a href="https://github.com/flytegg/mcu-website/issues" target="_blank" class="bg-[#50282a] text-[#F55050] py-2 w-full text-center text-lg justify-center gap-1.5 hidden lg:flex">
+        <a href="https://github.com/flytegg/mcu-website/issues" aria-label='GitHub' target="_blank" class="bg-[#50282a] text-[#F55050] py-2 w-full text-center text-lg justify-center gap-1.5 hidden lg:flex">
             <p class="self-center">MC Utils is currently in beta! Please report <span class="underline decoration-dotted">issues or suggestions</span> on GitHub</p>
             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" fill="#F55050" class="self-center h-4 fill-[#F55050]"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32H320zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"/></svg>
         </a>
@@ -46,7 +46,7 @@
             </div>
             <div class="flex flex-col mt-11 gap-3">
                 <p class="text-[#666C78] text-lg text-center">Think we’re missing out? Join our Discord and let us know!</p>
-                <a href="https://discord.gg/CGmMQwfXXN" target="_blank" class="m-auto"><button class="bg-[#5865F2] hover:bg-[#7984F5] transition-colors rounded-2xl w-72 p-6">
+                <a href="https://discord.gg/CGmMQwfXXN" target="_blank" aria-label='Discord' class="m-auto"><button class="bg-[#5865F2] hover:bg-[#7984F5] transition-colors rounded-2xl w-72 p-6">
                     <svg class="h-9 m-auto" width="175" height="33" viewBox="0 0 175 33" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                         <rect width="175" height="33" fill="url(#pattern0)"/>
                         <defs>
