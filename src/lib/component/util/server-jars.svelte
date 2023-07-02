@@ -2,16 +2,21 @@
     import {toast} from "@zerodevx/svelte-toast";
 
     let selectedType = "spigot"
-    let selectedVersion = "1.20"
+    let selectedVersion = "1.20.1"
 
     const info = [
-        {
-            platform: "paper",
-            jars: []
-        },
+        // {
+        //     platform: "paper",
+        //     jars: []
+        // },
         {
             platform: "spigot",
             jars: [
+                {
+                    "version": "1.20.1",
+                    "size": "67.8 MB",
+                    "release": "June 12th 2023"
+                },
                 {
                     "version": "1.19.4",
                     "size": "67.8 MB",
@@ -290,8 +295,13 @@
             ]
         },
         {
-            platform: "bukkit",
+            platform: "craftbukkit",
             jars: [
+                {
+                    "version": "1.20.1",
+                    "release": "June 12th 2023",
+                    "size": "68.4 MB"
+                },
                 {
                     "version": "1.19.4",
                     "release": "March 14th 2023",
@@ -632,6 +642,11 @@
         {
             platform: "vanilla",
             jars: [
+                {
+                    "version": "1.20.1",
+                    "release": "June 12th 2023",
+                    "size": "45.6 MB"
+                },
                 {
                     "version": "1.19.4",
                     "release": "March 14th 2023",
@@ -992,11 +1007,6 @@
                     "release": "March 29th 2012",
                     "size": "1.34 MB"
                 },
-                {
-                    "version": "1.2.5",
-                    "release": "February 29th 2012",
-                    "size": "1.34 MB"
-                }
             ]
         }
     ]
@@ -1016,9 +1026,9 @@
     <div class="flex flex-col">
         <h3 class="font-medium text-white text-[20px] text-left">Type</h3>
         <select bind:value={selectedType} id="type" class="w-[120px] scroll">
-            <option value="paper" class="scroll-option">Paper</option>
+<!--        <option value="paper" class="scroll-option">Paper</option> -->
             <option value="spigot" class="scroll-option">Spigot</option>
-            <option value="bukkit" class="scroll-option">Bukkit</option>
+            <option value="craftbukkit" class="scroll-option">CraftBukkit</option>
             <option value="vanilla" class="scroll-option">Vanilla</option>
         </select>
     </div>
