@@ -42,31 +42,32 @@
         })
     }
 
+    let color1 = "#0040FF"
+    let color2 = "#00FBFF"
+
 </script>
 
 <main class="w-[60%]">
     <div class="place-items-center text-center items-start grid grid-cols-1 xl:flex justify-center gap-6">
         <div class="flex flex-col">
-            <h3 class="font-medium text-white text-[20px] text-left">Message</h3>
+            <h3 class="font-medium text-white text-20px text-left">Message</h3>
             <input bind:value={text} on:input={calculateResult} id="serverJarName" class="w-[160px] py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-200 text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
         </div>
-        <div class="flex flex-col">
-            <h3 class="font-medium text-white text-[20px] text-left">Color #1</h3>
-            <div class="self-center text-[#626875] font-medium">
-                <ColorPicker bind:hex label="Choose Color" />
+        <div class="flex gap-6">
+            <div class="flex flex-col">
+                <h3 class="font-medium text-white text-20px text-left">Color #1</h3>
+                <input type="color" bind:value={color1} class="rounded-full bg-transparent border-none self-center" />
             </div>
-        </div>
-        <div class="flex flex-col">
-            <h3 class="font-medium text-white text-[20px] text-left">Color #2</h3>
-            <div class="self-center text-[#626875] font-medium">
-                <ColorPicker bind:rgb label="Choose Color" />
+            <div class="flex flex-col h-full">
+                <h3 class="font-medium text-white text-20px text-left">Color #2</h3>
+                <input type="color" bind:value={color2} class="rounded-full bg-transparent border-none self-center" />
             </div>
         </div>
     </div>
 
     <div class="flex gap-3">
         <input bind:value={outputText} class="inline-block text-sm text-gray-400 font-mono rounded-md p-2 bg-[#141517] mt-8 h-[35px] w-[100%] max-w-[100%] " disabled>
-        <button class="w-fit text-sm px-2 py-1.5 button h-fit inline-block mt-8" >Copy</button>
+        <button class="w-fit text-sm px-2 py-1.5 button h-fit inline-block mt-8">Copy</button>
     </div>
 
     <div class="flex flex-col">
@@ -74,3 +75,11 @@
         <p class="font-['Minecraft'] break-all text-2xl text-center mt-8" style="white-space: pre-wrap">{@html previewText}</p>
     </div>
 </main>
+
+<style>
+    input::-webkit-color-swatch {
+        border: none;
+        border-radius: 6px;
+        height: 180%
+    }
+</style>
