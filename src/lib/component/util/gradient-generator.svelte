@@ -5,6 +5,7 @@
     let text = "MC Utils"
 
     let outputText = ""
+    let outputMinimessage = ""
     let previewText = ""
 
     let color1 = "#0040FF"
@@ -29,6 +30,7 @@
             output += char;
         }
         outputText = output
+        outputMinimessage = `<gradient:${color1}:${color2}>${text}</gradient>`
 
         const regex = /#([A-Fa-f0-9]{6})/g;
         previewText = outputText.replace(regex, (match, color) => `<span style="color: #${color}">`);
@@ -38,6 +40,16 @@
 
     function copyValue() {
         navigator.clipboard.writeText(outputText)
+        toast.push('Copied successfully!', {
+            theme: {
+                '--toastColor': 'mintcream',
+                '--toastBackground': 'rgba(72,187,120,0.9)',
+                '--toastBarBackground': '#2F855A'
+            }
+        })
+    }
+    function copyMinimessageValue() {
+        navigator.clipboard.writeText(outputMinimessage)
         toast.push('Copied successfully!', {
             theme: {
                 '--toastColor': 'mintcream',
@@ -66,9 +78,20 @@
         </div>
     </div>
 
-    <div class="flex gap-3">
-        <input bind:value={outputText} class="inline-block text-sm text-gray-400 font-mono rounded-md p-2 bg-[#141517] mt-8 h-[35px] w-[100%] max-w-[100%] " disabled>
-        <button class="w-fit text-sm px-2 py-1.5 button h-fit inline-block mt-8" on:click={copyValue}>Copy</button>
+    <div class="flex flex-col">
+        <h3 class="font-medium text-white text-[20px] mt-8 text-center">Chat Colors</h3>
+        <div class="flex gap-3">
+            <input bind:value={outputText} class="inline-block text-sm text-gray-400 font-mono rounded-md p-2 bg-[#141517] mt-5 h-[35px] w-[100%] max-w-[100%] " disabled>
+            <button class="w-fit text-sm px-2 py-1.5 button h-fit inline-block mt-5" on:click={copyValue}>Copy</button>
+        </div>
+    </div>
+
+    <div class="flex flex-col">
+        <h3 class="font-medium text-white text-[20px] mt-8 text-center">MiniMessage</h3>
+        <div class="flex gap-3">
+            <input bind:value={outputMinimessage} class="inline-block text-sm text-gray-400 font-mono rounded-md p-2 bg-[#141517] mt-5 h-[35px] w-[100%] max-w-[100%] " disabled>
+            <button class="w-fit text-sm px-2 py-1.5 button h-fit inline-block mt-5" on:click={copyMinimessageValue}>Copy</button>
+        </div>
     </div>
 
     <div class="flex flex-col">
