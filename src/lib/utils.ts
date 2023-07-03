@@ -58,7 +58,19 @@ const utils: Util[] = [
         name: "Note Block Songs",
         description: "Largest collection of Note Block Songs<br> (.nbs files) to use with <a href='https://www.spigotmc.org/resources/noteblockapi.19287/' aria-label='NoteblockAPI' target='_blank' class='underline decoration-dotted'>NoteblockAPI</a>.",
         shortDescription: "Largest .nbs file collection"
-    }
+    },
+    {
+        path: "pixel-art-circle",
+        name: "Pixel Art Circle",
+        description: "The full collection of all allowed<br> in-game unicode characters.",
+        shortDescription: "All allowed unicode symbols"
+    },
+    {
+        path: "banner-creator",
+        name: "Banner Creator",
+        description: "The full collection of all allowed<br> in-game unicode characters.",
+        shortDescription: "All allowed unicode symbols"
+    },
 ]
 
 type Util = {
