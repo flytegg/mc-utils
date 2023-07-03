@@ -126,7 +126,7 @@
 </div>
 
 {#if (status && status.status !== "error")}
-    <div class="self-center relative w-[650px] mx-auto">
+    <div class="self-center relative w-[650px] transition-transform transform scale-[55%] sm:scale-[80%] md:scale-[100%] lg:scale-[100%] xl:scale-100">
         <img src="/display/dirt.svg" alt="Sign" class="w-[100%]">
         <div class="text-left mr-auto mc-server-content overflow-y-hidden">
             <p class="minecraft-server text-white">{searchValue ? searchValue : "Minecraft Server"}</p>
@@ -140,8 +140,8 @@
         <img src="{status.favicon}" alt="Server Favicon" class="favicon-content h-24">
     </div>
 {:else}
-    <div class="self-center relative w-[650px] mx-auto">
-        <img src="/display/dirt.svg" alt="Sign" class="w-[100%]">
+    <div class="self-center relative w-[650px] transition-transform transform scale-[55%] sm:scale-[80%] md:scale-[100%] lg:scale-[100%] xl:scale-100">
+        <img src="/display/dirt.svg" alt="dirt" class="w-[100%]">
         <div class="text-left mr-auto mc-server-content overflow-y-hidden">
             <p class="minecraft-server text-white">{searchValue ? searchValue : "Minecraft Server"}</p>
         </div>
