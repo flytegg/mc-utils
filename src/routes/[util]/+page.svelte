@@ -14,6 +14,8 @@
     <meta content="https://mcutils.com/favicon.png" property="og:image" />
     <meta content="#2b2d31" data-react-helmet="true" name="theme-color" />
     <meta name="description" content="{data.util.description}">
+    <meta name="keywords" content="mcutils, mc, utils, minecraft, server, spigot, paper, api, unicode, banner, colors, chat, gradient, inventory, slots, noteblock, skin">
+    <link rel="icon" href="/favicon.png">
 </svelte:head>
 
 
