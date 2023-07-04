@@ -72,7 +72,7 @@
                 utilities supporting developers, builders & players.
             </h1>
         </div>
-        <p class="font-medium text-white text-[20px] text-center mt-11">Today’s Popular Utils</p>
+        <p class="font-medium text-white text-[20px] text-center mt-11">Popular Utils</p>
         <div class="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 justify-center gap-5 mt-[3%]">
             {#each selectedUtils as util}
                 <a href="/{util.path}" aria-label='{util.path}' class="bg-[#212227] rounded-2xl flex w-full py-3 px-7 gap-4 ">
