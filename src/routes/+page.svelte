@@ -8,6 +8,15 @@
     <meta name="description" content="The community powered one stop shop for Minecraft utilities supporting developers, builders & players.">
     <meta name="keywords" content="mcutils, mc, utils, minecraft, server, spigot, paper, api, unicode, banner, colors, chat, gradient, inventory, slots, noteblock, skin">
     <link rel="icon" href="/favicon.png">
+
+    <!-- Google Analyics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4PFR6RCP92"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-4PFR6RCP92');
+    </script>
 </svelte:head>
 
 <script lang="ts">
