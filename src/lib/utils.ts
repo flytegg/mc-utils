@@ -2,13 +2,13 @@ const utils: Util[] = [
     {
         path: "start-file-generator",
         name: "Start File Generator",
-        description: "Generate server start file with<br> varying settings and flags.",
+        description: "Generate server start file with varying settings and flags.",
         shortDescription: "Generate server jar start file"
     },
     {
         path: "server-jars",
         name: "Server Jars",
-        description: "Download existing jar files for<br> popular server software.",
+        description: "Download jar files for popular server software.",
         shortDescription: "Download server software jar"
     },
     {
@@ -44,33 +44,27 @@ const utils: Util[] = [
     {
         path: "gradient-generator",
         name: "Gradient Generator",
-        description: "Generate a gradient between two<br> colors for in-game text.",
+        description: "Create a gradient between two colors for in-game text.",
         shortDescription: "Create chat color gradient"
     },
-    {
-        path: "unicode-symbols",
-        name: "Unicode Symbols",
-        description: "The full collection of all allowed<br> in-game unicode characters.",
-        shortDescription: "All allowed unicode symbols"
-    },
+    // {
+    //     path: "unicode-symbols",
+    //     name: "Unicode Symbols",
+    //     description: "The full collection of all allowed<br> in-game unicode characters.",
+    //     shortDescription: "All allowed unicode symbols"
+    // },
     {
         path: "note-block-songs",
         name: "Note Block Songs",
-        description: "Largest collection of Note Block Songs<br> (.nbs files) to use with <a href='https://www.spigotmc.org/resources/noteblockapi.19287/' aria-label='NoteblockAPI' target='_blank' class='underline decoration-dotted'>NoteblockAPI</a>.",
+        description: "Largest collection of .nbs files to use with <a href='https://www.spigotmc.org/resources/noteblockapi.19287/' aria-label='NoteblockAPI' target='_blank' class='underline decoration-dotted'>NoteblockAPI</a>.",
         shortDescription: "Largest .nbs file collection"
-    },
-    {
-        path: "pixel-art-circle",
-        name: "Pixel Art Circle",
-        description: "The full collection of all allowed<br> in-game unicode characters.",
-        shortDescription: "All allowed unicode symbols"
     },
     {
         path: "banner-creator",
         name: "Banner Creator",
-        description: "The full collection of all allowed<br> in-game unicode characters.",
-        shortDescription: "All allowed unicode symbols"
-    },
+        description: "Create a banner design and get in-game commands and code.",
+        shortDescription: "Craft banners and get code"
+    }
 ]
 
 type Util = {
