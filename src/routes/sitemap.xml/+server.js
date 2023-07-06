@@ -62,7 +62,7 @@ export async function GET() {
                 <priority>0.8</priority>
             </url>
             <url>
-                <loc>${website}/unicode-symbols</loc>
+                <loc>${website}/banner-creator</loc>
                 <changefreq>daily</changefreq>
                 <priority>0.8</priority>
             </url>

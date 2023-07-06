@@ -10,6 +10,9 @@
     let skinViewer: SkinViewer.SkinViewer
 
     onMount(async () => {
+        const urlParams = new URLSearchParams(window.location.hash.slice(1));
+        let ign = urlParams.get('ign')
+
         skinViewer = new SkinViewer.SkinViewer({
             canvas: document.getElementById("skin_container") as HTMLCanvasElement,
             height: 400,
@@ -21,7 +24,13 @@
         skinViewer.zoom = 0.70
         skinViewer.controls.enableZoom = false
 
-        await updateSkin("Notch")
+        if (ign) {
+            searchValue = ign
+            link = "https://mcutils.com/skin-stealer#ign=" + ign
+            await updateSkin(ign)
+        } else {
+            await updateSkin("Notch")
+        }
     })
 
     const updateSkin = async (username: string) => {
@@ -37,7 +46,7 @@
         if (data.status) {
             skinViewer.loadSkin(defaultSkin)
         } else {
-            currentSkin = data.skin.data
+            currentSkin = data.skin.png.data
             skinViewer.loadSkin(data.renders.skin)
         }
 
@@ -50,9 +59,21 @@
         if (event.key === "Enter") updateSkin(searchValue)
     }
 
+    let debounceTimer: NodeJS.Timeout | null = null;
     const handleInput = () => {
-        updateSkin(searchValue)
-    }
+        link = "https://mcutils.com/skin-stealer#ign=" + searchValue
+        if (searchValue === "") return
+
+        if (debounceTimer) {
+            clearTimeout(debounceTimer);
+        }
+
+        debounceTimer = setTimeout(() => {
+            updateSkin(searchValue)
+        }, 500); // Adjust the debounce delay as needed
+    };
+
+    let link = "https://mcutils.com/skin-stealer#ign="
 
     function downloadSkin() {
         toast.push('Downloaded successfully!', {
@@ -63,15 +84,40 @@
             }
         })
     }
+
+    function copyLink() {
+        navigator.clipboard.writeText(link)
+        toast.push('Copied successfully!', {
+            theme: {
+                '--toastColor': 'mintcream',
+                '--toastBackground': 'rgba(72,187,120,0.9)',
+                '--toastBarBackground': '#2F855A'
+            }
+        })
+    }
+
+    function disallowSpaces(event: KeyboardEvent) {
+        if (event.key === " ") {
+            event.preventDefault();
+        }
+    }
 </script>
 
 <div class="search w-fit h-10 text-md">
     <img src="/icon/search.svg" alt="Search Icon" class="h-5">
-    <input bind:value={searchValue} on:input={handleInput} type="text" placeholder="Enter username..." on:keypress={handleKeyPress} on:blur={handleInput} class="w-full pt-0.5 pr-0.5 justify-center items-center self-center">
+    <input maxlength="16" bind:value={searchValue} on:input={handleInput} on:keydown={disallowSpaces} type="text" placeholder="Enter username..." on:keypress={handleKeyPress} on:blur={handleInput} class="w-full pt-0.5 pr-0.5 justify-center items-center self-center">
 </div>
 
-<canvas id="skin_container" class="mt-10 mb-10"></canvas>
+<canvas id="skin_container" class="mt-10 "></canvas>
 <div class="flex gap-6">
     <a href={currentSkin} download="" aria-label='Download Skin'><button class="button" on:click={downloadSkin}>Download Skin</button></a>
-    <a href="https://www.minecraft.net/profile/skin/remote?url=undefined" aria-label='Apply Skin' target="_blank"><button class="button" onclick>Apply Skin</button></a> <!-- Mojang broke passing the image through the URL. NameMC removed it & other sites don't work either. So just sending a template link -->
+    <a href="https://www.minecraft.net/profile/skin/remote?url=undefined" aria-label='Apply Skin' target="_blank"><button class="button">Apply Skin</button></a> <!-- Mojang broke passing the image through the URL. NameMC removed it & other sites don't work either. So just sending a template link -->
+</div>
+
+<div class="flex flex-col mt-8 w-fit">
+    <h3 class="font-medium text-white text-20px text-center">Shareable Link</h3>
+    <div class="flex gap-3 mt-2 w-fit">
+        <input disabled bind:value={link} class="inline-block text-sm text-gray-400 font-mono rounded-md p-2 bg-[#141517] h-[35px] md:w-[370px] max-w-[100%] ">
+        <button on:click={copyLink} class="w-fit text-sm px-2 py-1.5 button h-fit inline-block">Copy</button>
+    </div>
 </div>

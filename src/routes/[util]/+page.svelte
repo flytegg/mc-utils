@@ -14,6 +14,17 @@
     <meta content="https://mcutils.com/favicon.png" property="og:image" />
     <meta content="#2b2d31" data-react-helmet="true" name="theme-color" />
     <meta name="description" content="{data.util.description}">
+    <meta name="keywords" content="mcutils, mc, utils, minecraft, server, spigot, paper, api, unicode, banner, colors, chat, gradient, inventory, slots, noteblock, skin">
+    <link rel="icon" href="/favicon.png">
+
+    <!-- Google Analyics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4PFR6RCP92"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-4PFR6RCP92');
+    </script>
 </svelte:head>
 
 

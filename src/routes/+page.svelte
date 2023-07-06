@@ -6,6 +6,17 @@
     <meta content="https://mcutils.com/favicon.png" property="og:image" />
     <meta content="#2b2d31" data-react-helmet="true" name="theme-color" />
     <meta name="description" content="The community powered one stop shop for Minecraft utilities supporting developers, builders & players.">
+    <meta name="keywords" content="mcutils, mc, utils, minecraft, server, spigot, paper, api, unicode, banner, colors, chat, gradient, inventory, slots, noteblock, skin">
+    <link rel="icon" href="/favicon.png">
+
+    <!-- Google Analyics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4PFR6RCP92"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-4PFR6RCP92');
+    </script>
 </svelte:head>
 
 <script lang="ts">
@@ -72,7 +83,7 @@
                 utilities supporting developers, builders & players.
             </h1>
         </div>
-        <p class="font-medium text-white text-[20px] text-center mt-11">Today’s Popular Utils</p>
+        <p class="font-medium text-white text-[20px] text-center mt-11">Popular Utils</p>
         <div class="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 justify-center gap-5 mt-[3%]">
             {#each selectedUtils as util}
                 <a href="/{util.path}" aria-label='{util.path}' class="bg-[#212227] rounded-2xl flex w-full py-3 px-7 gap-4 ">
