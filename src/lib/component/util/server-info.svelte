@@ -14,7 +14,7 @@
 
         debounceTimer = setTimeout(() => {
             fetchServerStatus();
-        }, 500); // Adjust the debounce delay as needed
+        }, 3000); // Adjust the debounce delay as needed
     };
 
     let status;
