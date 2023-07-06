@@ -3,22 +3,7 @@
     import {onMount} from "svelte";
 
     let searchValue: string
-
-    let debounceTimer: NodeJS.Timeout | null = null;
-    const handleInput = () => {
-        if (searchValue === "") return
-
-        if (debounceTimer) {
-            clearTimeout(debounceTimer);
-        }
-
-        debounceTimer = setTimeout(() => {
-            fetchServerStatus();
-        }, 3000); // Adjust the debounce delay as needed
-    };
-
     let status;
-
 
     const fetchServerStatus = async () => {
         const url = 'https://mcapi.us/server/status?ip=' + searchValue;
@@ -122,7 +107,7 @@
 
 <div class="search w-fit h-10 text-md mb-12">
     <img src="/icon/search.svg" alt="Search Icon" class="h-5">
-    <input on:keydown={disallowSpaces} bind:value={searchValue} on:input={handleInput} type="text" placeholder="Enter server address..." on:blur={handleInput} class="w-full pt-0.5 pr-0.5 justify-center items-center self-center">
+    <input on:keydown={disallowSpaces} bind:value={searchValue} type="text" placeholder="Enter server address..." on:blur={handleInput} class="w-full pt-0.5 pr-0.5 justify-center items-center self-center">
 </div>
 
 {#if (status && status.status !== "error")}
