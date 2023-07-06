@@ -347,7 +347,7 @@
                 </div>
             </div>
             <div class="flex flex-col mt-6">
-                <h3 class="font-medium text-white text-20px text-left">Unique Banner Link</h3>
+                <h3 class="font-medium text-white text-20px text-left">Shareable Link</h3>
                 <div class="flex gap-3 mt-2">
                     <input disabled bind:value={link} class="inline-block text-sm text-gray-400 font-mono rounded-md p-2 bg-[#141517] h-[35px] w-[100%] max-w-[100%] ">
                     <button on:click={() => copyValue(link)} class="w-fit text-sm px-2 py-1.5 button h-fit inline-block">Copy</button>
