@@ -115,7 +115,7 @@
         }
     }
 
-    let link = ""
+    let link = "https://mcutils.com/server-info#ip="
     function copyLink() {
         navigator.clipboard.writeText(link)
         toast.push('Copied successfully!', {
