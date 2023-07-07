@@ -47,6 +47,12 @@ const utils: Util[] = [
         description: "Create a gradient between two colors for in-game text.",
         shortDescription: "Create chat color gradient"
     },
+    {
+        path: "small-text-converter",
+        name: "Small Text Converter",
+        description: "Convert into <span style=\"font-variant: small-caps;\">small text</span> seen on new era servers.",
+        shortDescription: "Convert into <span style=\"font-variant: small-caps;\">small text</span>"
+    },
     // {
     //     path: "unicode-symbols",
     //     name: "Unicode Symbols",

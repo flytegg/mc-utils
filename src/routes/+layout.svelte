@@ -91,7 +91,7 @@
                                         <img src="/component/icon/{util.path}.svg" alt="" class="h-9 self-center">
                                         <div class="flex flex-col">
                                             <h2 class="text-[#AEB2BC] font-semibold text-[20px]">{util.name}</h2>
-                                            <p class="text-[#3C414B]">{util.shortDescription}</p>
+                                            <p class="text-[#3C414B]">{@html util.shortDescription}</p>
                                         </div>
                                     </a>
                                     <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -110,7 +110,7 @@
                                     <img src="/component/icon/{util.path}.svg" alt="" class="h-9 self-center">
                                     <div class="flex flex-col">
                                         <h2 class="text-[#AEB2BC] font-semibold text-[20px]">{util.name}</h2>
-                                        <p class="text-[#3C414B]">{util.shortDescription}</p>
+                                        <p class="text-[#3C414B]">{@html util.shortDescription}</p>
                                     </div>
                                 </a>
                                 <!-- svelte-ignore a11y-click-events-have-key-events -->
