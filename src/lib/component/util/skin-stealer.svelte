@@ -22,6 +22,7 @@
         skinViewer.autoRotate = false
         skinViewer.fov = 10
         skinViewer.zoom = 0.70
+
         skinViewer.controls.enableZoom = false
 
         if (ign) {
