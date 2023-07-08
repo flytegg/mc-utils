@@ -2,16 +2,21 @@
     import {toast} from "@zerodevx/svelte-toast";
 
     let selectedType = "spigot"
-    let selectedVersion = "1.20"
+    let selectedVersion = "1.20.1"
 
     const info = [
-        {
-            platform: "paper",
-            jars: []
-        },
+        // {
+        //     platform: "paper",
+        //     jars: []
+        // },
         {
             platform: "spigot",
             jars: [
+                {
+                    "version": "1.20.1",
+                    "size": "67.8 MB",
+                    "release": "June 12th 2023"
+                },
                 {
                     "version": "1.19.4",
                     "size": "67.8 MB",
@@ -290,8 +295,13 @@
             ]
         },
         {
-            platform: "bukkit",
+            platform: "craftbukkit",
             jars: [
+                {
+                    "version": "1.20.1",
+                    "release": "June 12th 2023",
+                    "size": "68.4 MB"
+                },
                 {
                     "version": "1.19.4",
                     "release": "March 14th 2023",
@@ -632,6 +642,11 @@
         {
             platform: "vanilla",
             jars: [
+                {
+                    "version": "1.20.1",
+                    "release": "June 12th 2023",
+                    "size": "45.6 MB"
+                },
                 {
                     "version": "1.19.4",
                     "release": "March 14th 2023",
@@ -992,11 +1007,6 @@
                     "release": "March 29th 2012",
                     "size": "1.34 MB"
                 },
-                {
-                    "version": "1.2.5",
-                    "release": "February 29th 2012",
-                    "size": "1.34 MB"
-                }
             ]
         }
     ]
@@ -1016,9 +1026,9 @@
     <div class="flex flex-col">
         <h3 class="font-medium text-white text-[20px] text-left">Type</h3>
         <select bind:value={selectedType} id="type" class="w-[120px] scroll">
-            <option value="paper" class="scroll-option">Paper</option>
+<!--        <option value="paper" class="scroll-option">Paper</option> -->
             <option value="spigot" class="scroll-option">Spigot</option>
-            <option value="bukkit" class="scroll-option">Bukkit</option>
+            <option value="craftbukkit" class="scroll-option">CraftBukkit</option>
             <option value="vanilla" class="scroll-option">Vanilla</option>
         </select>
     </div>
@@ -1030,7 +1040,7 @@
             {/each}
         </select>
     </div>
-    <a href="https://cdn.mcutils.com/jars/{selectedType}-{selectedVersion}.jar" class="self-end"><button class="button h-fit" on:click={downloadSuccess}>Download</button></a>
+    <a href="https://cdn.mcutils.com/jars/{selectedType}-{selectedVersion}.jar" aria-label='Download Jar' class="self-end"><button class="button h-fit" on:click={downloadSuccess}>Download</button></a>
 </div>
 
 <table class="w-[90%] lg:w-[60%] text-white mt-12">
@@ -1046,7 +1056,7 @@
             <td class="border-b-2 border-b-[#1D1F24] text-gray-400">{jar.release}</td>
             <td class="border-b-2 border-b-[#1D1F24] text-gray-400">{jar.size}</td>
             <td>
-                <a href="https://cdn.mcutils.com/jars/{selectedType}-{jar.version}.jar">
+                <a aria-label='Download Jar' href="https://cdn.mcutils.com/jars/{selectedType}-{jar.version}.jar">
                     <button on:click={downloadSuccess}>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="fill-[#626875] pl-4 h-5"><path d="M32 480c-17.7 0-32-14.3-32-32s14.3-32 32-32H352c17.7 0 32 14.3 32 32s-14.3 32-32 32H32zM214.6 342.6c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 242.7V64c0-17.7 14.3-32 32-32s32 14.3 32 32V242.7l73.4-73.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3l-128 128z"/></svg>
                     </button>

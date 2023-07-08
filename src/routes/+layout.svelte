@@ -74,7 +74,7 @@
         <div class="flex flex-col h-full">
             <div class="flex w-full items-center flex-col space-y-4 mt-4 lg:mt-10 mb-6">
                 <div class="absolute"></div>
-                <a href="/"><img src="/img/logo.svg" alt="" class="h-11"></a>
+                <a href="/" aria-label='Homepage'><img src="/img/logo.svg" alt="" class="h-11"></a>
                 <div class="search h-10 text-md lg:w-[80%] w-[290px]">
                     <img src="/icon/search.svg" alt="Search Icon" class="h-5">
                     <input bind:value={searchValue} on:input={handleInput} type="text" placeholder="Search..." on:keypress={handleKeyPress} on:blur={handleInput} class="w-full pt-0.5 pr-0.5 justify-center items-center self-center">
@@ -87,11 +87,11 @@
                             <h2 class="text-[#626875] uppercase font-bold text-sm">Favorites</h2>
                             {#each $Favourites as util}
                                 <div class="flex items-center justify-between">
-                                    <a href="{util.path}" class="flex space-x-4">
+                                    <a href="{util.path}" aria-label='{util.path}' class="flex space-x-4">
                                         <img src="/component/icon/{util.path}.svg" alt="" class="h-9 self-center">
                                         <div class="flex flex-col">
                                             <h2 class="text-[#AEB2BC] font-semibold text-[20px]">{util.name}</h2>
-                                            <p class="text-[#3C414B]">{util.shortDescription}</p>
+                                            <p class="text-[#3C414B]">{@html util.shortDescription}</p>
                                         </div>
                                     </a>
                                     <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -106,11 +106,11 @@
                     <div class="flex flex-col space-y-1">
                         {#each $UtilList as util}
                             <div class="flex items-center justify-between">
-                                <a href="{util.path}" class="flex space-x-4">
+                                <a href="{util.path}" aria-label='{util.path}' class="flex space-x-4">
                                     <img src="/component/icon/{util.path}.svg" alt="" class="h-9 self-center">
                                     <div class="flex flex-col">
                                         <h2 class="text-[#AEB2BC] font-semibold text-[20px]">{util.name}</h2>
-                                        <p class="text-[#3C414B]">{util.shortDescription}</p>
+                                        <p class="text-[#3C414B]">{@html util.shortDescription}</p>
                                     </div>
                                 </a>
                                 <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -121,7 +121,7 @@
                 </div>
             </div>
             <div class="bg-[#1B1D21] hidden lg:block ">
-                <a href="https://discord.gg/CGmMQwfXXN" target="_blank" class="w-full self-center px-4 text-[#3C414B] text-sm text-center">
+                <a href="https://discord.gg/CGmMQwfXXN" aria-label='Discord' target="_blank" class="w-full self-center px-4 text-[#3C414B] text-sm text-center">
                     <p>Got a question? Even if you don’t, click to join our awesome community on <span class="underline decoration-dotted">Discord</span>!</p>
                 </a>
             </div>
