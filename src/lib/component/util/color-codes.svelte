@@ -1,141 +1,164 @@
 <script lang="ts">
-    const colors = [
-        {
-            "name": "Black",
-            "hex": "#000000",
-            "code": "§0",
-            "motd": "\\u00A70"
-        },
-        {
-            "name": "Dark Blue",
-            "hex": "#0000AA",
-            "code": "§1",
-            "motd": "\\u00A71"
-        },
-        {
-            "name": "Dark Green",
-            "hex": "#00AA00",
-            "code": "§2",
-            "motd": "\\u00A72"
-        },
-        {
-            "name": "Dark Aqua",
-            "hex": "#00AAAA",
-            "code": "§3",
-            "motd": "\\u00A73"
-        },
-        {
-            "name": "Dark Red",
-            "hex": "#AA0000",
-            "code": "§4",
-            "motd": "\\u00A74"
-        },
-        {
-            "name": "Dark Purple",
-            "hex": "#AA00AA",
-            "code": "§5",
-            "motd": "\\u00A75"
-        },
-        {
-            "name": "Gold",
-            "hex": "#FFAA00",
-            "code": "§6",
-            "motd": "\\u00A76"
-        },
-        {
-            "name": "Gray",
-            "hex": "#AAAAAA",
-            "code": "§7",
-            "motd": "\\u00A77"
-        },
-        {
-            "name": "Dark Gray",
-            "hex": "#555555",
-            "code": "§8",
-            "motd": "\\u00A78"
-        },
-        {
-            "name": "Blue",
-            "hex": "#5555FF",
-            "code": "§9",
-            "motd": "\\u00A79"
-        },
-        {
-            "name": "Green",
-            "hex": "#55FF55",
-            "code": "§a",
-            "motd": "\\u00A7a"
-        },
-        {
-            "name": "Aqua",
-            "hex": "#55FFFF",
-            "code": "§b",
-            "motd": "\\u00A7b"
-        },
-        {
-            "name": "Red",
-            "hex": "#FF5555",
-            "code": "§c",
-            "motd": "\\u00A7c"
-        },
-        {
-            "name": "Light Purple",
-            "hex": "#FF55FF",
-            "code": "§d",
-            "motd": "\\u00A7d"
-        },
-        {
-            "name": "Yellow",
-            "hex": "#FFFF55",
-            "code": "§e",
-            "motd": "\\u00A7e"
-        },
-        {
-            "name": "White",
-            "hex": "#FFFFFF",
-            "code": "§f",
-            "motd": "\\u00A7f"
-        }
+const colors = [
+    {
+        "name": "Black",
+        "hex": "#000000",
+        "code": "§0",
+        "tag": "<black>",
+        "motd": "\\u00A70"
+    },
+    {
+        "name": "Dark Blue",
+        "hex": "#0000AA",
+        "code": "§1",
+        "tag": "<dark_blue>",
+        "motd": "\\u00A71"
+    },
+    {
+        "name": "Dark Green",
+        "hex": "#00AA00",
+        "code": "§2",
+        "tag": "<dark_green>",
+        "motd": "\\u00A72"
+    },
+    {
+        "name": "Dark Aqua",
+        "hex": "#00AAAA",
+        "code": "§3",
+        "tag": "<dark_aqua>",
+        "motd": "\\u00A73"
+    },
+    {
+        "name": "Dark Red",
+        "hex": "#AA0000",
+        "code": "§4",
+        "tag": "<dark_red>",
+        "motd": "\\u00A74"
+    },
+    {
+        "name": "Dark Purple",
+        "hex": "#AA00AA",
+        "code": "§5",
+        "tag": "<dark_purple>",
+        "motd": "\\u00A75"
+    },
+    {
+        "name": "Gold",
+        "hex": "#FFAA00",
+        "code": "§6",
+        "tag": "<gold>",
+        "motd": "\\u00A76"
+    },
+    {
+        "name": "Gray",
+        "hex": "#AAAAAA",
+        "code": "§7",
+        "tag": "<gray>",
+        "motd": "\\u00A77"
+    },
+    {
+        "name": "Dark Gray",
+        "hex": "#555555",
+        "code": "§8",
+        "tag": "<dark_gray>",
+        "motd": "\\u00A78"
+    },
+    {
+        "name": "Blue",
+        "hex": "#5555FF",
+        "code": "§9",
+        "tag": "<blue>",
+        "motd": "\\u00A79"
+    },
+    {
+        "name": "Green",
+        "hex": "#55FF55",
+        "code": "§a",
+        "tag": "<green>",
+        "motd": "\\u00A7a"
+    },
+    {
+        "name": "Aqua",
+        "hex": "#55FFFF",
+        "code": "§b",
+        "tag": "<aqua>",
+        "motd": "\\u00A7b"
+    },
+    {
+        "name": "Red",
+        "hex": "#FF5555",
+        "code": "§c",
+        "tag": "<red>",
+        "motd": "\\u00A7c"
+    },
+    {
+        "name": "Light Purple",
+        "hex": "#FF55FF",
+        "code": "§d",
+        "tag": "<light_purple>",
+        "motd": "\\u00A7d"
+    },
+    {
+        "name": "Yellow",
+        "hex": "#FFFF55",
+        "code": "§e",
+        "tag": "<yellow>",
+        "motd": "\\u00A7e"
+    },
+    {
+        "name": "White",
+        "hex": "#FFFFFF",
+        "code": "§f",
+        "tag": "<white>",
+        "motd": "\\u00A7f"
+    }
     ]
 
+
     const formats = [
-        {
-            effect: "<span class='font-bold'>MC Utils</span>",
-            name: "Bold",
-            code: "§l",
-            motd: "\\u00A7l"
-        },
-        {
-            effect: "<span class='underline'>MC Utils</span>",
-            name: "Underline",
-            code: "§n",
-            motd: "\\u00A7n"
-        },
-        {
-            effect: "<span class='italic'>MC Utils</span>",
-            name: "Italic",
-            code: "§o",
-            motd: "\\u00A7o"
-        },
-        {
-            effect: "<span class='line-through'>MC Utils</span>",
-            name: "Strikethrough",
-            code: "§m",
-            motd: "\\u00A7m"
-        },
-        {
-            effect: "",
-            name: "Magic",
-            code: "§k",
-            motd: "\\u00A7k"
-        },
-        {
-            effect: "MC Utils",
-            name: "Reset",
-            code: "§r",
-            motd: "\\u00A7r"
-        }
-    ]
+    {
+        "effect": "<span class='font-bold'>MC Utils</span>",
+        "name": "Bold",
+        "code": "§l",
+        "tag": "<bold>",
+        "motd": "\\u00A7l"
+    },
+    {
+        "effect": "<span class='underline'>MC Utils</span>",
+        "name": "Underline",
+        "code": "§n",
+        "tag": "<underline>",
+        "motd": "\\u00A7n"
+    },
+    {
+        "effect": "<span class='italic'>MC Utils</span>",
+        "name": "Italic",
+        "code": "§o",
+        "tag": "<italic>",
+        "motd": "\\u00A7o"
+    },
+    {
+        "effect": "<span class='line-through'>MC Utils</span>",
+        "name": "Strikethrough",
+        "code": "§m",
+        "tag": "<strikethrough>",
+        "motd": "\\u00A7m"
+    },
+    {
+        "effect": "",
+        "name": "Magic",
+        "code": "§k",
+        "tag": "<magic>",
+        "motd": "\\u00A7k"
+    },
+    {
+        "effect": "MC Utils",
+        "name": "Reset",
+        "code": "§r",
+        "tag": "<reset>",
+        "motd": "\\u00A7r"
+    }
+]
 
     let obfuscated = "MCUtils"
 
@@ -166,6 +189,7 @@
         <th class="rounded-tl-lg rounded-bl-lg p-2 pl-6 font-medium text-[20px] text-left">Effect</th>
         <th class="rounded-tr-lg rounded-br-lg font-medium text-[20px] text-left">Name</th>
         <th class="rounded-tr-lg rounded-br-lg font-medium text-[20px] text-left">Chat Code</th>
+        <th class="rounded-tr-lg rounded-br-lg font-medium text-[20px] text-left">Minimessage tag</th>
         <th class="rounded-tr-lg rounded-br-lg font-medium text-[20px] text-left">MOTD</th>
         <th class="rounded-tr-lg rounded-br-lg font-medium text-[20px] text-left">Hex</th>
     </tr>
@@ -176,6 +200,7 @@
             </td>
             <td class="border-b-2 border-b-[#1D1F24] text-gray-400">{color.name}</td>
             <td class="border-b-2 border-b-[#1D1F24] text-gray-400">{color.code}</td>
+            <td class="border-b-2 border-b-[#1D1F24] text-gray-400">{color.tag}</td>
             <td class="border-b-2 border-b-[#1D1F24] text-gray-400">{color.motd}</td>
             <td class="border-b-2 border-b-[#1D1F24] text-gray-400">{color.hex}</td>
         </tr>
@@ -192,6 +217,7 @@
             </td>
             <td class="border-b-2 border-b-[#1D1F24] text-gray-400">{format.name}</td>
             <td class="border-b-2 border-b-[#1D1F24] text-gray-400">{format.code}</td>
+            <td class="border-b-2 border-b-[#1D1F24] text-gray-400">{format.tag}</td>
             <td class="border-b-2 border-b-[#1D1F24] text-gray-400">{format.motd}</td>
             <td class="border-b-2 border-b-[#1D1F24] text-gray-400"></td>
         </tr>
