@@ -70,6 +70,8 @@
         text = text.replace(/&o/g, '<span style="font-style: italic">'); // Italic
         text = text.replace(/&r/g, getResetStyle()); // Reset
 
+        document.getElementById("textinput").focus();
+
         return getResetStyle() + text;
     }
 
@@ -98,17 +100,18 @@
         })
     }
 
-    import ColorPicker from 'svelte-awesome-color-picker';
-
-    let hex; // or hsv or hex
+    let color = "#FFFFFF";
 </script>
+
+<span style="font-variant: small-caps;">Testing 123</span>
+<span style="font-variant: small-caps;">Testing 123</span>
 
 <main class="w-[60%]">
     <div class="flex-col flex">
         <div class="place-items-center text-center items-start grid grid-cols-1 xl:flex justify-center gap-6">
             <div class="flex-col flex gap-1">
                 <div class="flex gap-1">
-                    <button class="h-8 w-8 text-sm rounded-md hover:bg-[#000000] bg-[#000000] text-white" on:click={() => {text += "&a"}}>&0</button>
+                    <button class="h-8 w-8 text-sm rounded-md hover:bg-[#000000] bg-[#000000] text-white" on:click={() => {text += "&0"}}>&0</button>
                     <button class="h-8 w-8 text-sm rounded-md hover:bg-[#0000AA] bg-[#0000AA] text-white" on:click={() => {text += "&1"}}>&1</button>
                     <button class="h-8 w-8 text-sm rounded-md hover:bg-[#00AA00] bg-[#00AA00] text-white" on:click={() => {text += "&2"}}>&2</button>
                     <button class="h-8 w-8 text-sm rounded-md hover:bg-[#00AAAA] bg-[#00AAAA] text-white" on:click={() => {text += "&3"}}>&3</button>
@@ -130,13 +133,13 @@
             </div>
             <div class="flex-col flex gap-1">
                 <div class="self-center text-[#626875] font-medium">
-                    <ColorPicker bind:hex label="Choose Color" />
+                    <input type="color" bind:value={color} class="rounded-full bg-transparent border-none self-center"/>
                 </div>
-                <button class="button w-[100%] h-8 text-sm flex items-center justify-center" on:click={() => {text += "&" + hex}}>Add Hex Code</button>
+                <button class="button w-[100%] h-8 text-sm flex items-center justify-center" on:click={() => {text += "&" + color}}>Add Hex Code</button>
             </div>
             <div class="flex gap-1">
                 <div class="flex-col flex gap-1">
-                    <button class="button w-[100%] h-8 text-sm text-center flex items-center justify-center font-bold" on:click={() => {text += "&b"}}>Bold</button>
+                    <button class="button w-[100%] h-8 text-sm text-center flex items-center justify-center font-bold" on:click={() => {text += "&l"}}>Bold</button>
                     <button class="button w-[100%] h-8 text-sm flex items-center justify-center underline" on:click={() => {text += "&n"}}>Underline</button>
                 </div>
                 <div class="flex-col flex gap-1">
@@ -151,7 +154,7 @@
         </div>
 
         <div class="flex gap-3">
-            <input bind:value={text} class="inline-block text-sm text-gray-400 font-mono rounded-md p-2 bg-[#141517] mt-8 h-[35px] w-[100%] max-w-[100%] ">
+            <input id="textinput" bind:value={text} class="inline-block text-sm text-gray-400 font-mono rounded-md p-2 bg-[#141517] mt-8 h-[35px] w-[100%] max-w-[100%] ">
             <button class="w-fit text-sm px-2 py-1.5 button h-fit inline-block mt-8" on:click={copyValue}>Copy</button>
         </div>
     </div>
@@ -159,7 +162,7 @@
     <div class="flex flex-col">
         <h3 class="font-medium text-white text-[20px] mt-8 text-center mb-5">Preview</h3>
         <div class="tab-system w-[100%] flex flex-col">
-            <div class="self-center grid lg:grid-cols-6 grid-cols-2">
+            <div class="self-center grid lg:grid-cols-5 grid-cols-2">
                 {#each tabData as tab, index}
                     <button class="button px-4 py-2 mr-2 rounded focus:outline-none"
                             class:bg-gray-200={index === activeTab}
@@ -324,4 +327,9 @@
         word-wrap: break-word;
     }
 
+    input::-webkit-color-swatch {
+        border: none;
+        border-radius: 6px;
+        height: 120%
+    }
 </style>

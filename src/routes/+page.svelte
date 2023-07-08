@@ -1,5 +1,23 @@
 <svelte:head>
     <title>MC Utils</title>
+    <meta content="MC Utils" property="og:title" />
+    <meta content="MC Utils" property="og:site_name" />
+    <meta content="The community powered one stop shop for Minecraft utilities supporting developers, builders & players." property="og:description" />
+    <meta content="https://mcutils.com" property="og:url" />
+    <meta content="https://mcutils.com/favicon.png" property="og:image" />
+    <meta content="#2b2d31" data-react-helmet="true" name="theme-color" />
+    <meta name="description" content="The community powered one stop shop for Minecraft utilities supporting developers, builders & players.">
+    <meta name="keywords" content="mcutils, mc, utils, minecraft, server, spigot, paper, api, unicode, banner, colors, chat, gradient, inventory, slots, noteblock, skin">
+    <link rel="icon" href="/favicon.png">
+
+    <!-- Google Analyics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4PFR6RCP92"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-4PFR6RCP92');
+    </script>
 </svelte:head>
 
 <script lang="ts">
@@ -54,33 +72,33 @@
 </script>
 
 <div class="flex flex-col w-full">
-    <a href="https://github.com/flytegg/mcu-website/issues" target="_blank" class="bg-[#50282a] text-[#F55050] py-2 w-full text-center text-lg justify-center gap-1.5 hidden lg:flex">
+    <a href="https://github.com/flytegg/mcu-website/issues" aria-label='GitHub' target="_blank" class="bg-[#50282a] text-[#F55050] py-2 w-full text-center text-lg justify-center gap-1.5 hidden lg:flex">
         <p class="self-center">MC Utils is currently in beta! Please report <span class="underline decoration-dotted">issues or suggestions</span> on GitHub</p>
         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" fill="#F55050" class="self-center h-4 fill-[#F55050]"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32H320zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"/></svg>
     </a>
-    <div class="w-[60%] m-auto">
-        <div class="flex flex-col gap-3 mt-11">
+    <div class="w-[85%] lg:w-[60%] m-auto">
+        <div class="flex flex-col gap-3 mt-20 lg:mt-10">
             <img src="/img/logo.svg" alt="MC Utils Logo" class="h-20 self-center">
             <h1 class="text-[#3C414B] text-[27px] text-center leading-tight lg:w-[70%] w-[90%] mx-auto">
                 The community powered one stop shop for Minecraft
                 utilities supporting developers, builders & players.
             </h1>
         </div>
-        <h3 class="font-medium text-white text-[20px] text-center mt-11">Today’s Popular Utils</h3>
+        <p class="font-medium text-white text-[20px] text-center mt-11">Popular Utils</p>
         <div class="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 justify-center gap-5 mt-[3%]">
             {#each selectedUtils as util}
-                <a href="/{util.path} "class="bg-[#212227] rounded-2xl flex w-full py-3 px-7 gap-4 ">
+                <a href="/{util.path}" aria-label='{util.path}' class="bg-[#212227] rounded-2xl flex w-full py-3 px-7 gap-4 ">
                     <img src="/component/icon/{util.path}.svg" alt="" class="h-10 self-center">
                     <div class="flex flex-col">
                         <h2 class="text-[#AEB2BC] text-lg font-semibold">{util.name}</h2>
-                        <p class="text-[#555D66] text-md">{util.shortDescription}</p>
+                        <p class="text-[#555D66] text-md">{@html util.shortDescription}</p>
                     </div>
                 </a>
             {/each}
         </div>
         <div class="flex flex-col mt-11 gap-3">
             <p class="text-[#666C78] text-lg text-center">Join our community...</p>
-            <a href="https://discord.gg/CGmMQwfXXN" target="_blank" class="m-auto"><button class="bg-[#5865F2] hover:bg-[#7984F5] transition-colors rounded-2xl w-52 lg:w-72 p-6">
+            <a href="https://discord.gg/CGmMQwfXXN" aria-label='Discord' target="_blank" class="m-auto"><button aria-label='Discord' class="bg-[#5865F2] hover:bg-[#7984F5] transition-colors rounded-2xl w-52 lg:w-72 p-6">
                 <svg class="h-7 lg:h-9 m-auto" width="175" height="33" viewBox="0 0 175 33" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <rect width="175" height="33" fill="url(#pattern0)"/>
                     <defs>
@@ -93,7 +111,7 @@
             </button></a>
         </div>
         <div class="flex flex-col text-[#3C414B] text-[18px] mt-11 lg:w-[55%] w-[90%] mx-auto">
-            <p class="text-center">This service is provided free by the passionate team at <a href="https://flyte.gg" target="_blank" class="underline decoration-dotted">Flyte</a>— and through our wonderful contributor community.</p>
+            <p class="text-center">This service is provided free by the passionate team at <a href="https://flyte.gg" aria-label='Flyte' target="_blank" class="underline decoration-dotted">Flyte</a>— and through our wonderful <a class="underline decoration-dotted" target="_blank" aria-label='GitHub' href="https://github.com/flytegg/mcu-website/issues">contributor community</a>.</p>
         </div>
     </div>
 </div>
