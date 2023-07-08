@@ -90,7 +90,7 @@
                     <img src="/component/icon/{util.path}.svg" alt="" class="h-10 self-center">
                     <div class="flex flex-col">
                         <h2 class="text-[#AEB2BC] text-lg font-semibold">{util.name}</h2>
-                        <p class="text-[#555D66] text-md">{util.shortDescription}</p>
+                        <p class="text-[#555D66] text-md">{@html util.shortDescription}</p>
                     </div>
                 </a>
             {/each}
