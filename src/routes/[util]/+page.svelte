@@ -8,6 +8,7 @@
 
 <svelte:head>
     <title>{data.util.name ? data.util.name : "Not Found"} | MC Utils</title>
+    <meta content="MC Utils" property="og:site_name" />
     <meta content="{data.util.name ? data.util.name : 'Not Found'} (MC Utils)" property="og:title" />
     <meta content="{data.util.description ? data.util.description : ''}" property="og:description" />
     <meta content="https://mcutils.com" property="og:url" />
