@@ -70,6 +70,12 @@ const utils: Util[] = [
         name: "Banner Creator",
         description: "Create a banner design and get in-game commands and code.",
         shortDescription: "Craft banners and get code"
+    },
+    {
+        path: "daylight-cycle",
+        name: "Daylight Cycle",
+        description: "Convert real time into Minecraft time.",
+        shortDescription: "Convert real time to MC time"
     }
 ]
 
