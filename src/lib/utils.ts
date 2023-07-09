@@ -50,8 +50,8 @@ const utils: Util[] = [
     {
         path: "small-text-converter",
         name: "Small Text Converter",
-        description: "Convert into <span style=\"font-variant: small-caps;\">small text</span> seen on new era servers.",
-        shortDescription: "Convert into <span style=\"font-variant: small-caps;\">small text</span>"
+        description: "Convert into sᴍᴀʟʟ ᴛᴇxᴛ seen on new era servers.",
+        shortDescription: "Convert into sᴍᴀʟʟ ᴛᴇxᴛ"
     },
     // {
     //     path: "unicode-symbols",
