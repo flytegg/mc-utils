@@ -6,6 +6,7 @@
 
     let debounceTimer: NodeJS.Timeout | null = null;
     const handleInput = () => {
+        link = "https://mcutils.com/server-info#ip=" + searchValue
         if (searchValue === "") return
 
         if (debounceTimer) {
@@ -18,7 +19,6 @@
     };
 
     let status;
-
 
     const fetchServerStatus = async () => {
         const url = 'https://mcapi.us/server/status?ip=' + searchValue;
@@ -115,9 +115,27 @@
         }
     }
 
-    onMount(() => {
+    let link = "https://mcutils.com/server-info#ip="
+    function copyLink() {
+        navigator.clipboard.writeText(link)
+        toast.push('Copied successfully!', {
+            theme: {
+                '--toastColor': 'mintcream',
+                '--toastBackground': 'rgba(72,187,120,0.9)',
+                '--toastBarBackground': '#2F855A'
+            }
+        })
+    }
 
-    });
+    onMount(() => {
+        const urlParams = new URLSearchParams(window.location.hash.slice(1));
+        let server = urlParams.get('ip')
+        if (server) {
+            searchValue = server
+            link = "https://mcutils.com/server-info#ip=" + server
+            fetchServerStatus()
+        }
+    })
 </script>
 
 <div class="search w-fit h-10 text-md mb-12">
@@ -126,7 +144,7 @@
 </div>
 
 {#if (status && status.status !== "error")}
-    <div class="self-center relative w-[650px] mx-auto">
+    <div class="self-center relative w-[650px] transition-transform transform scale-[55%] sm:scale-[80%] md:scale-[100%] lg:scale-[100%] xl:scale-100">
         <img src="/display/dirt.svg" alt="Sign" class="w-[100%]">
         <div class="text-left mr-auto mc-server-content overflow-y-hidden">
             <p class="minecraft-server text-white">{searchValue ? searchValue : "Minecraft Server"}</p>
@@ -140,8 +158,8 @@
         <img src="{status.favicon}" alt="Server Favicon" class="favicon-content h-24">
     </div>
 {:else}
-    <div class="self-center relative w-[650px] mx-auto">
-        <img src="/display/dirt.svg" alt="Sign" class="w-[100%]">
+    <div class="self-center relative w-[650px] transition-transform transform scale-[55%] sm:scale-[80%] md:scale-[100%] lg:scale-[100%] xl:scale-100">
+        <img src="/display/dirt.svg" alt="dirt" class="w-[100%]">
         <div class="text-left mr-auto mc-server-content overflow-y-hidden">
             <p class="minecraft-server text-white">{searchValue ? searchValue : "Minecraft Server"}</p>
         </div>
@@ -154,6 +172,14 @@
         <img src="/display/packpng.svg" alt="Server Favicon" class="favicon-content h-24">
     </div>
 {/if}
+
+<div class="flex flex-col mt-8 w-fit">
+    <h3 class="font-medium text-white text-20px text-center">Shareable Link</h3>
+    <div class="flex gap-3 mt-2 w-fit">
+        <input disabled bind:value={link} class="inline-block text-sm text-gray-400 font-mono rounded-md p-2 bg-[#141517] h-[35px] md:w-[370px] max-w-[100%] ">
+        <button on:click={copyLink} class="w-fit text-sm px-2 py-1.5 button h-fit inline-block">Copy</button>
+    </div>
+</div>
 
 <style>
     .motd-content {
