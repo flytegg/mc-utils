@@ -76,24 +76,30 @@ const utils: Util[] = [
         name: "Daylight Cycle",
         description: "Convert real time into Minecraft time.",
         shortDescription: "Convert real time to MC time"
+    },
+    {
+        path: "item-creator",
+        name: "Item Creator",
+        description: "Configure your item and get spigot/java code",
+        shortDescription: "Create items and get code",
     }
 ]
 
 type Util = {
-    path: string
-    name: string
-    description: string
-    shortDescription: string
-}
+  path: string;
+  name: string;
+  description: string;
+  shortDescription: string;
+};
 
 export const utilList = async () => {
-    return utils
-}
+  return utils;
+};
 
 export const findUtilByPath = async (path: string) => {
-    for (const i in utils) {
-        const util = utils[i]
-        if (util.path == path) return util
-    }
-    return undefined
-}
+  for (const i in utils) {
+    const util = utils[i];
+    if (util.path == path) return util;
+  }
+  return undefined;
+};
