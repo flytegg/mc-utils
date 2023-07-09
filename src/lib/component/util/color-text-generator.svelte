@@ -103,9 +103,6 @@
     let color = "#FFFFFF";
 </script>
 
-<span style="font-variant: small-caps;">Testing 123</span>
-<span style="font-variant: small-caps;">Testing 123</span>
-
 <main class="w-[60%]">
     <div class="flex-col flex">
         <div class="place-items-center text-center items-start grid grid-cols-1 xl:flex justify-center gap-6">
