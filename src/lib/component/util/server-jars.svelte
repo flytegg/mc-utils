@@ -1,14 +1,375 @@
 <script lang="ts">
     import {toast} from "@zerodevx/svelte-toast";
+    import {onMount} from "svelte";
 
-    let selectedType = "spigot"
+    let selectedType = "paper"
     let selectedVersion = "1.20.1"
 
     const info = [
-        // {
-        //     platform: "paper",
-        //     jars: []
-        // },
+        {
+            platform: "purpur",
+            jars: [
+                {
+                    "version": "1.20.1",
+                    "release": "July 9th 2023",
+                    "size": "44.68 MB",
+                    "downloadURL": "https://api.purpurmc.org/v2/purpur/1.20.1/2014/download"
+                },
+                {
+                    "version": "1.20",
+                    "release": "June 12th 2023",
+                    "size": "44.00 MB",
+                    "downloadURL": "https://api.purpurmc.org/v2/purpur/1.20/1990/download"
+                },
+                {
+                    "version": "1.19.4",
+                    "release": "June 8th 2023",
+                    "size": "45.80 MB",
+                    "downloadURL": "https://api.purpurmc.org/v2/purpur/1.19.4/1985/download"
+                },
+                {
+                    "version": "1.19.3",
+                    "release": "March 15th 2023",
+                    "size": "40.78 MB",
+                    "downloadURL": "https://api.purpurmc.org/v2/purpur/1.19.3/1933/download"
+                },
+                {
+                    "version": "1.19.2",
+                    "release": "December 7th 2022",
+                    "size": "38.84 MB",
+                    "downloadURL": "https://api.purpurmc.org/v2/purpur/1.19.2/1858/download"
+                },
+                {
+                    "version": "1.19.1",
+                    "release": "August 5th 2022",
+                    "size": "40.27 MB",
+                    "downloadURL": "https://api.purpurmc.org/v2/purpur/1.19.1/1751/download"
+                },
+                {
+                    "version": "1.19",
+                    "release": "July 27th 2022",
+                    "size": "40.39 MB",
+                    "downloadURL": "https://api.purpurmc.org/v2/purpur/1.19/1735/download"
+                },
+                {
+                    "version": "1.18.2",
+                    "release": "June 7th 2022",
+                    "size": "37.13 MB",
+                    "downloadURL": "https://api.purpurmc.org/v2/purpur/1.18.2/1632/download"
+                },
+                {
+                    "version": "1.18.1",
+                    "release": "March 1th 2022",
+                    "size": "36.99 MB",
+                    "downloadURL": "https://api.purpurmc.org/v2/purpur/1.18.1/1566/download"
+                },
+                {
+                    "version": "1.18",
+                    "release": "December 10th 2021",
+                    "size": "34.41 MB",
+                    "downloadURL": "https://api.purpurmc.org/v2/purpur/1.18/1433/download"
+                },
+                {
+                    "version": "1.17.1",
+                    "release": "November 23nd 2021",
+                    "size": "62.39 MB",
+                    "downloadURL": "https://api.purpurmc.org/v2/purpur/1.17.1/1428/download"
+                },
+                {
+                    "version": "1.17",
+                    "release": "July 6th 2021",
+                    "size": "59.32 MB",
+                    "downloadURL": "https://api.purpurmc.org/v2/purpur/1.17/1255/download"
+                },
+                {
+                    "version": "1.16.5",
+                    "release": "June 18th 2021",
+                    "size": "53.38 MB",
+                    "downloadURL": "https://api.purpurmc.org/v2/purpur/1.16.5/1171/download"
+                },
+                {
+                    "version": "1.16.4",
+                    "release": "January 15th 2021",
+                    "size": "47.04 MB",
+                    "downloadURL": "https://api.purpurmc.org/v2/purpur/1.16.4/956/download"
+                },
+                {
+                    "version": "1.16.3",
+                    "release": "November 1th 2020",
+                    "size": "46.09 MB",
+                    "downloadURL": "https://api.purpurmc.org/v2/purpur/1.16.3/808/download"
+                },
+                {
+                    "version": "1.16.2",
+                    "release": "September 10th 2020",
+                    "size": "46.07 MB",
+                    "downloadURL": "https://api.purpurmc.org/v2/purpur/1.16.2/750/download"
+                },
+                {
+                    "version": "1.16.1",
+                    "release": "August 15th 2020",
+                    "size": "46.18 MB",
+                    "downloadURL": "https://api.purpurmc.org/v2/purpur/1.16.1/710/download"
+                },
+                {
+                    "version": "1.15.2",
+                    "release": "June 25th 2020",
+                    "size": "44.11 MB",
+                    "downloadURL": "https://api.purpurmc.org/v2/purpur/1.15.2/606/download"
+                },
+                {
+                    "version": "1.15.1",
+                    "release": "January 18th 2020",
+                    "size": "47.84 MB",
+                    "downloadURL": "https://api.purpurmc.org/v2/purpur/1.15.1/397/download"
+                },
+                {
+                    "version": "1.15",
+                    "release": "December 17th 2019",
+                    "size": "47.82 MB",
+                    "downloadURL": "https://api.purpurmc.org/v2/purpur/1.15/346/download"
+                },
+                {
+                    "version": "1.14.4",
+                    "release": "December 13th 2019",
+                    "size": "47.58 MB",
+                    "downloadURL": "https://api.purpurmc.org/v2/purpur/1.14.4/337/download"
+                },
+                {
+                    "version": "1.14.3",
+                    "release": "July 19th 2019",
+                    "size": "48.62 MB",
+                    "downloadURL": "https://api.purpurmc.org/v2/purpur/1.14.3/202/download"
+                },
+                {
+                    "version": "1.14.2",
+                    "release": "June 24rd 2019",
+                    "size": "48.51 MB",
+                    "downloadURL": "https://api.purpurmc.org/v2/purpur/1.14.2/126/download"
+                },
+                {
+                    "version": "1.14.1",
+                    "release": "May 27th 2019",
+                    "size": "48.44 MB",
+                    "downloadURL": "https://api.purpurmc.org/v2/purpur/1.14.1/63/download"
+                }
+            ]
+        },
+        {
+            platform: "paper",
+            jars: [
+                {
+                    "version": "1.20.1",
+                    "release": "July 11th 2023",
+                    "size": "41.18 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.20.1/builds/71/downloads/paper-1.20.1-71.jar"
+                },
+                {
+                    "version": "1.20",
+                    "release": "June 13th 2023",
+                    "size": "41.32 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.20/builds/17/downloads/paper-1.20-17.jar"
+                },
+                {
+                    "version": "1.19.4",
+                    "release": "June 8th 2023",
+                    "size": "40.69 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.19.4/builds/550/downloads/paper-1.19.4-550.jar"
+                },
+                {
+                    "version": "1.19.3",
+                    "release": "March 12th 2023",
+                    "size": "37.31 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.19.3/builds/448/downloads/paper-1.19.3-448.jar"
+                },
+                {
+                    "version": "1.19.2",
+                    "release": "December 6th 2022",
+                    "size": "36.54 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.19.2/builds/307/downloads/paper-1.19.2-307.jar"
+                },
+                {
+                    "version": "1.19.1",
+                    "release": "August 5th 2022",
+                    "size": "36.28 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.19.1/builds/111/downloads/paper-1.19.1-111.jar"
+                },
+                {
+                    "version": "1.19",
+                    "release": "July 25th 2022",
+                    "size": "36.39 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.19/builds/81/downloads/paper-1.19-81.jar"
+                },
+                {
+                    "version": "1.18.2",
+                    "release": "September 20th 2022",
+                    "size": "33.22 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.18.2/builds/388/downloads/paper-1.18.2-388.jar"
+                },
+                {
+                    "version": "1.18.1",
+                    "release": "February 28th 2022",
+                    "size": "33.01 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.18.1/builds/216/downloads/paper-1.18.1-216.jar"
+                },
+                {
+                    "version": "1.18",
+                    "release": "December 10th 2021",
+                    "size": "32.88 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.18/builds/66/downloads/paper-1.18-66.jar"
+                },
+                {
+                    "version": "1.17.1",
+                    "release": "April 14th 2022",
+                    "size": "59.02 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.17.1/builds/411/downloads/paper-1.17.1-411.jar"
+                },
+                {
+                    "version": "1.17",
+                    "release": "July 6th 2021",
+                    "size": "57.59 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.17/builds/79/downloads/paper-1.17-79.jar"
+                },
+                {
+                    "version": "1.16.5",
+                    "release": "December 18th 2021",
+                    "size": "51.45 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.16.5/builds/794/downloads/paper-1.16.5-794.jar"
+                },
+                {
+                    "version": "1.16.4",
+                    "release": "January 15th 2021",
+                    "size": "44.81 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.16.4/builds/416/downloads/paper-1.16.4-416.jar"
+                },
+                {
+                    "version": "1.16.3",
+                    "release": "November 1st 2020",
+                    "size": "44.69 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.16.3/builds/253/downloads/paper-1.16.3-253.jar"
+                },
+                {
+                    "version": "1.16.2",
+                    "release": "September 10th 2020",
+                    "size": "44.68 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.16.2/builds/189/downloads/paper-1.16.2-189.jar"
+                },
+                {
+                    "version": "1.16.1",
+                    "release": "August 23rd 2020",
+                    "size": "44.81 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.16.1/builds/138/downloads/paper-1.16.1-138.jar"
+                },
+                {
+                    "version": "1.15.2",
+                    "release": "December 20th 2021",
+                    "size": "42.94 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.15.2/builds/393/downloads/paper-1.15.2-393.jar"
+                },
+                {
+                    "version": "1.15.1",
+                    "release": "January 21st 2020",
+                    "size": "41.91 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.15.1/builds/62/downloads/paper-1.15.1-62.jar"
+                },
+                {
+                    "version": "1.15",
+                    "release": "December 17th 2019",
+                    "size": "41.89 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.15/builds/21/downloads/paper-1.15-21.jar"
+                },
+                {
+                    "version": "1.14.4",
+                    "release": "December 20th 2021",
+                    "size": "41.94 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.14.4/builds/245/downloads/paper-1.14.4-245.jar"
+                },
+                {
+                    "version": "1.14.3",
+                    "release": "July 18th 2019",
+                    "size": "42.26 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.14.3/builds/134/downloads/paper-1.14.3-134.jar"
+                },
+                {
+                    "version": "1.14.2",
+                    "release": "June 24th 2019",
+                    "size": "42.21 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.14.2/builds/107/downloads/paper-1.14.2-107.jar"
+                },
+                {
+                    "version": "1.14.1",
+                    "release": "May 27th 2019",
+                    "size": "42.18 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.14.1/builds/50/downloads/paper-1.14.1-50.jar"
+                },
+                {
+                    "version": "1.14",
+                    "release": "May 13th 2019",
+                    "size": "42.15 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.14/builds/17/downloads/paper-1.14-17.jar"
+                },
+                {
+                    "version": "1.13.2",
+                    "release": "December 20th 2021",
+                    "size": "42.91 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.13.2/builds/657/downloads/paper-1.13.2-657.jar"
+                },
+                {
+                    "version": "1.13.1",
+                    "release": "October 22nd 2018",
+                    "size": "41.04 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.13.1/builds/386/downloads/paper-1.13.1-386.jar"
+                },
+                {
+                    "version": "1.13",
+                    "release": "August 26th 2018",
+                    "size": "39.94 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.13/builds/173/downloads/paper-1.13-173.jar"
+                },
+                {
+                    "version": "1.12.2",
+                    "release": "December 20th 2021",
+                    "size": "39.08 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.12.2/builds/1620/downloads/paper-1.12.2-1620.jar"
+                },
+                {
+                    "version": "1.12.1",
+                    "release": "September 14th 2017",
+                    "size": "36.83 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.12.1/builds/1204/downloads/paper-1.12.1-1204.jar"
+                },
+                {
+                    "version": "1.12",
+                    "release": "August 1st 2017",
+                    "size": "36.57 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.12/builds/1169/downloads/paper-1.12-1169.jar"
+                },
+                {
+                    "version": "1.11.2",
+                    "release": "December 20th 2021",
+                    "size": "23.16 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.11.2/builds/1106/downloads/paper-1.11.2-1106.jar"
+                },
+                {
+                    "version": "1.10.2",
+                    "release": "December 20th 2021",
+                    "size": "20.08 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.10.2/builds/918/downloads/paper-1.10.2-918.jar"
+                },
+                {
+                    "version": "1.9.4",
+                    "release": "December 20th 2021",
+                    "size": "19.99 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.9.4/builds/775/downloads/paper-1.9.4-775.jar"
+                },
+                {
+                    "version": "1.8.8",
+                    "release": "December 20th 2021",
+                    "size": "18.62 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.8.8/builds/445/downloads/paper-1.8.8-445.jar"
+                }
+            ]
+        },
         {
             platform: "spigot",
             jars: [
@@ -1012,6 +1373,7 @@
     ]
 
     function downloadSuccess() {
+        getDownloadURL()
         toast.push('Downloaded successfully!', {
             theme: {
                 '--toastColor': 'mintcream',
@@ -1020,13 +1382,31 @@
             }
         })
     }
+
+
+
+    onMount(() => {
+        getDownloadURL()
+    })
+
+    let downloadURL = ""
+    function getDownloadURL() {
+        const result = info.find(item => item.platform === selectedType);
+        if (result) {
+            const jar = result.jars.find(item => item.version === selectedVersion);
+            if (jar) {
+                downloadURL = jar.downloadURL;
+            }
+        }
+    }
 </script>
 
 <div class="place-items-center text-center items-start grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-10">
     <div class="flex flex-col">
         <h3 class="font-medium text-white text-[20px] text-left">Type</h3>
         <select bind:value={selectedType} id="type" class="w-[120px] scroll">
-<!--        <option value="paper" class="scroll-option">Paper</option> -->
+            <option value="purpur" class="scroll-option">Purpur</option>
+            <option value="paper" class="scroll-option">Paper</option>
             <option value="spigot" class="scroll-option">Spigot</option>
             <option value="craftbukkit" class="scroll-option">CraftBukkit</option>
             <option value="vanilla" class="scroll-option">Vanilla</option>
@@ -1040,7 +1420,11 @@
             {/each}
         </select>
     </div>
-    <a href="https://cdn.mcutils.com/jars/{selectedType}-{selectedVersion}.jar" aria-label='Download Jar' class="self-end"><button class="button h-fit" on:click={downloadSuccess}>Download</button></a>
+    {#if selectedType === "paper" || selectedType === "purpur"}
+        <a href="{downloadURL}" aria-label='Download Jar' class="self-end"><button class="button h-fit" on:click={downloadSuccess}>Download</button></a>
+    {:else}
+        <a href="https://cdn.mcutils.com/jars/{selectedType}-{selectedVersion}.jar" aria-label='Download Jar' class="self-end"><button class="button h-fit" on:click={downloadSuccess}>Download</button></a>
+    {/if}
 </div>
 
 <table class="w-[90%] lg:w-[60%] text-white mt-12">
@@ -1056,7 +1440,7 @@
             <td class="border-b-2 border-b-[#1D1F24] text-gray-400">{jar.release}</td>
             <td class="border-b-2 border-b-[#1D1F24] text-gray-400">{jar.size}</td>
             <td>
-                <a aria-label='Download Jar' href="https://cdn.mcutils.com/jars/{selectedType}-{jar.version}.jar">
+                <a aria-label='Download Jar' href="{jar.downloadURL ? jar.downloadURL : 'https://cdn.mcutils.com/jars/' + selectedType + '-' + jar.version + '.jar'}">
                     <button on:click={downloadSuccess}>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="fill-[#626875] pl-4 h-5"><path d="M32 480c-17.7 0-32-14.3-32-32s14.3-32 32-32H352c17.7 0 32 14.3 32 32s-14.3 32-32 32H32zM214.6 342.6c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 242.7V64c0-17.7 14.3-32 32-32s32 14.3 32 32V242.7l73.4-73.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3l-128 128z"/></svg>
                     </button>
