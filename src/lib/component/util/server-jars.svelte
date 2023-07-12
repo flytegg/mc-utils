@@ -1386,6 +1386,71 @@
                     "size": "1.34 MB"
                 },
             ]
+        },
+        {
+            platform: "waterfall",
+            jars: [
+                {
+                    "version": "1.20",
+                    "release": "7th June 2023",
+                    "size": "21.3 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/waterfall/versions/1.20/builds/536/downloads/waterfall-1.20-536.jar"
+                },
+                {
+                    "version": "1.19",
+                    "release": "7th June 2023",
+                    "size": "21.3 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/waterfall/versions/1.19/builds/535/downloads/waterfall-1.19-535.jar"
+                },
+                {
+                    "version": "1.18",
+                    "release": "30th May 2022",
+                    "size": "20.8 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/waterfall/versions/1.18/builds/488/downloads/waterfall-1.18-488.jar"
+                },
+                {
+                    "version": "1.17",
+                    "release": "16th November 2021",
+                    "size": "17 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/waterfall/versions/1.17/builds/454/downloads/waterfall-1.17-454.jar"
+                },
+                {
+                    "version": "1.16",
+                    "release": "7th June 2021",
+                    "size": "16.9 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/waterfall/versions/1.16/builds/431/downloads/waterfall-1.16-431.jar"
+                },
+                {
+                    "version": "1.15",
+                    "release": "23rd June 2020",
+                    "size": "13 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/waterfall/versions/1.15/builds/350/downloads/waterfall-1.15-350.jar"
+                },
+                {
+                    "version": "1.14",
+                    "release": "10th December 2019",
+                    "size": "12.8 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/waterfall/versions/1.14/builds/301/downloads/waterfall-1.14-301.jar"
+                },
+                {
+                    "version": "1.13",
+                    "release": "22nd April 2019",
+                    "size": "13.7 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/waterfall/versions/1.13/builds/268/downloads/waterfall-1.13-268.jar"
+                },
+                {
+                    "version": "1.12",
+                    "release": "13th July 2018",
+                    "size": "13 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/waterfall/versions/1.12/builds/185/downloads/waterfall-1.12-185.jar"
+                },
+                {
+                    "version": "1.11",
+                    "release": "28th April 2017",
+                    "size": "10.1 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/waterfall/versions/1.11/builds/108/downloads/waterfall-1.11-108.jar"
+                },
+            ]
         }
     ]
 
@@ -1399,7 +1464,6 @@
             }
         })
     }
-
 
 
     onMount(() => {
@@ -1421,7 +1485,10 @@
 <div class="place-items-center text-center items-start grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-10">
     <div class="flex flex-col">
         <h3 class="font-medium text-white text-[20px] text-left">Type</h3>
-        <select bind:value={selectedType} id="type" class="w-[120px] scroll">
+        <select bind:value={selectedType} id="type" class="w-[140px] scroll">
+            <option disabled value="velocity" class="scroll-option">Velocity (Coming Soon)</option>
+            <option value="waterfall" class="scroll-option">Waterfall (Proxy)</option>
+            <option disabled value="bungee" class="scroll-option">Bungee (Coming Soon)</option>
             <option value="folia" class="scroll-option">Folia</option>
             <option value="purpur" class="scroll-option">Purpur</option>
             <option value="paper" class="scroll-option">Paper</option>
@@ -1438,7 +1505,7 @@
             {/each}
         </select>
     </div>
-    {#if selectedType === "paper" || selectedType === "purpur" || selectedType === "folia"}
+    {#if selectedType === "paper" || selectedType === "purpur" || selectedType === "folia" || selectedType === "waterfall"}
         <a href="{downloadURL}" aria-label='Download Jar' class="self-end"><button class="button h-fit" on:click={downloadSuccess}>Download</button></a>
     {:else}
         <a href="https://cdn.mcutils.com/jars/{selectedType}-{selectedVersion}.jar" aria-label='Download Jar' class="self-end"><button class="button h-fit" on:click={downloadSuccess}>Download</button></a>
