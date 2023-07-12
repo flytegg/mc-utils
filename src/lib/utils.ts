@@ -1,9 +1,9 @@
 const utils: Util[] = [
     {
-        path: "start-file-generator",
-        name: "Start File Generator",
-        description: "Generate server start file with varying settings and flags.",
-        shortDescription: "Generate server jar start file"
+        path: "item-ids",
+        name: "Item IDs",
+        description: "Search all in-game items and IDs.",
+        shortDescription: "Modern & legacy item IDs"
     },
     {
         path: "server-jars",
@@ -12,22 +12,28 @@ const utils: Util[] = [
         shortDescription: "Download server software jar"
     },
     {
+        path: "start-file-generator",
+        name: "Start File Generator",
+        description: "Generate server start file with varying settings and flags.",
+        shortDescription: "Generate server jar start file"
+    },
+    {
         path: "server-info",
         name: "Server Info",
         description: "Ping an address to get live server data.",
         shortDescription: "Ping server for info"
     },
     {
-        path: "skin-stealer",
-        name: "Skin Stealer",
-        description: "Steal a player's skin from their IGN.",
-        shortDescription: "Steal another player's skin"
-    },
-    {
         path: "inventory-slots",
         name: "Inventory Slots",
         description: "Slot numbers for every inventory type.",
         shortDescription: "Numbers for all inventories"
+    },
+    {
+        path: "skin-stealer",
+        name: "Skin Stealer",
+        description: "Steal a player's skin from their IGN.",
+        shortDescription: "Steal another player's skin"
     },
     {
         path: "color-codes",
