@@ -1,15 +1,15 @@
 const utils: Util[] = [
     {
-        path: "item-ids",
-        name: "Item IDs",
-        description: "Search all in-game items and IDs.",
-        shortDescription: "Modern & legacy item IDs"
-    },
-    {
         path: "server-jars",
         name: "Server Jars",
         description: "Download jar files for popular server software.",
         shortDescription: "Download server software jar"
+    },
+    {
+        path: "item-ids",
+        name: "Item IDs",
+        description: "Search all in-game items and IDs.",
+        shortDescription: "Modern & legacy item IDs"
     },
     {
         path: "start-file-generator",
