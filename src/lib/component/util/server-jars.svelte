@@ -7,6 +7,23 @@
 
     const info = [
         {
+            platform: "folia",
+            jars: [
+                {
+                    "version": "1.20.1",
+                    "release": "July 10th 2023",
+                    "size": "41.4 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/folia/versions/1.20.1/builds/9/downloads/folia-1.20.1-9.jar"
+                },
+                {
+                    "version": "1.19.4",
+                    "release": "May 27th 2023",
+                    "size": "40.9 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/folia/versions/1.19.4/builds/39/downloads/folia-1.19.4-39.jar"
+                }
+            ]
+        },
+        {
             platform: "purpur",
             jars: [
                 {
@@ -1405,6 +1422,7 @@
     <div class="flex flex-col">
         <h3 class="font-medium text-white text-[20px] text-left">Type</h3>
         <select bind:value={selectedType} id="type" class="w-[120px] scroll">
+            <option value="folia" class="scroll-option">Folia</option>
             <option value="purpur" class="scroll-option">Purpur</option>
             <option value="paper" class="scroll-option">Paper</option>
             <option value="spigot" class="scroll-option">Spigot</option>
@@ -1420,7 +1438,7 @@
             {/each}
         </select>
     </div>
-    {#if selectedType === "paper" || selectedType === "purpur"}
+    {#if selectedType === "paper" || selectedType === "purpur" || selectedType === "folia"}
         <a href="{downloadURL}" aria-label='Download Jar' class="self-end"><button class="button h-fit" on:click={downloadSuccess}>Download</button></a>
     {:else}
         <a href="https://cdn.mcutils.com/jars/{selectedType}-{selectedVersion}.jar" aria-label='Download Jar' class="self-end"><button class="button h-fit" on:click={downloadSuccess}>Download</button></a>
