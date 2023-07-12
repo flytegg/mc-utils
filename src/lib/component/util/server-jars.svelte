@@ -1388,6 +1388,17 @@
             ]
         },
         {
+            platform: "velocity",
+            jars: [
+                {
+                    "version": "1.8-1.20.1",
+                    "release": "28th June 2023",
+                    "size": "15.6 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/velocity/versions/3.2.0-SNAPSHOT/builds/260/downloads/velocity-3.2.0-SNAPSHOT-260.jar"
+                }
+            ]
+        },
+        {
             platform: "waterfall",
             jars: [
                 {
@@ -1477,7 +1488,17 @@
             const jar = result.jars.find(item => item.version === selectedVersion);
             if (jar) {
                 downloadURL = jar.downloadURL;
+                return true
             }
+        }
+        return false
+    }
+
+    // Keep selected version if exists in new type, if not select highest
+    function select() {
+        if (!getDownloadURL()) {
+            const result = info.find(item => item.platform === selectedType);
+            selectedVersion = result?.jars[0].version
         }
     }
 </script>
@@ -1485,8 +1506,8 @@
 <div class="place-items-center text-center items-start grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-10">
     <div class="flex flex-col">
         <h3 class="font-medium text-white text-[20px] text-left">Type</h3>
-        <select bind:value={selectedType} id="type" class="w-[140px] scroll">
-            <option disabled value="velocity" class="scroll-option">Velocity (Coming Soon)</option>
+        <select bind:value={selectedType} on:change={select} id="type" class="w-[140px] scroll">
+            <option value="velocity" class="scroll-option">Velocity (Proxy)</option>
             <option value="waterfall" class="scroll-option">Waterfall (Proxy)</option>
             <option disabled value="bungee" class="scroll-option">Bungee (Coming Soon)</option>
             <option value="folia" class="scroll-option">Folia</option>
@@ -1505,7 +1526,7 @@
             {/each}
         </select>
     </div>
-    {#if selectedType === "paper" || selectedType === "purpur" || selectedType === "folia" || selectedType === "waterfall"}
+    {#if selectedType === "paper" || selectedType === "purpur" || selectedType === "folia" || selectedType === "waterfall" || selectedType === "velocity"}
         <a href="{downloadURL}" aria-label='Download Jar' class="self-end"><button class="button h-fit" on:click={downloadSuccess}>Download</button></a>
     {:else}
         <a href="https://cdn.mcutils.com/jars/{selectedType}-{selectedVersion}.jar" aria-label='Download Jar' class="self-end"><button class="button h-fit" on:click={downloadSuccess}>Download</button></a>
