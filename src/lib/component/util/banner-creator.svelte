@@ -183,7 +183,7 @@
             let color = colors.find(item => item.hex === tabData[i].color)?.code
             let pattern = tabData[i].pattern
             patterns += `,{Color:${color},Pattern:"${pattern}"}`
-            spigotPatterns += `meta.setPattern(${i - 1}, new Pattern(DyeColor.${colors.find(item => item.hex === tabData[i].color)?.name.toUpperCase()}, PatternType.getByIdentifier("${tabData[i].pattern}")));\n`
+            spigotPatterns += `meta.addPattern(new Pattern(DyeColor.${colors.find(item => item.hex === tabData[i].color)?.name.toUpperCase()}, PatternType.getByIdentifier("${tabData[i].pattern}")));\n`
             link += `&l${i}p=${pattern}` + `&l${i}c=${colors.find(item => item.hex === tabData[i].color)?.hex}`
         }
 
