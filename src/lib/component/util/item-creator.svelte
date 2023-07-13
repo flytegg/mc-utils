@@ -1,5 +1,7 @@
 <script lang="ts">
-  import { insert, onMount, set_attributes } from "svelte/internal";
+  import GiveCommand from "$lib/component/other/GiveCommand.svelte";
+import { insert, onMount, set_attributes } from "svelte/internal";
+
 
   let activeTab = 0;
   const materials = [
@@ -4126,36 +4128,53 @@
       name: "POTTED_FLOWERING_AZALEA_BUSH",
     },
   ];
-  const enchantments = [
+
+  type enchant  = {
+    name: string,
+    cmdname?: string
+  }
+
+  // cmdname = the name that works in /give, or undefined if it is unchanged from the name
+  const enchantments: enchant[] = [
     {
       name: "PROTECTION_FIRE-1",
+      cmdname: "fire_protection-1",
     },
     {
       name: "PROTECTION_FIRE-2",
+      cmdname: "fire_protection-2",
     },
     {
       name: "PROTECTION_FIRE-3",
+      cmdname: "fire_protection-3",
     },
     {
       name: "PROTECTION_FIRE-4",
+      cmdname: "fire_protection-4",
     },
     {
       name: "DAMAGE_ALL-1",
+      cmdname: "sharpness-1",
     },
     {
       name: "DAMAGE_ALL-2",
+      cmdname: "sharpness-2",
     },
     {
       name: "DAMAGE_ALL-3",
+      cmdname: "sharpness-3",
     },
     {
       name: "DAMAGE_ALL-4",
+      cmdname: "sharpness-4",
     },
     {
       name: "DAMAGE_ALL-5",
+      cmdname: "sharpness-5",
     },
     {
       name: "ARROW_FIRE-1",
+      cmdname: "flame-1",
     },
     {
       name: "SOUL_SPEED-1",
@@ -4168,12 +4187,15 @@
     },
     {
       name: "WATER_WORKER-1",
+      cmdname: "aqua_affinity-1",
     },
     {
       name: "ARROW_KNOCKBACK-1",
+      cmdname: "punch-1",
     },
     {
       name: "ARROW_KNOCKBACK-2",
+      cmdname: "punch-2",
     },
     {
       name: "LOYALTY-1",
@@ -4198,12 +4220,15 @@
     },
     {
       name: "DURABILITY-1",
+      cmdname: "unbreaking-1",
     },
     {
       name: "DURABILITY-2",
+      cmdname: "unbreaking-2",
     },
     {
       name: "DURABILITY-3",
+      cmdname: "unbreaking-3",
     },
     {
       name: "KNOCKBACK-1",
@@ -4213,51 +4238,67 @@
     },
     {
       name: "LUCK-1",
+      cmdname: "luck_of_the_sea-1",
     },
     {
       name: "LUCK-2",
+      cmdname: "luck_of_the_sea-2",
     },
     {
       name: "LUCK-3",
+      cmdname: "luck_of_the_sea-3",
     },
     {
       name: "BINDING_CURSE-1",
+      cmdname: "binding_curse-1"
     },
     {
       name: "LOOT_BONUS_BLOCKS-1",
+      cmdname: "fortune-1",
     },
     {
       name: "LOOT_BONUS_BLOCKS-2",
+      cmdname: "fortune-2",
     },
     {
       name: "LOOT_BONUS_BLOCKS-3",
+      cmdname: "fortune-3",
     },
     {
       name: "PROTECTION_ENVIRONMENTAL-1",
+      cmdname: "protection-1",
     },
     {
       name: "PROTECTION_ENVIRONMENTAL-2",
+      cmdname: "protection-2",
     },
     {
       name: "PROTECTION_ENVIRONMENTAL-3",
+      cmdname: "protection-3",
     },
     {
       name: "PROTECTION_ENVIRONMENTAL-4",
+      cmdname: "protection-4",
     },
     {
       name: "DIG_SPEED-1",
+      cmdname: "efficiency-1",
     },
     {
       name: "DIG_SPEED-2",
+      cmdname: "efficiency-2",
     },
     {
       name: "DIG_SPEED-3",
+      cmdname: "efficiency-3",
     },
     {
       name: "DIG_SPEED-4",
+      cmdname: "efficiency-4",
     },
     {
       name: "DIG_SPEED-5",
+      cmdname: "efficiency-5",
     },
     {
       name: "MENDING-1",
@@ -4279,12 +4320,15 @@
     },
     {
       name: "LOOT_BONUS_MOBS-1",
+      cmdname: "looting-1",
     },
     {
       name: "LOOT_BONUS_MOBS-2",
+      cmdname: "looting-2",
     },
     {
       name: "LOOT_BONUS_MOBS-3",
+      cmdname: "looting-3",
     },
     {
       name: "PIERCING-1",
@@ -4300,33 +4344,43 @@
     },
     {
       name: "PROTECTION_EXPLOSIONS-1",
+      cmdname: "blast_protection-1",
     },
     {
       name: "PROTECTION_EXPLOSIONS-2",
+      cmdname: "blast_protection-2",
     },
     {
       name: "PROTECTION_EXPLOSIONS-3",
+      cmdname: "blast_protection-3",
     },
     {
       name: "PROTECTION_EXPLOSIONS-4",
+      cmdname: "blast_protection-4",
     },
     {
       name: "DAMAGE_UNDEAD-1",
+      cmdname: "smite-1",
     },
     {
       name: "DAMAGE_UNDEAD-2",
+      cmdname: "smite-2",
     },
     {
       name: "DAMAGE_UNDEAD-3",
+      cmdname: "smite-3",
     },
     {
       name: "DAMAGE_UNDEAD-4",
+      cmdname: "smite-4",
     },
     {
       name: "DAMAGE_UNDEAD-5",
+      cmdname: "smite-5",
     },
     {
       name: "MULTISHOT-1",
+      cmdname: "multishot-1",
     },
     {
       name: "SWIFT_SNEAK-1",
@@ -4366,27 +4420,35 @@
     },
     {
       name: "DAMAGE_ARTHROPODS-1",
+      cmdname: "bane_of_arthropods-1",
     },
     {
       name: "DAMAGE_ARTHROPODS-2",
+      cmdname: "bane_of_arthropods-2",
     },
     {
       name: "DAMAGE_ARTHROPODS-3",
+      cmdname: "bane_of_arthropods-3",
     },
     {
       name: "DAMAGE_ARTHROPODS-4",
+      cmdname: "bane_of_arthropods-4",
     },
     {
       name: "DAMAGE_ARTHROPODS-5",
+      cmdname: "bane_of_arthropods-5",
     },
     {
       name: "OXYGEN-1",
+      cmdname: "respiration-1",
     },
     {
       name: "OXYGEN-2",
+      cmdname: "respiration-2",
     },
     {
       name: "OXYGEN-3",
+      cmdname: "respiration-3",
     },
     {
       name: "RIPTIDE-1",
@@ -4411,15 +4473,19 @@
     },
     {
       name: "PROTECTION_PROJECTILE-1",
+      cmdname: "projectile_protection-1",
     },
     {
       name: "PROTECTION_PROJECTILE-2",
+      cmdname: "projectile_protection-2",
     },
     {
       name: "PROTECTION_PROJECTILE-3",
+      cmdname: "projectile_protection-3",
     },
     {
       name: "PROTECTION_PROJECTILE-4",
+      cmdname: "projectile_protection-4",
     },
     {
       name: "IMPALING-1",
@@ -4438,33 +4504,42 @@
     },
     {
       name: "PROTECTION_FALL-1",
+      cmdname: "feather_falling-1",
     },
     {
       name: "PROTECTION_FALL-2",
+      cmdname: "feather_falling-2",
     },
     {
       name: "PROTECTION_FALL-3",
+      cmdname: "feather_falling-3",
     },
     {
       name: "PROTECTION_FALL-4",
+      cmdname: "feather_falling-4",
     },
     {
-      name: "ARROW_DAMAGE-1",
+      name: "Arrow_DAMAGE-1",
+      cmdname: "power-1",    },
+    {
+      name: "Arrow_DAMAGE-2",
+      cmdname: "power-2",
     },
     {
-      name: "ARROW_DAMAGE-2",
+      name: "Arrow_DAMAGE-3",
+      cmdname: "power-3",
     },
     {
-      name: "ARROW_DAMAGE-3",
+      name: "Arrow_DAMAGE-4",
+      cmdname: "power-4",
     },
     {
-      name: "ARROW_DAMAGE-4",
-    },
-    {
-      name: "ARROW_DAMAGE-5",
+      name: "Arrow_DAMAGE-5",
+      cmdname: "power-5",
     },
     {
       name: "ARROW_INFINITE-1",
+      cmdname: "infinity-1",
     },
   ];
 
@@ -4578,20 +4653,47 @@
     defaultFlag?.parentNode?.insertBefore(newSelect, defaultFlag?.nextSibling);
   }
 
+  /*
+    # Start: Penguin
+  */
+  function getMaterial(): string {
+    if ((document.getElementById("material") as HTMLSelectElement).selectedOptions[0].text == "Select an option...") { 
+      return "NULL"
+    } else {
+      return (document.getElementById("material") as HTMLSelectElement).selectedOptions[0].text;
+    }
+  }
+
+  function getEnchants(): enchant[] {
+    let enchantmentSelects = document.getElementsByClassName("enchantment");
+    let values: enchant[] = [];
+    for (var i = 0; i < enchantmentSelects.length; i++) {
+      var selectElement = enchantmentSelects[i];
+      var selectedValue = (selectElement as HTMLSelectElement).selectedOptions[0].text;
+      if (selectedValue != "Select an option...") {
+        values.push(enchantments.find((option) => option.name === selectedValue)!!);
+      }
+    }
+    return values;
+  }
+
+  let material: string = "NULL"
+  let displayname: string | null = "Custom Item"
+  let lore: string | null = "Use \\n to create a new line"
+  $: lines = lore ? lore.split('\\n') : []
+  let cmd = "0"
+  let enchants: enchant[] = []
+
+  /*
+    # End: Penguin
+  */
+
   /* HANDLE GENERATE CLICK */
   function handleGenerateClick(event: Event) {
     var code = "ItemStack item = new ItemStack(Material.";
 
     /* SET MATERIAL TYPE */
-    if (
-      (document.getElementById("material") as HTMLSelectElement)
-        .selectedOptions[0].text == "Select an option..."
-    ) {
-      code += "NULL";
-    } else {
-      code += (document.getElementById("material") as HTMLSelectElement)
-        .selectedOptions[0].text;
-    }
+    code += getMaterial()
     code += ");";
 
     /* ITEM META */
@@ -4623,27 +4725,13 @@
 
     /* CMD */
 
-    if ((document.getElementById("cmd") as HTMLInputElement).value != "0") {
-      code +=
-        "\nmeta.setCustomModelData(" +
-        (document.getElementById("cmd") as HTMLInputElement).value +
-        ");";
+    let cmdval = (document.getElementById("cmd") as HTMLInputElement).value
+    if (cmdval != "0" && cmdval) {
+      code += `\nmeta.setCustomModelData("${cmdval}");`;
     }
 
-    /* ENCHANTMENT */
-
-    var enchantmentSelects = document.getElementsByClassName("enchantment");
-    var values = [];
-
-    for (var i = 0; i < enchantmentSelects.length; i++) {
-      var selectElement = enchantmentSelects[i];
-      var selectedValue = (selectElement as HTMLSelectElement)
-        .selectedOptions[0].text;
-
-      if (selectedValue != "Select an option...") {
-        values.push(selectedValue);
-      }
-    }
+    /* ENCHANTMENT */    
+    let values = getEnchants().map((ench) => ench.name);
 
     if (values.length > 0) {
       values.forEach((value) => {
@@ -4736,12 +4824,12 @@
     });
   }
 </script>
-
 <main class="w-[90%] lg:w-[60%]">
   <div class="tab-system w-[100%] flex flex-col">
     <!--MATERIAL-->
     <h3 class="font-medium text-white text-[20px] text-left mb-3">Material</h3>
     <select
+      on:click={() => material = getMaterial()}
       name="material"
       id="material"
       class="text-xl font-medium border-2 rounded-xl py-2 px-4 border-[#626875] text-[#fff] bg-[#1A1B1E] appearance-none"
@@ -4756,17 +4844,18 @@
     <h3 class="font-medium text-white text-[20px] text-left mb-3 mt-6">
       Displayname
     </h3>
-    <input
-      value="Custom Item"
+    <input      
+      bind:value={displayname}
       id="displayname"
       type="text"
       class="rounded text-xl font-medium border-2 rounded-xl py-2 px-4 border-[#626875] text-[#ffff] bg-[#1A1B1E]"
+      
     />
 
     <!--LORE-->
     <h3 class="font-medium text-white text-[20px] text-left mb-3 mt-6">Lore</h3>
     <input
-      value="Use \n to create a new line."
+      bind:value={lore}
       id="lore"
       type="text"
       class="rounded text-xl font-medium border-2 rounded-xl py-2 px-4 border-[#626875] text-[#ffff] bg-[#1A1B1E]"
@@ -4777,7 +4866,7 @@
       Custom Model Data
     </h3>
     <input
-      value="0"
+      bind:value={cmd}
       id="cmd"
       type="text"
       class="rounded text-xl font-medium border-2 rounded-xl py-2 px-4 border-[#626875] text-[#ffff] bg-[#1A1B1E]"
@@ -4788,6 +4877,7 @@
       Enchantment
     </h3>
     <select
+      on:click={() => enchants = getEnchants()}
       name="enchantment"
       id="enchantment"
       class="text-xl font-medium border-2 rounded-xl py-2 px-4 border-[#626875] text-[#fff] bg-[#1A1B1E] appearance-none enchantment"
@@ -4830,6 +4920,12 @@
     </div>
 
     <button id="generateButton" class="button mt-10">Generate!</button>
+    <GiveCommand material={material}
+      displayName={displayname} 
+      lore={lines} 
+      custommodeldata={cmd}
+      enchants={enchants} 
+    />
   </div>
 </main>
 
