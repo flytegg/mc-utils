@@ -4519,22 +4519,22 @@ import { insert, onMount, set_attributes } from "svelte/internal";
       cmdname: "feather_falling-4",
     },
     {
-      name: "Arrow_DAMAGE-1",
+      name: "ARROW_DAMAGE-1",
       cmdname: "power-1",    },
     {
-      name: "Arrow_DAMAGE-2",
+      name: "ARROW_DAMAGE-2",
       cmdname: "power-2",
     },
     {
-      name: "Arrow_DAMAGE-3",
+      name: "ARROW_DAMAGE-3",
       cmdname: "power-3",
     },
     {
-      name: "Arrow_DAMAGE-4",
+      name: "ARROW_DAMAGE-4",
       cmdname: "power-4",
     },
     {
-      name: "Arrow_DAMAGE-5",
+      name: "ARROW_DAMAGE-5",
       cmdname: "power-5",
     },
     {
