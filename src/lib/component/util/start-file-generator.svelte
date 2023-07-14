@@ -28,7 +28,7 @@
                 (flags === "aikar" ? " --add-modules=jdk.incubator.vector -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcutils.com -Daikars.new.flags=true -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20" :
                     " -XX:+UseG1GC -XX:G1HeapRegionSize=4M -XX:+UnlockExperimentalVMOptions -XX:+ParallelRefProcEnabled -XX:+AlwaysPreTouch -XX:MaxInlineLevel=15"))
         java = java.replace(" %filename%", " " + serverJarName)
-        java = java.replace(" %gui%", gui ? "" : " --nogui")
+        java = java.replace(" %gui%", gui || isProxySelected() ? "" : " --nogui")
 
         let windows = java
         if (autoRestart) {
@@ -89,6 +89,10 @@
             }
         })
     }
+
+    function isProxySelected() {
+        return flags === "proxy"
+    }
 </script>
 
 <div class="place-items-center text-center items-start grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-10 mt-3">
@@ -110,7 +114,7 @@
     </div>
     <div class="flex flex-col">
         <label class="relative inline-flex items-center mb-4 cursor-pointer">
-            <input bind:checked={gui} on:change={calculateResult} id="gui" type="checkbox" class="sr-only peer">
+            <input disabled={isProxySelected()} bind:checked={gui} on:change={calculateResult} id="gui" type="checkbox" class="sr-only peer">
             <div class="w-11 h-6 bg-[#374151] rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
             <p class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
                 <a href="#"
