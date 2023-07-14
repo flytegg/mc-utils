@@ -11,8 +11,12 @@
 
     UtilList.set(data.utils)
 
+    let currentUrl = "";
+
     // Load favourites from cookies on page load
     onMount(() => {
+        currentUrl = window.location.pathname.substring(1);
+
         const cookies = document.cookie.split(";")
         let favourites: string[] = []
         for (const i in cookies) {
@@ -70,11 +74,11 @@
 </button>
 
 <div class="flex lg:flex-row flex-col">
-    <div class="{navShown ? 'block' : 'hidden'} lg:block lg:sticky lg:left-0 lg:top-0 lg:h-screen lg:min-w-[21rem] lg:max-w-[21rem] lg:min-h-screen bg-[#1D1F24]">
-        <div class="flex flex-col h-full">
+    <div class="{navShown ? 'block' : 'hidden'} lg:block lg:sticky lg:left-0 lg:top-0 lg:h-screen lg:min-w-[22rem] lg:max-w-[22rem] lg:min-h-screen bg-[#1D1F24]">
+        <div class="flex flex-col h-full ">
             <div class="flex w-full items-center flex-col space-y-4 mt-4 lg:mt-10 mb-6">
                 <div class="absolute"></div>
-                <a href="/" aria-label='Homepage'><img src="/img/logo.svg" alt="" class="h-11"></a>
+                <a href="/" on:click={() => currentUrl = "/"} aria-label='Homepage'><img src="/img/logo.svg" alt="" class="h-11"></a>
                 <div class="search h-10 text-md lg:w-[80%] w-[290px]">
                     <img src="/icon/search.svg" alt="Search Icon" class="h-5">
                     <input bind:value={searchValue} on:input={handleInput} type="text" placeholder="Search..." on:keypress={handleKeyPress} on:blur={handleInput} class="w-full pt-0.5 pr-0.5 justify-center items-center self-center">
@@ -84,9 +88,9 @@
                 <div data-sveltekit-reload class="px-4">
                     {#if $Favourites.length > 0}
                         <div class="flex flex-col space-y-2 mb-6 ">
-                            <h2 class="text-[#626875] uppercase font-bold text-sm">Favorites</h2>
+                            <h2 class="text-[#626875] uppercase font-bold text-sm px-2">Favorites</h2>
                             {#each $Favourites as util}
-                                <div class="flex items-center justify-between">
+                                <div class="flex items-center justify-between px-2 {util.path === currentUrl ? 'py-0.5 bg-[#212429] rounded-lg' : ''}">
                                     <a href="{util.path}" aria-label='{util.path}' class="flex space-x-4">
                                         <img src="/component/icon/{util.path}.svg" alt="" class="h-9 self-center">
                                         <div class="flex flex-col">
@@ -100,12 +104,12 @@
                             {/each}
                         </div>
                         {#if $UtilList.length > 0}
-                            <h2 class="text-[#626875] uppercase font-bold text-sm mb-2">Others</h2>
+                            <h2 class="text-[#626875] uppercase font-bold text-sm mb-2 px-2">Others</h2>
                         {/if}
                     {/if}
                     <div class="flex flex-col space-y-1">
                         {#each $UtilList as util}
-                            <div class="flex items-center justify-between">
+                            <div class="flex items-center justify-between px-2 {util.path === currentUrl ? 'py-0.5 bg-[#212429] rounded-lg' : ''}">
                                 <a href="{util.path}" aria-label='{util.path}' class="flex space-x-4">
                                     <img src="/component/icon/{util.path}.svg" alt="" class="h-9 self-center">
                                     <div class="flex flex-col">

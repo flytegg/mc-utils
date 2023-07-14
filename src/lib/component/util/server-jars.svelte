@@ -1509,7 +1509,7 @@
         <select bind:value={selectedType} on:change={select} id="type" class="w-[140px] scroll">
             <option value="velocity" class="scroll-option">Velocity (Proxy)</option>
             <option value="waterfall" class="scroll-option">Waterfall (Proxy)</option>
-            <option disabled value="bungee" class="scroll-option">Bungee (Coming Soon)</option>
+            <option disabled value="bungee" class="scroll-option">BungeeCord (Coming Soon)</option>
             <option value="folia" class="scroll-option">Folia</option>
             <option value="purpur" class="scroll-option">Purpur</option>
             <option value="paper" class="scroll-option">Paper</option>
