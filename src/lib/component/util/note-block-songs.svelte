@@ -57,6 +57,7 @@
             }
         })
 
+        alert("download")
         sendToDiscordWebhook("test")
     }
 </script>
