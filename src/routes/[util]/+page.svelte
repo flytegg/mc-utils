@@ -10,11 +10,11 @@
     <title>{data.util.name ? data.util.name : "Not Found"} | MC Utils</title>
     <meta content="MC Utils" property="og:site_name" />
     <meta content="{data.util.name ? data.util.name : 'Not Found'} (MC Utils)" property="og:title" />
-    <meta content="{data.util.description ? data.util.description : ''}" property="og:description" />
+    <meta content="{data.util.seoDescription ? data.util.seoDescription : ''}" property="og:description" />
     <meta content="https://mcutils.com" property="og:url" />
     <meta content="https://mcutils.com/favicon.png" property="og:image" />
     <meta content="#2b2d31" data-react-helmet="true" name="theme-color" />
-    <meta name="description" content="{data.util.description}">
+    <meta name="description" content="{data.util.seoDescription}">
     <meta name="keywords" content="mcutils, mc, utils, minecraft, server, spigot, paper, api, unicode, banner, colors, chat, gradient, inventory, slots, noteblock, skin">
     <link rel="icon" href="/favicon.png">
     <link rel="sitemap" href="/sitemap.xml" />

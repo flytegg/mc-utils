@@ -1,8 +1,6 @@
 <script lang="ts">
     import {onMount} from "svelte"
     import {toast} from "@zerodevx/svelte-toast";
-    import {sendToDiscordWebhook} from "../../../routes/[util]/webhook";
-
     let searchResults: Song[]
 
     type Song = {
@@ -56,9 +54,6 @@
                 '--toastBarBackground': '#2F855A'
             }
         })
-
-        alert("download")
-        sendToDiscordWebhook("test")
     }
 </script>
 
