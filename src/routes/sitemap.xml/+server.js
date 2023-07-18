@@ -66,6 +66,21 @@ export async function GET() {
                 <changefreq>daily</changefreq>
                 <priority>0.8</priority>
             </url>
+            <url>
+                <loc>${website}/small-text-converter</loc>
+                <changefreq>daily</changefreq>
+                <priority>0.8</priority>
+            </url>
+            <url>
+                <loc>${website}/daylight-cycle</loc>
+                <changefreq>daily</changefreq>
+                <priority>0.8</priority>
+            </url>
+            <url>
+                <loc>${website}/item-ids</loc>
+                <changefreq>daily</changefreq>
+                <priority>0.8</priority>
+            </url>
         </urlset>`.trim(),
         {
             headers: {
