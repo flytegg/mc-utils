@@ -1,4 +1,3 @@
-Save New Duplicate & Edit Raw Udemy Course
 <script lang="ts">
     import { afterUpdate } from 'svelte';
 
