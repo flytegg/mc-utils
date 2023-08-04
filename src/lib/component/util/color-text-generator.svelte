@@ -1,3 +1,4 @@
+Save New Duplicate & Edit Raw Udemy Course
 <script lang="ts">
     import { afterUpdate } from 'svelte';
 
@@ -27,6 +28,25 @@
             content: '',
         }
     ];
+
+    function insertTextAtCursor(value) {
+        const inputBox = document.getElementById("textinput");
+        const startPos = inputBox.selectionStart;
+        const endPos = inputBox.selectionEnd;
+        const currentValue = inputBox.value;
+
+        const newText = currentValue.substring(0, startPos) + value + currentValue.substring(endPos);
+        text = newText;
+
+        // Get the updated cursor position after the text update
+        const updatedCursorPosition = startPos + value.length;
+
+        inputBox.focus();
+        // Use requestAnimationFrame to ensure setting selection works after the element repaints
+        requestAnimationFrame(() => {
+            inputBox.setSelectionRange(updatedCursorPosition, updatedCursorPosition);
+        });
+    }
 
     function setActiveTab(index) {
         activeTab = index;
@@ -108,44 +128,44 @@
         <div class="place-items-center text-center items-start grid grid-cols-1 xl:flex justify-center gap-6">
             <div class="flex-col flex gap-1">
                 <div class="flex gap-1">
-                    <button class="h-8 w-8 text-sm rounded-md hover:bg-[#000000] bg-[#000000] text-white" on:click={() => {text += "&0"}}>&0</button>
-                    <button class="h-8 w-8 text-sm rounded-md hover:bg-[#0000AA] bg-[#0000AA] text-white" on:click={() => {text += "&1"}}>&1</button>
-                    <button class="h-8 w-8 text-sm rounded-md hover:bg-[#00AA00] bg-[#00AA00] text-white" on:click={() => {text += "&2"}}>&2</button>
-                    <button class="h-8 w-8 text-sm rounded-md hover:bg-[#00AAAA] bg-[#00AAAA] text-white" on:click={() => {text += "&3"}}>&3</button>
-                    <button class="h-8 w-8 text-sm rounded-md hover:bg-[#AA0000] bg-[#AA0000] text-white" on:click={() => {text += "&4"}}>&4</button>
-                    <button class="h-8 w-8 text-sm rounded-md hover:bg-[#AA00AA] bg-[#AA00AA] text-white" on:click={() => {text += "&5"}}>&5</button>
-                    <button class="h-8 w-8 text-sm rounded-md hover:bg-[#FFAA00] bg-[#FFAA00] text-white" on:click={() => {text += "&6"}}>&6</button>
-                    <button class="h-8 w-8 text-sm rounded-md hover:bg-[#AAAAAA] bg-[#AAAAAA] text-white" on:click={() => {text += "&7"}}>&7</button>
+                    <button class="h-8 w-8 text-sm rounded-md hover:bg-[#000000] bg-[#000000] text-white" on:click={() => insertTextAtCursor("&0")}>&0</button>
+                    <button class="h-8 w-8 text-sm rounded-md hover:bg-[#0000AA] bg-[#0000AA] text-white" on:click={() => insertTextAtCursor("&1")}>&1</button>
+                    <button class="h-8 w-8 text-sm rounded-md hover:bg-[#00AA00] bg-[#00AA00] text-white" on:click={() => insertTextAtCursor("&2")}>&2</button>
+                    <button class="h-8 w-8 text-sm rounded-md hover:bg-[#00AAAA] bg-[#00AAAA] text-white" on:click={() => insertTextAtCursor("&3")}>&3</button>
+                    <button class="h-8 w-8 text-sm rounded-md hover:bg-[#AA0000] bg-[#AA0000] text-white" on:click={() => insertTextAtCursor("&4")}>&4</button>
+                    <button class="h-8 w-8 text-sm rounded-md hover:bg-[#AA00AA] bg-[#AA00AA] text-white" on:click={() => insertTextAtCursor("&5")}>&5</button>
+                    <button class="h-8 w-8 text-sm rounded-md hover:bg-[#FFAA00] bg-[#FFAA00] text-white" on:click={() => insertTextAtCursor("&6")}>&6</button>
+                    <button class="h-8 w-8 text-sm rounded-md hover:bg-[#AAAAAA] bg-[#AAAAAA] text-white" on:click={() => insertTextAtCursor("&7")}>&7</button>
                 </div>
                 <div class="flex gap-1">
-                    <button class="h-8 w-8 text-sm rounded-md hover:bg-[#555555] bg-[#555555] text-white" on:click={() => {text += "&8"}}>&8</button>
-                    <button class="h-8 w-8 text-sm rounded-md hover:bg-[#5555FF] bg-[#5555FF] text-white" on:click={() => {text += "&9"}}>&9</button>
-                    <button class="h-8 w-8 text-sm rounded-md hover:bg-[#55FF55] bg-[#55FF55] text-black" on:click={() => {text += "&a"}}>&a</button>
-                    <button class="h-8 w-8 text-sm rounded-md hover:bg-[#55FFFF] bg-[#55FFFF] text-black" on:click={() => {text += "&b"}}>&b</button>
-                    <button class="h-8 w-8 text-sm rounded-md hover:bg-[#FF5555] bg-[#FF5555] text-black" on:click={() => {text += "&c"}}>&c</button>
-                    <button class="h-8 w-8 text-sm rounded-md hover:bg-[#FF55FF] bg-[#FF55FF] text-black" on:click={() => {text += "&d"}}>&d</button>
-                    <button class="h-8 w-8 text-sm rounded-md hover:bg-[#FFFF55] bg-[#FFFF55] text-black" on:click={() => {text += "&e"}}>&e</button>
-                    <button class="h-8 w-8 text-sm rounded-md hover:bg-[#FFFFFF] bg-[#FFFFFF] text-black" on:click={() => {text += "&f"}}>&f</button>
+                    <button class="h-8 w-8 text-sm rounded-md hover:bg-[#555555] bg-[#555555] text-white" on:click={() => insertTextAtCursor("&8")}>&8</button>
+                    <button class="h-8 w-8 text-sm rounded-md hover:bg-[#5555FF] bg-[#5555FF] text-white" on:click={() => insertTextAtCursor("&9")}>&9</button>
+                    <button class="h-8 w-8 text-sm rounded-md hover:bg-[#55FF55] bg-[#55FF55] text-black" on:click={() => insertTextAtCursor("&a")}>&a</button>
+                    <button class="h-8 w-8 text-sm rounded-md hover:bg-[#55FFFF] bg-[#55FFFF] text-black" on:click={() => insertTextAtCursor("&b")}>&b</button>
+                    <button class="h-8 w-8 text-sm rounded-md hover:bg-[#FF5555] bg-[#FF5555] text-black" on:click={() => insertTextAtCursor("&c")}>&c</button>
+                    <button class="h-8 w-8 text-sm rounded-md hover:bg-[#FF55FF] bg-[#FF55FF] text-black" on:click={() => insertTextAtCursor("&d")}>&d</button>
+                    <button class="h-8 w-8 text-sm rounded-md hover:bg-[#FFFF55] bg-[#FFFF55] text-black" on:click={() => insertTextAtCursor("&e")}>&e</button>
+                    <button class="h-8 w-8 text-sm rounded-md hover:bg-[#FFFFFF] bg-[#FFFFFF] text-black" on:click={() => insertTextAtCursor("&f")}>&f</button>
                 </div>
             </div>
             <div class="flex-col flex gap-1">
                 <div class="self-center text-[#626875] font-medium">
                     <input type="color" bind:value={color} class="rounded-full bg-transparent border-none self-center"/>
                 </div>
-                <button class="button w-[100%] h-8 text-sm flex items-center justify-center" on:click={() => {text += "&" + color}}>Add Hex Code</button>
+                <button class="button w-[100%] h-8 text-sm flex items-center justify-center" on:click={() => insertTextAtCursor("&" + color)}>Add Hex Code</button>
             </div>
             <div class="flex gap-1">
                 <div class="flex-col flex gap-1">
-                    <button class="button w-[100%] h-8 text-sm text-center flex items-center justify-center font-bold" on:click={() => {text += "&l"}}>Bold</button>
-                    <button class="button w-[100%] h-8 text-sm flex items-center justify-center underline" on:click={() => {text += "&n"}}>Underline</button>
+                    <button class="button w-[100%] h-8 text-sm text-center flex items-center justify-center font-bold" on:click={() => insertTextAtCursor("&l")}>Bold</button>
+                    <button class="button w-[100%] h-8 text-sm flex items-center justify-center underline" on:click={() => insertTextAtCursor("&n")}>Underline</button>
                 </div>
                 <div class="flex-col flex gap-1">
-                    <button class="button w-[100%] h-8 text-sm flex items-center justify-center italic" on:click={() => {text += "&o"}}>Italic</button>
-                    <button class="button w-[100%] h-8 text-sm flex items-center justify-center line-through" on:click={() => {text += "&m"}}>Strikethrough</button>
+                    <button class="button w-[100%] h-8 text-sm flex items-center justify-center italic" on:click={() => insertTextAtCursor("&o")}>Italic</button>
+                    <button class="button w-[100%] h-8 text-sm flex items-center justify-center line-through" on:click={() => insertTextAtCursor("&m")}>Strikethrough</button>
                 </div>
                 <div class="flex-col flex gap-1">
-                    <button class="button w-[100%] h-8 text-sm flex items-center justify-center" on:click={() => {text += "&k"}}>Magic</button>
-                    <button class="button w-[100%] h-8 text-sm flex items-center justify-center" on:click={() => {text += "&r"}}>Reset</button>
+                    <button class="button w-[100%] h-8 text-sm flex items-center justify-center" on:click={() => insertTextAtCursor("&k")}>Magic</button>
+                    <button class="button w-[100%] h-8 text-sm flex items-center justify-center" on:click={() => insertTextAtCursor("&r")}>Reset</button>
                 </div>
             </div>
         </div>
