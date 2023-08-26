@@ -112,7 +112,7 @@
 <canvas id="skin_container" class="mt-10 "></canvas>
 <div class="flex gap-6">
     <a href={currentSkin} download="" aria-label='Download Skin'><button class="button" on:click={downloadSkin}>Download Skin</button></a>
-    <a href="https://www.minecraft.net/profile/skin/remote?url=undefined" aria-label='Apply Skin' target="_blank"><button class="button">Apply Skin</button></a> <!-- Mojang broke passing the image through the URL. NameMC removed it & other sites don't work either. So just sending a template link -->
+    <a href="https://www.minecraft.net/en-us/msaprofile/mygames/editskin" aria-label='Apply Skin' target="_blank"><button class="button">Apply Skin</button></a> <!-- Mojang broke passing the image through the URL. NameMC removed it & other sites don't work either. So just sending a template link -->
 </div>
 
 <div class="flex flex-col mt-8 w-fit">
