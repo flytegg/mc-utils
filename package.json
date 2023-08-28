@@ -21,6 +21,7 @@
 		"svelte": "^3.54.0",
 		"svelte-awesome-color-picker": "^2.4.5",
 		"svelte-check": "^3.0.1",
+		"svelte-multiselect": "^10.1.0",
 		"tailwindcss": "^3.2.7",
 		"tslib": "^2.4.1",
 		"typescript": "^5.0.0",
@@ -28,6 +29,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"carbon-components-svelte": "^0.80.0",
 		"figlet": "^1.6.0",
 		"javascript-color-gradient": "^2.4.4",
 		"minecraft-server-status": "^1.0.1",
