@@ -2,12 +2,11 @@
 <script lang="ts">
     import MultiSelect from 'svelte-multiselect'
 
-    let selectedPrimaryColors: string[] = [];
-    let selectedFadingColors: string[] = [];
+    let selectedPrimary: any[]= [];
+    let selectedFades: any[] = [];
     let selectedExplosionShape: string = '';
     let selectedEffect: string = '';
     let selectedFlightPower: string = '';
-
 
     function selectShape(shape: string) {
         selectedExplosionShape = shape;
@@ -22,7 +21,7 @@
     }
 
     function handleDone(){
-        if (!selectedPrimaryColors.length || selectedPrimaryColors.length > 6){
+        if (!selectedPrimary){
             alert("Please select upto 6 Primary colors!")
             return;
         }
@@ -33,7 +32,6 @@
         if (!selectedExplosionShape){
             selectedExplosionShape="Default"
         }
-
     }
 
     const dyes = [
@@ -156,20 +154,22 @@
 </script>
 
 
-<main class="flex justify-center items-center">
-    <div class="text-center space-y-9">
+<main class="w-[90%] lg:w-[60%] mt-5">
+    <div class="space-y-9">
 
         <!-- Primary Colors Multiselect -->
-        <div class="flex justify-center">
-            <div class="text-indigo-500 font-semibold text-center p-3 m-2 rounded">
+        <div class="tab-system w-[100%] flex justify-center">
+            <div class="text-white font-semibold text-center p-3 m-2 rounded">
                 <label for="Primary Colors">
-                    <strong>Select your desired Primary colors (up to 6)</strong>
+                    <strong>Select your desired Primary colors</strong>
                 </label>
                 <MultiSelect
                         id='Primary Colors'
                         options={dyes.map(dye => dye.color)}
+                        bind:selected={selectedPrimary}
                         placeholder="Colors for Firework Particles"
-                        bind:selectedPrimaryColors
+                        maxSelect = {1,2,3,4,5,6}
+                        --sms-options-bg="black"
                         let:option
                 >
                     <img
@@ -183,15 +183,17 @@
 
         <!-- Fading Colors Multiselect -->
         <div class="flex justify-center">
-            <div class="text-indigo-500 font-semibold text-center p-3 m-2 rounded">
+            <div class="text-white font-semibold text-center p-3 m-2 rounded">
                 <label for="Fading Colors">
-                    <strong>Select your desired Fading colors (up to 6)</strong>
+                    <strong>Select your desired Fading colors</strong>
                 </label>
                 <MultiSelect
                         id='Fading Colors'
                         options={dyes.map(dye => dye.color)}
                         placeholder="Colors for fading Particles"
-                        bind:selectedFadingColors
+                        bind:selected={selectedFades}
+                        maxSelect = {1,2,3,4,5,6}
+                        --sms-options-bg="black"
                         let:option
                 >
                     <img
@@ -204,29 +206,32 @@
         </div>
 
         <!-- Firework Shape Buttons -->
-        <h3 class="font-medium text-white text-[30px] text-center">Choose the Explosion shape</h3>
-        <div class="flex justify-center space-x-4">
+        <h3 class="flex justify-center font-medium text-white text-[30px]">Choose the Explosion shape</h3>
+        <div class="tab-system w-[100%] flex flex-col ">
+            <div class="self-center grid grid-cols-2 md:grid-cols-5 2xl:grid-cols-7 gap-2">
             {#each fireworkShape as shape}
                 <button
-                        class={`shape-button ${shape.shape === selectedExplosionShape ? 'active' : ''}`}
+                        class={`custom-button ${shape.shape === selectedExplosionShape ? 'active' : ''}`}
                         on:click={() => selectShape(shape.shape)}
                 >
                     <img
                             src="/fireworks/{shape.img}.png"
                             alt={shape.shape}
-                            class="w-[100%] lg:w-[120px]"
+                            class="w-full"
                     />
                     {shape.shape}
                 </button>
             {/each}
+            </div>
         </div>
 
         <!-- Firework Effect Buttons -->
-        <h3 class="font-medium text-white text-[30px] text-center">Choose the Firework effect</h3>
-        <div class="flex justify-center space-x-4">
+        <h3 class="flex justify-center font-medium text-white text-[30px]">Choose the Firework effect</h3>
+        <div class="tab-system w-[100%] flex flex-col ">
+            <div class="self-center grid grid-cols-2 md:grid-cols-2 2xl:grid-cols-2 gap-2">
             {#each fireworkEffect as effect}
                 <button
-                        class={`effect-button ${effect.name === selectedEffect ? 'active' : ''}`}
+                        class={`custom-button ${effect.name === selectedEffect ? 'active' : ''}`}
                         on:click={() => selectEffect(effect.name)}
                 >
                     <img
@@ -237,14 +242,16 @@
                     {effect.name}
                 </button>
             {/each}
+            </div>
         </div>
 
         <!-- Flight Power Button -->
-        <h3 class="font-medium text-white text-[30px] text-center">Choose the Flight duration</h3>
-        <div class="flex justify-center space-x-4">
+        <h3 class="flex justify-center font-medium text-white text-[30px]">Choose the Flight duration</h3>
+        <div class="tab-system w-[100%] flex flex-col ">
+            <div class="self-center grid grid-cols-2 md:grid-cols-3 2xl:grid-cols-3 gap-2">
             {#each powerValues as power}
                 <button
-                        class={`power-button ${power.name === selectedFlightPower ? 'active' : ''}`}
+                        class={`custom-button ${power.name === selectedFlightPower ? 'active' : ''}`}
                         on:click={() => selectPower(power.name)}
                 >
                     <img
@@ -255,6 +262,7 @@
                     {power.name}
                 </button>
             {/each}
+                </div>
         </div>
 
         <button
@@ -269,34 +277,18 @@
 
 
 <style>
-    .shape-button {
-        @apply text-white w-[49%] self-center font-bold p-2 ;
+    .custom-button {
+        @apply gap-2 p-4 text-white font-bold items-center;
     }
 
-    .effect-button {
-        @apply text-white w-[20%] self-center font-bold p-2 ;
-    }
-
-    .power-button {
-        @apply text-white w-[15%] self-center font-bold p-2 ;
-    }
-
-    .shape-button.active {
-        @apply bg-sky-600;
-    }
-
-    .power-button.active {
-        @apply bg-sky-600;
-    }
-
-    .effect-button.active {
+    .custom-button.active {
         @apply bg-sky-600;
     }
 
     .shape-grid {
         display: grid;
-        gap: 5px;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 10px;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     }
 
 
