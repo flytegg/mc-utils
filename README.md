@@ -84,7 +84,7 @@ description: The description of the util... pretty self explantory.
 shortDescription: ... A shorter version of the description - the one shown in the sidebar.
 ```
 
-Next we can add the icon for our util to the `static/component/icon` folder and upload your icon, named the same as the `path`. Make sure it's a `.png`.
+Next we can add the icon for our util to the `static/component/icon` folder and upload your icon, named the same as the `path`. Make sure it's a `.svg`.
 
 Finally, navigate to the `src/lib/component/util` folder, where you can create your util component, remember this needs to be named the same as `path`.
 
