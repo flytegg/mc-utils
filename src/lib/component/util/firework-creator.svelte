@@ -1,8 +1,9 @@
 <script lang="ts">
     import MultiSelect from 'svelte-multiselect'
+    import items from "$lib/items.json"
 
-    let selectedPrimary: any[]= [];
-    let selectedFades: any[] = [];
+    let selectedPrimary: string[]= ["Blue Dye"];
+    let selectedFades: string[] = [];
     let selectedExplosionShape: string = '';
     let selectedEffects: string[] = [];
     let selectedFlightPower: number;
@@ -14,6 +15,16 @@
 
     let giveCmd= '';
     let summonCmd = '';
+
+    const positionValues = [
+        { left: 1020, top: 1890 },
+        { left: 1063, top: 1912 },
+        { left: 1098, top: 1912 },
+        { left: 1028, top: 1950 },
+        { left: 1063, top: 1950 },
+        { left: 1098, top: 1950 }
+    ];
+
 
     function setGiveCommand(){
         let type: number = 0;
@@ -272,7 +283,6 @@
         }
     ]
 
-
     const fireworkShape = [
         {
             shape: "Default",
@@ -333,7 +343,7 @@
 
         <!-- Primary Colors Multiselect -->
         <div class="flex justify-center">
-            <div class="text-white font-semibold text-center p-3 m-2 rounded">
+            <div class="text-white font-semibold text-center p-3 m-2 h-[50px] rounded">
                 <label for="Primary Colors">
                     <strong>Select your desired Primary colors</strong>
                 </label>
@@ -342,8 +352,9 @@
                         options={dyes.map(dye => dye.color)}
                         bind:selected={selectedPrimary}
                         placeholder="Colors for Firework Particles"
-                        maxSelect = {1,2,3,4,5,6}
+                        maxSelect = {6}
                         --sms-options-bg="black"
+                        --sms-min-height="30px"
                         let:option
                 >
                     <img
@@ -366,8 +377,9 @@
                         options={dyes.map(dye => dye.color)}
                         placeholder="Colors for fading Particles"
                         bind:selected={selectedFades}
-                        maxSelect = {1,2,3,4,5,6}
+                        maxSelect = {6}
                         --sms-options-bg="black"
+                        --sms-min-height="30px"
                         let:option
                 >
                     <img
@@ -472,20 +484,26 @@
             </div>
 
             <h3 class="flex justify-center font-medium text-white text-[40px]">Crafting Recipe</h3>
+            <h2 class="flex justify-center font-medium text-white text-[20px]">Step 1: Firework Star</h2>
+
             <div class="grid grid-cols-1 xl:flex xl:flex-wrap w-full gap-12">
-            <div class="w-[100%] flex flex-col ">
+                <div class="w-[350px] h-[170px] mx-auto">
+                <img src="/fireworks/crafting-table.png" alt="crafting table" class="w-[350px] h-[170px] absolute">
+                <img src={items.find(item => item.name === "Firework Star").texture} alt="firework star" class="w-[40px] h-[40px] left-[1175px] top-[1938px] absolute">
+                {#each selectedPrimary as color, index}
+                        <img src={items.find(item => item.name=== color).texture} alt={color} class="w-[33px] h-[35px] left-[{positionValues[index].left}px] top-[{positionValues[index].top}px] absolute">
+                {/each}
 
-                <h2 class="flex justify-center font-medium text-white text-[20px]">Step 1: Firework Star</h2>
-                <img src="/fireworks/crafting-table.png" alt="crafting table" class="self-center w-[300px] h-[150px] p-2 py-3">
+                </div>
 
-                {#if selectedFades.length}
-                    <h2 class="flex justify-center font-medium text-white text-[20px]">Step 2: Fading colors</h2>
-                    <img src="/fireworks/crafting-table.png" alt="crafting table" class="self-center w-[300px] h-[150px] p-2 py-3">
-                {/if}
-
-                <h2 class="flex justify-center font-medium text-white text-[20px]">Step {!selectedFades.length ? 2 : 3}: Crafting the Rocket</h2>
-                <img src="/fireworks/crafting-table.png" alt="crafting table" class="self-center w-[300px] h-[150px] p-2 py-3">
-            </div>
+<!--                <div class="w-[280px] h-[100px] mx-auto">-->
+<!--                {#if selectedFades.length}-->
+<!--                    <h2 class="flex justify-center font-medium text-white text-[20px]">Step 2: Fading colors</h2>-->
+<!--                    <img src="/fireworks/crafting-table.png" alt="crafting table" class="self-center w-[300px] h-[150px] p-2 py-3">-->
+<!--                {/if}-->
+<!--                </div>-->
+<!--                <h2 class="flex justify-center font-medium text-white text-[20px]">Step {!selectedFades.length ? 2 : 3}: Crafting the Rocket</h2>-->
+<!--                <img src="/fireworks/crafting-table.png" alt="crafting table" class="self-center w-[300px] h-[150px] p-2 py-3">-->
             </div>
         {/if}
         
