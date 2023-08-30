@@ -1,65 +1,60 @@
 <script lang="ts">
-  import MultiSelect from 'svelte-multiselect';
-  import items from '$lib/items.json';
+  import MultiSelect from "svelte-multiselect";
+  import items from "$lib/items.json";
 
-  let selectedPrimary: string[] = ['Blue Dye'];
+  let selectedPrimary: string[] = [];
   let selectedFades: string[] = [];
-  let selectedExplosionShape: string = '';
-  let selectedEffects: string[] = [];
+  let selectedExplosionShape: string;
   let selectedFlightPower: number;
 
   let isFlicker: boolean = false;
   let isTrail: boolean = false;
 
-  let activeResult = true;
+  let showResults = false;
+  let activeCmd = false;
+  let activeRecipe = false;
 
-  let giveCmd = '';
-  let summonCmd = '';
+  let giveCmd = "";
+  let summonCmd = "";
 
   const positionValues = [
-    { left: 1027, top: 1912 },
-    { left: 1063, top: 1912 },
-    { left: 1098, top: 1912 },
-    { left: 1028, top: 1950 },
-    { left: 1063, top: 1950 },
-    { left: 1098, top: 1950 },
+    { left: 60, top: 40 },
+    { left: 100, top: 40 },
+    { left: 138, top: 40 },
+    { left: 60, top: 85 },
+    { left: 100, top: 85 },
+    { left: 138, top: 85 },
   ];
 
   function setGiveCommand() {
     let type: number = 0;
-    let flicker = '';
-    let trail = '';
+    let flicker = "";
+    let trail = "";
     let primary: number[] = [];
     let fading: number[] = [];
 
     switch (selectedExplosionShape) {
-      case 'Default': {
-        type = 0;
-        break;
-      }
-      case 'Large Ball': {
+      case "Large Ball": {
         type = 1;
         break;
       }
-      case 'Star': {
+      case "Star": {
         type = 2;
         break;
       }
-      case 'Creeper': {
+      case "Creeper": {
         type = 3;
         break;
       }
-      case 'Burst': {
+      case "Burst": {
         type = 4;
       }
     }
 
-    for (let effect of selectedEffects) {
-      if (effect === 'Flicker') {
-        flicker = ',Flicker:1';
-      } else if (effect === 'Trail') {
-        trail = ',Trail:1';
-      }
+    if (isFlicker) {
+      flicker = ",Flicker:1";
+    } else if (isTrail) {
+      trail = ",Trail:1";
     }
 
     for (let color of selectedPrimary) {
@@ -77,45 +72,39 @@
     }
 
     giveCmd = `/give @s firework_rocket{Fireworks:{Flight:${selectedFlightPower},Explosions:[{Type:${type}${flicker}${trail},Colors:[I;${primary.join(
-      ','
-    )}]${fading.length > 0 ? `,FadeColors:[I;${fading.join(',')}]` : ''}}]}} 1`;
+      ","
+    )}]${fading.length > 0 ? `,FadeColors:[I;${fading.join(",")}]` : ""}}]}} 1`;
   }
 
   function setSummonCommand() {
     let type: number = 0;
-    let flicker = '';
-    let trail = '';
+    let flicker = "";
+    let trail = "";
     let primary: number[] = [];
     let fading: number[] = [];
 
     switch (selectedExplosionShape) {
-      case 'Default': {
-        type = 0;
-        break;
-      }
-      case 'Large Ball': {
+      case "Large Ball": {
         type = 1;
         break;
       }
-      case 'Star': {
+      case "Star": {
         type = 2;
         break;
       }
-      case 'Creeper': {
+      case "Creeper": {
         type = 3;
         break;
       }
-      case 'Burst': {
+      case "Burst": {
         type = 4;
       }
     }
 
-    for (let effect of selectedEffects) {
-      if (effect === 'Flicker') {
-        flicker = ',Flicker:1';
-      } else if (effect === 'Trail') {
-        trail = ',Trail:1';
-      }
+    if (isFlicker) {
+      flicker = ",Flicker:1";
+    } else if (isTrail) {
+      trail = ",Trail:1";
     }
 
     for (let color of selectedPrimary) {
@@ -133,19 +122,19 @@
     }
 
     summonCmd = `/summon firework_rocket ~ ~ ~ {FireworksItem:{id:firework_rocket,Count:1,tag:{Fireworks:{Flight:${selectedFlightPower},Explosions:[{Type:${type}${flicker}${trail},Colors:[I;${primary.join(
-      ','
-    )}]${fading.length > 0 ? `,FadeColors:[I;${fading.join(',')}]` : ''}}]}}}}`;
+      ","
+    )}]${fading.length > 0 ? `,FadeColors:[I;${fading.join(",")}]` : ""}}]}}}}`;
   }
 
-  import { toast } from '@zerodevx/svelte-toast';
+  import { toast } from "@zerodevx/svelte-toast";
 
   function copyValue(text: string) {
     navigator.clipboard.writeText(text);
-    toast.push('Copied successfully!', {
+    toast.push("Copied successfully!", {
       theme: {
-        '--toastColor': 'mintcream',
-        '--toastBackground': 'rgba(72,187,120,0.9)',
-        '--toastBarBackground': '#2F855A',
+        "--toastColor": "mintcream",
+        "--toastBackground": "rgba(72,187,120,0.9)",
+        "--toastBarBackground": "#2F855A",
       },
     });
   }
@@ -155,189 +144,193 @@
   }
 
   function selectEffect(effect: string) {
-    const index = selectedEffects.indexOf(effect);
-    if (index === -1) {
-      selectedEffects.push(effect);
-      if (effect === 'Flicker') {
-        isFlicker = true;
-      } else {
-        isTrail = true;
-      }
+    if (effect === "Flicker") {
+      isFlicker = !isFlicker;
     } else {
-      selectedEffects.splice(index, 1);
-      if (effect === 'Flicker') {
-        isFlicker = false;
-      } else {
-        isTrail = false;
-      }
+      isTrail = !isTrail;
     }
   }
 
   function selectPower(power: string) {
     switch (power) {
-      case 'Low': {
-        selectedFlightPower = 25;
+      case "Low": {
+        selectedFlightPower = 1;
         break;
       }
-      case 'Medium': {
-        selectedFlightPower = 40;
+      case "Medium": {
+        selectedFlightPower = 2;
         break;
       }
-      case 'High': {
-        selectedFlightPower = 50;
+      case "High": {
+        selectedFlightPower = 3;
       }
     }
   }
 
   function handleDone() {
     if (!selectedPrimary.length) {
-      alert('Please select upto 6 Primary colors!');
+      alert("Please select upto 6 Primary colors!");
       return;
     }
     if (!selectedFlightPower) {
-      alert('Please select the Flight Power!');
+      alert("Please select the Flight Power!");
       return;
     }
-    if (!selectedExplosionShape) {
-      selectedExplosionShape = 'Default';
-    }
-    activeResult = true;
+
     setGiveCommand();
     setSummonCommand();
+
+    showResults = true;
+    activeCmd = true;
+
+    if (
+      !(isTrail && isFlicker) &&
+      !(selectedPrimary.length > 6) &&
+      !(selectedFades.length > 6)
+    ) {
+      activeRecipe = true;
+    }
+  }
+
+  function getShapeIngredient(): string {
+    let item = "";
+
+    switch (selectedExplosionShape) {
+      case "Large Ball": {
+        item = "Fire Charge";
+        break;
+      }
+      case "Star": {
+        item = "Gold Nugget";
+        break;
+      }
+      case "Creeper": {
+        item = "Creeper Head";
+        break;
+      }
+      case "Burst": {
+        item = "Feather";
+      }
+    }
+    return item;
   }
 
   const dyes = [
     {
-      color: 'Black Dye',
-      img: 'black',
-      deci: 0,
+      color: "Black Dye",
+      deci: 1973019,
     },
     {
-      color: 'Blue Dye',
-      img: 'blue',
-      deci: 255,
+      color: "Blue Dye",
+      deci: 2437522,
     },
     {
-      color: 'Brown Dye',
-      img: 'brown',
-      deci: 10824234,
+      color: "Brown Dye",
+      deci: 5320730,
     },
     {
-      color: 'Cyan Dye',
-      img: 'cyan',
-      deci: 65535,
+      color: "Cyan Dye",
+      deci: 2651799,
     },
     {
-      color: 'Gray Dye',
-      img: 'gray',
-      deci: 8421504,
+      color: "Gray Dye",
+      deci: 4408131,
     },
     {
-      color: 'Green Dye',
-      img: 'green',
-      deci: 32768,
+      color: "Green Dye",
+      deci: 3887386,
     },
     {
-      color: 'Light Blue Dye',
-      img: 'light-blue',
-      deci: 11393254,
+      color: "Light Blue Dye",
+      deci: 6719955,
     },
     {
-      color: 'Light Gray Dye',
-      img: 'light-gray',
-      deci: 13882323,
+      color: "Light Gray Dye",
+      deci: 11250603,
     },
     {
-      color: 'Lime Dye',
-      img: 'lime',
-      deci: 3329330,
+      color: "Lime Dye",
+      deci: 4312372,
     },
     {
-      color: 'Magenta Dye',
-      img: 'magenta',
-      deci: 16711935,
+      color: "Magenta Dye",
+      deci: 12801229,
     },
     {
-      color: 'Orange Dye',
-      img: 'orange',
-      deci: 16753920,
+      color: "Orange Dye",
+      deci: 15435844,
     },
     {
-      color: 'Pink Dye',
-      img: 'pink',
-      deci: 16761035,
+      color: "Pink Dye",
+      deci: 14188952,
     },
     {
-      color: 'Purple Dye',
-      img: 'purple',
+      color: "Purple Dye",
       deci: 8073150,
     },
     {
-      color: 'Red Dye',
-      img: 'red',
-      deci: 16711680,
+      color: "Red Dye",
+      deci: 11743532,
     },
     {
-      color: 'White Dye',
-      img: 'white',
-      deci: 16777215,
+      color: "White Dye",
+      deci: 15790320,
     },
     {
-      color: 'Yellow Dye',
-      img: 'yellow',
-      deci: 16776960,
+      color: "Yellow Dye",
+      deci: 14602026,
     },
   ];
 
   const fireworkShape = [
     {
-      shape: 'Default',
-      img: 'default',
+      shape: "Default",
+      img: "default",
     },
     {
-      shape: 'Large Ball',
-      img: 'large-ball',
+      shape: "Large Ball",
+      img: "large-ball",
     },
     {
-      shape: 'Star',
-      img: 'star',
+      shape: "Star",
+      img: "star",
     },
     {
-      shape: 'Creeper',
-      img: 'creeper',
+      shape: "Creeper",
+      img: "creeper",
     },
     {
-      shape: 'Burst',
-      img: 'burst',
+      shape: "Burst",
+      img: "burst",
     },
   ];
 
   const fireworkEffect = [
     {
-      name: 'Flicker',
-      img: 'flicker',
+      name: "Flicker",
+      img: "flicker",
     },
     {
-      name: 'Trail',
-      img: 'trail',
+      name: "Trail",
+      img: "trail",
     },
   ];
 
   const powerValues = [
     {
-      name: 'Low',
-      img: 'flight-1',
-      duration: 25,
+      name: "Low",
+      img: "flight-1",
+      level: 1,
     },
     {
-      name: 'Medium',
-      img: 'flight-2',
-      duration: 40,
+      name: "Medium",
+      img: "flight-2",
+      level: 2,
     },
     {
-      name: 'High',
-      img: 'flight-3',
-      duration: 50,
+      name: "High",
+      img: "flight-3",
+      level: 3,
     },
   ];
 </script>
@@ -357,14 +350,12 @@
           options={dyes.map((dye) => dye.color)}
           bind:selected={selectedPrimary}
           placeholder="Colors for Firework Particles"
-          maxSelect={6}
           --sms-options-bg="black"
           --sms-min-height="30px"
           let:option
         >
           <img
-            src="/fireworks/dyes/{dyes.find((dye) => dye.color === option)
-              .img}.png"
+            src={items.find((item) => item.name === option).texture}
             alt={option}
             class="mg-flex w-[100%] lg:w-[40px]"
           />
@@ -384,14 +375,12 @@
           options={dyes.map((dye) => dye.color)}
           placeholder="Colors for fading Particles"
           bind:selected={selectedFades}
-          maxSelect={6}
           --sms-options-bg="black"
           --sms-min-height="30px"
           let:option
         >
           <img
-            src="/fireworks/dyes/{dyes.find((dye) => dye.color === option)
-              .img}.png"
+            src={items.find((item) => item.name === option).texture}
             alt={option}
             class="mg-flex w-[100%] lg:w-[40px]"
           />
@@ -411,7 +400,7 @@
         {#each fireworkShape as shape}
           <button
             class={`custom-button ${
-              shape.shape === selectedExplosionShape ? 'active' : ''
+              shape.shape === selectedExplosionShape ? "active" : ""
             }`}
             on:click={() => selectShape(shape.shape)}
           >
@@ -437,8 +426,9 @@
         {#each fireworkEffect as effect}
           <button
             class={`custom-button ${
-              effect.name === 'Flicker' && isFlicker ? 'active' : ''
-            } ${effect.name === 'Trail' && isTrail ? 'active' : ''}`}
+              effect.name === "Flicker" && isFlicker ? "active" : ""
+            }
+                    ${effect.name === "Trail" && isTrail ? "active" : ""}`}
             on:click={() => selectEffect(effect.name)}
           >
             <img
@@ -463,7 +453,7 @@
         {#each powerValues as power}
           <button
             class={`custom-button ${
-              power.duration === selectedFlightPower ? 'active' : ''
+              power.level === selectedFlightPower ? "active" : ""
             }`}
             on:click={() => selectPower(power.name)}
           >
@@ -487,47 +477,48 @@
       </button>
     </div>
 
-    {#if activeResult === true}
-      <div class="w-full min-w-[10px] flex-1">
-        <div class="flex flex-col">
-          <h3 class="font-medium text-white text-20px text-left">
-            Firework Give Command
-          </h3>
-          <div class="flex gap-3 mt-2">
-            <input
-              disabled
-              bind:value={giveCmd}
-              class="inline-block text-sm text-gray-400 font-mono rounded-md p-2 bg-[#141517] h-[35px] w-[100%] max-w-[100%]"
-            />
-            <button
-              on:click={() => copyValue(giveCmd)}
-              class="w-fit text-sm px-2 py-1.5 button h-fit inline-block"
-              >Copy</button
-            >
+    {#if showResults}
+      {#if activeCmd}
+        <div class="w-full min-w-[10px] flex-1">
+          <div class="flex flex-col">
+            <h3 class="font-medium text-white text-20px text-left">
+              Firework Give Command
+            </h3>
+            <div class="flex gap-3 mt-2">
+              <input
+                disabled
+                bind:value={giveCmd}
+                class="inline-block text-sm text-gray-400 font-mono rounded-md p-2 bg-[#141517] h-[35px] w-[100%] max-w-[100%]"
+              />
+              <button
+                on:click={() => copyValue(giveCmd)}
+                class="w-fit text-sm px-2 py-1.5 button h-fit inline-block"
+                >Copy</button
+              >
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="w-full min-w-[10px] flex-1">
-        <div class="flex flex-col">
-          <h3 class="font-medium text-white text-20px text-left">
-            Firework Summon Command
-          </h3>
-          <div class="flex gap-3 mt-2">
-            <input
-              disabled
-              bind:value={summonCmd}
-              class="inline-block text-sm text-gray-400 font-mono rounded-md p-2 bg-[#141517] h-[35px] w-[100%] max-w-[100%]"
-            />
-            <button
-              on:click={() => copyValue(summonCmd)}
-              class="w-fit text-sm px-2 py-1.5 button h-fit inline-block"
-              >Copy</button
-            >
+        <div class="w-full min-w-[10px] flex-1">
+          <div class="flex flex-col">
+            <h3 class="font-medium text-white text-20px text-left">
+              Firework Summon Command
+            </h3>
+            <div class="flex gap-3 mt-2">
+              <input
+                disabled
+                bind:value={summonCmd}
+                class="inline-block text-sm text-gray-400 font-mono rounded-md p-2 bg-[#141517] h-[35px] w-[100%] max-w-[100%]"
+              />
+              <button
+                on:click={() => copyValue(summonCmd)}
+                class="w-fit text-sm px-2 py-1.5 button h-fit inline-block"
+                >Copy</button
+              >
+            </div>
           </div>
         </div>
-      </div>
-
+      {/if}
       <h3 class="flex justify-center font-medium text-white text-[40px]">
         Crafting Recipe
       </h3>
@@ -535,39 +526,147 @@
         Step 1: Firework Star
       </h2>
 
-      <div class="xl:flex xl:flex-wrap w-full gap-12">
-        <div class="w-[370px] h-[170px] mx-auto">
-          <div class="relative">
+      {#if activeRecipe}
+        <div class="grid grid-cols-1 xl:flex xl:flex-wrap w-full gap-12">
+          <div class="relative w-[370px] h-[170px] mx-auto">
             <img
               src="/fireworks/crafting-table.png"
               alt="crafting table"
-              class="w-[370px] h-[170px]"
+              class="w-[370px] h-[170px] absolute"
             />
             <img
-              src={items.find((item) => item.name === 'Firework Star').texture}
+              src={items.find((item) => item.name === "Firework Star").texture}
               alt="firework star"
-              class="absolute w-[40px] h-[40px] right-[72px] top-[85px]"
+              class="absolute w-[33px] h-[35px] right-[76px] top-[85px]"
             />
+            <img
+              src={items.find((item) => item.name === "Gunpowder").texture}
+              alt="Gunpowder"
+              class="absolute w-[33px] h-[35px] left-[60px] top-[128px]"
+            />
+            {#if selectedExplosionShape != null}
+              <img
+                src={items.find((item) => item.name === getShapeIngredient())
+                  .texture}
+                alt={getShapeIngredient()}
+                class="absolute w-[33px] h-[35px] left-[100px] top-[128px]"
+              />
+            {/if}
+
+            {#if isFlicker}
+              <img
+                src={items.find((item) => item.name === "Glowstone Dust")
+                  .texture}
+                alt="Glowstone Dust"
+                class="absolute w-[33px] h-[35px] left-[138px] top-[128px]"
+              />
+            {/if}
+
+            {#if isTrail}
+              <img
+                src={items.find((item) => item.name === "Diamond").texture}
+                alt="Diamond"
+                class="absolute w-[33px] h-[35px] left-[138px] top-[128px]"
+              />
+            {/if}
             {#each selectedPrimary as color, index}
               <img
                 src={items.find((item) => item.name === color).texture}
                 alt={color}
-                class="absolute w-[33px] h-[35px] left-[{positionValues[index]
-                  .left}px] top-[{positionValues[index].top}px]"
+                class={`w-[33px] h-[35px] left-[${positionValues[index].left}px] top-[${positionValues[index].top}px] absolute`}
               />
             {/each}
           </div>
         </div>
 
-        <!--                <div class="w-[280px] h-[100px] mx-auto">-->
-        <!--                {#if selectedFades.length}-->
-        <!--                    <h2 class="flex justify-center font-medium text-white text-[20px]">Step 2: Fading colors</h2>-->
-        <!--                    <img src="/fireworks/crafting-table.png" alt="crafting table" class="self-center w-[300px] h-[150px] p-2 py-3">-->
-        <!--                {/if}-->
-        <!--                </div>-->
-        <!--                <h2 class="flex justify-center font-medium text-white text-[20px]">Step {!selectedFades.length ? 2 : 3}: Crafting the Rocket</h2>-->
-        <!--                <img src="/fireworks/crafting-table.png" alt="crafting table" class="self-center w-[300px] h-[150px] p-2 py-3">-->
-      </div>
+        {#if selectedFades.length}
+          <h2 class="flex justify-center font-medium text-white text-[20px]">
+            Step 2: Fading colors
+          </h2>
+          <div class="relative w-[370px] h-[170px] mx-auto">
+            <img
+              src="/fireworks/crafting-table.png"
+              alt="crafting table"
+              class="w-[370px] h-[170px] absolute"
+            />
+            <img
+              src={items.find((item) => item.name === "Firework Star").texture}
+              alt="firework star"
+              class="absolute w-[33px] h-[35px] right-[76px] top-[85px]"
+            />
+            <img
+              src={items.find((item) => item.name === "Firework Star").texture}
+              alt="firework star"
+              class="absolute w-[33px] h-[35px] left-[60px] top-[128px]"
+            />
+            {#each selectedFades as color, index}
+              <img
+                src={items.find((item) => item.name === color).texture}
+                alt={color}
+                class={`w-[33px] h-[35px] left-[${positionValues[index].left}px] top-[${positionValues[index].top}px] absolute`}
+              />
+            {/each}
+          </div>
+        {/if}
+
+        <h2 class="flex justify-center font-medium text-white text-[20px]">
+          Step {!selectedFades.length ? 2 : 3}: Crafting the Rocket
+        </h2>
+        <div class="relative w-[370px] h-[170px] mx-auto">
+          <img
+            src="/fireworks/crafting-table.png"
+            alt="crafting table"
+            class="w-[370px] h-[170px] absolute"
+          />
+          <img
+            src={items.find((item) => item.name === "Firework Star").texture}
+            alt="firework star"
+            class="absolute w-[33px] h-[35px] left-[60px] top-[85px]"
+          />
+          <img
+            src={items.find((item) => item.name === "Paper").texture}
+            alt="Paper"
+            class="absolute w-[33px] h-[35px] left-[100px] top-[85px]"
+          />
+          <img
+            src={items.find((item) => item.name === "Gunpowder").texture}
+            alt="gunpowder"
+            class="absolute w-[33px] h-[35px] left-[138px] top-[85px]"
+          />
+          <img
+            src={items.find((item) => item.name === "Firework Rocket").texture}
+            alt="Firework Rocket"
+            class="absolute w-[33px] h-[35px] right-[76px] top-[85px]"
+          />
+
+          {#if selectedFlightPower > 1}
+            <img
+              src={items.find((item) => item.name === "Gunpowder").texture}
+              alt="gunpowder"
+              class="absolute w-[33px] h-[35px] left-[138px] top-[40px]"
+            />
+          {/if}
+
+          {#if selectedFlightPower === 3}
+            <img
+              src={items.find((item) => item.name === "Gunpowder").texture}
+              alt="gunpowder"
+              class="absolute w-[33px] h-[35px] left-[138px] top-[128px]"
+            />
+          {/if}
+        </div>
+      {:else}
+        <div
+          class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative my-5"
+          role="alert"
+        >
+          <strong class="font-bold">No crafting recipe available</strong>
+          <span class="block sm:inline"
+            >Confirm that you have up to 6 primary colors, fewer than 7 fading
+            colors, and less than 2 effects to view the vanilla recipe</span
+          >
+        </div>
+      {/if}
     {/if}
   </div>
 </main>
