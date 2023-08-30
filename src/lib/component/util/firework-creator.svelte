@@ -17,7 +17,7 @@
     let summonCmd = '';
 
     const positionValues = [
-        { left: 1020, top: 1890 },
+        { left: 1027, top: 1912 },
         { left: 1063, top: 1912 },
         { left: 1098, top: 1912 },
         { left: 1028, top: 1950 },
@@ -136,7 +136,7 @@
 
     import { toast } from '@zerodevx/svelte-toast'
 
-    function copyValue(text) {
+    function copyValue(text: string) {
         navigator.clipboard.writeText(text)
         toast.push('Copied successfully!', {
             theme: {
@@ -338,10 +338,11 @@
 </script>
 
 
-<main class="w-[90%] lg:w-[60%] mt-5">
+<main class="w-[100%] lg:w-[70%] mt-5">
     <div class="space-y-9">
 
-        <!-- Primary Colors Multiselect -->
+
+    <!-- Primary Colors Multiselect -->
         <div class="flex justify-center">
             <div class="text-white font-semibold text-center p-3 m-2 h-[50px] rounded">
                 <label for="Primary Colors">
@@ -486,14 +487,15 @@
             <h3 class="flex justify-center font-medium text-white text-[40px]">Crafting Recipe</h3>
             <h2 class="flex justify-center font-medium text-white text-[20px]">Step 1: Firework Star</h2>
 
-            <div class="grid grid-cols-1 xl:flex xl:flex-wrap w-full gap-12">
-                <div class="w-[350px] h-[170px] mx-auto">
-                <img src="/fireworks/crafting-table.png" alt="crafting table" class="w-[350px] h-[170px] absolute">
+            <div class="xl:flex xl:flex-wrap w-full gap-12">
+                <div class="w-[370px] h-[170px] mx-auto">
+                    <div class="">
+                <img src="/fireworks/crafting-table.png" alt="crafting table" class="w-[370px] h-[170px] absolute">
                 <img src={items.find(item => item.name === "Firework Star").texture} alt="firework star" class="w-[40px] h-[40px] left-[1175px] top-[1938px] absolute">
                 {#each selectedPrimary as color, index}
-                        <img src={items.find(item => item.name=== color).texture} alt={color} class="w-[33px] h-[35px] left-[{positionValues[index].left}px] top-[{positionValues[index].top}px] absolute">
+                        <img src={items.find(item => item.name=== color).texture} alt={color} class=" absolute w-[33px] h-[35px] left-[{positionValues[index].left}px] top-[{positionValues[index].top}px]">
                 {/each}
-
+                    </div>
                 </div>
 
 <!--                <div class="w-[280px] h-[100px] mx-auto">-->
@@ -506,7 +508,6 @@
 <!--                <img src="/fireworks/crafting-table.png" alt="crafting table" class="self-center w-[300px] h-[150px] p-2 py-3">-->
             </div>
         {/if}
-        
     </div>
 </main>
 
