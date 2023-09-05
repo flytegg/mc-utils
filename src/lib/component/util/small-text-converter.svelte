@@ -7,7 +7,7 @@
 
     function convertToSmallText(text) {
         const normalAlphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        const smallTextAlphabet = 'ᴀʙᴄᴅᴇꜰɢʜɪᴊᴋʟᴍɴᴏᴘǫʀsᴛᴜᴠᴡxʏᴢ';
+        const smallTextAlphabet = 'ᴀʙᴄᴅᴇꜰɢʜɪᴊᴋʟᴍɴᴏᴘǫʀѕᴛᴜᴠᴡxʏᴢ';
 
         const uppercaseText = text.toUpperCase();
         let convertedText = '';
