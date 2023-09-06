@@ -69,6 +69,13 @@ const utils: Util[] = [
         shortDescription: "Convert into sᴍᴀʟʟ ᴛᴇxᴛ",
         seoDescription: "Convert text into small caps font seen on Minecraft servers like MCCI- uppercase-like, yet tiny, small capital letters."
     },
+    {
+        path: "server-icon-converter",
+        name: "Server Icon Converter",
+        description: "Resize and rename any image as a server icon.",
+        shortDescription: "Create a server-icon.png",
+        seoDescription: "Convert an image into a Minecraft server icon by resizing to 64x64 format and renaming to server-icon.png."
+    },
     // {
     //     path: "unicode-symbols",
     //     name: "Unicode Symbols",

@@ -37,6 +37,7 @@
 		"minecraft-text-js": "^1.1.3",
 		"pixel-draw": "^0.0.1273",
 		"skinview3d": "^3.0.0-alpha.1",
-		"svelte-canvas": "^0.9.3"
+		"svelte-canvas": "^0.9.3",
+		"svelte-easy-crop": "^2.0.1"
 	}
 }
