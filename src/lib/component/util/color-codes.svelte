@@ -189,7 +189,7 @@ const colors = [
         <th class="rounded-tl-lg rounded-bl-lg p-2 pl-6 font-medium text-[20px] text-left">Effect</th>
         <th class="rounded-tr-lg rounded-br-lg font-medium text-[20px] text-left">Name</th>
         <th class="rounded-tr-lg rounded-br-lg font-medium text-[20px] text-left">Chat Code</th>
-        <th class="rounded-tr-lg rounded-br-lg font-medium text-[20px] text-left">MiniMessage tag</th>
+        <th class="rounded-tr-lg rounded-br-lg font-medium text-[20px] text-left">MiniMessage Tag</th>
         <th class="rounded-tr-lg rounded-br-lg font-medium text-[20px] text-left">MOTD</th>
         <th class="rounded-tr-lg rounded-br-lg font-medium text-[20px] text-left">Hex</th>
     </tr>
