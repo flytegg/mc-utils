@@ -145,11 +145,9 @@
 
   function selectEffect(effect: string) {
     if (effect === "Flicker") {
-      isFlicker = true
-      isTrail = false
+      isFlicker = !isFlicker;
     } else {
-      isTrail = true
-      isFlicker = false
+      isTrail = !isTrail;
     }
   }
 
@@ -204,6 +202,13 @@
     ) {
       activeRecipe = true;
     }
+
+    setTimeout(function() {
+      const section = document.getElementById("generateScroll");
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 200);
   }
 
   function getShapeIngredient(): string {
@@ -499,6 +504,7 @@
         Generate
       </button>
     </div>
+    <div id="generateScroll"></div>
 
     {#if showResults}
       {#if activeCmd}
@@ -604,7 +610,7 @@
 
         {#if selectedFades.length}
           <h2 class="flex justify-center font-medium text-white text-[20px]">
-            Step 2: Fading Colors
+            Step 2: Fading colors
           </h2>
           <div class="relative w-[370px] h-[170px] mx-auto">
             <img
@@ -685,8 +691,8 @@
         >
           <strong class="font-bold">No crafting recipe available.</strong>
           <span class="block sm:inline"
-          >You must have up to 6 primary colors and fewer than 7 fading
-            colors.</span
+          >Confirm that you have up to 6 primary colors, fewer than 7 fading
+            colors, and less than 2 effects to view the vanilla recipe</span
           >
         </div>
       {/if}
