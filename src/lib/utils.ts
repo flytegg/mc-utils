@@ -95,6 +95,13 @@ const utils: Util[] = [
         description: "Convert real time into Minecraft time.",
         shortDescription: "Convert real time to MC time",
         seoDescription: "Convert real life time into Minecraft ticks and view a daylight time graph. "
+    },
+    {
+        path: "firework-creator",
+        name: "Firework Creator",
+        description: "Create a firework and get in-game commands and recipe.",
+        shortDescription: "Build custom fireworks",
+        seoDescription: "Build a Minecraft firework with custom explosion shapes, effects, colors and durations and get the commands and crafting recipe for it."
     }
 ]
 
