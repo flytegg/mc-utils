@@ -100,8 +100,8 @@ const utils: Util[] = [
         path: "firework-creator",
         name: "Firework Creator",
         description: "Create a firework and get in-game commands and recipe.",
-        shortDescription: "Get recipe for desired fireworks.",
-        seoDescription: "Select desired firework properties and get the recipe and command for it"
+        shortDescription: "Build custom fireworks",
+        seoDescription: "Build a Minecraft firework with custom explosion shapes, effects, colors and durations and get the commands and crafting recipe for it."
     }
 ]
 
