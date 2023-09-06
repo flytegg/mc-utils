@@ -145,9 +145,11 @@
 
   function selectEffect(effect: string) {
     if (effect === "Flicker") {
-      isFlicker = !isFlicker;
+      isFlicker = true
+      isTrail = false
     } else {
-      isTrail = !isTrail;
+      isTrail = true
+      isFlicker = false
     }
   }
 
@@ -350,24 +352,24 @@
 <main class="w-[90%] lg:w-[60%] mt-5">
   <div class="space-y-9">
     <!-- Primary Colors Multiselect -->
-    <div class="gap-10 items-center justify-center flex ">
+    <div class="gap-10 items-center justify-center flex md:flex-row flex-col ">
       <div class="flex justify-center">
-        <div
-                class="text-white font-semibold text-center h-[50px] rounded"
-        >
-          <label for="Primary Colors">
+        <div class="text-white font-semibold text-center rounded">
+          <label for="Fading Colors">
             <p class="font-medium text-white text-20px text-left pb-2.5">Primary Colors</p>
           </label>
           <MultiSelect
                   id="Primary Colors"
                   options={dyes.map((dye) => dye.color)}
                   bind:selected={selectedPrimary}
-                  placeholder="Colors for Firework Particles"
+                  placeholder="Firework Particles Colors"
                   --sms-options-bg="black"
                   --sms-min-height="30px"
                   --sms-width="100%"
                   --sms-min-width="100%"
                   --sms-max-width="100%"
+                  --sms-padding="8px"
+                  --sms-options-border-width="15px"
                   let:option
           >
             <img
@@ -382,17 +384,21 @@
 
       <!-- Fading Colors Multiselect -->
       <div class="flex justify-center">
-        <div class="text-white font-semibold text-center p-3 m-2 rounded">
+        <div class="text-white font-semibold text-center rounded">
           <label for="Fading Colors">
             <p class="font-medium text-white text-20px text-left pb-2.5">Fading Colors</p>
           </label>
           <MultiSelect
                   id="Fading Colors"
                   options={dyes.map((dye) => dye.color)}
-                  placeholder="Colors for fading Particles"
                   bind:selected={selectedFades}
+                  placeholder="Fading Particles Colors"
                   --sms-options-bg="black"
                   --sms-min-height="30px"
+                  --sms-width="100%"
+                  --sms-min-width="100%"
+                  --sms-max-width="100%"
+                  --sms-padding="8px"
                   let:option
           >
             <img
@@ -423,9 +429,9 @@
               <img
                       src="/fireworks/{shape.img}.png"
                       alt={shape.shape}
-                      class="w-full"
+                      class="w-full rounded-xl"
               />
-              {shape.shape}
+              <p class="py-1.5 font-normal text-lg">{shape.shape}</p>
             </button>
           {/each}
         </div>
@@ -450,9 +456,9 @@
               <img
                       src="/fireworks/{effect.img}.png"
                       alt={effect.name}
-                      class="w-[100%] lg:w-[120px]"
+                      class="w-[100%] lg:w-[120px] rounded-xl"
               />
-              {effect.name}
+              <p class="py-1.5 font-normal text-lg">{effect.name}</p>
             </button>
           {/each}
         </div>
@@ -476,9 +482,9 @@
               <img
                       src="/fireworks/{power.img}.png"
                       alt={power.name}
-                      class="w-[100%] lg:w-[80px]"
+                      class="w-[100%] lg:w-[80px] rounded-xl"
               />
-              {power.name}
+              <p class="py-1.5 font-normal text-lg">{power.name}</p>
             </button>
           {/each}
         </div>
@@ -598,7 +604,7 @@
 
         {#if selectedFades.length}
           <h2 class="flex justify-center font-medium text-white text-[20px]">
-            Step 2: Fading colors
+            Step 2: Fading Colors
           </h2>
           <div class="relative w-[370px] h-[170px] mx-auto">
             <img
@@ -677,10 +683,10 @@
                 class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative my-5"
                 role="alert"
         >
-          <strong class="font-bold">No crafting recipe available</strong>
+          <strong class="font-bold">No crafting recipe available.</strong>
           <span class="block sm:inline"
-          >Confirm that you have up to 6 primary colors, fewer than 7 fading
-            colors, and less than 2 effects to view the vanilla recipe</span
+          >You must have up to 6 primary colors and fewer than 7 fading
+            colors.</span
           >
         </div>
       {/if}
@@ -690,10 +696,10 @@
 
 <style>
   .custom-button {
-    @apply text-white font-bold items-center;
+    @apply text-white font-bold items-center p-1 border-2 border-[#626875] rounded-xl transition duration-100 ;
   }
 
   .custom-button.active {
-    @apply bg-sky-600;
+    @apply transition duration-100 bg-[#3C414B] border-[#3C414B];
   }
 </style>
