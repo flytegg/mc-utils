@@ -713,4 +713,10 @@
   :global(body) {
     --sms-border: 1px solid #626875;
   }
+
+  img {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+  }
 </style>
