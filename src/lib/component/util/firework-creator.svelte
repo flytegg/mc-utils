@@ -357,7 +357,7 @@
 <main class="w-[90%] lg:w-[60%] mt-5">
   <div class="space-y-9">
     <!-- Primary Colors Multiselect -->
-    <div class="gap-10 items-center justify-center flex md:flex-row flex-col ">
+    <div class="gap-10 justify-center flex md:flex-row flex-col ">
       <div class="flex justify-center">
         <div class="text-white font-semibold text-center rounded">
           <label for="Fading Colors">
@@ -371,9 +371,7 @@
                   placeholder="Firework Particles Colors"
                   --sms-options-bg="black"
                   --sms-min-height="30px"
-                  --sms-width="100%"
-                  --sms-min-width="100%"
-                  --sms-max-width="100%"
+                  --sms-width="300px"
                   --sms-padding="8px"
                   --sms-options-border-width="15px"
                   let:option
@@ -381,7 +379,7 @@
             <img
                     src={items.find((item) => item.name === option).texture}
                     alt={option}
-                    class="mg-flex w-[100%] lg:w-[40px]"
+                    class="mg-flex w-[100%] lg:w-[40px] mr-2"
             />
             {option}
           </MultiSelect>
@@ -401,16 +399,14 @@
                   placeholder="Fading Particles Colors"
                   --sms-options-bg="black"
                   --sms-min-height="30px"
-                  --sms-width="100%"
-                  --sms-min-width="100%"
-                  --sms-max-width="100%"
+                  --sms-width="300px"
                   --sms-padding="8px"
                   let:option
           >
             <img
                     src={items.find((item) => item.name === option).texture}
                     alt={option}
-                    class="mg-flex w-[100%] lg:w-[40px]"
+                    class="mg-flex w-[100%] lg:w-[40px] mr-2"
             />
             {option}
           </MultiSelect>
