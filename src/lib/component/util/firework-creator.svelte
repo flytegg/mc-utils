@@ -364,6 +364,7 @@
             <p class="font-medium text-white text-20px text-left pb-2.5">Primary Colors</p>
           </label>
           <MultiSelect
+                  outerDivClass="custom-multiselect"
                   id="Primary Colors"
                   options={dyes.map((dye) => dye.color)}
                   bind:selected={selectedPrimary}
@@ -692,7 +693,7 @@
           <strong class="font-bold">No crafting recipe available.</strong>
           <span class="block sm:inline"
           >Confirm that you have up to 6 primary colors, fewer than 7 fading
-            colors, and less than 2 effects to view the vanilla recipe</span
+            colors, and less than 2 effects to view the vanilla recipe.</span
           >
         </div>
       {/if}
@@ -707,5 +708,9 @@
 
   .custom-button.active {
     @apply transition duration-100 bg-[#3C414B] border-[#3C414B];
+  }
+
+  :global(body) {
+    --sms-border: 1px solid #626875;
   }
 </style>
