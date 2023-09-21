@@ -391,6 +391,11 @@
             platform: "spigot",
             jars: [
                 {
+                    "version": "1.20.2",
+                    "size": "69.0 MB",
+                    "release": "September 21st 2023"
+                },
+                {
                     "version": "1.20.1",
                     "size": "67.8 MB",
                     "release": "June 12th 2023"
@@ -1021,6 +1026,11 @@
             platform: "vanilla",
             jars: [
                 {
+                    "version": "1.20.2",
+                    "release": "September 21st 2023",
+                    "size": "47.1 MB"
+                },
+                {
                     "version": "1.20.1",
                     "release": "June 12th 2023",
                     "size": "45.6 MB"
@@ -1391,7 +1401,7 @@
             platform: "velocity",
             jars: [
                 {
-                    "version": "1.8-1.20.1",
+                    "version": "1.8-1.20.2",
                     "release": "28th June 2023",
                     "size": "15.6 MB",
                     "downloadURL": "https://api.papermc.io/v2/projects/velocity/versions/3.2.0-SNAPSHOT/builds/260/downloads/velocity-3.2.0-SNAPSHOT-260.jar"
