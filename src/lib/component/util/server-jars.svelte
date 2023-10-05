@@ -3,7 +3,7 @@
     import {onMount} from "svelte";
 
     let selectedType = "paper"
-    let selectedVersion = "1.20.1"
+    let selectedVersion = "1.20.2"
 
     const info = [
         {
@@ -26,6 +26,12 @@
         {
             platform: "purpur",
             jars: [
+                {
+                    "version": "1.20.2",
+                    "release": "October 5th 2023",
+                    "size": "44.5 MB",
+                    "downloadURL": "https://api.purpurmc.org/v2/purpur/1.20.2/2074/download"
+                },
                 {
                     "version": "1.20.1",
                     "release": "July 9th 2023",
@@ -175,6 +181,12 @@
         {
             platform: "paper",
             jars: [
+                {
+                    "version": "1.20.2",
+                    "release": "October 5th 2023",
+                    "size": "41.5 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.20.2/builds/217/downloads/paper-1.20.2-217.jar"
+                },
                 {
                     "version": "1.20.1",
                     "release": "July 11th 2023",
@@ -390,6 +402,11 @@
         {
             platform: "spigot",
             jars: [
+                {
+                    "version": "1.20.2",
+                    "size": "69.0 MB",
+                    "release": "September 21st 2023"
+                },
                 {
                     "version": "1.20.1",
                     "size": "67.8 MB",
@@ -1021,6 +1038,11 @@
             platform: "vanilla",
             jars: [
                 {
+                    "version": "1.20.2",
+                    "release": "September 21st 2023",
+                    "size": "47.1 MB"
+                },
+                {
                     "version": "1.20.1",
                     "release": "June 12th 2023",
                     "size": "45.6 MB"
@@ -1391,7 +1413,7 @@
             platform: "velocity",
             jars: [
                 {
-                    "version": "1.8-1.20.1",
+                    "version": "1.8-1.20.2",
                     "release": "28th June 2023",
                     "size": "15.6 MB",
                     "downloadURL": "https://api.papermc.io/v2/projects/velocity/versions/3.2.0-SNAPSHOT/builds/260/downloads/velocity-3.2.0-SNAPSHOT-260.jar"
