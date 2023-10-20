@@ -179,6 +179,35 @@
             ]
         },
         {
+            platform: "pufferfish",
+            jars: [
+                {
+                    "version": "1.20",
+                    "release": "October 20th 2023",
+                    "size": "42.24 MB",
+                    "downloadURL": "https://ci.pufferfish.host/job/Pufferfish-1.20/lastSuccessfulBuild/artifact/build/libs/pufferfish-paperclip-1.20.2-R0.1-SNAPSHOT-reobf.jar"
+                },
+                {
+                    "version": "1.19",
+                    "release": "June 6th 2023",
+                    "size": "43.16 MB",
+                    "downloadURL": "https://ci.pufferfish.host/job/Pufferfish-1.19/lastSuccessfulBuild/artifact/build/libs/pufferfish-paperclip-1.19.4-R0.1-SNAPSHOT-reobf.jar"
+                },
+                {
+                    "version": "1.18",
+                    "release": "June 18th 2022",
+                    "size": "35.7 MB",
+                    "downloadURL": "https://ci.pufferfish.host/job/Pufferfish-1.18/lastSuccessfulBuild/artifact/build/libs/pufferfish-paperclip-1.18.2-R0.1-SNAPSHOT-reobf.jar"
+                },
+                {
+                    "version": "1.17",
+                    "release": "April 4th 2022",
+                    "size": "61.21 MB",
+                    "downloadURL": "https://ci.pufferfish.host/job/Pufferfish-1.17/lastSuccessfulBuild/artifact/build/libs/Pufferfish-1.17.1-R0.1-SNAPSHOT.jar"
+                }
+            ]
+        },
+        {
             platform: "paper",
             jars: [
                 {
@@ -1534,6 +1563,7 @@
             <option disabled value="bungee" class="scroll-option">BungeeCord (Coming Soon)</option>
             <option value="folia" class="scroll-option">Folia</option>
             <option value="purpur" class="scroll-option">Purpur</option>
+            <option value="pufferfish" class="scroll-option">Pufferfish</option>
             <option value="paper" class="scroll-option">Paper</option>
             <option value="spigot" class="scroll-option">Spigot</option>
             <option value="craftbukkit" class="scroll-option">CraftBukkit</option>
@@ -1548,7 +1578,7 @@
             {/each}
         </select>
     </div>
-    {#if selectedType === "paper" || selectedType === "purpur" || selectedType === "folia" || selectedType === "waterfall" || selectedType === "velocity"}
+    {#if selectedType === "paper" || selectedType === "pufferfish" || selectedType === "purpur" || selectedType === "folia" || selectedType === "waterfall" || selectedType === "velocity"}
         <a href="{downloadURL}" aria-label='Download Jar' class="self-end"><button class="button h-fit" on:click={downloadSuccess}>Download</button></a>
     {:else}
         <a href="https://cdn.mcutils.com/jars/{selectedType}-{selectedVersion}.jar" aria-label='Download Jar' class="self-end"><button class="button h-fit" on:click={downloadSuccess}>Download</button></a>
