@@ -76,12 +76,13 @@ const utils: Util[] = [
         shortDescription: "Create a server-icon.png",
         seoDescription: "Convert an image into a Minecraft server icon by resizing to 64x64 format and renaming to server-icon.png."
     },
-    // {
-    //     path: "unicode-symbols",
-    //     name: "Unicode Symbols",
-    //     description: "The full collection of all allowed<br> in-game unicode characters.",
-    //     shortDescription: "All allowed unicode symbols"
-    // },
+    {
+        path: "unicode-symbols",
+        name: "Unicode Symbols",
+        description: "Collection of allowed in-game unicode characters.",
+        shortDescription: "All allowed unicode symbols",
+        seoDescription: "A collection of unicode characters/symbols which can be used in Minecraft chat, GUIs, MOTDs."
+    },
     {
         path: "note-block-songs",
         name: "Note Block Songs",
