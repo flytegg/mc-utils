@@ -1,0 +1,27 @@
+name: Util Bug or Change
+description: Suggest a change or bugfix for a util.
+title: "[Util Change]: "
+labels: []
+body:
+  - type: input
+    id: util
+    attributes:
+      label: Util Name
+      description: What util should be changed?
+      placeholder: banner-creator
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Changes
+      description: What needs to be changed?
+    validations:
+      required: true
+  - type: textarea
+    id: extra-info
+    attributes:
+      label: Extra Info
+      description: Anything else we should know about this?
+    validations:
+      required: false
