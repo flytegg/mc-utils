@@ -3,14 +3,14 @@ description: Suggest a new util you would like to see on MC Utils
 title: "[Util Suggestion]: "
 labels: ["enhancement"]
 body:
-  - type: input
-    id: name
-    attributes:
-      label: Util Name
-      description: What util do you want to be added?
-      placeholder: Banner Creator
-    validations:
-      required: true
+  # - type: input
+  #   id: name
+  #   attributes:
+  #     label: Util Name
+  #     description: What util do you want to be added?
+  #     placeholder: Banner Creator
+  #   validations:
+  #     required: true
   - type: textarea
     id: description
     attributes:
@@ -19,3 +19,11 @@ body:
       placeholder: "Allows you to create banners and will generate the code and commands to get it."
     validations:
       required: true
+  - type: textarea
+    id: extra-info
+    attributes:
+      label: Extra Info
+      description: Anything else we should know about this util?
+    validations:
+      required: false
+
