@@ -1,6 +1,7 @@
 <script lang="ts">
     import {toast} from "@zerodevx/svelte-toast";
     import {onMount} from "svelte";
+    import {trackEvent} from "../../../app.d.ts";
 
     let selectedType = "paper"
     let selectedVersion = "1.20.2"
@@ -1525,8 +1526,9 @@
                 '--toastBarBackground': '#2F855A'
             }
         })
-    }
 
+        trackEvent('server-jars-download', 'type', selectedType);
+    }
 
     onMount(() => {
         getDownloadURL()

@@ -18,15 +18,6 @@
     <meta name="keywords" content="mcutils, mc, utils, minecraft, server, spigot, paper, api, unicode, banner, colors, chat, gradient, inventory, slots, noteblock, skin">
     <link rel="icon" href="/favicon.png">
     <link rel="sitemap" href="/sitemap.xml" />
-
-    <!-- Google Analyics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4PFR6RCP92"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-4PFR6RCP92');
-    </script>
 </svelte:head>
 
 
