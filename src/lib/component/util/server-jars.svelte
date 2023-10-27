@@ -325,119 +325,119 @@
       jars: [
         {
           version: "1.20.2",
-          release: "Sep 12, 2023",
+          release: "September 12th, 2023",
           size: "151 KB",
           downloadURL:
             "https://meta.fabricmc.net/v2/versions/loader/1.20.2/0.14.24/0.11.2/server/jar",
         },
         {
           version: "1.20",
-          release: "May 25, 2023",
+          release: "May 25th, 2023",
           size: "151 KB",
           downloadURL:
             "https://meta.fabricmc.net/v2/versions/loader/1.20/0.14.24/0.11.2/server/jar",
         },
         {
           version: "1.19.4",
-          release: "Mar 1, 2023",
+          release: "March 1st, 2023",
           size: "151 KB",
           downloadURL:
             "https://meta.fabricmc.net/v2/versions/loader/1.19.4/0.14.24/0.11.2/server/jar",
         },
         {
           version: "1.19.3",
-          release: "Nov 24, 2022",
+          release: "November 24th, 2022",
           size: "151 KB",
           downloadURL:
             "https://meta.fabricmc.net/v2/versions/loader/1.19.3/0.14.24/0.11.2/server/jar",
         },
         {
           version: "1.19",
-          release: "Jun 7, 2022",
+          release: "June 7th, 2022",
           size: "151 KB",
           downloadURL:
             "https://meta.fabricmc.net/v2/versions/loader/1.19/0.14.24/0.11.2/server/jar",
         },
         {
           version: "1.18",
-          release: "Nov 30, 2021",
+          release: "November 30th, 2021",
           size: "151 KB",
           downloadURL:
             "https://meta.fabricmc.net/v2/versions/loader/1.18/0.14.24/0.11.2/server/jar",
         },
         {
           version: "1.17",
-          release: "Jun 8, 2021",
+          release: "June 8th, 2021",
           size: "151 KB",
           downloadURL:
             "https://meta.fabricmc.net/v2/versions/loader/1.17/0.14.24/0.11.2/server/jar",
         },
         {
           version: "1.16.2",
-          release: "Aug 11, 2020",
+          release: "August 11th, 2020",
           size: "151 KB",
           downloadURL:
             "https://meta.fabricmc.net/v2/versions/loader/1.16.2/0.14.24/0.11.2/server/jar",
         },
         {
           version: "1.16",
-          release: "Jun 23, 2020",
+          release: "June 23rd, 2020",
           size: "151 KB",
           downloadURL:
             "https://meta.fabricmc.net/v2/versions/loader/1.16/0.14.24/0.11.2/server/jar",
         },
         {
           version: "1.15.2",
-          release: "Jan 21, 2020",
+          release: "January 21st, 2020",
           size: "151 KB",
           downloadURL:
             "https://meta.fabricmc.net/v2/versions/loader/1.15.2/0.14.24/0.11.2/server/jar",
         },
         {
           version: "1.15.1",
-          release: "Dec 17, 2019",
+          release: "December 17th, 2019",
           size: "151 KB",
           downloadURL:
             "https://meta.fabricmc.net/v2/versions/loader/1.15.1/0.14.24/0.11.2/server/jar",
         },
         {
           version: "1.15",
-          release: "Dec 10, 2019",
+          release: "December 10th, 2019",
           size: "151 KB",
           downloadURL:
             "https://meta.fabricmc.net/v2/versions/loader/1.15/0.14.24/0.11.2/server/jar",
         },
         {
           version: "1.14.4",
-          release: "Jul 19, 2019",
+          release: "July 19th, 2019",
           size: "151 KB",
           downloadURL:
             "https://meta.fabricmc.net/v2/versions/loader/1.14.4/0.14.24/0.11.2/server/jar",
         },
         {
           version: "1.14.3",
-          release: "Jun 24, 2019",
+          release: "June 24th, 2019",
           size: "151 KB",
           downloadURL:
             "https://meta.fabricmc.net/v2/versions/loader/1.14.3/0.14.24/0.11.2/server/jar",
         },
         {
           version: "1.14.2",
-          release: "May 27, 2019",
+          release: "May 27th, 2019",
           size: "151 KB",
           downloadURL:
             "https://meta.fabricmc.net/v2/versions/loader/1.14.2/0.14.24/0.11.2/server/jar",
         },
         {
           version: "1.14.1",
-          release: "May 13, 2019",
+          release: "May 13th, 2019",
           size: "151 KB",
           downloadURL:
             "https://meta.fabricmc.net/v2/versions/loader/1.14.1/0.14.24/0.11.2/server/jar",
         },
         {
           version: "1.14",
-          release: "Apr 23, 2019",
+          release: "April 23rd, 2019",
           size: "151 KB",
           downloadURL:
             "https://meta.fabricmc.net/v2/versions/loader/1.14/0.14.24/0.11.2/server/jar",
