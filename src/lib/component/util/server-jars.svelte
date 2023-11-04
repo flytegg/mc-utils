@@ -1,14 +1,23 @@
 <script lang="ts">
     import {toast} from "@zerodevx/svelte-toast";
-    import {onMount} from "svelte";
     import {trackEvent} from "$lib/google/gtag";
-    import info from "$lib/server-jars.json"
 
     let selectedType = "paper"
     let selectedVersion = "1.20.2"
 
+    const getServerJarPlatforms = async () => {
+        return await (await fetch("/api/server-jars")).json()
+    }
+
+    const getServerJarVersions = async (type: string) => {
+        return await (await fetch(`/api/server-jars/${type}`)).json()
+    }
+
+    const getServerJarDownloadUrl = async (type: string, version: string) => {
+        return (await (await fetch(`/api/server-jars/${type}/${version}`)).json()).downloadUrl
+    }
+
     function downloadSuccess() {
-        getDownloadURL()
         toast.push('Downloaded successfully!', {
             theme: {
                 '--toastColor': 'mintcream',
@@ -20,29 +29,12 @@
         trackEvent('server-jars-download', 'type', selectedType);
     }
 
-    onMount(() => {
-        getDownloadURL()
-    })
-
-    let downloadURL = ""
-    function getDownloadURL() {
-        const result = info.find(item => item.platform === selectedType);
-        if (result) {
-            const jar = result.jars.find(item => item.version === selectedVersion);
-            if (jar) {
-                downloadURL = jar.downloadURL;
-                return true
-            }
-        }
-        return false
-    }
-
     // Keep selected version if exists in new type, if not select highest
     function select() {
-        if (!getDownloadURL()) {
-            const result = info.find(item => item.platform === selectedType);
-            selectedVersion = result?.jars[0].version
-        }
+        // if (!getDownloadURL()) {
+        //     const result = info.find(item => item.platform === selectedType);
+        //     selectedVersion = result?.jars[0].version
+        // }
     }
 </script>
 
@@ -50,33 +42,33 @@
     <div class="flex flex-col">
         <h3 class="font-medium text-white text-[20px] text-left">Type</h3>
         <select bind:value={selectedType} on:change={select} id="type" class="w-[140px] scroll">
-            <option value="velocity" class="scroll-option">Velocity (Proxy)</option>
-            <option value="waterfall" class="scroll-option">Waterfall (Proxy)</option>
-            <option disabled value="bungee" class="scroll-option">BungeeCord (Coming Soon)</option>
-            <option value="fabric" class="scroll-option">Fabric</option>
-            <option value="forge" class="scroll-option">Forge</option>
-            <option value="folia" class="scroll-option">Folia</option>
-            <option value="purpur" class="scroll-option">Purpur</option>
-            <option value="pufferfish" class="scroll-option">Pufferfish</option>
-            <option value="paper" class="scroll-option">Paper</option>
-            <option value="spigot" class="scroll-option">Spigot</option>
-            <option value="craftbukkit" class="scroll-option">CraftBukkit</option>
-            <option value="vanilla" class="scroll-option">Vanilla</option>
+            {#await getServerJarPlatforms()}
+                <h1>Loading</h1>
+            {:then platforms} 
+                {#each platforms as platform}
+                    <option value={platform.key} class="scroll-option">{platform.name}</option>
+                {/each}
+            {/await}
         </select>
     </div>
     <div class="flex flex-col">
         <h3 class="font-medium text-white text-[20px] text-left">Version</h3>
         <select bind:value={selectedVersion} id="underline_select2" class="w-[120px] scroll">
-            {#each info.find(item => item.platform === selectedType).jars as jar}
-                <option value="{jar.version}" class="scroll-option">{jar.version}</option>
-            {/each}
+            {#await getServerJarVersions(selectedType)}
+                <h1>Loading</h1>
+            {:then versions} 
+                {#each versions as version}
+                    <option value="{version}" class="scroll-option">{version}</option>
+                {/each}
+            {/await}
+
         </select>
     </div>
-    {#if selectedType === "paper" || selectedType === "pufferfish" || selectedType === "purpur" || selectedType === "folia" || selectedType === "waterfall" || selectedType === "velocity" || selectedType === "forge" || selectedType === "fabric"}
-        <a href="{downloadURL}" aria-label='Download Jar' class="self-end"><button class="button h-fit" on:click={downloadSuccess}>Download</button></a>
-    {:else}
-        <a href="https://cdn.mcutils.com/jars/{selectedType}-{selectedVersion}.jar" aria-label='Download Jar' class="self-end"><button class="button h-fit" on:click={downloadSuccess}>Download</button></a>
-    {/if}
+    {#await getServerJarDownloadUrl(selectedType, selectedVersion)}
+        <h1>Loading</h1>
+    {:then downloadUrl} 
+        <a href="{downloadUrl}" aria-label='Download Jar' class="self-end"><button class="button h-fit" on:click={downloadSuccess}>Download</button></a>
+    {/await}
 </div>
 
 <table class="w-[90%] lg:w-[60%] text-white mt-12">
@@ -86,7 +78,7 @@
         <th class="rounded-tr-lg rounded-br-lg font-medium text-[20px] text-left">Size</th>
         <th class="font-medium text-[20px] text-left bg-[#1a1b1e] "></th>
     </tr>
-    {#each info.find(item => item.platform === selectedType).jars as jar}
+    <!-- {#each info.find(item => item.platform === selectedType).jars as jar}
         <tr class="">
             <td class="pl-6 p-1.5 border-b-2 border-b-[#1D1F24] text-gray-400">{jar.version}</td>
             <td class="border-b-2 border-b-[#1D1F24] text-gray-400">{jar.release}</td>
@@ -99,5 +91,5 @@
                 </a>
             </td>
         </tr>
-    {/each}
+    {/each} -->
 </table>
