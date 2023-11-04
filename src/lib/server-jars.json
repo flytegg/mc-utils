@@ -1,6 +1,7 @@
 [
     {
         "platform": "forge",
+        "display": "Forge",
         "jars": [
             {
                 "version": "1.20.2",
@@ -270,6 +271,7 @@
         },
         {
         "platform": "fabric",
+        "display": "Fabric",
         "jars": [
             {
                 "version": "1.20.2",
@@ -377,6 +379,7 @@
     },
     {
         "platform": "folia",
+        "display": "Folia",
         "jars": [
             {
                 "version": "1.20.1",
@@ -394,6 +397,7 @@
     },
     {
         "platform": "purpur",
+        "display": "Purpur",
         "jars": [
             {
                 "version": "1.20.2",
@@ -549,6 +553,7 @@
     },
     {
         "platform": "pufferfish",
+        "display": "Pufferfish",
         "jars": [
             {
                 "version": "1.20",
@@ -578,6 +583,7 @@
     },
     {
         "platform": "paper",
+        "display": "Paper",
         "jars": [
             {
                 "version": "1.20.2",
@@ -799,6 +805,7 @@
     },
     {
         "platform": "spigot",
+        "display": "Spigot",
         "jars": [
             {
                 "version": "1.20.2",
@@ -1089,6 +1096,7 @@
     },
     {
         "platform": "craftbukkit",
+        "display": "CraftBukkit",
         "jars": [
             {
                 "version": "1.20.1",
@@ -1434,6 +1442,7 @@
     },
     {
         "platform": "vanilla",
+        "display": "Vanilla",
         "jars": [
             {
                 "version": "1.20.2",
@@ -1809,6 +1818,7 @@
     },
     {
         "platform": "velocity",
+        "display": "Velocity (Proxy)",
         "jars": [
             {
                 "version": "1.8-1.20.2",
@@ -1820,6 +1830,7 @@
     },
     {
         "platform": "waterfall",
+        "display": "Waterfall (Proxy)",
         "jars": [
             {
                 "version": "1.20",
