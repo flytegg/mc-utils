@@ -1,6 +1,7 @@
 import { redirect } from '@sveltejs/kit'
 import type { RequestHandler } from './$types'
 import info from "$lib/server-jars.json"
+import { trackEvent } from '$lib/google/gtag'
 
 export const GET = (async ({ params }) => {
 	const platform: any | null = findByPlatform(params.platform)
@@ -14,6 +15,8 @@ export const GET = (async ({ params }) => {
 		status: 204,
 		statusText:  `No version ${params.version} on ${params.platform}`
 	})
+
+	trackEvent('server-jars-download', 'type', `${params.platform}-${params.version}`);
 
 	const downloadUrl = version.downloadURL ?? `https://cdn.mcutils.com/jars/${params.platform}-${params.version}.jar`
 	throw redirect(302, downloadUrl)

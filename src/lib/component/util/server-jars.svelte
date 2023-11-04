@@ -26,7 +26,7 @@
             }
         })
 
-        trackEvent('server-jars-download', 'type', selectedType);
+        trackEvent('server-jars-download', 'type', `${selectedType}-${selectedVersion}`);
     }
 
     // Keep selected version if exists in new type, if not select highest
