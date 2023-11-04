@@ -23,19 +23,9 @@ export const GET = (async ({ params }) => {
 }) satisfies RequestHandler
 
 const findByPlatform = (platform: string) => {
-	for (const i in info) {
-		if (info[i].platform === platform) {
-			return info[i]	
-		}
-	}
-	return null;
+	return info.find((item) => item.platform === platform)
 }
 
 const findVersion = (versions: any, version: string) => {
-	for (const i in versions) {
-		if (versions[i].version === version) {
-			return versions[i]	
-		}
-	}
-	return null;
+	return versions.find((item: any) => item.version === version)
 }
