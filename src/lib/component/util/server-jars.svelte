@@ -8,6 +8,382 @@
 
     const info = [
         {
+            platform: "forge",
+            jars: [
+                {
+                    "version": "1.20.2",
+                    "release": "October 25th 2023",
+                    "size": "5.15 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.2-48.0.33/forge-1.20.2-48.0.33-installer.jar",
+                },
+                {
+                    "version": "1.20.1",
+                    "release": "September 28, 2023",
+                    "size": "5.63 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.1-47.2.0/forge-1.20.1-47.2.0-installer.jar",
+                },
+                {
+                    "version": "1.20",
+                    "release": "June 11, 2023",
+                    "size": "5.52 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.20-46.0.14/forge-1.20-46.0.14-installer.jar",
+                },
+                {
+                    "version": "1.19.4",
+                    "release": "October 18, 2023",
+                    "size": "6.77 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.19.4-45.2.0/forge-1.19.4-45.2.0-installer.jar",
+                },
+                {
+                    "version": "1.19.3",
+                    "release": "March 09, 2023",
+                    "size": "6.57 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.19.3-44.1.0/forge-1.19.3-44.1.0-installer.jar",
+                },
+                {
+                    "version": "1.19.2",
+                    "release": "September 28, 2023",
+                    "size": "6.7 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.19.2-43.3.0/forge-1.19.2-43.3.0-installer.jar",
+                },
+                {
+                    "version": "1.19.1",
+                    "release": "August 05, 2022",
+                    "size": "6.47 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.19.1-42.0.9/forge-1.19.1-42.0.9-installer.jar",
+                },
+                {
+                    "version": "1.19",
+                    "release": "July 27, 2022",
+                    "size": "6.42 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.19-41.1.0/forge-1.19-41.1.0-installer.jar",
+                },
+                {
+                    "version": "1.18.2",
+                    "release": "July 14, 2023",
+                    "size": "6.34 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.18.2-40.2.0/forge-1.18.2-40.2.0-installer.jar",
+                },
+                {
+                    "version": "1.18.1",
+                    "release": "March 01, 2022",
+                    "size": "6.58 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.18.1-39.1.0/forge-1.18.1-39.1.0-installer.jar",
+                },
+                {
+                    "version": "1.18",
+                    "release": "December 10, 2021",
+                    "size": "6.19 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.18-38.0.17/forge-1.18-38.0.17-installer.jar",
+                },
+                {
+                    "version": "1.17.1",
+                    "release": "December 10, 2021",
+                    "size": "5.04 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.17.1-37.1.1/forge-1.17.1-37.1.1-installer.jar",
+                },
+                {
+                    "version": "1.16.5",
+                    "release": "July 17, 2022",
+                    "size": "7.58 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.16.5-36.2.34/forge-1.16.5-36.2.34-installer.jar",
+                },
+                {
+                    "version": "1.16.4",
+                    "release": "January 15, 2021",
+                    "size": "6.59 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.16.4-35.1.4/forge-1.16.4-35.1.4-installer.jar",
+                },
+                {
+                    "version": "1.16.3",
+                    "release": "November 02, 2020",
+                    "size": "6.53 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.16.3-34.1.0/forge-1.16.3-34.1.0-installer.jar",
+                },
+                {
+                    "version": "1.16.2",
+                    "release": "September 10, 2020",
+                    "size": "6.47 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.16.2-33.0.61/forge-1.16.2-33.0.61-installer.jar",
+                },
+                {
+                    "version": "1.16.1",
+                    "release": "August 09, 2020",
+                    "size": "6.39 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.16.1-32.0.108/forge-1.16.1-32.0.108-installer.jar",
+                },
+                {
+                    "version": "1.15.2",
+                    "release": "December 17, 2019",
+                    "size": "6.3 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.15.2-31.2.57/forge-1.15.2-31.2.57-installer.jar",
+                },
+                {
+                    "version": "1.15.1",
+                    "release": "December 11, 2021",
+                    "size": "7.68 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.15.1-30.0.51/forge-1.15.1-30.0.51-installer.jar",
+                },
+                {
+                    "version": "1.15",
+                    "release": "January 22, 2020",
+                    "size": "7.61 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.15-29.0.4/forge-1.15-29.0.4-installer.jar",
+                },
+                {
+                    "version": "1.14.4",
+                    "release": "December 11, 2021",
+                    "size": "6.2 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.14.4-28.2.26/forge-1.14.4-28.2.26-installer.jar",
+                },
+                {
+                    "version": "1.14.3",
+                    "release": "July 19, 2019",
+                    "size": "6.91 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.14.3-27.0.60/forge-1.14.3-27.0.60-installer.jar",
+                },
+                {
+                    "version": "1.14.2",
+                    "release": "June 24, 2019",
+                    "size": "7.15 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.14.2-26.0.63/forge-1.14.2-26.0.63-installer.jar",
+                },
+                {
+                    "version": "1.13.2",
+                    "release": "December 11, 2021",
+                    "size": "5.79 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.13.2-25.0.223/forge-1.13.2-25.0.223-installer.jar",
+                },
+                {
+                    "version": "1.12.2",
+                    "release": "December 13, 2021",
+                    "size": "4.39 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.12.2-14.23.5.2859/forge-1.12.2-14.23.5.2859-installer.jar",
+                },
+                {
+                    "version": "1.12.1",
+                    "release": "August 01, 2017",
+                    "size": "4.95 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.12.1-14.22.1.2478/forge-1.12.1-14.22.1.2478-installer.jar",
+                },
+                {
+                    "version": "1.12",
+                    "release": "September 18, 2017",
+                    "size": "4.93 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.12-14.21.1.2387/forge-1.12-14.21.1.2387-installer.jar",
+                },
+                {
+                    "version": "1.11.2",
+                    "release": "January 10, 2018",
+                    "size": "4.85 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.11.2-13.20.1.2588/forge-1.11.2-13.20.1.2588-installer.jar",
+                },
+                {
+                    "version": "1.11",
+                    "release": "December 23, 2016",
+                    "size": "4.67 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.11-13.19.1.2189/forge-1.11-13.19.1.2189-installer.jar",
+                },
+                {
+                    "version": "1.10.2",
+                    "release": "October 08, 2017",
+                    "size": "4.71 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.10.2-12.18.3.2511/forge-1.10.2-12.18.3.2511-installer.jar",
+                },
+                {
+                    "version": "1.10",
+                    "release": "June 26, 2016",
+                    "size": "4.51 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.10-12.18.0.2000-1.10.0/forge-1.10-12.18.0.2000-1.10.0-installer.jar",
+                },
+                {
+                    "version": "1.9.4",
+                    "release": "June 08, 2017",
+                    "size": "4.47 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.9.4-12.17.0.2317-1.9.4/forge-1.9.4-12.17.0.2317-1.9.4-installer.jar",
+                },
+                {
+                    "version": "1.9",
+                    "release": "June 01, 2016",
+                    "size": "4.39 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.9-12.16.1.1887/forge-1.9-12.16.1.1887-installer.jar",
+                },
+                {
+                    "version": "1.8.9",
+                    "release": "June 08, 2017",
+                    "size": "4.28 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.8.9-11.15.1.2318-1.8.9/forge-1.8.9-11.15.1.2318-1.8.9-installer.jar",
+                },
+                {
+                    "version": "1.8.8",
+                    "release": "December 29, 2015",
+                    "size": "3.94 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.8.8-11.15.0.1655/forge-1.8.8-11.15.0.1655-installer.jar",
+                },
+                {
+                    "version": "1.8",
+                    "release": "November 22, 2015",
+                    "size": "3.87 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.8-11.14.4.1563/forge-1.8-11.14.4.1563-installer.jar",
+                },
+                {
+                    "version": "1.7.10",
+                    "release": "December 09, 2015",
+                    "size": "3.53 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.7.10-10.13.4.1614-1.7.10/forge-1.7.10-10.13.4.1614-1.7.10-installer.jar",
+                },
+                {
+                    "version": "1.7.10_pre4",
+                    "release": "June 26, 2014",
+                    "size": "3.2 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.7.10_pre4-10.12.2.1149-prerelease/forge-1.7.10_pre4-10.12.2.1149-prerelease-installer.jar",
+                },
+                {
+                    "version": "1.7.2",
+                    "release": "July 02, 2014",
+                    "size": "3.17 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.7.2-10.12.2.1161-mc172/forge-1.7.2-10.12.2.1161-mc172-installer.jar",
+                },
+                {
+                    "version": "1.6.4",
+                    "release": "March 28, 2015",
+                    "size": "2.51 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.6.4-9.11.1.1345/forge-1.6.4-9.11.1.1345-installer.jar",
+                },
+                {
+                    "version": "1.6.3",
+                    "release": "September 19, 2013",
+                    "size": "2.46 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.6.3-9.11.0.878/forge-1.6.3-9.11.0.878-installer.jar",
+                },
+                {
+                    "version": "1.6.2",
+                    "release": "September 15, 2013",
+                    "size": "2.46 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.6.2-9.10.1.871/forge-1.6.2-9.10.1.871-installer.jar",
+                },
+                {
+                    "version": "1.6.1",
+                    "release": "July 06, 2013",
+                    "size": "2.42 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.6.1-8.9.0.775/forge-1.6.1-8.9.0.775-installer.jar",
+                },
+                {
+                    "version": "1.5.2",
+                    "release": "June 17, 2013",
+                    "size": "2.53 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.5.2-7.8.1.738/forge-1.5.2-7.8.1.738-installer.jar",
+                },
+            ],
+            },
+            {
+            platform: "fabric",
+            jars: [
+                {
+                    "version": "1.20.2",
+                    "release": "September 12th, 2023",
+                    "size": "151 KB",
+                    "downloadURL":"https://meta.fabricmc.net/v2/versions/loader/1.20.2/0.14.24/0.11.2/server/jar",
+                },
+                {
+                    "version": "1.20",
+                    "release": "May 25th, 2023",
+                    "size": "151 KB",
+                    "downloadURL":"https://meta.fabricmc.net/v2/versions/loader/1.20/0.14.24/0.11.2/server/jar",
+                },
+                {
+                    "version": "1.19.4",
+                    "release": "March 1st, 2023",
+                    "size": "151 KB",
+                    "downloadURL":"https://meta.fabricmc.net/v2/versions/loader/1.19.4/0.14.24/0.11.2/server/jar",
+                },
+                {
+                    "version": "1.19.3",
+                    "release": "November 24th, 2022",
+                    "size": "151 KB",
+                    "downloadURL":"https://meta.fabricmc.net/v2/versions/loader/1.19.3/0.14.24/0.11.2/server/jar",
+                },
+                {
+                    "version": "1.19",
+                    "release": "June 7th, 2022",
+                    "size": "151 KB",
+                    "downloadURL":"https://meta.fabricmc.net/v2/versions/loader/1.19/0.14.24/0.11.2/server/jar",
+                },
+                {
+                    "version": "1.18",
+                    "release": "November 30th, 2021",
+                    "size": "151 KB",
+                    "downloadURL":"https://meta.fabricmc.net/v2/versions/loader/1.18/0.14.24/0.11.2/server/jar",
+                },
+                {
+                    "version": "1.17",
+                    "release": "June 8th, 2021",
+                    "size": "151 KB",
+                    "downloadURL":"https://meta.fabricmc.net/v2/versions/loader/1.17/0.14.24/0.11.2/server/jar",
+                },
+                {
+                    "version": "1.16.2",
+                    "release": "August 11th, 2020",
+                    "size": "151 KB",
+                    "downloadURL":"https://meta.fabricmc.net/v2/versions/loader/1.16.2/0.14.24/0.11.2/server/jar",
+                },
+                {
+                    "version": "1.16",
+                    "release": "June 23rd, 2020",
+                    "size": "151 KB",
+                    "downloadURL":"https://meta.fabricmc.net/v2/versions/loader/1.16/0.14.24/0.11.2/server/jar",
+                },
+                {
+                    "version": "1.15.2",
+                    "release": "January 21st, 2020",
+                    "size": "151 KB",
+                    "downloadURL":"https://meta.fabricmc.net/v2/versions/loader/1.15.2/0.14.24/0.11.2/server/jar",
+                },
+                {
+                    "version": "1.15.1",
+                    "release": "December 17th, 2019",
+                    "size": "151 KB",
+                    "downloadURL":"https://meta.fabricmc.net/v2/versions/loader/1.15.1/0.14.24/0.11.2/server/jar",
+                },
+                {
+                    "version": "1.15",
+                    "release": "December 10th, 2019",
+                    "size": "151 KB",
+                    "downloadURL":"https://meta.fabricmc.net/v2/versions/loader/1.15/0.14.24/0.11.2/server/jar",
+                },
+                {
+                    "version": "1.14.4",
+                    "release": "July 19th, 2019",
+                    "size": "151 KB",
+                    "downloadURL":"https://meta.fabricmc.net/v2/versions/loader/1.14.4/0.14.24/0.11.2/server/jar",
+                },
+                {
+                    "version": "1.14.3",
+                    "release": "June 24th, 2019",
+                    "size": "151 KB",
+                    "downloadURL":"https://meta.fabricmc.net/v2/versions/loader/1.14.3/0.14.24/0.11.2/server/jar",
+                },
+                {
+                    "version": "1.14.2",
+                    "release": "May 27th, 2019",
+                    "size": "151 KB",
+                    "downloadURL":"https://meta.fabricmc.net/v2/versions/loader/1.14.2/0.14.24/0.11.2/server/jar",
+                },
+                {
+                    "version": "1.14.1",
+                    "release": "May 13th, 2019",
+                    "size": "151 KB",
+                    "downloadURL":"https://meta.fabricmc.net/v2/versions/loader/1.14.1/0.14.24/0.11.2/server/jar",
+                },
+                {
+                    "version": "1.14",
+                    "release": "April 23rd, 2019",
+                    "size": "151 KB",
+                    "downloadURL":"https://meta.fabricmc.net/v2/versions/loader/1.14/0.14.24/0.11.2/server/jar",
+                },
+            ],
+        },
+        {
             platform: "folia",
             jars: [
                 {
@@ -1563,6 +1939,8 @@
             <option value="velocity" class="scroll-option">Velocity (Proxy)</option>
             <option value="waterfall" class="scroll-option">Waterfall (Proxy)</option>
             <option disabled value="bungee" class="scroll-option">BungeeCord (Coming Soon)</option>
+            <option value="fabric" class="scroll-option">Fabric</option>
+            <option value="forge" class="scroll-option">Forge</option>
             <option value="folia" class="scroll-option">Folia</option>
             <option value="purpur" class="scroll-option">Purpur</option>
             <option value="pufferfish" class="scroll-option">Pufferfish</option>
@@ -1580,7 +1958,7 @@
             {/each}
         </select>
     </div>
-    {#if selectedType === "paper" || selectedType === "pufferfish" || selectedType === "purpur" || selectedType === "folia" || selectedType === "waterfall" || selectedType === "velocity"}
+    {#if selectedType === "paper" || selectedType === "pufferfish" || selectedType === "purpur" || selectedType === "folia" || selectedType === "waterfall" || selectedType === "velocity" || selectedType === "forge" || selectedType === "fabric"}
         <a href="{downloadURL}" aria-label='Download Jar' class="self-end"><button class="button h-fit" on:click={downloadSuccess}>Download</button></a>
     {:else}
         <a href="https://cdn.mcutils.com/jars/{selectedType}-{selectedVersion}.jar" aria-label='Download Jar' class="self-end"><button class="button h-fit" on:click={downloadSuccess}>Download</button></a>
