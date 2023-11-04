@@ -1939,6 +1939,8 @@
             <option value="velocity" class="scroll-option">Velocity (Proxy)</option>
             <option value="waterfall" class="scroll-option">Waterfall (Proxy)</option>
             <option disabled value="bungee" class="scroll-option">BungeeCord (Coming Soon)</option>
+            <option value="fabric" class="scroll-option">Fabric</option>
+            <option value="forge" class="scroll-option">Forge</option>
             <option value="folia" class="scroll-option">Folia</option>
             <option value="purpur" class="scroll-option">Purpur</option>
             <option value="pufferfish" class="scroll-option">Pufferfish</option>
@@ -1956,7 +1958,7 @@
             {/each}
         </select>
     </div>
-    {#if selectedType === "paper" || selectedType === "pufferfish" || selectedType === "purpur" || selectedType === "folia" || selectedType === "waterfall" || selectedType === "velocity"}
+    {#if selectedType === "paper" || selectedType === "pufferfish" || selectedType === "purpur" || selectedType === "folia" || selectedType === "waterfall" || selectedType === "velocity" || selectedType === "forge" || selectedType === "fabric"}
         <a href="{downloadURL}" aria-label='Download Jar' class="self-end"><button class="button h-fit" on:click={downloadSuccess}>Download</button></a>
     {:else}
         <a href="https://cdn.mcutils.com/jars/{selectedType}-{selectedVersion}.jar" aria-label='Download Jar' class="self-end"><button class="button h-fit" on:click={downloadSuccess}>Download</button></a>
