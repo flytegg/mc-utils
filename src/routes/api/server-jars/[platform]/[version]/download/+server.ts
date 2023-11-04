@@ -1,8 +1,8 @@
-import { json } from '@sveltejs/kit'
+import { redirect } from '@sveltejs/kit'
 import type { RequestHandler } from './$types'
 import info from "$lib/server-jars.json"
 
-export const GET = (async ({ params, url }) => {
+export const GET = (async ({ params }) => {
 	const platform: any | null = findByPlatform(params.platform)
 	if (!platform) return new Response(null, {
 		status: 204,
@@ -15,14 +15,8 @@ export const GET = (async ({ params, url }) => {
 		statusText:  `No version ${params.version} on ${params.platform}`
 	})
 
-	return json({
-		platform: platform.platform,
-		display: platform.display,
-		version: version.version,
-		release: version.release,
-		size: version.size,
-		downloadUrl: `${url.href}/download`,
-	})
+	const downloadUrl = version.downloadURL ?? `https://cdn.mcutils.com/jars/${params.platform}-${params.version}.jar`
+	throw redirect(302, downloadUrl)
 }) satisfies RequestHandler
 
 const findByPlatform = (platform: string) => {

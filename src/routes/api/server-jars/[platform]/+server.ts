@@ -15,16 +15,7 @@ export const GET = (async ({ params }) => {
 const findByPlatform = (platform: string) => {
 	for (const i in info) {
 		if (info[i].platform === platform) {
-			return info[i]	
-		}
-	}
-	return null;
-}
-
-const findVersion = (versions: any, version: string) => {
-	for (const i in versions) {
-		if (versions[i].version === version) {
-			return versions[i]	
+			return info[i]
 		}
 	}
 	return null;
