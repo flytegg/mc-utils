@@ -1,5 +1,518 @@
 [
     {
+        "platform": "paper",
+        "display": "Paper",
+        "jars": [
+            {
+                "version": "1.20.2",
+                "release": "October 5th 2023",
+                "size": "41.5 MB",
+                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.20.2/builds/217/downloads/paper-1.20.2-217.jar"
+            },
+            {
+                "version": "1.20.1",
+                "release": "July 11th 2023",
+                "size": "41.18 MB",
+                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.20.1/builds/71/downloads/paper-1.20.1-71.jar"
+            },
+            {
+                "version": "1.20",
+                "release": "June 13th 2023",
+                "size": "41.32 MB",
+                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.20/builds/17/downloads/paper-1.20-17.jar"
+            },
+            {
+                "version": "1.19.4",
+                "release": "June 8th 2023",
+                "size": "40.69 MB",
+                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.19.4/builds/550/downloads/paper-1.19.4-550.jar"
+            },
+            {
+                "version": "1.19.3",
+                "release": "March 12th 2023",
+                "size": "37.31 MB",
+                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.19.3/builds/448/downloads/paper-1.19.3-448.jar"
+            },
+            {
+                "version": "1.19.2",
+                "release": "December 6th 2022",
+                "size": "36.54 MB",
+                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.19.2/builds/307/downloads/paper-1.19.2-307.jar"
+            },
+            {
+                "version": "1.19.1",
+                "release": "August 5th 2022",
+                "size": "36.28 MB",
+                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.19.1/builds/111/downloads/paper-1.19.1-111.jar"
+            },
+            {
+                "version": "1.19",
+                "release": "July 25th 2022",
+                "size": "36.39 MB",
+                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.19/builds/81/downloads/paper-1.19-81.jar"
+            },
+            {
+                "version": "1.18.2",
+                "release": "September 20th 2022",
+                "size": "33.22 MB",
+                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.18.2/builds/388/downloads/paper-1.18.2-388.jar"
+            },
+            {
+                "version": "1.18.1",
+                "release": "February 28th 2022",
+                "size": "33.01 MB",
+                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.18.1/builds/216/downloads/paper-1.18.1-216.jar"
+            },
+            {
+                "version": "1.18",
+                "release": "December 10th 2021",
+                "size": "32.88 MB",
+                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.18/builds/66/downloads/paper-1.18-66.jar"
+            },
+            {
+                "version": "1.17.1",
+                "release": "April 14th 2022",
+                "size": "59.02 MB",
+                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.17.1/builds/411/downloads/paper-1.17.1-411.jar"
+            },
+            {
+                "version": "1.17",
+                "release": "July 6th 2021",
+                "size": "57.59 MB",
+                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.17/builds/79/downloads/paper-1.17-79.jar"
+            },
+            {
+                "version": "1.16.5",
+                "release": "December 18th 2021",
+                "size": "51.45 MB",
+                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.16.5/builds/794/downloads/paper-1.16.5-794.jar"
+            },
+            {
+                "version": "1.16.4",
+                "release": "January 15th 2021",
+                "size": "44.81 MB",
+                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.16.4/builds/416/downloads/paper-1.16.4-416.jar"
+            },
+            {
+                "version": "1.16.3",
+                "release": "November 1st 2020",
+                "size": "44.69 MB",
+                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.16.3/builds/253/downloads/paper-1.16.3-253.jar"
+            },
+            {
+                "version": "1.16.2",
+                "release": "September 10th 2020",
+                "size": "44.68 MB",
+                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.16.2/builds/189/downloads/paper-1.16.2-189.jar"
+            },
+            {
+                "version": "1.16.1",
+                "release": "August 23rd 2020",
+                "size": "44.81 MB",
+                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.16.1/builds/138/downloads/paper-1.16.1-138.jar"
+            },
+            {
+                "version": "1.15.2",
+                "release": "December 20th 2021",
+                "size": "42.94 MB",
+                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.15.2/builds/393/downloads/paper-1.15.2-393.jar"
+            },
+            {
+                "version": "1.15.1",
+                "release": "January 21st 2020",
+                "size": "41.91 MB",
+                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.15.1/builds/62/downloads/paper-1.15.1-62.jar"
+            },
+            {
+                "version": "1.15",
+                "release": "December 17th 2019",
+                "size": "41.89 MB",
+                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.15/builds/21/downloads/paper-1.15-21.jar"
+            },
+            {
+                "version": "1.14.4",
+                "release": "December 20th 2021",
+                "size": "41.94 MB",
+                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.14.4/builds/245/downloads/paper-1.14.4-245.jar"
+            },
+            {
+                "version": "1.14.3",
+                "release": "July 18th 2019",
+                "size": "42.26 MB",
+                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.14.3/builds/134/downloads/paper-1.14.3-134.jar"
+            },
+            {
+                "version": "1.14.2",
+                "release": "June 24th 2019",
+                "size": "42.21 MB",
+                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.14.2/builds/107/downloads/paper-1.14.2-107.jar"
+            },
+            {
+                "version": "1.14.1",
+                "release": "May 27th 2019",
+                "size": "42.18 MB",
+                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.14.1/builds/50/downloads/paper-1.14.1-50.jar"
+            },
+            {
+                "version": "1.14",
+                "release": "May 13th 2019",
+                "size": "42.15 MB",
+                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.14/builds/17/downloads/paper-1.14-17.jar"
+            },
+            {
+                "version": "1.13.2",
+                "release": "December 20th 2021",
+                "size": "42.91 MB",
+                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.13.2/builds/657/downloads/paper-1.13.2-657.jar"
+            },
+            {
+                "version": "1.13.1",
+                "release": "October 22nd 2018",
+                "size": "41.04 MB",
+                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.13.1/builds/386/downloads/paper-1.13.1-386.jar"
+            },
+            {
+                "version": "1.13",
+                "release": "August 26th 2018",
+                "size": "39.94 MB",
+                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.13/builds/173/downloads/paper-1.13-173.jar"
+            },
+            {
+                "version": "1.12.2",
+                "release": "December 20th 2021",
+                "size": "39.08 MB",
+                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.12.2/builds/1620/downloads/paper-1.12.2-1620.jar"
+            },
+            {
+                "version": "1.12.1",
+                "release": "September 14th 2017",
+                "size": "36.83 MB",
+                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.12.1/builds/1204/downloads/paper-1.12.1-1204.jar"
+            },
+            {
+                "version": "1.12",
+                "release": "August 1st 2017",
+                "size": "36.57 MB",
+                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.12/builds/1169/downloads/paper-1.12-1169.jar"
+            },
+            {
+                "version": "1.11.2",
+                "release": "December 20th 2021",
+                "size": "23.16 MB",
+                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.11.2/builds/1106/downloads/paper-1.11.2-1106.jar"
+            },
+            {
+                "version": "1.10.2",
+                "release": "December 20th 2021",
+                "size": "20.08 MB",
+                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.10.2/builds/918/downloads/paper-1.10.2-918.jar"
+            },
+            {
+                "version": "1.9.4",
+                "release": "December 20th 2021",
+                "size": "19.99 MB",
+                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.9.4/builds/775/downloads/paper-1.9.4-775.jar"
+            },
+            {
+                "version": "1.8.8",
+                "release": "December 20th 2021",
+                "size": "18.62 MB",
+                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.8.8/builds/445/downloads/paper-1.8.8-445.jar"
+            }
+        ]
+    },
+    {
+        "platform": "spigot",
+        "display": "Spigot",
+        "jars": [
+            {
+                "version": "1.20.2",
+                "size": "69.0 MB",
+                "release": "September 21st 2023"
+            },
+            {
+                "version": "1.20.1",
+                "size": "67.8 MB",
+                "release": "June 12th 2023"
+            },
+            {
+                "version": "1.19.4",
+                "size": "67.8 MB",
+                "release": "March 14th 2023"
+            },
+            {
+                "version": "1.19.3",
+                "size": "64.6 MB",
+                "release": "December 7th 2022"
+            },
+            {
+                "version": "1.19.2",
+                "size": "63.9 MB",
+                "release": "August 5th 2022"
+            },
+            {
+                "version": "1.19.1",
+                "size": "63.9 MB",
+                "release": "July 27th 2022"
+            },
+            {
+                "version": "1.19",
+                "size": "63.8 MB",
+                "release": "June 7th 2022"
+            },
+            {
+                "version": "1.18.2",
+                "size": "64.7 MB",
+                "release": "March 6th 2022"
+            },
+            {
+                "version": "1.18.1",
+                "size": "64.4 MB",
+                "release": "December 10th 2021"
+            },
+            {
+                "version": "1.18",
+                "size": "64.4 MB",
+                "release": "November 30th 2021"
+            },
+            {
+                "version": "1.17.1",
+                "size": "43.1 MB",
+                "release": "July 6th 2021"
+            },
+            {
+                "version": "1.17",
+                "size": "43.0 MB",
+                "release": "June 11th 2021"
+            },
+            {
+                "version": "1.16.5",
+                "size": "34.18 MB",
+                "release": "January 17th 2021"
+            },
+            {
+                "version": "1.16.4",
+                "size": "34.13 MB",
+                "release": "October 29th 2020"
+            },
+            {
+                "version": "1.16.3",
+                "size": "34.11 MB",
+                "release": "September 15th 2020"
+            },
+            {
+                "version": "1.16.2",
+                "size": "34.06 MB",
+                "release": "August 12th 2020"
+            },
+            {
+                "version": "1.16.1",
+                "size": "34.01 MB",
+                "release": "June 24th 2020"
+            },
+            {
+                "version": "1.15.2",
+                "size": "30.98 MB",
+                "release": "January 21st 2020"
+            },
+            {
+                "version": "1.15.1",
+                "size": "30.8 MB",
+                "release": "December 17th 2019"
+            },
+            {
+                "version": "1.15",
+                "size": "30.8 MB",
+                "release": "December 10th 2019"
+            },
+            {
+                "version": "1.14.4",
+                "size": "30.5 MB",
+                "release": "July 19th 2019"
+            },
+            {
+                "version": "1.14.3",
+                "size": "30.31 MB",
+                "release": "June 24th 2019"
+            },
+            {
+                "version": "1.14.2",
+                "size": "30.28 MB",
+                "release": "May 27th 2019"
+            },
+            {
+                "version": "1.14.1",
+                "size": "30.43 MB",
+                "release": "May 15th 2019"
+            },
+            {
+                "version": "1.14",
+                "size": "30.31 MB",
+                "release": "April 28th 2019"
+            },
+            {
+                "version": "1.13.2",
+                "size": "45.09 MB",
+                "release": "October 23rd 2018"
+            },
+            {
+                "version": "1.13.1",
+                "size": "44.73 MB",
+                "release": "August 27th 2018"
+            },
+            {
+                "version": "1.13",
+                "size": "43.71 MB",
+                "release": "July 22nd 2018"
+            },
+            {
+                "version": "1.12.2",
+                "size": "41.14 MB",
+                "release": "September 18th 2017"
+            },
+            {
+                "version": "1.12.1",
+                "size": "40.54 MB",
+                "release": "August 4th 2017"
+            },
+            {
+                "version": "1.12",
+                "size": "40.15 MB",
+                "release": "June 7th 2017"
+            },
+            {
+                "version": "1.11.2",
+                "size": "23.41 MB",
+                "release": "May 18th 2017"
+            },
+            {
+                "version": "1.11.1",
+                "size": "21.67 MB",
+                "release": "December 21st 2016"
+            },
+            {
+                "version": "1.11",
+                "size": "21.66 MB",
+                "release": "December 20th 2016"
+            },
+            {
+                "version": "1.10.2",
+                "size": "20.12 MB",
+                "release": "November 16th 2016"
+            },
+            {
+                "version": "1.10",
+                "size": "20.1 MB",
+                "release": "June 26th 2016"
+            },
+            {
+                "version": "1.9.4",
+                "size": "20.02 MB",
+                "release": "June 9th 2016"
+            },
+            {
+                "version": "1.9.2",
+                "size": "19.56 MB",
+                "release": "March 30th 2016"
+            },
+            {
+                "version": "1.9",
+                "size": "19.48 MB",
+                "release": "February 29th 2016"
+            },
+            {
+                "version": "1.8.8",
+                "size": "18.84 MB",
+                "release": "July 28th 2015"
+            },
+            {
+                "version": "1.8.7",
+                "size": "20.57 MB",
+                "release": "June 5th 2015"
+            },
+            {
+                "version": "1.8.6",
+                "size": "20.55 MB",
+                "release": "May 25th 2015"
+            },
+            {
+                "version": "1.8.5",
+                "size": "20.56 MB",
+                "release": "May 22nd 2015"
+            },
+            {
+                "version": "1.8.4",
+                "size": "20.53 MB",
+                "release": "April 17th 2015"
+            },
+            {
+                "version": "1.8.3",
+                "size": "20.55 MB",
+                "release": "February 20th 2015"
+            },
+            {
+                "version": "1.8",
+                "size": "18.81 MB",
+                "release": "August 2nd 2014"
+            },
+            {
+                "version": "1.7.10",
+                "size": "19.66 MB",
+                "release": "June 26th 2014"
+            },
+            {
+                "version": "1.7.9",
+                "size": "21.99 MB",
+                "release": "April 14th 2014"
+            },
+            {
+                "version": "1.7.8",
+                "size": "21.98 MB",
+                "release": "April 11th 2014"
+            },
+            {
+                "version": "1.7.5",
+                "size": "22.35 MB",
+                "release": "February 26th 2014"
+            },
+            {
+                "version": "1.7.2",
+                "size": "21.51 MB",
+                "release": "October 25th 2013"
+            },
+            {
+                "version": "1.6.4",
+                "size": "20.6 MB",
+                "release": "September 19th 2013"
+            },
+            {
+                "version": "1.6.2",
+                "size": "18.65 MB",
+                "release": "July 8th 2013"
+            },
+            {
+                "version": "1.5.2",
+                "size": "16.62 MB",
+                "release": "May 2nd 2013"
+            },
+            {
+                "version": "1.5.1",
+                "size": "15.86 MB",
+                "release": "March 21st 2013"
+            },
+            {
+                "version": "1.4.7",
+                "size": "15.48 MB",
+                "release": "January 9th 2013"
+            },
+            {
+                "version": "1.4.6",
+                "size": "14.11 MB",
+                "release": "December 20th 2012"
+            }
+        ]
+    },
+    {
         "platform": "forge",
         "display": "Forge",
         "jars": [
@@ -578,519 +1091,6 @@
                 "release": "April 4th 2022",
                 "size": "61.21 MB",
                 "downloadURL": "https://ci.pufferfish.host/job/Pufferfish-1.17/lastSuccessfulBuild/artifact/build/libs/Pufferfish-1.17.1-R0.1-SNAPSHOT.jar"
-            }
-        ]
-    },
-    {
-        "platform": "paper",
-        "display": "Paper",
-        "jars": [
-            {
-                "version": "1.20.2",
-                "release": "October 5th 2023",
-                "size": "41.5 MB",
-                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.20.2/builds/217/downloads/paper-1.20.2-217.jar"
-            },
-            {
-                "version": "1.20.1",
-                "release": "July 11th 2023",
-                "size": "41.18 MB",
-                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.20.1/builds/71/downloads/paper-1.20.1-71.jar"
-            },
-            {
-                "version": "1.20",
-                "release": "June 13th 2023",
-                "size": "41.32 MB",
-                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.20/builds/17/downloads/paper-1.20-17.jar"
-            },
-            {
-                "version": "1.19.4",
-                "release": "June 8th 2023",
-                "size": "40.69 MB",
-                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.19.4/builds/550/downloads/paper-1.19.4-550.jar"
-            },
-            {
-                "version": "1.19.3",
-                "release": "March 12th 2023",
-                "size": "37.31 MB",
-                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.19.3/builds/448/downloads/paper-1.19.3-448.jar"
-            },
-            {
-                "version": "1.19.2",
-                "release": "December 6th 2022",
-                "size": "36.54 MB",
-                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.19.2/builds/307/downloads/paper-1.19.2-307.jar"
-            },
-            {
-                "version": "1.19.1",
-                "release": "August 5th 2022",
-                "size": "36.28 MB",
-                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.19.1/builds/111/downloads/paper-1.19.1-111.jar"
-            },
-            {
-                "version": "1.19",
-                "release": "July 25th 2022",
-                "size": "36.39 MB",
-                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.19/builds/81/downloads/paper-1.19-81.jar"
-            },
-            {
-                "version": "1.18.2",
-                "release": "September 20th 2022",
-                "size": "33.22 MB",
-                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.18.2/builds/388/downloads/paper-1.18.2-388.jar"
-            },
-            {
-                "version": "1.18.1",
-                "release": "February 28th 2022",
-                "size": "33.01 MB",
-                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.18.1/builds/216/downloads/paper-1.18.1-216.jar"
-            },
-            {
-                "version": "1.18",
-                "release": "December 10th 2021",
-                "size": "32.88 MB",
-                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.18/builds/66/downloads/paper-1.18-66.jar"
-            },
-            {
-                "version": "1.17.1",
-                "release": "April 14th 2022",
-                "size": "59.02 MB",
-                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.17.1/builds/411/downloads/paper-1.17.1-411.jar"
-            },
-            {
-                "version": "1.17",
-                "release": "July 6th 2021",
-                "size": "57.59 MB",
-                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.17/builds/79/downloads/paper-1.17-79.jar"
-            },
-            {
-                "version": "1.16.5",
-                "release": "December 18th 2021",
-                "size": "51.45 MB",
-                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.16.5/builds/794/downloads/paper-1.16.5-794.jar"
-            },
-            {
-                "version": "1.16.4",
-                "release": "January 15th 2021",
-                "size": "44.81 MB",
-                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.16.4/builds/416/downloads/paper-1.16.4-416.jar"
-            },
-            {
-                "version": "1.16.3",
-                "release": "November 1st 2020",
-                "size": "44.69 MB",
-                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.16.3/builds/253/downloads/paper-1.16.3-253.jar"
-            },
-            {
-                "version": "1.16.2",
-                "release": "September 10th 2020",
-                "size": "44.68 MB",
-                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.16.2/builds/189/downloads/paper-1.16.2-189.jar"
-            },
-            {
-                "version": "1.16.1",
-                "release": "August 23rd 2020",
-                "size": "44.81 MB",
-                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.16.1/builds/138/downloads/paper-1.16.1-138.jar"
-            },
-            {
-                "version": "1.15.2",
-                "release": "December 20th 2021",
-                "size": "42.94 MB",
-                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.15.2/builds/393/downloads/paper-1.15.2-393.jar"
-            },
-            {
-                "version": "1.15.1",
-                "release": "January 21st 2020",
-                "size": "41.91 MB",
-                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.15.1/builds/62/downloads/paper-1.15.1-62.jar"
-            },
-            {
-                "version": "1.15",
-                "release": "December 17th 2019",
-                "size": "41.89 MB",
-                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.15/builds/21/downloads/paper-1.15-21.jar"
-            },
-            {
-                "version": "1.14.4",
-                "release": "December 20th 2021",
-                "size": "41.94 MB",
-                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.14.4/builds/245/downloads/paper-1.14.4-245.jar"
-            },
-            {
-                "version": "1.14.3",
-                "release": "July 18th 2019",
-                "size": "42.26 MB",
-                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.14.3/builds/134/downloads/paper-1.14.3-134.jar"
-            },
-            {
-                "version": "1.14.2",
-                "release": "June 24th 2019",
-                "size": "42.21 MB",
-                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.14.2/builds/107/downloads/paper-1.14.2-107.jar"
-            },
-            {
-                "version": "1.14.1",
-                "release": "May 27th 2019",
-                "size": "42.18 MB",
-                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.14.1/builds/50/downloads/paper-1.14.1-50.jar"
-            },
-            {
-                "version": "1.14",
-                "release": "May 13th 2019",
-                "size": "42.15 MB",
-                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.14/builds/17/downloads/paper-1.14-17.jar"
-            },
-            {
-                "version": "1.13.2",
-                "release": "December 20th 2021",
-                "size": "42.91 MB",
-                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.13.2/builds/657/downloads/paper-1.13.2-657.jar"
-            },
-            {
-                "version": "1.13.1",
-                "release": "October 22nd 2018",
-                "size": "41.04 MB",
-                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.13.1/builds/386/downloads/paper-1.13.1-386.jar"
-            },
-            {
-                "version": "1.13",
-                "release": "August 26th 2018",
-                "size": "39.94 MB",
-                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.13/builds/173/downloads/paper-1.13-173.jar"
-            },
-            {
-                "version": "1.12.2",
-                "release": "December 20th 2021",
-                "size": "39.08 MB",
-                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.12.2/builds/1620/downloads/paper-1.12.2-1620.jar"
-            },
-            {
-                "version": "1.12.1",
-                "release": "September 14th 2017",
-                "size": "36.83 MB",
-                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.12.1/builds/1204/downloads/paper-1.12.1-1204.jar"
-            },
-            {
-                "version": "1.12",
-                "release": "August 1st 2017",
-                "size": "36.57 MB",
-                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.12/builds/1169/downloads/paper-1.12-1169.jar"
-            },
-            {
-                "version": "1.11.2",
-                "release": "December 20th 2021",
-                "size": "23.16 MB",
-                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.11.2/builds/1106/downloads/paper-1.11.2-1106.jar"
-            },
-            {
-                "version": "1.10.2",
-                "release": "December 20th 2021",
-                "size": "20.08 MB",
-                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.10.2/builds/918/downloads/paper-1.10.2-918.jar"
-            },
-            {
-                "version": "1.9.4",
-                "release": "December 20th 2021",
-                "size": "19.99 MB",
-                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.9.4/builds/775/downloads/paper-1.9.4-775.jar"
-            },
-            {
-                "version": "1.8.8",
-                "release": "December 20th 2021",
-                "size": "18.62 MB",
-                "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.8.8/builds/445/downloads/paper-1.8.8-445.jar"
-            }
-        ]
-    },
-    {
-        "platform": "spigot",
-        "display": "Spigot",
-        "jars": [
-            {
-                "version": "1.20.2",
-                "size": "69.0 MB",
-                "release": "September 21st 2023"
-            },
-            {
-                "version": "1.20.1",
-                "size": "67.8 MB",
-                "release": "June 12th 2023"
-            },
-            {
-                "version": "1.19.4",
-                "size": "67.8 MB",
-                "release": "March 14th 2023"
-            },
-            {
-                "version": "1.19.3",
-                "size": "64.6 MB",
-                "release": "December 7th 2022"
-            },
-            {
-                "version": "1.19.2",
-                "size": "63.9 MB",
-                "release": "August 5th 2022"
-            },
-            {
-                "version": "1.19.1",
-                "size": "63.9 MB",
-                "release": "July 27th 2022"
-            },
-            {
-                "version": "1.19",
-                "size": "63.8 MB",
-                "release": "June 7th 2022"
-            },
-            {
-                "version": "1.18.2",
-                "size": "64.7 MB",
-                "release": "March 6th 2022"
-            },
-            {
-                "version": "1.18.1",
-                "size": "64.4 MB",
-                "release": "December 10th 2021"
-            },
-            {
-                "version": "1.18",
-                "size": "64.4 MB",
-                "release": "November 30th 2021"
-            },
-            {
-                "version": "1.17.1",
-                "size": "43.1 MB",
-                "release": "July 6th 2021"
-            },
-            {
-                "version": "1.17",
-                "size": "43.0 MB",
-                "release": "June 11th 2021"
-            },
-            {
-                "version": "1.16.5",
-                "size": "34.18 MB",
-                "release": "January 17th 2021"
-            },
-            {
-                "version": "1.16.4",
-                "size": "34.13 MB",
-                "release": "October 29th 2020"
-            },
-            {
-                "version": "1.16.3",
-                "size": "34.11 MB",
-                "release": "September 15th 2020"
-            },
-            {
-                "version": "1.16.2",
-                "size": "34.06 MB",
-                "release": "August 12th 2020"
-            },
-            {
-                "version": "1.16.1",
-                "size": "34.01 MB",
-                "release": "June 24th 2020"
-            },
-            {
-                "version": "1.15.2",
-                "size": "30.98 MB",
-                "release": "January 21st 2020"
-            },
-            {
-                "version": "1.15.1",
-                "size": "30.8 MB",
-                "release": "December 17th 2019"
-            },
-            {
-                "version": "1.15",
-                "size": "30.8 MB",
-                "release": "December 10th 2019"
-            },
-            {
-                "version": "1.14.4",
-                "size": "30.5 MB",
-                "release": "July 19th 2019"
-            },
-            {
-                "version": "1.14.3",
-                "size": "30.31 MB",
-                "release": "June 24th 2019"
-            },
-            {
-                "version": "1.14.2",
-                "size": "30.28 MB",
-                "release": "May 27th 2019"
-            },
-            {
-                "version": "1.14.1",
-                "size": "30.43 MB",
-                "release": "May 15th 2019"
-            },
-            {
-                "version": "1.14",
-                "size": "30.31 MB",
-                "release": "April 28th 2019"
-            },
-            {
-                "version": "1.13.2",
-                "size": "45.09 MB",
-                "release": "October 23rd 2018"
-            },
-            {
-                "version": "1.13.1",
-                "size": "44.73 MB",
-                "release": "August 27th 2018"
-            },
-            {
-                "version": "1.13",
-                "size": "43.71 MB",
-                "release": "July 22nd 2018"
-            },
-            {
-                "version": "1.12.2",
-                "size": "41.14 MB",
-                "release": "September 18th 2017"
-            },
-            {
-                "version": "1.12.1",
-                "size": "40.54 MB",
-                "release": "August 4th 2017"
-            },
-            {
-                "version": "1.12",
-                "size": "40.15 MB",
-                "release": "June 7th 2017"
-            },
-            {
-                "version": "1.11.2",
-                "size": "23.41 MB",
-                "release": "May 18th 2017"
-            },
-            {
-                "version": "1.11.1",
-                "size": "21.67 MB",
-                "release": "December 21st 2016"
-            },
-            {
-                "version": "1.11",
-                "size": "21.66 MB",
-                "release": "December 20th 2016"
-            },
-            {
-                "version": "1.10.2",
-                "size": "20.12 MB",
-                "release": "November 16th 2016"
-            },
-            {
-                "version": "1.10",
-                "size": "20.1 MB",
-                "release": "June 26th 2016"
-            },
-            {
-                "version": "1.9.4",
-                "size": "20.02 MB",
-                "release": "June 9th 2016"
-            },
-            {
-                "version": "1.9.2",
-                "size": "19.56 MB",
-                "release": "March 30th 2016"
-            },
-            {
-                "version": "1.9",
-                "size": "19.48 MB",
-                "release": "February 29th 2016"
-            },
-            {
-                "version": "1.8.8",
-                "size": "18.84 MB",
-                "release": "July 28th 2015"
-            },
-            {
-                "version": "1.8.7",
-                "size": "20.57 MB",
-                "release": "June 5th 2015"
-            },
-            {
-                "version": "1.8.6",
-                "size": "20.55 MB",
-                "release": "May 25th 2015"
-            },
-            {
-                "version": "1.8.5",
-                "size": "20.56 MB",
-                "release": "May 22nd 2015"
-            },
-            {
-                "version": "1.8.4",
-                "size": "20.53 MB",
-                "release": "April 17th 2015"
-            },
-            {
-                "version": "1.8.3",
-                "size": "20.55 MB",
-                "release": "February 20th 2015"
-            },
-            {
-                "version": "1.8",
-                "size": "18.81 MB",
-                "release": "August 2nd 2014"
-            },
-            {
-                "version": "1.7.10",
-                "size": "19.66 MB",
-                "release": "June 26th 2014"
-            },
-            {
-                "version": "1.7.9",
-                "size": "21.99 MB",
-                "release": "April 14th 2014"
-            },
-            {
-                "version": "1.7.8",
-                "size": "21.98 MB",
-                "release": "April 11th 2014"
-            },
-            {
-                "version": "1.7.5",
-                "size": "22.35 MB",
-                "release": "February 26th 2014"
-            },
-            {
-                "version": "1.7.2",
-                "size": "21.51 MB",
-                "release": "October 25th 2013"
-            },
-            {
-                "version": "1.6.4",
-                "size": "20.6 MB",
-                "release": "September 19th 2013"
-            },
-            {
-                "version": "1.6.2",
-                "size": "18.65 MB",
-                "release": "July 8th 2013"
-            },
-            {
-                "version": "1.5.2",
-                "size": "16.62 MB",
-                "release": "May 2nd 2013"
-            },
-            {
-                "version": "1.5.1",
-                "size": "15.86 MB",
-                "release": "March 21st 2013"
-            },
-            {
-                "version": "1.4.7",
-                "size": "15.48 MB",
-                "release": "January 9th 2013"
-            },
-            {
-                "version": "1.4.6",
-                "size": "14.11 MB",
-                "release": "December 20th 2012"
             }
         ]
     },

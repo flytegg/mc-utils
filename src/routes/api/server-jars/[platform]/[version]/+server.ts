@@ -12,7 +12,7 @@ export const GET = (async ({ params, url }) => {
 	const version: any | null = findVersion(platform.jars, params.version)
 	if (!version) return new Response(null, {
 		status: 204,
-		statusText:  `No version ${params.version} on ${params.platform}`
+		statusText: `No version ${params.version} on ${params.platform}`
 	})
 
 	return json({
