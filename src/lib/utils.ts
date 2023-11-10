@@ -48,6 +48,13 @@ const utils: Util[] = [
       "View and download any Minecraft player's skin by searching their in-game name.",
   },
   {
+    path: "cape-stealer",
+    name: "Cape Stealer",
+    description: "Steal a player's cape from their IGN.",
+    shortDescription: "Steal another player's cape",
+    seoDescription: "View and download any Minecraft player's capes, whether Mojang/Minecon or Optifine, by searching their in-game name.",
+  },
+  {
     path: "color-codes",
     name: "Color Codes",
     description: "List of built in color and format codes.",
