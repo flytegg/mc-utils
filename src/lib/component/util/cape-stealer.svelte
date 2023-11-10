@@ -106,7 +106,7 @@
             {#if cape.exists && cape.frontImageUrl}
                 <div class="flex flex-col items-center justify-center">
                     <h3 class="font-medium text-white text-[20px] mb-4 text-center">{cape.type.replace(/\b(?:minecraft|optifine|minecraftcapes|labymod|5zig|tlauncher)\b/g, (match) => replacements[match])}</h3>
-                    <img class="h-80 w-fit" src={cape.frontImageUrl} alt={`${cape.playerName}'s ${cape.type} cape`} />
+                    <img class="h-80 aspect-auto" src={cape.frontImageUrl} alt={`${cape.playerName}'s ${cape.type} cape`} />
                     <a href={currentSkin} download="" aria-label='Download Skin' class="mt-4"><button class="button" on:click={downloadSkin}>Download</button></a>
                 </div>
             {/if}
