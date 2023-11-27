@@ -401,7 +401,7 @@
             </div>
         </div>
     </div>
-    <div class="flex items-center justify-center mt-4">
+    <div class="flex items-center justify-center mt-8">
         <button on:click={clearLayer} class="text-sm px-2 py-1.5 button mr-2">Clear Layer</button>
         <button on:click={clearBanner} class="text-sm px-2 py-1.5 button mr-2">Clear Banner</button>
         <button on:click={undo} class="text-sm px-2 py-1.5 button">Undo</button>
