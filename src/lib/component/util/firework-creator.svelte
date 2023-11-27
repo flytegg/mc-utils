@@ -73,7 +73,7 @@
     }
 
     giveCmd = `/give @s firework_rocket{Fireworks:{Flight:${selectedFlightPower},Explosions:[{Type:${type}${flicker}${trail},Colors:[I;${primary.join(
-      ","
+            ","
     )}]${fading.length > 0 ? `,FadeColors:[I;${fading.join(",")}]` : ""}}]}} 1`;
   }
 
@@ -123,7 +123,7 @@
     }
 
     summonCmd = `/summon firework_rocket ~ ~ ~ {FireworksItem:{id:firework_rocket,Count:1,tag:{Fireworks:{Flight:${selectedFlightPower},Explosions:[{Type:${type}${flicker}${trail},Colors:[I;${primary.join(
-      ","
+            ","
     )}]${fading.length > 0 ? `,FadeColors:[I;${fading.join(",")}]` : ""}}]}}}}`;
   }
 
@@ -221,11 +221,23 @@ firework.setItemMeta(meta);`;
 
   function handleDone() {
     if (!selectedPrimary.length) {
-      alert("Please select upto 6 Primary colors!");
+      toast.push({
+        msg: 'Select at least one (max 6) Primary Color!',
+        theme: {
+          '--toastBackground': '#F56565',
+          '--toastBarBackground': '#C53030'
+        }
+      })
       return;
     }
     if (!selectedFlightPower) {
-      alert("Please select the Flight Power!");
+      toast.push({
+        msg: 'Select the Flight Duration!',
+        theme: {
+          '--toastBackground': '#F56565',
+          '--toastBarBackground': '#C53030'
+        }
+      })
       return;
     }
 
@@ -236,12 +248,19 @@ firework.setItemMeta(meta);`;
     activeCmd = true;
 
     if (
-      !(isTrail && isFlicker) &&
-      !(selectedPrimary.length > 6) &&
-      !(selectedFades.length > 6)
+            !(isTrail && isFlicker) &&
+            !(selectedPrimary.length > 6) &&
+            !(selectedFades.length > 6)
     ) {
       activeRecipe = true;
     }
+
+    setTimeout(function() {
+      const section = document.getElementById("generateScroll");
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 200);
   }
 
   function getShapeIngredient(): string {
@@ -403,147 +422,154 @@ firework.setItemMeta(meta);`;
   ];
 </script>
 
-<main class="w-[100%] lg:w-[70%] mt-5">
+<main class="w-[90%] lg:w-[60%] mt-5">
   <div class="space-y-9">
     <!-- Primary Colors Multiselect -->
-    <div class="flex justify-center">
-      <div
-        class="text-white font-semibold text-center p-3 m-2 h-[50px] rounded"
-      >
-        <label for="Primary Colors">
-          <strong>Select your desired Primary colors</strong>
-        </label>
-        <MultiSelect
-          id="Primary Colors"
-          options={dyes.map((dye) => dye.color)}
-          bind:selected={selectedPrimary}
-          placeholder="Colors for Firework Particles"
-          --sms-options-bg="black"
-          --sms-min-height="30px"
-          let:option
-        >
-          <img
-            src={items.find((item) => item.name === option).texture}
-            alt={option}
-            class="mg-flex w-[100%] lg:w-[40px]"
-          />
-          {option}
-        </MultiSelect>
+    <div class="gap-10 justify-center flex md:flex-row flex-col ">
+      <div class="flex justify-center">
+        <div class="text-white font-semibold text-center rounded">
+          <label for="Fading Colors">
+            <p class="font-medium text-white text-20px text-left pb-2.5">Primary Colors</p>
+          </label>
+          <MultiSelect
+                  outerDivClass="custom-multiselect"
+                  id="Primary Colors"
+                  options={dyes.map((dye) => dye.color)}
+                  bind:selected={selectedPrimary}
+                  placeholder="Firework Particles Colors"
+                  --sms-options-bg="black"
+                  --sms-min-height="30px"
+                  --sms-width="300px"
+                  --sms-padding="8px"
+                  --sms-options-border-width="15px"
+                  let:option
+          >
+            <img
+                    src={items.find((item) => item.name === option).texture}
+                    alt={option}
+                    class="mg-flex w-[100%] lg:w-[40px] mr-2"
+            />
+            {option}
+          </MultiSelect>
+        </div>
       </div>
-    </div>
 
-    <!-- Fading Colors Multiselect -->
-    <div class="flex justify-center">
-      <div class="text-white font-semibold text-center p-3 m-2 rounded">
-        <label for="Fading Colors">
-          <strong>Select your desired Fading colors</strong>
-        </label>
-        <MultiSelect
-          id="Fading Colors"
-          options={dyes.map((dye) => dye.color)}
-          placeholder="Colors for fading Particles"
-          bind:selected={selectedFades}
-          --sms-options-bg="black"
-          --sms-min-height="30px"
-          let:option
-        >
-          <img
-            src={items.find((item) => item.name === option).texture}
-            alt={option}
-            class="mg-flex w-[100%] lg:w-[40px]"
-          />
-          {option}
-        </MultiSelect>
+      <!-- Fading Colors Multiselect -->
+      <div class="flex justify-center">
+        <div class="text-white font-semibold text-center rounded">
+          <label for="Fading Colors">
+            <p class="font-medium text-white text-20px text-left pb-2.5">Fading Colors</p>
+          </label>
+          <MultiSelect
+                  id="Fading Colors"
+                  options={dyes.map((dye) => dye.color)}
+                  bind:selected={selectedFades}
+                  placeholder="Fading Particles Colors"
+                  --sms-options-bg="black"
+                  --sms-min-height="30px"
+                  --sms-width="300px"
+                  --sms-padding="8px"
+                  let:option
+          >
+            <img
+                    src={items.find((item) => item.name === option).texture}
+                    alt={option}
+                    class="mg-flex w-[100%] lg:w-[40px] mr-2"
+            />
+            {option}
+          </MultiSelect>
+        </div>
       </div>
     </div>
 
     <!-- Firework Shape Buttons -->
-    <h3 class="flex justify-center font-medium text-white text-[30px]">
-      Choose the Explosion shape
-    </h3>
-    <div class="w-[100%] flex flex-col">
-      <div
-        class="self-center grid grid-cols-2 md:grid-cols-5 2xl:grid-cols-5 gap-2"
-      >
-        {#each fireworkShape as shape}
-          <button
-            class={`custom-button ${
+    <div>
+      <p class="font-medium text-white text-20px text-center mb-3.5">Explosion Shape</p>
+      <div class="w-[100%] flex flex-col">
+        <div
+                class="self-center grid grid-cols-2 md:grid-cols-5 2xl:grid-cols-5 gap-2"
+        >
+          {#each fireworkShape as shape}
+            <button
+                    class={`custom-button ${
               shape.shape === selectedExplosionShape ? "active" : ""
             }`}
-            on:click={() => selectShape(shape.shape)}
-          >
-            <img
-              src="/fireworks/{shape.img}.png"
-              alt={shape.shape}
-              class="w-full"
-            />
-            {shape.shape}
-          </button>
-        {/each}
+                    on:click={() => selectShape(shape.shape)}
+            >
+              <img
+                      src="/fireworks/{shape.img}.png"
+                      alt={shape.shape}
+                      class="w-full rounded-xl"
+              />
+              <p class="py-1.5 font-normal text-lg">{shape.shape}</p>
+            </button>
+          {/each}
+        </div>
       </div>
     </div>
 
     <!-- Firework Effect Buttons -->
-    <h3 class="flex justify-center font-medium text-white text-[30px]">
-      Choose the Firework effect
-    </h3>
-    <div class="w-[100%] flex flex-col">
-      <div
-        class="self-center grid grid-cols-2 md:grid-cols-2 2xl:grid-cols-2 gap-2"
-      >
-        {#each fireworkEffect as effect}
-          <button
-            class={`custom-button ${
+    <div>
+      <p class="font-medium text-white text-20px text-center mb-3.5">Firework Effect</p>
+      <div class="w-[100%] flex flex-col">
+        <div
+                class="self-center grid grid-cols-2 md:grid-cols-2 2xl:grid-cols-2 gap-2"
+        >
+          {#each fireworkEffect as effect}
+            <button
+                    class={`custom-button ${
               effect.name === "Flicker" && isFlicker ? "active" : ""
             }
                     ${effect.name === "Trail" && isTrail ? "active" : ""}`}
-            on:click={() => selectEffect(effect.name)}
-          >
-            <img
-              src="/fireworks/{effect.img}.png"
-              alt={effect.name}
-              class="w-[100%] lg:w-[120px]"
-            />
-            {effect.name}
-          </button>
-        {/each}
+                    on:click={() => selectEffect(effect.name)}
+            >
+              <img
+                      src="/fireworks/{effect.img}.png"
+                      alt={effect.name}
+                      class="w-[100%] lg:w-[120px] rounded-xl"
+              />
+              <p class="py-1.5 font-normal text-lg">{effect.name}</p>
+            </button>
+          {/each}
+        </div>
       </div>
     </div>
 
     <!-- Flight Power Button -->
-    <h3 class="flex justify-center font-medium text-white text-[30px]">
-      Choose the Flight duration
-    </h3>
-    <div class="w-[100%] flex flex-col">
-      <div
-        class="self-center grid grid-cols-2 md:grid-cols-3 2xl:grid-cols-3 gap-2"
-      >
-        {#each powerValues as power}
-          <button
-            class={`custom-button ${
+    <div>
+      <p class="font-medium text-white text-20px text-center mb-3.5">Flight Duration</p>
+      <div class="w-[100%] flex flex-col">
+        <div
+                class="self-center grid grid-cols-2 md:grid-cols-3 2xl:grid-cols-3 gap-2"
+        >
+          {#each powerValues as power}
+            <button
+                    class={`custom-button ${
               power.level === selectedFlightPower ? "active" : ""
             }`}
-            on:click={() => selectPower(power.name)}
-          >
-            <img
-              src="/fireworks/{power.img}.png"
-              alt={power.name}
-              class="w-[100%] lg:w-[80px]"
-            />
-            {power.name}
-          </button>
-        {/each}
+                    on:click={() => selectPower(power.name)}
+            >
+              <img
+                      src="/fireworks/{power.img}.png"
+                      alt={power.name}
+                      class="w-[100%] lg:w-[80px] rounded-xl"
+              />
+              <p class="py-1.5 font-normal text-lg">{power.name}</p>
+            </button>
+          {/each}
+        </div>
       </div>
     </div>
 
     <div class="flex items-center flex-col">
       <button
-        class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded"
-        on:click={handleDone}
+              class="button h-fit"
+              on:click={handleDone}
       >
-        Done
+        Generate
       </button>
     </div>
+    <div id="generateScroll"></div>
 
     {#if showResults}
       {#if activeCmd}
@@ -554,14 +580,14 @@ firework.setItemMeta(meta);`;
             </h3>
             <div class="flex gap-3 mt-2">
               <input
-                disabled
-                bind:value={giveCmd}
-                class="inline-block text-sm text-gray-400 font-mono rounded-md p-2 bg-[#141517] h-[35px] w-[100%] max-w-[100%]"
+                      disabled
+                      bind:value={giveCmd}
+                      class="inline-block text-sm text-gray-400 font-mono rounded-md p-2 bg-[#141517] h-[35px] w-[100%] max-w-[100%]"
               />
               <button
-                on:click={() => copyValue(giveCmd)}
-                class="w-fit text-sm px-2 py-1.5 button h-fit inline-block"
-                >Copy</button
+                      on:click={() => copyValue(giveCmd)}
+                      class="w-fit text-sm px-2 py-1.5 button h-fit inline-block"
+              >Copy</button
               >
             </div>
           </div>
@@ -574,14 +600,14 @@ firework.setItemMeta(meta);`;
             </h3>
             <div class="flex gap-3 mt-2">
               <input
-                disabled
-                bind:value={summonCmd}
-                class="inline-block text-sm text-gray-400 font-mono rounded-md p-2 bg-[#141517] h-[35px] w-[100%] max-w-[100%]"
+                      disabled
+                      bind:value={summonCmd}
+                      class="inline-block text-sm text-gray-400 font-mono rounded-md p-2 bg-[#141517] h-[35px] w-[100%] max-w-[100%]"
               />
               <button
-                on:click={() => copyValue(summonCmd)}
-                class="w-fit text-sm px-2 py-1.5 button h-fit inline-block"
-                >Copy</button
+                      on:click={() => copyValue(summonCmd)}
+                      class="w-fit text-sm px-2 py-1.5 button h-fit inline-block"
+              >Copy</button
               >
             </div>
           </div>
@@ -608,50 +634,50 @@ firework.setItemMeta(meta);`;
         <div class="grid grid-cols-1 xl:flex xl:flex-wrap w-full gap-12">
           <div class="relative w-[370px] h-[170px] mx-auto">
             <img
-              src="/fireworks/crafting-table.png"
-              alt="crafting table"
-              class="w-[370px] h-[170px] absolute"
+                    src="/fireworks/crafting-table.png"
+                    alt="crafting table"
+                    class="w-[370px] h-[170px] absolute"
             />
             <img
-              src={items.find((item) => item.name === "Firework Star").texture}
-              alt="firework star"
-              class="absolute w-[33px] h-[35px] right-[76px] top-[85px]"
+                    src={items.find((item) => item.name === "Firework Star").texture}
+                    alt="firework star"
+                    class="absolute w-[33px] h-[35px] right-[76px] top-[85px]"
             />
             <img
-              src={items.find((item) => item.name === "Gunpowder").texture}
-              alt="Gunpowder"
-              class="absolute w-[33px] h-[35px] left-[60px] top-[128px]"
+                    src={items.find((item) => item.name === "Gunpowder").texture}
+                    alt="Gunpowder"
+                    class="absolute w-[33px] h-[35px] left-[60px] top-[128px]"
             />
             {#if selectedExplosionShape != null}
               <img
-                src={items.find((item) => item.name === getShapeIngredient())
+                      src={items.find((item) => item.name === getShapeIngredient())
                   .texture}
-                alt={getShapeIngredient()}
-                class="absolute w-[33px] h-[35px] left-[100px] top-[128px]"
+                      alt={getShapeIngredient()}
+                      class="absolute w-[33px] h-[35px] left-[100px] top-[128px]"
               />
             {/if}
 
             {#if isFlicker}
               <img
-                src={items.find((item) => item.name === "Glowstone Dust")
+                      src={items.find((item) => item.name === "Glowstone Dust")
                   .texture}
-                alt="Glowstone Dust"
-                class="absolute w-[33px] h-[35px] left-[138px] top-[128px]"
+                      alt="Glowstone Dust"
+                      class="absolute w-[33px] h-[35px] left-[138px] top-[128px]"
               />
             {/if}
 
             {#if isTrail}
               <img
-                src={items.find((item) => item.name === "Diamond").texture}
-                alt="Diamond"
-                class="absolute w-[33px] h-[35px] left-[138px] top-[128px]"
+                      src={items.find((item) => item.name === "Diamond").texture}
+                      alt="Diamond"
+                      class="absolute w-[33px] h-[35px] left-[138px] top-[128px]"
               />
             {/if}
             {#each selectedPrimary as color, index}
               <img
-                src={items.find((item) => item.name === color).texture}
-                alt={color}
-                class={`w-[33px] h-[35px] left-[${positionValues[index].left}px] top-[${positionValues[index].top}px] absolute`}
+                      src={items.find((item) => item.name === color).texture}
+                      alt={color}
+                      class={`w-[33px] h-[35px] left-[${positionValues[index].left}px] top-[${positionValues[index].top}px] absolute`}
               />
             {/each}
           </div>
@@ -663,25 +689,25 @@ firework.setItemMeta(meta);`;
           </h2>
           <div class="relative w-[370px] h-[170px] mx-auto">
             <img
-              src="/fireworks/crafting-table.png"
-              alt="crafting table"
-              class="w-[370px] h-[170px] absolute"
+                    src="/fireworks/crafting-table.png"
+                    alt="crafting table"
+                    class="w-[370px] h-[170px] absolute"
             />
             <img
-              src={items.find((item) => item.name === "Firework Star").texture}
-              alt="firework star"
-              class="absolute w-[33px] h-[35px] right-[76px] top-[85px]"
+                    src={items.find((item) => item.name === "Firework Star").texture}
+                    alt="firework star"
+                    class="absolute w-[33px] h-[35px] right-[76px] top-[85px]"
             />
             <img
-              src={items.find((item) => item.name === "Firework Star").texture}
-              alt="firework star"
-              class="absolute w-[33px] h-[35px] left-[60px] top-[128px]"
+                    src={items.find((item) => item.name === "Firework Star").texture}
+                    alt="firework star"
+                    class="absolute w-[33px] h-[35px] left-[60px] top-[128px]"
             />
             {#each selectedFades as color, index}
               <img
-                src={items.find((item) => item.name === color).texture}
-                alt={color}
-                class={`w-[33px] h-[35px] left-[${positionValues[index].left}px] top-[${positionValues[index].top}px] absolute`}
+                      src={items.find((item) => item.name === color).texture}
+                      alt={color}
+                      class={`w-[33px] h-[35px] left-[${positionValues[index].left}px] top-[${positionValues[index].top}px] absolute`}
               />
             {/each}
           </div>
@@ -692,56 +718,56 @@ firework.setItemMeta(meta);`;
         </h2>
         <div class="relative w-[370px] h-[170px] mx-auto">
           <img
-            src="/fireworks/crafting-table.png"
-            alt="crafting table"
-            class="w-[370px] h-[170px] absolute"
+                  src="/fireworks/crafting-table.png"
+                  alt="crafting table"
+                  class="w-[370px] h-[170px] absolute"
           />
           <img
-            src={items.find((item) => item.name === "Firework Star").texture}
-            alt="firework star"
-            class="absolute w-[33px] h-[35px] left-[60px] top-[85px]"
+                  src={items.find((item) => item.name === "Firework Star").texture}
+                  alt="firework star"
+                  class="absolute w-[33px] h-[35px] left-[60px] top-[85px]"
           />
           <img
-            src={items.find((item) => item.name === "Paper").texture}
-            alt="Paper"
-            class="absolute w-[33px] h-[35px] left-[100px] top-[85px]"
+                  src={items.find((item) => item.name === "Paper").texture}
+                  alt="Paper"
+                  class="absolute w-[33px] h-[35px] left-[100px] top-[85px]"
           />
           <img
-            src={items.find((item) => item.name === "Gunpowder").texture}
-            alt="gunpowder"
-            class="absolute w-[33px] h-[35px] left-[138px] top-[85px]"
+                  src={items.find((item) => item.name === "Gunpowder").texture}
+                  alt="gunpowder"
+                  class="absolute w-[33px] h-[35px] left-[138px] top-[85px]"
           />
           <img
-            src={items.find((item) => item.name === "Firework Rocket").texture}
-            alt="Firework Rocket"
-            class="absolute w-[33px] h-[35px] right-[76px] top-[85px]"
+                  src={items.find((item) => item.name === "Firework Rocket").texture}
+                  alt="Firework Rocket"
+                  class="absolute w-[33px] h-[35px] right-[76px] top-[85px]"
           />
 
           {#if selectedFlightPower > 1}
             <img
-              src={items.find((item) => item.name === "Gunpowder").texture}
-              alt="gunpowder"
-              class="absolute w-[33px] h-[35px] left-[138px] top-[40px]"
+                    src={items.find((item) => item.name === "Gunpowder").texture}
+                    alt="gunpowder"
+                    class="absolute w-[33px] h-[35px] left-[138px] top-[40px]"
             />
           {/if}
 
           {#if selectedFlightPower === 3}
             <img
-              src={items.find((item) => item.name === "Gunpowder").texture}
-              alt="gunpowder"
-              class="absolute w-[33px] h-[35px] left-[138px] top-[128px]"
+                    src={items.find((item) => item.name === "Gunpowder").texture}
+                    alt="gunpowder"
+                    class="absolute w-[33px] h-[35px] left-[138px] top-[128px]"
             />
           {/if}
         </div>
       {:else}
         <div
-          class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative my-5"
-          role="alert"
+                class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative my-5"
+                role="alert"
         >
-          <strong class="font-bold">No crafting recipe available</strong>
+          <strong class="font-bold">No crafting recipe available.</strong>
           <span class="block sm:inline"
-            >Confirm that you have up to 6 primary colors, fewer than 7 fading
-            colors, and less than 2 effects to view the vanilla recipe</span
+          >Confirm that you have up to 6 primary colors, fewer than 7 fading
+            colors, and less than 2 effects to view the vanilla recipe.</span
           >
         </div>
       {/if}
@@ -751,10 +777,20 @@ firework.setItemMeta(meta);`;
 
 <style>
   .custom-button {
-    @apply gap-2 p-4 text-white font-bold items-center;
+    @apply text-white font-bold items-center p-1 border-2 border-[#626875] rounded-xl transition duration-100 ;
   }
 
   .custom-button.active {
-    @apply bg-sky-600;
+    @apply transition duration-100 bg-[#3C414B] border-[#3C414B];
+  }
+
+  :global(body) {
+    --sms-border: 1px solid #626875;
+  }
+
+  img {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
   }
 </style>
