@@ -1,6 +1,6 @@
 import { json } from '@sveltejs/kit'
 import type { RequestHandler } from './$types'
-import { findByPlatform, findVersion } from '$lib/server-jars/server-jar-utils'
+import { findByPlatform, findLatestVersion, findVersion } from '$lib/server-jars/server-jar-utils'
 
 export const GET = (async ({ params, url }) => {
 	const platform: any | null = findByPlatform(params.platform)
@@ -9,7 +9,7 @@ export const GET = (async ({ params, url }) => {
 		statusText: `There is no platform ${params.platform}`
 	})
 
-	const version: any | null = findVersion(platform.jars, params.version)
+	const version: any | null = params.version === "latest" ? findLatestVersion(platform.jars) : findVersion(platform.jars, params.version)
 	if (!version) return new Response(null, {
 		status: 204,
 		statusText: `No version ${params.version} on ${params.platform}`

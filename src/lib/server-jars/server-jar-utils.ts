@@ -7,3 +7,5 @@ export const findByPlatform = (platform: string) => {
 export const findVersion = (versions: any, version: string) => {
 	return versions.find((item: any) => item.version === version)
 }
+
+export const findLatestVersion = (versions: any) => versions[0]
