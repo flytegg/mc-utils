@@ -4,7 +4,7 @@
     import { onMount } from "svelte";
 
     let selectedType = "paper"
-    let selectedVersion = "1.20.2"
+    let selectedVersion = "1.20.4"
     let selectedDownloadUrl = ""
 
     onMount(() => updateSelected())
