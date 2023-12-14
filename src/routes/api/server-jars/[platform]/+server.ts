@@ -1,6 +1,6 @@
 import { json } from '@sveltejs/kit'
 import type { RequestHandler } from './$types'
-import info from "$lib/server-jars.json"
+import { findByPlatform } from '$lib/server-jars/server-jar-utils'
 
 export const GET = (async ({ params }) => {
 	const platform: any | null = findByPlatform(params.platform)
@@ -11,7 +11,3 @@ export const GET = (async ({ params }) => {
 
 	return json(platform.jars.map((item: any) => item.version))
 }) satisfies RequestHandler
-
-const findByPlatform = (platform: string) => {
-	return info.find((item) => item.platform === platform)
-}

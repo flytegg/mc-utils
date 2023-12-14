@@ -1,6 +1,6 @@
 import { redirect } from '@sveltejs/kit'
 import type { RequestHandler } from './$types'
-import info from "$lib/server-jars.json"
+import { findByPlatform, findVersion } from '$lib/server-jars/server-jar-utils'
 import { trackEvent } from '$lib/google/gtag'
 
 export const GET = (async ({ params }) => {
@@ -21,11 +21,3 @@ export const GET = (async ({ params }) => {
 	const downloadUrl = version.downloadURL ?? `https://cdn.mcutils.com/jars/${params.platform}-${params.version}.jar`
 	throw redirect(302, downloadUrl)
 }) satisfies RequestHandler
-
-const findByPlatform = (platform: string) => {
-	return info.find((item) => item.platform === platform)
-}
-
-const findVersion = (versions: any, version: string) => {
-	return versions.find((item: any) => item.version === version)
-}
