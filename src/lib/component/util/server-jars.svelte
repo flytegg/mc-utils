@@ -4,12 +4,24 @@
     import {trackEvent} from "../../../app.d.ts";
 
     let selectedType = "paper"
-    let selectedVersion = "1.20.2"
+    let selectedVersion = "1.20.4"
 
     const info = [
         {
             platform: "forge",
             jars: [
+                {
+                    "version": "1.20.4",
+                    "release": "December 13th 2023",
+                    "size": "5.2 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.4-49.0.9/forge-1.20.4-49.0.9-installer.jar",
+                },
+                {
+                    "version": "1.20.3",
+                    "release": "December 6th 2023",
+                    "size": "5.2 MB",
+                    "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.3-49.0.2/forge-1.20.3-49.0.2-installer.jar",
+                },
                 {
                     "version": "1.20.2",
                     "release": "October 25th 2023",
@@ -280,6 +292,18 @@
             platform: "fabric",
             jars: [
                 {
+                    "version": "1.20.4",
+                    "release": "December 13th, 2023",
+                    "size": "151 KB",
+                    "downloadURL":"https://meta.fabricmc.net/v2/versions/loader/1.20.4/0.15.1/0.11.2/server/jar",
+                },
+                {
+                    "version": "1.20.3",
+                    "release": "December 8th, 2023",
+                    "size": "151 KB",
+                    "downloadURL":"https://meta.fabricmc.net/v2/versions/loader/1.20.3/0.15.1/0.11.2/server/jar",
+                },
+                {
                     "version": "1.20.2",
                     "release": "September 12th, 2023",
                     "size": "151 KB",
@@ -387,6 +411,12 @@
             platform: "folia",
             jars: [
                 {
+                    "version": "1.20.2",
+                    "release": "24th November 2023",
+                    "size": "40 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/folia/versions/1.20.2/builds/18/downloads/folia-1.20.2-18.jar"
+                },
+                {
                     "version": "1.20.1",
                     "release": "July 10th 2023",
                     "size": "41.4 MB",
@@ -403,6 +433,12 @@
         {
             platform: "purpur",
             jars: [
+                {
+                    "version": "1.20.4",
+                    "release": "December 13th 2023",
+                    "size": "43 MB",
+                    "downloadURL": "https://api.purpurmc.org/v2/purpur/1.20.4/2099/download"
+                },
                 {
                     "version": "1.20.2",
                     "release": "October 5th 2023",
@@ -587,6 +623,12 @@
         {
             platform: "paper",
             jars: [
+                {
+                    "version": "1.20.4",
+                    "release": "December 12th 2023",
+                    "size": "40.4 MB",
+                    "downloadURL": "https://api.papermc.io/v2/projects/paper/versions/1.20.4/builds/328/downloads/paper-1.20.4-328.jar"
+                },
                 {
                     "version": "1.20.2",
                     "release": "October 5th 2023",
@@ -808,6 +850,11 @@
         {
             platform: "spigot",
             jars: [
+                {
+                    "version": "1.20.4",
+                    "size": "70 MB",
+                    "release": "December 13th 2023"
+                },
                 {
                     "version": "1.20.2",
                     "size": "69.0 MB",
@@ -1444,6 +1491,16 @@
             platform: "vanilla",
             jars: [
                 {
+                    "version": "1.20.4",
+                    "release": "December 9th 2023",
+                    "size": "46.9 MB"
+                },
+                {
+                    "version": "1.20.3",
+                    "release": "December 5th 2023",
+                    "size": "46.9 MB"
+                },
+                {
                     "version": "1.20.2",
                     "release": "September 21st 2023",
                     "size": "47.1 MB"
@@ -1819,10 +1876,10 @@
             platform: "velocity",
             jars: [
                 {
-                    "version": "1.8-1.20.2",
+                    "version": "1.8-1.20.4",
                     "release": "28th June 2023",
                     "size": "15.6 MB",
-                    "downloadURL": "https://api.papermc.io/v2/projects/velocity/versions/3.2.0-SNAPSHOT/builds/260/downloads/velocity-3.2.0-SNAPSHOT-260.jar"
+                    "downloadURL": "https://api.papermc.io/v2/projects/velocity/versions/3.2.0-SNAPSHOT/builds/296/downloads/velocity-3.2.0-SNAPSHOT-296.jar"
                 }
             ]
         },
