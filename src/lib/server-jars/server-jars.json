@@ -1557,13 +1557,13 @@
                 "version": "1.20.4",
                 "release": "December 13th, 2023",
                 "size": "151 KB",
-                "downloadURL":"https://meta.fabricmc.net/v2/versions/loader/1.20.4/0.15.1/0.11.2/server/jar",
+                "downloadURL":"https://meta.fabricmc.net/v2/versions/loader/1.20.4/0.15.1/0.11.2/server/jar"
             },
             {
                 "version": "1.20.3",
                 "release": "December 8th, 2023",
                 "size": "151 KB",
-                "downloadURL":"https://meta.fabricmc.net/v2/versions/loader/1.20.3/0.15.1/0.11.2/server/jar",
+                "downloadURL":"https://meta.fabricmc.net/v2/versions/loader/1.20.3/0.15.1/0.11.2/server/jar"
             },
             {
                 "version": "1.20.2",
@@ -1677,13 +1677,13 @@
                 "version": "1.20.4",
                 "release": "December 13th 2023",
                 "size": "5.2 MB",
-                "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.4-49.0.9/forge-1.20.4-49.0.9-installer.jar",
+                "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.4-49.0.9/forge-1.20.4-49.0.9-installer.jar"
             },
             {
                 "version": "1.20.3",
                 "release": "December 6th 2023",
                 "size": "5.2 MB",
-                "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.3-49.0.2/forge-1.20.3-49.0.2-installer.jar",
+                "downloadURL":"https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.3-49.0.2/forge-1.20.3-49.0.2-installer.jar"
             },
             {
                 "version": "1.20.2",
