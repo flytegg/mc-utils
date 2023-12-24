@@ -91,7 +91,7 @@
         </div>
         <div class="flex flex-col mt-11 gap-3">
             <p class="text-[#666C78] text-lg text-center">Join our community...</p>
-            <a href="https://discord.gg/CGmMQwfXXN" target="_blank" aria-label='Discord' class="m-auto"><button class="bg-[#5865F2] hover:bg-[#7984F5] transition-colors rounded-2xl py-6 px-10 flex items-center">
+            <a href="https://discord.flyte.gg" target="_blank" aria-label='Discord' class="m-auto"><button class="bg-[#5865F2] hover:bg-[#7984F5] transition-colors rounded-2xl py-6 px-10 flex items-center">
                 <img class="h-10" src="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/636e0b5493894cf60b300587_full_logo_white_RGB.svg" alt="">
             </a>
         </div>

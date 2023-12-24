@@ -125,7 +125,7 @@
                 </div>
             </div>
             <div class="bg-[#1B1D21] hidden lg:block ">
-                <a href="https://discord.gg/CGmMQwfXXN" aria-label='Discord' target="_blank" class="w-full self-center px-4 text-[#3C414B] text-sm text-center">
+                <a href="https://discord.flyte.gg" aria-label='Discord' target="_blank" class="w-full self-center px-4 text-[#3C414B] text-sm text-center">
                     <p>Got a question? Even if you don’t, click to join our awesome community on <span class="underline decoration-dotted">Discord</span>!</p>
                 </a>
             </div>
