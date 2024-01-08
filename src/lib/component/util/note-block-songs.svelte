@@ -4,18 +4,36 @@
     let searchResults: Song[]
 
     type Song = {
-        name: string,
+        fileName: string,
         downloadUrl: string
     }
 
     let songs: Song[] = []
 
-    const loadSongs = async () => songs = await (await fetch("/api/note-block-songs")).json()
+    async function fetchFilesFromRepo() {
+        const owner = 'flytegg';
+        const repo = 'nbs-songs';
+        const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents`
 
-    onMount(loadSongs);
+        const response = await fetch(apiUrl);
+        const filesData = await response.json();
+
+        if (!Array.isArray(filesData)) {
+            throw new Error('Invalid response. Expected an array of files.')
+        }
+
+        songs = filesData
+            .filter(file => file.type === 'file')
+            .map(file => ({
+                fileName: file.name,
+                downloadUrl: file.download_url,
+            }))
+    }
+
+    onMount(fetchFilesFromRepo);
 
     const updateSearch = async (query: string) => {
-        searchResults = songs.filter(song => song.name.toLowerCase().includes(query.toLowerCase()))
+        searchResults = songs.filter(song => song.fileName.toLowerCase().includes(query.toLowerCase()))
     }
 
     let searchValue: string
@@ -54,7 +72,7 @@
     </tr>
     {#each searchResults ? searchResults : songs as song}
         <tr class=" ">
-            <td class="pl-6 p-1.5 border-b-2 border-b-[#1D1F24] text-gray-400 rounded-bl-lg">{song.name}</td>
+            <td class="pl-6 p-1.5 border-b-2 border-b-[#1D1F24] text-gray-400 rounded-bl-lg">{song.fileName}</td>
             <td class=" self-center mt-1 justify-center items-center">
                 <a aria-label='Download Song' download={song.downloadUrl} href="{song.downloadUrl}">
                     <button on:click={downloadSuccess}>
