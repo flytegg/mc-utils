@@ -1,6 +1,6 @@
 <script lang="ts">
     let activeTab = 0;
-    const tabData = [
+    let tabData = [
         {
             name: "Base",
             pattern: "N/A",
@@ -150,6 +150,8 @@
     let spigot = ""
     let link = ""
 
+    let history = [];
+
     function setPattern(pattern) {
         tabData[activeTab].pattern = pattern
         if (tabData[activeTab].color === "") {
@@ -161,6 +163,49 @@
     function setColor(color) {
         tabData[activeTab].color = color
         updateOutput()
+    }
+
+    function clearLayer(){
+        setColor("")
+        setPattern("")
+        toast.push('Layer cleared successfully!', {
+            theme: {
+                '--toastColor': 'mintcream',
+                '--toastBackground': 'rgba(72,187,120,0.9)',
+                '--toastBarBackground': '#2F855A'
+            }
+        })
+    }
+
+    function clearBanner(){
+        for (let i = 1; i < tabData.length; i++) {
+            tabData[i].pattern = "";
+            tabData[i].color = "";
+        }
+
+        updateOutput()
+        toast.push('Banner cleared successfully!', {
+            theme: {
+                '--toastColor': 'mintcream',
+                '--toastBackground': 'rgba(72,187,120,0.9)',
+                '--toastBarBackground': '#2F855A'
+            }
+        })
+    }
+
+    function undo() {
+        if (history.length > 1) {
+            history.pop();
+            tabData = JSON.parse(JSON.stringify(history[history.length - 1]));
+            toast.push('Rollback successfully!', {
+                theme: {
+                    '--toastColor': 'mintcream',
+                    '--toastBackground': 'rgba(72,187,120,0.9)',
+                    '--toastBarBackground': '#2F855A'
+                }
+            })
+            updateOutput();
+        }
     }
 
     updateOutput()
@@ -199,6 +244,7 @@
                 "is.setItemMeta(meta);"
 
         }
+        history.push(JSON.parse(JSON.stringify(tabData)));
     }
 
     import { toast } from '@zerodevx/svelte-toast'
@@ -354,6 +400,11 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="flex items-center justify-center mt-8">
+        <button on:click={clearLayer} class="text-sm px-2 py-1.5 button mr-2">Clear Layer</button>
+        <button on:click={clearBanner} class="text-sm px-2 py-1.5 button mr-2">Clear Banner</button>
+        <button on:click={undo} class="text-sm px-2 py-1.5 button">Undo</button>
     </div>
 </main>
 
