@@ -65,19 +65,24 @@
 </script>
 
 <div class="flex flex-col items-center m-16">
-    <div class="flex flex-col items-center gap-y-12">
+    <div class="flex flex-col items-center gap-y-10">
         <img src={logo} alt="MC Utils Logo" class="h-20">
-        <h1 class="text-white/60 text-xl">The community powered one stop shop for Minecraft utilities.</h1>
+        <h1 class="text-white/60 text-xl text-center">The community powered one stop shop for Minecraft utilities.</h1>
     </div>
 
-    <div class="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 justify-center gap-5 mt-[3%]">
+    <div class="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 justify-center gap-5 mt-[5%]">
         {#each selectedUtils as util}
-            <a href="/{util.path}" aria-label='{util.path}' class="bg-[#212227] rounded-2xl flex w-full py-3 px-7 gap-4 ">
-                <img src="/component/icon/{util.path}.svg" alt="" class="h-10 self-center">
-                <div class="flex flex-col">
-                    <h2 class="text-[#AEB2BC] text-lg font-semibold">{util.name}</h2>
+            <a href="/{util.path}" aria-label='{util.path}' class="border-[#212227] border-2 rounded-2xl flex w-full py-3 px-7 gap-4 ">
+                <div class="flex flex-col gap-2">
+                    <div class="flex justify-between">
+                        <div class="flex gap-4">
+                            <img src="/component/icon/{util.path}.svg" alt="" class="h-7 self-center">
+                            <h2 class="text-[#AEB2BC] text-lg font-semibold">{util.name}</h2>
+                        </div>
+                        <!-- heart icons -->
+                    </div>
                     <p class="text-[#555D66] text-md">{@html util.shortDescription}</p>
-                </div>
+                 </div>
             </a>
         {/each}
     </div>

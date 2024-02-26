@@ -75,7 +75,6 @@
             <th class="rounded-tl-lg rounded-bl-lg p-2 pl-6 font-medium text-[20px] text-left">Version</th>
             <th class="font-medium text-[20px] text-left">Release Date</th>
             <th class="rounded-tr-lg rounded-br-lg font-medium text-[20px] text-left">Size</th>
-            <th class="font-medium text-[20px] text-left bg-[#1a1b1e] "></th>
         </tr>
         {#each versions as version}
             <tr>

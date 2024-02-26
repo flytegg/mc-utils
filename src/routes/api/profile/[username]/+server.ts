@@ -1,10 +1,10 @@
-import { json } from '@sveltejs/kit'
-import type { RequestHandler } from './$types'
+import {json} from '@sveltejs/kit'
+import type {RequestHandler} from './$types'
 
-export const GET = (async ({ fetch, params }) => {
+export const GET = (async ({fetch, params}) => {
 
-	const request = await fetch(`https://api.ashcon.app/mojang/v2/user/${params.username}`)
-	const response = await request.json()
+    const request = await fetch(`https://api.ashcon.app/mojang/v2/user/${params.username}`)
+    const response = await request.json()
 
     if (response.code) {
         let message = "An unknown error occured."
@@ -17,8 +17,8 @@ export const GET = (async ({ fetch, params }) => {
 
     const id = response.uuid.replaceAll("-", "")
 
-	return json({
-		uuid: response.uuid,
+    return json({
+        uuid: response.uuid,
         id: id,
         username: response.username,
         skin: {
@@ -42,5 +42,5 @@ export const GET = (async ({ fetch, params }) => {
             body: `https://crafatar.com/renders/body/${id}`,
             skin: `https://crafatar.com/skins/${id}`,
         }
-	})
+    })
 }) satisfies RequestHandler
