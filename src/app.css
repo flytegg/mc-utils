@@ -3,24 +3,30 @@
 @tailwind utilities;
 @layer base {
     @font-face {
+        font-family: 'Inter';
+        src: url('/font/Inter-VariableFont.ttf') format("truetype-variations");
+        font-weight: 1 999;
+    }
+
+    @font-face {
         font-family: 'Minecraft';
         src: url('/font/minecraft.woff2') format('woff2');
     }
 
     .button {
-        @apply text-xl font-medium border-2 rounded-xl py-2 px-4 border-[#626875] text-[#626875] transition duration-100 hover:bg-[#3C414B] hover:border-[#3C414B] hover:text-[#1A1B1E];
+        @apply font-medium border-[1.5px] rounded-xl py-2.5 px-4 border-white/90 text-white/90 bg-white/10 transition-colors hover:bg-white hover:text-[#0B0B0C];
     }
 
     .search {
-        @apply flex text-xl border-[2px] rounded-3xl border-[#626875] text-[#626875] items-center px-6 py-2 space-x-2;
+        @apply flex border-[1.5px] rounded-xl border-white/20 text-white/90 relative w-full;
     }
 
     .search input {
-        @apply bg-transparent -mt-1 placeholder-[#626875] focus:outline-none;
+        @apply bg-transparent -mt-0.5 placeholder:text-white/60 focus:outline-none py-2.5 pr-4 pl-11;
     }
 
-    .search svg {
-        @apply w-5 h-5 fill-[#626875];
+    .search span {
+        @apply h-4 w-4 fill-white/80 absolute top-3 left-4;
     }
 
     .scroll {
@@ -49,7 +55,7 @@
     }
 
     body {
-        background-color: #1a1b1e;
+        background-color: #0B0B0C;
     }
 
     img {
@@ -60,8 +66,8 @@
         width: 10px;
     }
 
-    ::-webkit-scrollbar-track-piece{
-        background-color: #1a1b1e;
+    ::-webkit-scrollbar-track-piece {
+        background-color: #0B0B0C;
     }
 
     ::-webkit-scrollbar-thumb{

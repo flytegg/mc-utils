@@ -5,6 +5,7 @@ export const load = (async ({ fetch, params }) => {
   const json = await response.json()
   return { 
     status: json.status,
-    util: json.content
+    util: json.content,
+    path: params.util
   }
 }) satisfies PageLoad
