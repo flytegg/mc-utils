@@ -31,14 +31,14 @@
         <svelte:component this={module.default} />
     {/await}
 {:else}
-    <div class="flex flex-col items-center m-16 justify-between h-full">
+    <div class="flex flex-col items-center m-16 gap-y-16">
         <div class="flex flex-col items-center gap-y-12">
             <img src={logo} alt="MC Utils Logo" class="h-20">
-            <h1 class="text-white/60 text-xl">Erm we don't know about that one...</h1>
+            <h1 class="text-white/60 text-xl">Erm we don't know about that one... <a href="https://github.com/flytegg/mc-utils" target="_blank" class="underline hover:text-white/100 transition-colors">but you could make it!</a></h1>
         </div>
         <div class="flex flex-col items-center gap-y-1">
-            <h1 class="text-white font-extrabold text-7xl">404</h1>
-            <p class="text-white/40 text-lg">/{data.path}</p>
+            <h1 class="text-white font-extrabold text-8xl">404</h1>
+            <p class="text-white/40 text-2xl">/{data.path}</p>
         </div>
         <button class="button">Go back home</button>
     </div>
