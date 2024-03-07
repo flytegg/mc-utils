@@ -3,7 +3,7 @@ import type {RequestHandler} from './$types'
 import {findByPlatform, findLatestVersion, findVersion} from '$lib/server-jars/server-jar-utils'
 import {trackEvent} from '$lib/google/gtag'
 
-export const GET = (async ({params}) => {
+export const GET: RequestHandler = (async ({params}) => {
     const platform: any | null = findByPlatform(params.platform)
     if (!platform) return new Response(null, {
         status: 204,
@@ -20,4 +20,4 @@ export const GET = (async ({params}) => {
 
     const downloadUrl = version.downloadURL ?? `https://cdn.mcutils.com/jars/${params.platform}-${params.version}.jar`
     throw redirect(302, downloadUrl)
-}) satisfies RequestHandler
+})

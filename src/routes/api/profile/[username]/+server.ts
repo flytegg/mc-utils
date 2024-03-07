@@ -1,7 +1,7 @@
 import {json} from '@sveltejs/kit'
 import type {RequestHandler} from './$types'
 
-export const GET = (async ({fetch, params}) => {
+export const GET: RequestHandler = (async ({fetch, params}) => {
 
     const request = await fetch(`https://api.ashcon.app/mojang/v2/user/${params.username}`)
     const response = await request.json()
@@ -43,4 +43,4 @@ export const GET = (async ({fetch, params}) => {
             skin: `https://crafatar.com/skins/${id}`,
         }
     })
-}) satisfies RequestHandler
+})

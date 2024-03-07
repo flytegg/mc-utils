@@ -2,7 +2,7 @@ import {utilList, findUtilByPath} from "$lib/utils"
 import {json} from "@sveltejs/kit"
 import type {RequestHandler} from "./$types"
 
-export const GET = (async ({url}) => {
+export const GET: RequestHandler = (async ({url}) => {
     const path = url.searchParams.get("path")
     const query = url.searchParams.get("query")
 
@@ -37,4 +37,4 @@ export const GET = (async ({url}) => {
         status: 200,
         content: utils
     })
-}) satisfies RequestHandler
+})
