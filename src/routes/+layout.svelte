@@ -91,7 +91,7 @@
                     <div class="flex flex-col gap-y-5">
                         {#each $Favourites as util}
                             <div class="flex items-center justify-between ">
-                                <a href="{util.path}" aria-label='{util.path}' class="flex items-center gap-x-4 {util.path === currentUrl ? "opacity-100" : "opacity-80"}">
+                                <a href={util.path} aria-label={util.path} class="flex items-center gap-x-4 hover:opacity-100 transition-opacity {util.path === currentUrl ? "opacity-100" : "opacity-80"}">
                                     <img src="/component/icon/{util.path}.svg" alt="" class="h-7 w-7">
                                     <h2 class="text-white font-semibold text-base">{util.name}</h2>
                                 </a>
@@ -104,7 +104,7 @@
                 <div class="flex flex-col gap-y-5">
                     {#each $UtilList as util}
                         <div class="flex items-center justify-between">
-                            <a href="{util.path}" aria-label='{util.path}' class="flex items-center gap-x-4 {util.path === currentUrl ? "opacity-100" : "opacity-80"}">
+                            <a href={util.path} aria-label={util.path} class="flex items-center gap-x-4 hover:opacity-100 transition-opacity {util.path === currentUrl ? "opacity-100" : "opacity-80"}">
                                 <img src="/component/icon/{util.path}.svg" alt="" class="h-7 w-7">
                                 <h2 class="text-white font-semibold text-base">{util.name}</h2>
                             </a>
