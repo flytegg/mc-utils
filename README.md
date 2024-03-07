@@ -90,7 +90,7 @@ Finally, navigate to the `src/lib/component/util` folder, where you can create y
 
 From here you just write your util in Svelte using HTML & JS/TS.
 
-If you want to take a look, here's a link to an existing util, [Skin Stealer](https://github.com/flytegg/mcu-website/blob/master/src/lib/component/util/skin-stealer.svelte).
+If you want to take a look, here's a link to an existing util, [Skin Stealer](https://github.com/flytegg/mc-utils/blob/master/src/lib/component/util/skin-stealer.svelte).
 
 ### Using GitHub Projects & Issues
 
