@@ -234,6 +234,13 @@
                             <p class="motd-text text-start"><br>{@html previewText}</p>
                         </div>
                     </div>
+                {:else if activeTab === 5} <!-- Name -->
+                    <div class="self-center relative w-[500px] mx-auto">
+                        <img src="/display/name.svg" alt="Name" class="w-[100%] self-center items-center">
+                        <div class="name-content overflow-y-hidden">
+                            <p class="name-text">{@html previewText}</p>
+                        </div>
+                    </div>
                 {:else if activeTab === 6} <!-- Lore -->
                     <div class="self-center relative w-[500px] mx-auto">
                         <img src="/display/lore.svg" alt="Lore" class="w-[100%] self-center items-center">
@@ -312,16 +319,16 @@
 
     .lore-content {
         position: absolute;
-        top: 58px;
+        top: 60px;
         left: 24px;
         right: 24px;
-        bottom: 10px;
+        bottom: 25px;
         display: flex;
     }
 
     .lore-text {
         font-family: 'Minecraft', monospace;
-        font-size: 33px;
+        font-size: 30px;
         line-height: 1.3;
         text-align: left;
         max-height: calc(100% - 20px);
@@ -332,16 +339,17 @@
 
     .name-content {
         position: absolute;
-        top: 58px;
+        top: 16px;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
         left: 24px;
-        right: 24px;
-        bottom: 10px;
         display: flex;
     }
 
     .name-text {
         font-family: 'Minecraft', monospace;
-        font-size: 33px;
+        font-size: 30px;
         line-height: 1.3;
         text-align: left;
         max-height: calc(100% - 20px);
