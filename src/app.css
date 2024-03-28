@@ -18,15 +18,12 @@
     }
 
     .search {
-        @apply flex border-[1.5px] rounded-xl border-white/20 text-white/90 relative w-full;
-    }
-
-    .search input {
-        @apply bg-transparent -mt-0.5 placeholder:text-white/60 focus:outline-none py-2.5 pr-4 pl-11;
-    }
-
-    .search span {
-        @apply h-4 w-4 fill-white/80 absolute top-3 left-4;
+        @apply flex border-[1.5px] rounded-xl border-white/20 text-white/90 relative w-full bg-transparent -mt-0.5 placeholder:text-white/60 focus:outline-none py-2.5 pr-4 pl-11;
+        background-image: url("/icon/search.png");
+        background-size: 16px;
+        background-repeat: no-repeat;
+        background-position-x: 16px;
+        background-position-y: 12.5px;
     }
 
     .scroll {

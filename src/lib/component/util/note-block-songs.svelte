@@ -57,10 +57,8 @@
     }
 </script>
 
-<div class="search w-fit h-10 text-md">
-    <img src="/icon/search.svg" alt="Search Icon" class="h-5">
-    <input bind:value={searchValue} on:input={handleInput} type="text" placeholder="Enter song name..." on:keypress={handleKeyPress} on:blur={handleInput} class="w-full pt-0.5 pr-0.5 justify-center items-center self-center">
-</div>
+<input class="search w-[26rem]" bind:value={searchValue} on:input={handleInput} type="text" placeholder="Enter song name..." on:keypress={handleKeyPress} on:blur={handleInput}>
+
 <table class="w-[90%] lg:w-[60%] text-white mt-12">
     <tr class="border-b-[1.5px] border-b-[#232324] text-[#9d9d9e]">
         <th class="rounded-tl-lg rounded-bl-lg p-2 font-medium text-left">
