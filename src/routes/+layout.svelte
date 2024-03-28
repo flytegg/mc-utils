@@ -10,7 +10,6 @@
     import { onMount } from "svelte";
 
     import logo from "$lib/image/logo.svg"
-    import Search from "$lib/image/Search.svelte"
 
     UtilList.set(data.utils)
 
@@ -81,10 +80,7 @@
         <div class="flex flex-col h-full pl-6 border-r-white/10 border-r">
             <div class="flex w-full items-center flex-col space-y-6 my-6 pr-6">
                 <a href="/" on:click={() => currentUrl = "/"} aria-label='Home'><img src={logo} alt="" class="h-10"></a>
-                <div class="search">
-                    <span><Search /></span>
-                    <input bind:value={searchValue} on:input={handleInput} type="text" placeholder="Search for a utility" on:keypress={handleKeyPress} on:blur={handleInput}>
-                </div>
+                <input class="search" bind:value={searchValue} on:input={handleInput} type="text" placeholder="Search for a utility" on:keypress={handleKeyPress} on:blur={handleInput}>
             </div>
             <div data-sveltekit-reload class="overflow-y-scroll flex flex-col gap-y-5 mb-7">
                 {#if $Favourites.length > 0}
