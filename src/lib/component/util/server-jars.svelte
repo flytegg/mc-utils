@@ -74,13 +74,11 @@
         <tr class="border-b-[1.5px] border-b-[#232324] text-[#9d9d9e]">
             <th class="rounded-tl-lg rounded-bl-lg p-2 font-medium text-left">Version</th>
             <th class="font-medium text-left">Release Date</th>
-            <th class="rounded-tr-lg rounded-br-lg font-medium  text-left">Size</th>
         </tr>
         {#each versions as version}
             <tr class="border-b-[1px] border-b-[#232324] text-[#cecece]">
                 <td class="p-2 ">{version.version}</td>
                 <td class="">{version.release}</td>
-                <td class="">{version.size}</td>
                 <td class="justify-end">
                     <div class="flex justify-end items-center h-full pr-1">
                         <a aria-label='Download Jar' href={version.downloadUrl}>
