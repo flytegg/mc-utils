@@ -107,9 +107,9 @@
     }
 
     function getResetStyle() {
-        if (activeTab === 0 || activeTab === 3) {
+        if (activeTab === 0 || activeTab === 3 || activeTab === 5 || activeTab === 6 || activeTab === 7) {
             return '<span style="color: #FFFFFF">';
-        } else if (activeTab === 1|| activeTab === 2) {
+        } else if (activeTab === 1 || activeTab === 2) {
             return '<span style="color: #000000">';
         } else if (activeTab === 4) {
             return '<span style="color: #AAAAAA">';
