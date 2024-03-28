@@ -120,13 +120,13 @@
         <div class="flex flex-col w-full items-center">
             <slot/>
         </div>
-        <div class="flex w-full justify-center items-center relative my-8">
+        <div class="flex w-full justify-center items-center relative my-8 z-20">
             <p class="text-white/50">This service is provided free by the passionate team at <a href="https://flyte.gg" aria-label='Flyte' target="_blank" class="underline underline-offset-2">Flyte</a> — and through our wonderful <a class="underline underline-offset-2" target="_blank" aria-label='GitHub' href="https://github.com/flytegg/mc-utils/issues">contributor community</a>.</p>
         </div>
     </div>
 </div>
 
-<div class="fixed inset-x-0 bottom-8 z-10 bg-opacity-90 px-4 py-3">
+<div class="fixed inset-x-0 bottom-8 bg-opacity-90 px-4 py-3 z-10">
     <div class="flex justify-center items-center">
         <a href="https://discord.gg/flyte" target="_blank" class="absolute right-6 bg-[#767ADE]/20 border-[#767ADE] border rounded-xl px-4 py-3">
             <svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
