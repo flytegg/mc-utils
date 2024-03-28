@@ -76,7 +76,7 @@
 </button>
 
 <div class="flex lg:flex-row flex-col">
-    <div class="{navShown ? 'block' : 'hidden'} lg:block lg:sticky lg:left-0 lg:top-0 lg:h-screen lg:min-w-[22rem] lg:max-w-[22rem] lg:min-h-screen">
+    <div class="{navShown ? 'block' : 'hidden'} lg:block lg:sticky lg:left-0 lg:top-0 lg:h-screen lg:min-w-[22rem] lg:max-w-[22rem] lg:min-h-screen z-50">
         <div class="flex flex-col h-full pl-6 border-r-white/10 border-r">
             <div class="flex w-full items-center flex-col space-y-6 my-6 pr-6">
                 <a href="/" on:click={() => currentUrl = "/"} aria-label='Home'><img src={logo} alt="" class="h-10"></a>
@@ -116,8 +116,8 @@
         <div class="flex flex-col w-full items-center">
             <slot/>
         </div>
-        <div class="flex w-full justify-center items-center relative my-8 z-20">
-            <p class="text-white/50">This service is provided free by the passionate team at <a href="https://flyte.gg" aria-label='Flyte' target="_blank" class="underline underline-offset-2 hover:text-white/80 transition-colors">Flyte</a> — and through our wonderful <a class="underline underline-offset-2 hover:text-white/80 transition-colors" target="_blank" aria-label='GitHub' href="https://github.com/flytegg/mc-utils/issues">contributor community</a>.</p>
+        <div class="flex w-fit mx-auto justify-center items-center relative my-8 z-20">
+            <p class="text-white/50">This service is provided free by the passionate team at <a href="https://flyte.gg" aria-label='Flyte' target="_blank" class="underline underline-offset-2 hover:text-white/80 transition-colors">Flyte</a> — and through our generous <a class="underline underline-offset-2 hover:text-white/80 transition-colors" target="_blank" aria-label='GitHub' href="https://github.com/flytegg/mc-utils/issues">contributor community</a>.</p>
         </div>
     </div>
 </div>
