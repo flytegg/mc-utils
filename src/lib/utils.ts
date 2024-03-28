@@ -8,6 +8,14 @@ const utils: Util[] = [
             "Download Minecraft server jars of any version including Vanilla, Fabric, Forge, CraftBukkit, Spigot, Paper, Purpur, Folia, BungeeCord, Waterfall and Velocity.",
     },
     {
+        path: "inventory-slots",
+        name: "Inventory Slots",
+        description: "Slot numbers for every inventory type.",
+        shortDescription: "Numbers for all inventories",
+        seoDescription:
+            "A list of Minecraft Bukkit inventory slot IDs including chests, double chests, furnace, player, villager, brewing stand, crafting table and many more.",
+    },
+    {
         path: "item-ids",
         name: "Item IDs",
         description: "Search all in-game items and IDs.",
@@ -30,14 +38,6 @@ const utils: Util[] = [
         shortDescription: "Ping server for info",
         seoDescription:
             "A Minecraft server list like viewer to view live player counts, MOTD and favicon.",
-    },
-    {
-        path: "inventory-slots",
-        name: "Inventory Slots",
-        description: "Slot numbers for every inventory type.",
-        shortDescription: "Numbers for all inventories",
-        seoDescription:
-            "A list of Minecraft Bukkit inventory slot IDs including chests, double chests, furnace, player, villager, brewing stand, crafting table and many more.",
     },
     {
         path: "skin-stealer",
