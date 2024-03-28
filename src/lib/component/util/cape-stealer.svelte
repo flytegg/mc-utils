@@ -90,7 +90,7 @@
 
 <div class="flex gap-3">
     <input class="search w-[26rem]" maxlength="16" bind:value={searchValue} on:input={handleInput} on:keydown={disallowSpaces} type="text" placeholder="Enter username..." on:keypress={handleKeyPress} on:blur={handleInput}>
-    <button class="button text-md py-0" on:click={updateSkin}>Search</button>
+    <button class="button text-md py-0" on:click={() => updateSkin(searchValue)}>Search</button>
 </div>
 
 {#if loading}
