@@ -310,6 +310,46 @@
         height: 100%;
     }
 
+    .lore-content {
+        position: absolute;
+        top: 58px;
+        left: 24px;
+        right: 24px;
+        bottom: 10px;
+        display: flex;
+    }
+
+    .lore-text {
+        font-family: 'Minecraft', monospace;
+        font-size: 33px;
+        line-height: 1.3;
+        text-align: left;
+        max-height: calc(100% - 20px);
+        overflow: hidden;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+
+    .name-content {
+        position: absolute;
+        top: 58px;
+        left: 24px;
+        right: 24px;
+        bottom: 10px;
+        display: flex;
+    }
+
+    .name-text {
+        font-family: 'Minecraft', monospace;
+        font-size: 33px;
+        line-height: 1.3;
+        text-align: left;
+        max-height: calc(100% - 20px);
+        overflow: hidden;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+
     .book-content {
         position: absolute;
         top: 10px;
