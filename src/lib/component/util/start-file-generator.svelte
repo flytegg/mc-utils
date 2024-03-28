@@ -145,6 +145,7 @@
             {#each tabData as tab, index}
                 <button class="px-4 py-2 mr-2 rounded focus:outline-none button"
                         class:bg-gray-200={index === activeTab}
+                        class:text-black={index === activeTab}
                         on:click={() => setActiveTab(index)}>
                     {tab.name}
                 </button>
