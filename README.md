@@ -94,4 +94,4 @@ If you want to take a look, here's a link to an existing util, [Skin Stealer](ht
 
 ### Using GitHub Projects & Issues
 
-If you have a feature suggestion, or have found a bug, make a github issues post. If you have made a new feature, you should make a pull request instead. Make sure you tag your post with the correct tag.
+If you have a feature suggestion, or have found a bug, make a GitHub issue. If you have made a new feature, you should make a pull request instead. Make sure you tag your post with the correct tag.
