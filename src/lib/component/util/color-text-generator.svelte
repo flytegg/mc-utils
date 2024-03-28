@@ -234,8 +234,15 @@
                             <p class="motd-text text-start"><br>{@html previewText}</p>
                         </div>
                     </div>
+                {:else if activeTab === 6} <!-- Lore -->
+                    <div class="self-center relative w-[500px] mx-auto">
+                        <img src="/display/lore.svg" alt="Lore" class="w-[100%] self-center items-center">
+                        <div class="lore-content overflow-y-hidden">
+                            <p class="lore-text">{@html previewText}</p>
+                        </div>
+                    </div>
                 {:else if activeTab === 7} <!-- Kick -->
-                    <div class="self-center relative w-[600px] mx-auto">
+                    <div class="self-center relative w-[550px] mx-auto">
                         <img src="/display/kick.svg" alt="Kick" class="w-[100%] self-center items-center">
                         <div class="kick-content overflow-y-hidden">
                             <p class="kick-text">{@html previewText}</p>
@@ -282,10 +289,10 @@
         padding-left: 30px;
         padding-right: 30px;
         position: absolute;
-        top: 10px;
+        top: 55px;
         left: 10px;
         right: 10px;
-        bottom: 110px;
+        bottom: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -293,13 +300,14 @@
 
     .kick-text {
         font-family: 'Minecraft', monospace;
-        font-size: 18px;
+        font-size: 17px;
         line-height: 1.3;
         text-align: center;
         max-height: calc(100% - 20px);
         overflow: hidden;
         white-space: pre-wrap;
         word-wrap: break-word;
+        height: 100%;
     }
 
     .book-content {
