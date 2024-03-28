@@ -64,10 +64,10 @@
     })
 </script>
 
-<div class="flex flex-col items-center m-16">
+<div class="flex flex-col items-center mt-16 mx-14">
     <div class="flex flex-col items-center gap-y-10">
         <img src={logo} alt="MC Utils Logo" class="h-20">
-        <h1 class="text-white/60 text-xl text-center">The community powered one stop shop for Minecraft utilities.</h1>
+        <h1 class="text-white/60 text-xl text-center">Community powered Minecraft utilities for developers, builders and players.</h1>
     </div>
 
     <div class="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 justify-center gap-5 mt-[5%]">

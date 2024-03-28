@@ -116,13 +116,18 @@
         <div class="flex flex-col w-full items-center">
             <slot/>
         </div>
-        <div class="flex w-fit mx-auto justify-center items-center relative my-8 z-20">
-            <p class="text-white/50">This service is provided free by the passionate team at <a href="https://flyte.gg" aria-label='Flyte' target="_blank" class="underline underline-offset-2 hover:text-white/80 transition-colors">Flyte</a> — and through our generous <a class="underline underline-offset-2 hover:text-white/80 transition-colors" target="_blank" aria-label='GitHub' href="https://github.com/flytegg/mc-utils/issues">contributor community</a>.</p>
+        <div class="my-8">
+            <div class="flex w-fit mx-auto justify-center items-center relative z-20 text-center">
+                <p class="text-white/50 px-10">MC Utils is provided free by the passionate team at <a href="https://flyte.gg" aria-label='Flyte' target="_blank" class="underline underline-offset-2 hover:text-white/80 transition-colors">Flyte</a> — and through our generous <a class="underline underline-offset-2 hover:text-white/80 transition-colors" target="_blank" aria-label='GitHub' href="https://github.com/flytegg/mc-utils/issues">contributor community</a>.</p>
+            </div>
+            <div class="mt-5 flex xl:hidden w-fit mx-auto justify-center items-center relative z-20 text-center text-white">
+                <p class="text-white/50 px-10">Join the <a class="underline underline-offset-2 hover:text-white/80 transition-colors hover:text-[#5562ea]" target="_blank" aria-label='GitHub' href="https://github.com/flytegg/mc-utils/issues">Discord</a></p>
+            </div>
         </div>
     </div>
 </div>
 
-<div class="fixed inset-x-0 bottom-8 bg-opacity-90 px-4 py-3 z-10">
+<div class="fixed xl:block hidden inset-x-0 bottom-8 bg-opacity-90 px-4 py-3 z-10">
     <div class="flex justify-center items-center">
         <a href="https://discord.gg/flyte" target="_blank" class="absolute right-6 bg-[#767ADE]/20 hover:bg-[#767ADE] group border-[#767ADE] transition-colors border rounded-xl px-4 py-3">
             <svg class="fill-[#767ADE] group-hover:fill-[#0B0B0C]" width="24" height="20" viewBox="0 0 24 20" xmlns="http://www.w3.org/2000/svg">
