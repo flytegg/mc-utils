@@ -64,10 +64,7 @@ Search
         updateSkin(searchValue)
     }
 </script>
-<div class="search">
-    <img src="/icon/search.svg" alt="Search Icon" class="h-5">
-    <input bind:value={searchValue} type="text" placeholder="Enter someone's username" on:keypress={handleKeyPress} on:blur={handleInput}>
-</div>
+<input class="search" bind:value={searchValue} type="text" placeholder="Enter someone's username" on:keypress={handleKeyPress} on:blur={handleInput}>
 ```
 
 Button
