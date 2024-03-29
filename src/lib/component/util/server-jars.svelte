@@ -72,7 +72,7 @@
 {:then versions}
     <table class="w-[90%] lg:w-[60%] text-white mt-12">
         <tr class="border-b-[1.5px] border-b-[#232324] text-[#9d9d9e]">
-            <th class="rounded-tl-lg rounded-bl-lg p-2 font-medium text-left">Version</th>
+            <th class="rounded-tl-lg rounded-bl-lg p-2 font-medium text-left">{selectedType === "velocity" ? 'Version' : 'Minecraft Version'}</th>
             <th class="font-medium text-left">Release Date</th>
         </tr>
         {#each versions as version}
