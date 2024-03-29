@@ -71,12 +71,12 @@
     let navShown = false
 </script>
 
-<button on:click={() => navShown = !navShown} class="lg:hidden absolute top-8 left-8 {navShown ? '' : ''}">
+<button on:click={() => navShown = !navShown} class="lg:hidden absolute top-8 left-8 z-50 {navShown ? '' : ''}">
     <img src="/icon/{navShown ? 'x.svg' : 'hamburger.svg'}" alt="Hamburger" class="h-7">
 </button>
 
 <div class="flex lg:flex-row flex-col">
-    <div class="{navShown ? 'block' : 'hidden'} lg:block lg:sticky lg:left-0 lg:top-0 lg:h-screen lg:min-w-[22rem] lg:max-w-[22rem] lg:min-h-screen z-50">
+    <div class="{navShown ? 'block' : 'hidden'} lg:block lg:sticky lg:left-0 lg:top-0 lg:h-screen lg:min-w-[22rem] lg:max-w-[22rem] lg:min-h-screen z-40">
         <div class="flex flex-col h-full pl-6 border-r-white/10 border-r">
             <div class="flex w-full items-center flex-col space-y-6 my-6 pr-6">
                 <a href="/" on:click={() => currentUrl = "/"} aria-label='Home'><img src={logo} alt="" class="h-10"></a>
