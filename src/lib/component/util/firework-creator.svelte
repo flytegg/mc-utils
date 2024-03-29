@@ -16,6 +16,7 @@
 
   let giveCmd = "";
   let summonCmd = "";
+  let spigotCode = "";
 
   const positionValues = [
     { left: 60, top: 40 },
@@ -126,6 +127,57 @@
     )}]${fading.length > 0 ? `,FadeColors:[I;${fading.join(",")}]` : ""}}]}}}}`;
   }
 
+  function setSpigotCode() {
+    let type: String = "";
+    let flicker = "";
+    let trail = "";
+    let primary: String = "";
+    let fading: String = "";
+
+    switch (selectedExplosionShape) {
+      case "Large Ball": {
+        type = "BALL_LARGE";
+        break;
+      }
+      case "Star": {
+        type = "STAR";
+        break;
+      }
+      case "Creeper": {
+        type = "CREEPER";
+        break;
+      }
+      case "Burst": {
+        type = "BURST";
+        break;
+      }
+      default: {
+        type = "BALL";
+      }
+    }
+
+    if (isFlicker) {
+      flicker = ".withFlicker()";
+    }
+    if (isTrail) {
+      trail = ".withTrail()";
+    }
+
+    for (let color of selectedPrimary) {
+      primary += `.withColor(Color.fromRGB(${dyes.find((dye) => dye.color === color).rgb}))`;
+    }
+
+    for (let color of selectedFades) {
+      fading += `.withFade(Color.fromRGB(${dyes.find((dye) => dye.color === color).rgb}))`;
+    }
+
+    spigotCode = `ItemStack firework = new ItemStack(Material.FIREWORK_ROCKET);
+FireworkMeta meta = (FireworkMeta) firework.getItemMeta();
+meta.addEffect(FireworkEffect.builder()${primary}.with(FireworkEffect.Type.${type})${flicker}${trail}${fading}.build());
+meta.setPower(${selectedFlightPower});
+firework.setItemMeta(meta);`;
+  }
+
   import { toast } from "@zerodevx/svelte-toast";
 
   function copyValue(text: string) {
@@ -191,7 +243,7 @@
 
     setGiveCommand();
     setSummonCommand();
-
+    setSpigotCode();
     showResults = true;
     activeCmd = true;
 
@@ -238,66 +290,82 @@
     {
       color: "Black Dye",
       deci: 1973019,
+      rgb: "0, 0, 0"
     },
     {
       color: "Blue Dye",
       deci: 2437522,
+      rgb: "0,0,255"
     },
     {
       color: "Brown Dye",
       deci: 5320730,
+      rgb: "150, 75, 0"
     },
     {
       color: "Cyan Dye",
       deci: 2651799,
+      rgb: "0, 100, 100"
     },
     {
       color: "Gray Dye",
       deci: 4408131,
+      rgb: "128, 128, 128"
     },
     {
       color: "Green Dye",
       deci: 3887386,
+      rgb: "0, 255, 0"
     },
     {
       color: "Light Blue Dye",
       deci: 6719955,
+      rgb: "173, 216, 230"
     },
     {
       color: "Light Gray Dye",
       deci: 11250603,
+      rgb: "211, 211, 211"
     },
     {
       color: "Lime Dye",
       deci: 4312372,
+      rgb: "50, 205, 50"
     },
     {
       color: "Magenta Dye",
       deci: 12801229,
+      rgb: "255, 0, 255"
     },
     {
       color: "Orange Dye",
       deci: 15435844,
+      rgb: "255, 165, 0"
     },
     {
       color: "Pink Dye",
       deci: 14188952,
+      rgb: "255, 192, 203"
     },
     {
       color: "Purple Dye",
       deci: 8073150,
+      rgb: "128, 0, 128"
     },
     {
       color: "Red Dye",
       deci: 11743532,
+      rgb: "255, 0, 0"
     },
     {
       color: "White Dye",
       deci: 15790320,
+      rgb: "255, 255, 255"
     },
     {
       color: "Yellow Dye",
       deci: 14602026,
+      rgb: "255, 255, 0"
     },
   ];
 
@@ -541,6 +609,16 @@
                       class="w-fit text-sm px-2 py-1.5 button h-fit inline-block"
               >Copy</button
               >
+            </div>
+          </div>
+        </div>
+
+        <div class="w-full min-w-[10px] flex-1">
+          <div class="flex flex-col mt-6">
+            <h3 class="font-medium text-white text-20px text-left">Spigot API Code</h3>
+            <div class="flex gap-3 mt-2">
+              <textarea style="resize: none;" disabled bind:value={spigotCode} class=" inline-block text-sm text-gray-400 font-mono rounded-md p-2 bg-[#141517] h-[105px] w-[100%] max-w-[100%] overflow-y-scroll"></textarea>
+              <button on:click={() => copyValue(spigotCode)} class="w-fit text-sm px-2 py-1.5 button h-fit inline-block">Copy</button>
             </div>
           </div>
         </div>

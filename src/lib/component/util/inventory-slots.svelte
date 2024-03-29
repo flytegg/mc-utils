@@ -111,6 +111,6 @@
                 {/each}
             </select>
         </div>
-        <img src="/inventory/{inventories.find(item => item.name == selectedType).img}.png" alt="Inventory Slots" class="w-[100%] lg:w-[450px]">
+        <img src="/inventory/{inventories.find(item => item.name == selectedType).img}.png" alt="Inventory Slots" class="w-[100%] lg:w-[450px] px-3">
     </div>
 </main>

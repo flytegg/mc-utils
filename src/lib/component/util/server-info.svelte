@@ -138,10 +138,7 @@
     })
 </script>
 
-<div class="search w-fit h-10 text-md mb-12">
-    <img src="/icon/search.svg" alt="Search Icon" class="h-5">
-    <input on:keydown={disallowSpaces} bind:value={searchValue} on:input={handleInput} type="text" placeholder="Enter server address..." on:blur={handleInput} class="w-full pt-0.5 pr-0.5 justify-center items-center self-center">
-</div>
+<input class="search w-[26rem] mb-12" on:keydown={disallowSpaces} bind:value={searchValue} on:input={handleInput} type="text" placeholder="Enter server address..." on:blur={handleInput}>
 
 {#if (status && status.status !== "error")}
     <div class="self-center relative w-[650px] transition-transform transform scale-[55%] sm:scale-[80%] md:scale-[100%] lg:scale-[100%] xl:scale-100">
