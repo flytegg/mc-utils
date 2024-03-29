@@ -160,7 +160,7 @@
                 {/if}
             {/each}
         </div>
-        <div class="flex gap-3 mt-3">
+        <div class="flex justify-center gap-3 mt-3">
             <button class="w-fit text-sm px-2 py-1.5 button" on:click={copyValue}>Copy</button>
             <button class="w-fit text-sm px-2 py-1.5 button" on:click={downloadStartBat}>Download</button>
         </div>
