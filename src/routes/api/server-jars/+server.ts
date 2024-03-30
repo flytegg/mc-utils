@@ -1,12 +1,5 @@
-import { json } from '@sveltejs/kit'
-import type { RequestHandler } from './$types'
-import info from "$lib/server-jars/server-jars.json"
+import {json} from '@sveltejs/kit'
+import type {RequestHandler} from './$types'
+import { fetchSupportedPlatforms } from '$lib/server-jars/server-jar-utils'
 
-export const GET = (async () => {
-	return json(info.map((item) => {
-		return { 
-			key: item.platform,
-			name: item.display
-		}
-	}))
-}) satisfies RequestHandler
+export const GET: RequestHandler = async ({ url }) => json(fetchSupportedPlatforms().map((platform) => { return { key: platform.key, name: platform.name, url: `${url.href}/${platform.key}` } }))

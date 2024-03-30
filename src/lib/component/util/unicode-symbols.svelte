@@ -1,6 +1,6 @@
 <main class="w-[90%] lg:w-[60%] ">
     <div>
-        <h3 class="font-medium text-white text-[20px] text-center">Commonly Used</h3>
+        <h3 class="font-medium text-white text-[20px] text-center">Popular</h3>
         <p class="text-lg text-gray-400 mt-4 rounded-md p-2 bg-[#141517] w-[100%] whitespace-pre-wrap break-all not-emoji">
             §⛏⬤█»▶★❤•💎⚔☀✓✔✖✗⛀⛁💰
         </p>

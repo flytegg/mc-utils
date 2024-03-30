@@ -25,6 +25,18 @@
         {
             name: 'MOTD',
             content: '',
+        },
+        {
+            name: 'Name',
+            content: '',
+        },
+        {
+            name: 'Lore',
+            content: '',
+        },
+        {
+            name: 'Kick',
+            content: '',
         }
     ];
 
@@ -95,9 +107,9 @@
     }
 
     function getResetStyle() {
-        if (activeTab === 0 || activeTab === 3) {
+        if (activeTab === 0 || activeTab === 3 || activeTab === 5 || activeTab === 6 || activeTab === 7) {
             return '<span style="color: #FFFFFF">';
-        } else if (activeTab === 1|| activeTab === 2) {
+        } else if (activeTab === 1 || activeTab === 2) {
             return '<span style="color: #000000">';
         } else if (activeTab === 4) {
             return '<span style="color: #AAAAAA">';
@@ -178,10 +190,11 @@
     <div class="flex flex-col">
         <h3 class="font-medium text-white text-[20px] mt-8 text-center mb-5">Preview</h3>
         <div class="tab-system w-[100%] flex flex-col">
-            <div class="self-center grid lg:grid-cols-5 grid-cols-2">
+            <div class="self-center grid xl:grid-cols-8 md:grid-cols-4 grid-cols-2 -mt-2 z-50">
                 {#each tabData as tab, index}
-                    <button class="button px-4 py-2 mr-2 rounded focus:outline-none"
+                    <button class="button px-4 py-2 mr-2 mt-2 rounded focus:outline-none"
                             class:bg-gray-200={index === activeTab}
+                            class:text-black={index === activeTab}
                             on:click={() => setActiveTab(index)}>
                         {tab.name}
                     </button>
@@ -221,6 +234,27 @@
                             <p class="motd-text text-start"><br>{@html previewText}</p>
                         </div>
                     </div>
+                {:else if activeTab === 5} <!-- Name -->
+                    <div class="self-center relative w-[500px] mx-auto">
+                        <img src="/display/name.svg" alt="Name" class="w-[100%] self-center items-center">
+                        <div class="name-content overflow-y-hidden">
+                            <p class="name-text">{@html previewText}</p>
+                        </div>
+                    </div>
+                {:else if activeTab === 6} <!-- Lore -->
+                    <div class="self-center relative w-[500px] mx-auto">
+                        <img src="/display/lore.svg" alt="Lore" class="w-[100%] self-center items-center">
+                        <div class="lore-content overflow-y-hidden">
+                            <p class="lore-text">{@html previewText}</p>
+                        </div>
+                    </div>
+                {:else if activeTab === 7} <!-- Kick -->
+                    <div class="self-center relative w-[550px] mx-auto">
+                        <img src="/display/kick.svg" alt="Kick" class="w-[100%] self-center items-center">
+                        <div class="kick-content overflow-y-hidden">
+                            <p class="kick-text">{@html previewText}</p>
+                        </div>
+                    </div>
                 {/if}
             </div>
         </div>
@@ -252,6 +286,72 @@
         font-size: 40px;
         line-height: 1.3;
         text-align: center;
+        max-height: calc(100% - 20px);
+        overflow: hidden;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+
+    .kick-content {
+        padding-left: 30px;
+        padding-right: 30px;
+        position: absolute;
+        top: 55px;
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .kick-text {
+        font-family: 'Minecraft', monospace;
+        font-size: 17px;
+        line-height: 1.3;
+        text-align: center;
+        max-height: calc(100% - 20px);
+        overflow: hidden;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        height: 100%;
+    }
+
+    .lore-content {
+        position: absolute;
+        top: 60px;
+        left: 24px;
+        right: 24px;
+        bottom: 25px;
+        display: flex;
+    }
+
+    .lore-text {
+        font-family: 'Minecraft', monospace;
+        font-size: 30px;
+        line-height: 1.3;
+        text-align: left;
+        max-height: calc(100% - 20px);
+        overflow: hidden;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+
+    .name-content {
+        position: absolute;
+        top: 16px;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
+        left: 24px;
+        display: flex;
+    }
+
+    .name-text {
+        font-family: 'Minecraft', monospace;
+        font-size: 30px;
+        line-height: 1.3;
+        text-align: left;
         max-height: calc(100% - 20px);
         overflow: hidden;
         white-space: pre-wrap;

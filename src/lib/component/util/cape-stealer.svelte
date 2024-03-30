@@ -89,11 +89,8 @@
 </script>
 
 <div class="flex gap-3">
-    <div class="search w-fit h-10 text-md">
-        <img src="/icon/search.svg" alt="Search Icon" class="h-5">
-        <input maxlength="16" bind:value={searchValue} on:input={handleInput} on:keydown={disallowSpaces} type="text" placeholder="Enter username..." on:keypress={handleKeyPress} on:blur={handleInput} class="w-full pt-0.5 pr-0.5 justify-center items-center self-center">
-    </div>
-    <button class="button text-md py-0" on:click={updateSkin}>Search</button>
+    <input class="search w-[26rem]" maxlength="16" bind:value={searchValue} on:input={handleInput} on:keydown={disallowSpaces} type="text" placeholder="Enter username..." on:keypress={handleKeyPress} on:blur={handleInput}>
+    <button class="button text-md py-0" on:click={() => updateSkin(searchValue)}>Search</button>
 </div>
 
 {#if loading}

@@ -333,6 +333,7 @@
             {#each tabData as tab, index}
                 <button id={tab.name} class="button px-4 py-2 rounded focus:outline-none"
                         class:bg-gray-200={index === activeTab}
+                        class:text-black={index === activeTab}
                         on:click={() => activeTab = index}>
                     {tab.name}
                 </button>
