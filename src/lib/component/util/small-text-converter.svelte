@@ -48,7 +48,8 @@
         <textarea class="w-full text-lg text-gray-400 font-mono rounded-md p-2 bg-[#141517] resize-none h-auto min-h-[400px]" bind:value={inputText} on:input />
     </div>
     <div class="flex flex-col gap-3">
-        <h3 class="font-medium text-white text-[20px]">sᴍᴀʟʟ ᴛᴇxᴛ</h3>
+        <!-- REf: https://tailwindcss.com/docs/font-family-->
+        <h3 class="font-sans font-medium text-white text-[20px]">sᴍᴀʟʟ ᴛᴇxᴛ</h3>
         <div class="relative">
             <textarea class="w-full text-lg text-gray-400 rounded-md p-2 bg-[#141517] resize-none h-auto min-h-[400px]" disabled on:copy={copyToast}>{convertedText}</textarea>
             <button class="text-sm px-4 py-1.5 absolute right-5 bottom-6 button bg-[#141517]" on:click={copyValue}>Copy</button>
