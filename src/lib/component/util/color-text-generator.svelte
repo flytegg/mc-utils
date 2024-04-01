@@ -70,35 +70,47 @@
         previewText = applyMinecraftFormatting(text);
     });
 
+    function getResetStyleOptions() {
+        // 'font-weight: normal' removes the bold effect
+        // 'display: inline-block' removes the decorations (which are: underline, line-through)
+        //    - 'text-decoration: none' won't work here as they're unable to remove inherited decorations
+        // 'font-style: normal' removes the italic effect
+        return `font-weight: normal; display: inline-block; font-style: normal;`
+    }
+
     function applyMinecraftFormatting(text) {
+        function getColorStyle(color) {
+            return `<span style="color: #${color}; ${getResetStyleOptions()}">`
+        }
+
         // Color codes
-        text = text.replace(/&0/g, '<span style="color: #000000">'); // Black
-        text = text.replace(/&1/g, '<span style="color: #0000AA">'); // Dark Blue
-        text = text.replace(/&2/g, '<span style="color: #00AA00">'); // Dark Green
-        text = text.replace(/&3/g, '<span style="color: #00AAAA">'); // Dark Aqua
-        text = text.replace(/&4/g, '<span style="color: #AA0000">'); // Dark Red
-        text = text.replace(/&5/g, '<span style="color: #AA00AA">'); // Dark Purple
-        text = text.replace(/&6/g, '<span style="color: #FFAA00">'); // Gold
-        text = text.replace(/&7/g, '<span style="color: #AAAAAA">'); // Gray
-        text = text.replace(/&8/g, '<span style="color: #555555">'); // Dark Gray
-        text = text.replace(/&9/g, '<span style="color: #5555FF">'); // Blue
-        text = text.replace(/&a/g, '<span style="color: #55FF55">'); // Green
-        text = text.replace(/&b/g, '<span style="color: #55FFFF">'); // Aqua
-        text = text.replace(/&c/g, '<span style="color: #FF5555">'); // Red
-        text = text.replace(/&d/g, '<span style="color: #FF55FF">'); // Light Purple
-        text = text.replace(/&e/g, '<span style="color: #FFFF55">'); // Yellow
-        text = text.replace(/&f/g, '<span style="color: #FFFFFF">'); // White
+        text = text.replace(/&0/g, () => getColorStyle('000000')); // Black
+        text = text.replace(/&1/g, () => getColorStyle('0000AA')); // Dark Blue
+        text = text.replace(/&2/g, () => getColorStyle('00AA00')); // Dark Green
+        text = text.replace(/&3/g, () => getColorStyle('00AAAA')); // Dark Aqua
+        text = text.replace(/&4/g, () => getColorStyle('AA0000')); // Dark Red
+        text = text.replace(/&5/g, () => getColorStyle('AA00AA')); // Dark Purple
+        text = text.replace(/&6/g, () => getColorStyle('FFAA00')); // Gold
+        text = text.replace(/&7/g, () => getColorStyle('AAAAAA')); // Gray
+        text = text.replace(/&8/g, () => getColorStyle('555555')); // Dark Gray
+        text = text.replace(/&9/g, () => getColorStyle('5555FF')); // Blue
+        text = text.replace(/&a/g, () => getColorStyle('55FF55')); // Green
+        text = text.replace(/&b/g, () => getColorStyle('55FFFF')); // Aqua
+        text = text.replace(/&c/g, () => getColorStyle('FF5555')); // Red
+        text = text.replace(/&d/g, () => getColorStyle('FF55FF')); // Light Purple
+        text = text.replace(/&e/g, () => getColorStyle('FFFF55')); // Yellow
+        text = text.replace(/&f/g, () => getColorStyle('FFFFFF')); // White
 
         // Hex code
         const regex = /&#([A-Fa-f0-9]{6})/g;
-        text = text.replace(regex, (match, color) => `<span style="color: #${color}">`);
+        text = text.replace(regex, (match, color) => getColorStyle(color));
 
         // Formatting codes
-        text = text.replace(/&k/g, '<span style="font-weight: bold">'); // Obfuscated
-        text = text.replace(/&l/g, '<span style="font-weight: bold">'); // Bold
-        text = text.replace(/&m/g, '<span style="text-decoration: line-through">'); // Strikethrough
-        text = text.replace(/&n/g, '<span style="text-decoration: underline">'); // Underline
-        text = text.replace(/&o/g, '<span style="font-style: italic">'); // Italic
+        text = text.replace(/&k/g, '<span style="font-weight: bold;">'); // Obfuscated
+        text = text.replace(/&l/g, '<span style="font-weight: bold;">'); // Bold
+        text = text.replace(/&m/g, '<span style="text-decoration: line-through;">'); // Strikethrough
+        text = text.replace(/&n/g, '<span style="text-decoration: underline;">'); // Underline
+        text = text.replace(/&o/g, '<span style="font-style: italic;">'); // Italic
         text = text.replace(/&r/g, getResetStyle()); // Reset
 
         document.getElementById("textinput").focus();
@@ -108,13 +120,13 @@
 
     function getResetStyle() {
         if (activeTab === 0 || activeTab === 3 || activeTab === 5 || activeTab === 6 || activeTab === 7) {
-            return '<span style="color: #FFFFFF">';
+            return `<span style="color: #FFFFFF; ${getResetStyleOptions()}">`;
         } else if (activeTab === 1 || activeTab === 2) {
-            return '<span style="color: #000000">';
+            return `<span style="color: #000000; ${getResetStyleOptions()}">`;
         } else if (activeTab === 4) {
-            return '<span style="color: #AAAAAA">';
+            return `<span style="color: #AAAAAA; ${getResetStyleOptions()}">`;
         } else {
-            return '<span>'; // Default - No color
+            return `<span style="${getResetStyleOptions()}">`; // Default - No color
         }
     }
 
