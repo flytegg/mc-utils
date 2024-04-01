@@ -131,6 +131,17 @@
         })
     }
 
+    function autoSizeTextArea(event) {
+        const target = event.target as HTMLTextAreaElement;
+        if (!target.value.includes("\n")) {
+            // resets element back to the minimum size defined in the class
+            target.style.height = "35px";
+        } else {
+            target.style.height = "auto";
+            target.style.height = target.scrollHeight + "px";
+        }
+    }
+
     let color = "#FFFFFF";
 </script>
 
@@ -182,7 +193,7 @@
         </div>
 
         <div class="flex gap-3">
-            <textarea id="textinput" bind:value={text} class="inline-block text-sm text-gray-400 font-mono rounded-md p-2 bg-[#141517] mt-8 h-[35px] w-[100%] max-w-[100%] "></textarea>
+            <textarea id="textinput" on:input={autoSizeTextArea} bind:value={text} class="inline-block text-sm text-gray-400 font-mono rounded-md p-2 bg-[#141517] mt-8 h-[35px] w-[100%] max-w-[100%] overflow-y-hidden"></textarea>
             <button class="w-fit text-sm px-2 py-1.5 button h-fit inline-block mt-8" on:click={copyValue}>Copy</button>
         </div>
     </div>
