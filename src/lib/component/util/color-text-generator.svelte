@@ -79,54 +79,169 @@
     }
 
     function applyMinecraftFormatting(text) {
+        let htmlText = ""
+
         function getColorStyle(color) {
             return `<span style="color: #${color}; ${getResetStyleOptions()}">`
         }
 
-        // Color codes
-        text = text.replace(/&0/g, () => getColorStyle('000000')); // Black
-        text = text.replace(/&1/g, () => getColorStyle('0000AA')); // Dark Blue
-        text = text.replace(/&2/g, () => getColorStyle('00AA00')); // Dark Green
-        text = text.replace(/&3/g, () => getColorStyle('00AAAA')); // Dark Aqua
-        text = text.replace(/&4/g, () => getColorStyle('AA0000')); // Dark Red
-        text = text.replace(/&5/g, () => getColorStyle('AA00AA')); // Dark Purple
-        text = text.replace(/&6/g, () => getColorStyle('FFAA00')); // Gold
-        text = text.replace(/&7/g, () => getColorStyle('AAAAAA')); // Gray
-        text = text.replace(/&8/g, () => getColorStyle('555555')); // Dark Gray
-        text = text.replace(/&9/g, () => getColorStyle('5555FF')); // Blue
-        text = text.replace(/&a/g, () => getColorStyle('55FF55')); // Green
-        text = text.replace(/&b/g, () => getColorStyle('55FFFF')); // Aqua
-        text = text.replace(/&c/g, () => getColorStyle('FF5555')); // Red
-        text = text.replace(/&d/g, () => getColorStyle('FF55FF')); // Light Purple
-        text = text.replace(/&e/g, () => getColorStyle('FFFF55')); // Yellow
-        text = text.replace(/&f/g, () => getColorStyle('FFFFFF')); // White
+        function isValidColorChar(c) {
+            let result = (c >= '0' && c <= '9') || (c >= 'a' && c <= 'f') || (c >= 'A' && c <= 'F');
+            console.log(`isValidColorChar(${c}): ${result}`)
+            return result;
+        }
 
-        // Hex code
-        const regex = /&#([A-Fa-f0-9]{6})/g;
-        text = text.replace(regex, (match, color) => getColorStyle(color));
+        function isValidDecorationChar(c) {
+            let result = (c >= 'k' && c <= 'o') || (c >= 'K' && c <= 'O');
+            console.log(`isValidDecorationChar(${c}): ${result}`)
+            return result;
+        }
 
-        // Formatting codes
-        text = text.replace(/&k/g, '<span style="font-weight: bold;">'); // Obfuscated
-        text = text.replace(/&l/g, '<span style="font-weight: bold;">'); // Bold
-        text = text.replace(/&m/g, '<span style="text-decoration: line-through;">'); // Strikethrough
-        text = text.replace(/&n/g, '<span style="text-decoration: underline;">'); // Underline
-        text = text.replace(/&o/g, '<span style="font-style: italic;">'); // Italic
-        text = text.replace(/&r/g, getResetStyle()); // Reset
+        function getColorStyleFromChar(char) {
+            const colorMap = {
+                "0": "000000",  // Black
+                "1": "0000AA",  // Dark Blue
+                "2": "00AA00",  // Dark Green
+                "3": "00AAAA",  // Dark Aqua
+                "4": "AA0000",  // Dark Red
+                "5": "AA00AA",  // Dark Purple
+                "6": "FFAA00",  // Gold
+                "7": "AAAAAA",  // Gray
+                "8": "555555",  // Dark Gray
+                "9": "5555FF",  // Blue
+                "a": "55FF55",  // Green
+                "b": "55FFFF",  // Aqua
+                "c": "FF5555",  // Red
+                "d": "FF55FF",  // Light Purple
+                "e": "FFFF55",  // Yellow
+                "f": "FFFFFF",  // White
+            };
+            return colorMap[`${char}`]
+        }
+
+        function getDecorationStyleFromChar(char) {
+            const decorationMap = {
+                "k": "font-weight: bold;",
+                "l": "font-weight: bold;",
+                "m": "text-decoration: line-through;",
+                "n": "text-decoration: underline;",
+                "o": "font-style: italic;"
+            }
+            return decorationMap[`${char}`]
+        }
+
+        let coloringMode = false
+        let colorType = ""
+        let coloredText = ""
+
+        let decorationMode = false
+        let decorationStyles = ""
+        let decorationColorType = ""
+
+        let decorationText = ""
+
+        function releaseTextOfColorMode() {
+            if (!coloringMode) return
+            console.log('writing color')
+            htmlText += `<span style="color: #${colorType};">${coloredText}</span>`
+
+            // reset
+            coloringMode = false
+            coloredText = ""
+            colorType = ""
+            console.log('coloring = false')
+        }
+
+        function releaseTextOfDecorationMode() {
+            if (!decorationMode) return
+            console.log('writing decoration')
+            htmlText += `<span style="color: #${decorationColorType}; ${decorationStyles}">${decorationText}</span>`
+
+            // reset
+            decorationMode = false
+            decorationText = ""
+            decorationStyles = ""
+            decorationColorType = ""
+            console.log('decoration = false')
+        }
+
+        for (let i = 0; i < text.length; i++) {
+            const c = text[i]
+            const nextC = text.charAt(i + 1)
+            console.log(`char=${c} at index ${i}`)
+            if (c === "&" && isValidColorChar(nextC)) {
+                // skip to next char
+                i += 1
+
+                // release previous color/decoration
+                releaseTextOfColorMode();
+                releaseTextOfDecorationMode();
+
+                colorType = getColorStyleFromChar(nextC)
+                coloringMode = true
+                console.log('coloring = true')
+                continue
+            } else if (c === "&" && isValidDecorationChar(nextC)) {
+                // skip to next char
+                i += 1
+
+                // release and inherit current decoration style and color
+                if (decorationMode) {
+                    const inheritDecorations = decorationStyles
+                    const inheritDecorationsColor = decorationColorType
+                    releaseTextOfDecorationMode();
+                    decorationStyles += inheritDecorations
+                    decorationColorType = inheritDecorationsColor
+                }
+
+                // inherit current colors
+                if (coloringMode) {
+                    console.log('inheriting colored text to append decoration styles')
+                    decorationColorType = colorType
+                    releaseTextOfColorMode()
+                }
+
+                decorationStyles += getDecorationStyleFromChar(nextC)
+                decorationMode = true
+                console.log('decoration = true')
+                continue
+            } else if (c === "&" && nextC === "r") {
+                // skip to text
+                i += 1
+
+                releaseTextOfColorMode()
+                releaseTextOfDecorationMode()
+                console.log('reset')
+                continue
+            }
+
+            if (coloringMode) {
+                coloredText += c
+            } else if (decorationMode) {
+                decorationText += c
+            } else {
+                htmlText += c
+            }
+        }
+
+        // release leftovers
+        releaseTextOfColorMode()
+        releaseTextOfDecorationMode()
 
         document.getElementById("textinput").focus();
 
-        return getResetStyle() + text;
+        return getResetStyle() + htmlText;
     }
 
     function getResetStyle() {
         if (activeTab === 0 || activeTab === 3 || activeTab === 5 || activeTab === 6 || activeTab === 7) {
-            return `<span style="color: #FFFFFF; ${getResetStyleOptions()}">`;
+            return `<span style="color: #FFFFFF;">`;
         } else if (activeTab === 1 || activeTab === 2) {
-            return `<span style="color: #000000; ${getResetStyleOptions()}">`;
+            return `<span style="color: #000000;">`;
         } else if (activeTab === 4) {
-            return `<span style="color: #AAAAAA; ${getResetStyleOptions()}">`;
+            return `<span style="color: #AAAAAA;">`;
         } else {
-            return `<span style="${getResetStyleOptions()}">`; // Default - No color
+            return `<span>`; // Default - No color
         }
     }
 
