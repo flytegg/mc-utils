@@ -182,7 +182,7 @@
         </div>
 
         <div class="flex gap-3">
-            <input id="textinput" bind:value={text} class="inline-block text-sm text-gray-400 font-mono rounded-md p-2 bg-[#141517] mt-8 h-[35px] w-[100%] max-w-[100%] ">
+            <textarea id="textinput" bind:value={text} class="inline-block text-sm text-gray-400 font-mono rounded-md p-2 bg-[#141517] mt-8 h-[35px] w-[100%] max-w-[100%] "></textarea>
             <button class="w-fit text-sm px-2 py-1.5 button h-fit inline-block mt-8" on:click={copyValue}>Copy</button>
         </div>
     </div>
