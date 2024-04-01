@@ -132,13 +132,13 @@
     }
 
     function autoSizeTextArea(event) {
-        const target = event.target as HTMLTextAreaElement;
+        const target = event.target;
         if (!target.value.includes("\n")) {
-            // resets element back to the minimum size defined in the class
-            target.style.height = "35px";
+            // removes all inline styles from this element
+            target.setAttribute("style", '')
         } else {
-            target.style.height = "auto";
-            target.style.height = target.scrollHeight + "px";
+            target.setAttribute("style", "height:auto")
+            target.setAttribute("style", "height:" + target.scrollHeight + "px")
         }
     }
 
