@@ -74,15 +74,11 @@
         let htmlText = ""
 
         function isValidColorChar(char) {
-            let result = (char >= '0' && char <= '9') || (char >= 'a' && char <= 'f') || (char >= 'A' && char <= 'F');
-            console.log(`isValidColorChar(${char}): ${result}`)
-            return result;
+            return (char >= '0' && char <= '9') || (char >= 'a' && char <= 'f') || (char >= 'A' && char <= 'F');
         }
 
         function isValidDecorationChar(char) {
-            let result = (char >= 'k' && char <= 'o') || (char >= 'K' && char <= 'O');
-            console.log(`isValidDecorationChar(${char}): ${result}`)
-            return result;
+            return (char >= 'k' && char <= 'o') || (char >= 'K' && char <= 'O');
         }
 
         function getColorStyleFromChar(char) {
@@ -129,19 +125,16 @@
 
         function releaseTextOfColorMode() {
             if (!coloringMode) return
-            console.log('writing color')
             htmlText += `<span style="color: #${colorType};">${coloredText}</span>`
 
             // reset
             coloringMode = false
             coloredText = ""
             colorType = ""
-            console.log('coloring = false')
         }
 
         function releaseTextOfDecorationMode() {
             if (!decorationMode) return
-            console.log('writing decoration')
             htmlText += `<span style="color: #${decorationColorType}; ${decorationStyles}">${decorationText}</span>`
 
             // reset
@@ -149,12 +142,10 @@
             decorationText = ""
             decorationStyles = ""
             decorationColorType = ""
-            console.log('decoration = false')
         }
 
         for (let i = 0; i < text.length; i++) {
             const c = text[i]
-            console.log(`char=${c} at index ${i}`)
 
             const nextC = text.charAt(i + 1)
             let hasFormatSign = c === "&";
@@ -169,7 +160,6 @@
 
                 colorType = getColorStyleFromChar(nextC)
                 coloringMode = true
-                console.log('coloring = true')
                 continue
             } else if (hasFormatSign && isValidDecorationChar(nextC)) {
                 // skip to next char
@@ -186,14 +176,12 @@
 
                 // release and inherit current colors
                 if (coloringMode) {
-                    console.log('inheriting colored text to append decoration styles')
                     decorationColorType = colorType
                     releaseTextOfColorMode()
                 }
 
                 decorationStyles += getDecorationStyleFromChar(nextC)
                 decorationMode = true
-                console.log('decoration = true')
                 continue
             } else if (hasFormatSign && nextC === "r") {
                 // skip to next char
@@ -201,7 +189,6 @@
 
                 releaseTextOfColorMode()
                 releaseTextOfDecorationMode()
-                console.log('reset')
                 continue
             }
 
