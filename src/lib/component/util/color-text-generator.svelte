@@ -70,30 +70,18 @@
         previewText = applyMinecraftFormatting(text);
     });
 
-    function getResetStyleOptions() {
-        // 'font-weight: normal' removes the bold effect
-        // 'display: inline-block' removes the decorations (which are: underline, line-through)
-        //    - 'text-decoration: none' won't work here as they're unable to remove inherited decorations
-        // 'font-style: normal' removes the italic effect
-        return `font-weight: normal; display: inline-block; font-style: normal;`
-    }
-
     function applyMinecraftFormatting(text) {
         let htmlText = ""
 
-        function getColorStyle(color) {
-            return `<span style="color: #${color}; ${getResetStyleOptions()}">`
-        }
-
-        function isValidColorChar(c) {
-            let result = (c >= '0' && c <= '9') || (c >= 'a' && c <= 'f') || (c >= 'A' && c <= 'F');
-            console.log(`isValidColorChar(${c}): ${result}`)
+        function isValidColorChar(char) {
+            let result = (char >= '0' && char <= '9') || (char >= 'a' && char <= 'f') || (char >= 'A' && char <= 'F');
+            console.log(`isValidColorChar(${char}): ${result}`)
             return result;
         }
 
-        function isValidDecorationChar(c) {
-            let result = (c >= 'k' && c <= 'o') || (c >= 'K' && c <= 'O');
-            console.log(`isValidDecorationChar(${c}): ${result}`)
+        function isValidDecorationChar(char) {
+            let result = (char >= 'k' && char <= 'o') || (char >= 'K' && char <= 'O');
+            console.log(`isValidDecorationChar(${char}): ${result}`)
             return result;
         }
 
