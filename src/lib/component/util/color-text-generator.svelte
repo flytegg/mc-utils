@@ -144,21 +144,44 @@
             decorationColorType = ""
         }
 
+        function isGradient(text) {
+            const regex = /&#([A-Fa-f0-9]{6})/g;
+            return regex.test(text);
+        }
+
+        function getGradientColor(text) {
+            const regex = /&#([A-Fa-f0-9]{6})/g;
+
+            let gradientColor = ""
+            text.replace(regex, (match, color) => gradientColor = color);
+            return gradientColor
+        }
+
         for (let i = 0; i < text.length; i++) {
             const c = text[i]
 
             const nextC = text.charAt(i + 1)
             let hasFormatSign = c === "&";
 
-            if (hasFormatSign && isValidColorChar(nextC)) {
+            let isGradient = false
+            let hexSlice = text.slice(i, i + 8);
+            if (hasFormatSign && (isValidColorChar(nextC) || (isGradient = isGradient(hexSlice)))) {
                 // skip to next char
-                i += 1
+                if (isGradient) {
+                    i += 7
+                } else {
+                    i += 1
+                }
 
                 // release previous color/decoration
                 releaseTextOfColorMode();
                 releaseTextOfDecorationMode();
 
-                colorType = getColorStyleFromChar(nextC)
+                if (isGradient) {
+                    colorType = getGradientColor(hexSlice)
+                } else {
+                    colorType = getColorStyleFromChar(nextC)
+                }
                 coloringMode = true
                 continue
             } else if (hasFormatSign && isValidDecorationChar(nextC)) {
