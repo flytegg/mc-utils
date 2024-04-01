@@ -125,7 +125,6 @@
         let decorationMode = false
         let decorationStyles = ""
         let decorationColorType = ""
-
         let decorationText = ""
 
         function releaseTextOfColorMode() {
@@ -155,9 +154,12 @@
 
         for (let i = 0; i < text.length; i++) {
             const c = text[i]
-            const nextC = text.charAt(i + 1)
             console.log(`char=${c} at index ${i}`)
-            if (c === "&" && isValidColorChar(nextC)) {
+
+            const nextC = text.charAt(i + 1)
+            let hasFormatSign = c === "&";
+
+            if (hasFormatSign && isValidColorChar(nextC)) {
                 // skip to next char
                 i += 1
 
@@ -169,7 +171,7 @@
                 coloringMode = true
                 console.log('coloring = true')
                 continue
-            } else if (c === "&" && isValidDecorationChar(nextC)) {
+            } else if (hasFormatSign && isValidDecorationChar(nextC)) {
                 // skip to next char
                 i += 1
 
@@ -182,7 +184,7 @@
                     decorationColorType = inheritDecorationsColor
                 }
 
-                // inherit current colors
+                // release and inherit current colors
                 if (coloringMode) {
                     console.log('inheriting colored text to append decoration styles')
                     decorationColorType = colorType
@@ -193,8 +195,8 @@
                 decorationMode = true
                 console.log('decoration = true')
                 continue
-            } else if (c === "&" && nextC === "r") {
-                // skip to text
+            } else if (hasFormatSign && nextC === "r") {
+                // skip to next char
                 i += 1
 
                 releaseTextOfColorMode()
