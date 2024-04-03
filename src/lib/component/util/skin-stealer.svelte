@@ -61,10 +61,7 @@
     }
 
     const handleInput = () => {
-        link = "https://mcutils.com/skin-stealer#ign=" + searchValue
-        if (searchValue === "") return
-
-        updateSkin(searchValue)
+        link = "https://mcutils.com/cape-stealer#ign=" + searchValue
     };
 
     let link = "https://mcutils.com/skin-stealer#ign="
@@ -97,7 +94,10 @@
     }
 </script>
 
-<input class="search w-[26rem]" maxlength="16" bind:value={searchValue} on:input={handleInput} on:keydown={disallowSpaces} type="text" placeholder="Enter username..." on:keypress={handleKeyPress} on:blur={handleInput}>
+<div class="flex gap-3">
+    <input class="search w-[26rem]" maxlength="16" bind:value={searchValue} on:input={handleInput} on:keydown={disallowSpaces} type="text" placeholder="Enter username..." on:keypress={handleKeyPress} on:blur={handleInput}>
+    <button class="button text-md py-0" on:click={() => updateSkin(searchValue)}>Search</button>
+</div>
 
 <canvas id="skin_container" class="mt-10 "></canvas>
 <div class="flex gap-6">
