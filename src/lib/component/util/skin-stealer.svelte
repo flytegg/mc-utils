@@ -60,18 +60,11 @@
         if (event.key === "Enter") updateSkin(searchValue)
     }
 
-    let debounceTimer: NodeJS.Timeout | null = null;
     const handleInput = () => {
         link = "https://mcutils.com/skin-stealer#ign=" + searchValue
         if (searchValue === "") return
 
-        if (debounceTimer) {
-            clearTimeout(debounceTimer);
-        }
-
-        debounceTimer = setTimeout(() => {
-            updateSkin(searchValue)
-        }, 500); // Adjust the debounce delay as needed
+        updateSkin(searchValue)
     };
 
     let link = "https://mcutils.com/skin-stealer#ign="
