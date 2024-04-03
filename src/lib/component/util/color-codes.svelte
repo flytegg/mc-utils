@@ -185,13 +185,13 @@ const colors = [
 </script>
 
 <table class="w-[90%] lg:w-[60%] text-white">
-    <tr class="bg-[#1d1f24]">
-        <th class="rounded-tl-lg rounded-bl-lg p-2 pl-6 font-medium text-[20px] text-left">Effect</th>
-        <th class="rounded-tr-lg rounded-br-lg font-medium text-[20px] text-left">Name</th>
-        <th class="rounded-tr-lg rounded-br-lg font-medium text-[20px] text-left">Chat Code</th>
-        <th class="rounded-tr-lg rounded-br-lg font-medium text-[20px] text-left">MiniMessage Tag</th>
-        <th class="rounded-tr-lg rounded-br-lg font-medium text-[20px] text-left">MOTD</th>
-        <th class="rounded-tr-lg rounded-br-lg font-medium text-[20px] text-left">Hex</th>
+    <tr class="text-[#9d9d9e] font-medium">
+        <td class="p-2 pr-4 border-b-[1.5px] border-b-[#232324]">Effect</td>
+        <td class="p-2 pr-4 border-b-[1.5px] border-b-[#232324]">Name</td>
+        <td class="text-left pr-4 border-b-[1.5px] border-b-[#232324]">Chat Code</td>
+        <td class="text-left pr-4 w-[24%] border-b-[1.5px] border-b-[#232324]">MiniMessage Tag</td>
+        <td class="text-left pr-3 w-[15%] border-b-[1.5px] border-b-[#232324]">MOTD</td>
+        <td class="text-left pr-3 w-[15%] border-b-[1.5px] border-b-[#232324]">Hex</td>
     </tr>
     {#each colors as color}
         <tr class="">
