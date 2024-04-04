@@ -1,11 +1,9 @@
 <script lang="ts">
-    import * as SkinViewer from "skinview3d"
     import { onMount } from "svelte"
     import {toast} from "@zerodevx/svelte-toast";
 
-    let currentSearch = undefined
+    let currentSearch: string | undefined = undefined
     let currentSkin: string
-    let skinViewer: SkinViewer.SkinViewer
 
     onMount(async () => {
         const urlParams = new URLSearchParams(window.location.hash.slice(1));
@@ -18,7 +16,7 @@
 
     let loading = false
     let noCapes = false
-    let data = []
+    let data: any[] = []
 
     const replacements = {
         minecraft: "Minecraft",
