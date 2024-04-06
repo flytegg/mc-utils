@@ -163,11 +163,11 @@
             const nextC = text.charAt(i + 1)
             let hasFormatSign = c === "&";
 
-            let isGradient = false
+            let gradient = false
             let hexSlice = text.slice(i, i + 8);
-            if (hasFormatSign && (isValidColorChar(nextC) || (isGradient = isGradient(hexSlice)))) {
+            if (hasFormatSign && (isValidColorChar(nextC) || (gradient = isGradient(hexSlice)))) {
                 // skip to next char
-                if (isGradient) {
+                if (gradient) {
                     i += 7
                 } else {
                     i += 1
@@ -177,7 +177,7 @@
                 releaseTextOfColorMode();
                 releaseTextOfDecorationMode();
 
-                if (isGradient) {
+                if (gradient) {
                     colorType = getGradientColor(hexSlice)
                 } else {
                     colorType = getColorStyleFromChar(nextC)
