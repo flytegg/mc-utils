@@ -1,9 +1,9 @@
 import {json} from '@sveltejs/kit'
-import type {RequestHandler} from './$types'
+import type {RequestHandler} from '../$types'
 
 export const GET: RequestHandler = (async ({fetch, params}) => {
 
-    const request = await fetch(`https://headdb.org/api/category/all`)
+    const request = await fetch(`https://headdb.org/api/category/${params.category}`)
     const response = await request.json()
 
     type Head = {
