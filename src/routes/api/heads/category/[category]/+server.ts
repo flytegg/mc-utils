@@ -1,5 +1,5 @@
 import {json} from '@sveltejs/kit'
-import type {RequestHandler} from '../$types'
+import type {RequestHandler} from '../../$types'
 
 export const GET: RequestHandler = (async ({fetch, params}) => {
 
@@ -9,7 +9,7 @@ export const GET: RequestHandler = (async ({fetch, params}) => {
     type Head = {
         name: string,
         uuid: string,
-        skinUrl: string,
+        headUrl: string,
         command: string
     }
 
@@ -28,7 +28,7 @@ export const GET: RequestHandler = (async ({fetch, params}) => {
         heads.push({
             name: response[key].name,
             uuid: response[key].uuid,
-            skinUrl: response[key].valueDecoded.textures.SKIN.url,
+            headUrl: response[key].valueDecoded.textures.SKIN.url,
             command: response[key].command
         });
     }
