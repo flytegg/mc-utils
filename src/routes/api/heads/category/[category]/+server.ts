@@ -34,6 +34,9 @@ export const GET: RequestHandler = (async ({fetch, params}) => {
     }
 
     return json({
+        headers: {
+            "cache-control": "public, max-age=7200"
+        },
         heads
     })
 })
