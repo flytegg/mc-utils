@@ -73,10 +73,10 @@ const utils: Util[] = [
     {
         path: "custom-heads",
         name: "Custom Heads",
-        description: "List of 50.000+ custom minecraft heads.",
+        description: "List of 900+ custom minecraft heads.",
         shortDescription: "List of custom heads.",
         seoDescription:
-            "Find the perfect head to decorate your build through our amazing collection of 50.000+ custom minecraftheads!",
+            "Find the perfect head to decorate your build through our amazing collection of 900+ custom minecraft heads!",
     },
     {
         path: "gradient-generator",
