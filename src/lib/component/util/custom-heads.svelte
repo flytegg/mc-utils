@@ -9,6 +9,7 @@
         command: string
     }
 
+    let totalHeads: Head[] = []
     let heads: Head[] = []
 
     async function fetchHeads() {
@@ -20,16 +21,15 @@
         const jsonResponse = await response.json();
     
         try {
-            heads = jsonResponse.heads
-            heads = heads.slice(0, 20)
+            totalHeads = jsonResponse.heads
+            heads = totalHeads.slice(0, 20)
         } catch(error) {
             console.error(error)
         }
+    }
 
-        heads.forEach((head) => {
-            const testUrl = `/api/heads/renders/${head.uuid}`
-            console.log(testUrl);
-        })
+    const loadMore = () => {
+        heads = totalHeads.slice(0, heads.length + 20)
     }
 
     document.querySelector(".inner, .outer")?.addEventListener("load", () => {
@@ -66,6 +66,8 @@
         </div>
     {/each}
 </div>
+
+<button class="button mx-auto mt-8" on:click={() => loadMore()}>Load More</button>
 
 <a class="flex gap-2 mt-10" href="https://headdb.com/" aria-label='GitHub' target="_blank">
     <p class="text-[#cecece] text-md">See the HeadDB Website</p>
