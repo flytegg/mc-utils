@@ -187,7 +187,7 @@ const colors = [
 <table class="w-[90%] lg:w-[60%] text-white">
     <tr class="text-[#9d9d9e] font-medium">
         <td class="p-2 pr-4 border-b-[1.5px] border-b-[#232324]">Effect</td>
-        <td class="p-2 pr-4 border-b-[1.5px] border-b-[#232324]">Name</td>
+        <td class="pr-4 border-b-[1.5px] border-b-[#232324]">Name</td>
         <td class="text-left pr-4 border-b-[1.5px] border-b-[#232324]">Chat Code</td>
         <td class="text-left pr-4 w-[24%] border-b-[1.5px] border-b-[#232324]">MiniMessage Tag</td>
         <td class="text-left pr-3 w-[15%] border-b-[1.5px] border-b-[#232324]">MOTD</td>
@@ -195,10 +195,10 @@ const colors = [
     </tr>
     {#each colors as color}
         <tr class="">
-            <td class="pl-6 p-1.5 border-b-2 border-b-[#1D1F24] text-gray-400">
+            <td class="p-1.5 pr-5 border-b-2 border-b-[#1D1F24] text-gray-400">
                 <div class="bg-[{color.hex}] rounded-md w-[90px] h-[25px]"></div>
             </td>
-            <td class="border-b-2 border-b-[#1D1F24] text-gray-400">{color.name}</td>
+            <td class="border-b-2 border-b-[#1D1F24] text-gray-400 pr-2">{color.name}</td>
             <td class="border-b-2 border-b-[#1D1F24] text-gray-400">{color.code}</td>
             <td class="border-b-2 border-b-[#1D1F24] text-gray-400">{color.tag}</td>
             <td class="border-b-2 border-b-[#1D1F24] text-gray-400">{color.motd}</td>
@@ -208,7 +208,7 @@ const colors = [
 
     {#each formats as format}
         <tr class="">
-            <td class="border-b-2 border-b-[#1D1F24] text-gray-400 pl-6 p-1.5">
+            <td class="border-b-2 border-b-[#1D1F24] text-gray-400 p-1.5">
                 {#if format.name === "Magic"}
                     {@html obfuscated}
                 {:else}
