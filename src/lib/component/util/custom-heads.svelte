@@ -2,10 +2,24 @@
     import {onMount} from "svelte";
     import {toast} from "@zerodevx/svelte-toast";
 
+    enum Category {
+        ALL = "All",
+        BLOCKS = "Blocks",
+        CHARACTERS = "Characters",
+        CHRISTMAS = "Christmas",
+        ELECTRONICS = "Electronics",
+        FLAGS = "Flags",
+        FOOD = "Food",
+        HALLOWEEN = "Halloween",
+        LETTERS = "Letters",
+        YOUTUBERS = "Youtubers"
+    }
+
     type Head = {
         name: string,
         uuid: string,
         headUrl: string,
+        category: string,
         command: string
     }
 
@@ -28,15 +42,20 @@
         }
     }
 
-    const loadMore = () => {
-        heads = totalHeads.slice(0, heads.length + 20)
-    }
-
-    document.querySelector(".inner, .outer")?.addEventListener("load", () => {
-        console.log("Inner loaded")
-    })
+   const loadCategory = async (category: Category) => {
+            if (category === Category.ALL) {
+                heads = totalHeads.slice(0, 20)
+                return
+            }
+            heads = totalHeads.filter((head) => head.category === category.toLocaleLowerCase()).slice(0, 20)
+   }
 
     onMount(fetchHeads)
+
+    const loadMore = () => {
+        const category = heads[0].category // seems a little bit cheesy, but is the simplest way to do it, and it works
+        heads = totalHeads.filter((head) => head.category === category.toLocaleLowerCase()).slice(0, heads.length + 20)
+    }
 
     async function copyCommand(head: Head) {
         await navigator.clipboard.writeText(head.command)
@@ -49,6 +68,12 @@
         })
     }
 </script>
+
+<div class="flex list-none text-[#cecece] border-[1.5px] rounded-xl border-white/90 text-white/90 bg-white/10 mb-8">
+    {#each Object.values(Category) as category}
+        <button on:click={() => loadCategory(category)} class="transition-colors hover:bg-white hover:text-[#0B0B0C] py-2.5 px-4 rounded-xl">{category}</button>
+    {/each}
+</div>
 
 <div class="grid grid-cols-5 gap-16 text-[#cecece]">
     {#each heads as head}
