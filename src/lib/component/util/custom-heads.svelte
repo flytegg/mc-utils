@@ -43,11 +43,11 @@
     }
 
    const loadCategory = async (category: Category) => {
-            if (category === Category.ALL) {
-                heads = totalHeads.slice(0, 20)
-                return
-            }
-            heads = totalHeads.filter((head) => head.category === category.toLocaleLowerCase()).slice(0, 20)
+        if (category === Category.ALL) {
+            heads = totalHeads.slice(0, 20)
+            return
+        }
+        heads = totalHeads.filter((head) => head.category === category.toLocaleLowerCase()).slice(0, 20)
    }
 
     onMount(fetchHeads)
@@ -78,7 +78,7 @@
 <div class="grid grid-cols-5 gap-16 text-[#cecece]">
     {#each heads as head}
         <div class="flex flex-col space-y-2 justify-center items-center">
-            <p class="content-center text-center font-semibold">{head.name}</p>
+            <p class="max-w-32 text-center font-semibold">{head.name}</p>
 
             <img class="mx-auto" src="https://headdb.org/img/renders/{head.uuid}.png" alt="head">
 
