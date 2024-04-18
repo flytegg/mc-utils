@@ -93,6 +93,10 @@
             recommendedRam = 12
         }
     }
+
+    function StartFile() {
+        window.location.href = `/start-file-generator?ram=${recommendedRam}GB`;
+    }
 </script>
 
 <main class="w-[90%] lg:w-[60%] mt-5 flex-col flex justify-center">
@@ -121,6 +125,8 @@
     <h3 class="font-medium text-white text-20px text-left mb-2.5 mt-6">
         Amount of ram
     </h3>
-    <p class="text-gray-400 text-lg mb-3 text-left">{recommendedRam} GB</p>
+    <p class="text-gray-400 text-lg mb-6 text-left">{recommendedRam} GB</p>
+
+    <button class="button w-fit text-sm" on:click={StartFile}>Use this in the start file</button>
 
 </main>

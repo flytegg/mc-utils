@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
     import {toast} from "@zerodevx/svelte-toast";
 
     let activeTab = 0;
@@ -19,6 +20,15 @@
     let flags = "aikar"
     let gui = false
     let autoRestart = false
+
+    onMount(() => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const ramParam = urlParams.get('ram');
+        if (ramParam) {
+            ram = ramParam;
+            calculateResult();
+        }
+    })
 
     function calculateResult() {
         let java = "java %ram% %flags% -jar %filename% %gui%"
@@ -92,6 +102,10 @@
     function isProxySelected() {
         return flags === "proxy"
     }
+
+    function CalculateRam() {
+        window.location.href = `/ram-calculator`;
+    }
 </script>
 
 <div class="place-items-center text-center items-start grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-10 mt-3">
@@ -163,6 +177,9 @@
         <div class="flex justify-center gap-3 mt-3">
             <button class="w-fit text-sm px-2 py-1.5 button" on:click={copyValue}>Copy</button>
             <button class="w-fit text-sm px-2 py-1.5 button" on:click={downloadStartBat}>Download</button>
+        </div>
+        <div class="flex justify-center gap-3 mt-3">
+            <button on:click={CalculateRam} class="button text-sm w-fit">Calculate Ram</button>
         </div>
     </div>
 </div>
