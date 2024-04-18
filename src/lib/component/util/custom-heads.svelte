@@ -12,7 +12,7 @@
         FOOD = "Food",
         HALLOWEEN = "Halloween",
         LETTERS = "Letters",
-        YOUTUBERS = "Youtubers"
+        YOUTUBERS = "YouTubers"
     }
 
     type Head = {
