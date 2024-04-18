@@ -69,9 +69,9 @@
     }
 </script>
 
-<div class="flex list-none text-[#cecece] border-[1.5px] rounded-xl border-white/90 text-white/90 bg-white/10 mb-8">
+<div class="flex list-none text-[#cecece] mb-8">
     {#each Object.values(Category) as category}
-        <button on:click={() => loadCategory(category)} class="transition-colors hover:bg-white hover:text-[#0B0B0C] py-2.5 px-4 rounded-xl">{category}</button>
+        <button on:click={() => loadCategory(category)} class="button px-4 py-2 mr-2 mt-2 rounded focus:outline-none">{category}</button>
     {/each}
 </div>
 
