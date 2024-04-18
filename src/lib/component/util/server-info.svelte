@@ -29,10 +29,10 @@
             if (status.status != "error") {
                 if (status.motd_json.extra) {
                     let asString = status.motd_json.extra.reduce((acc, item) => {
-                        if (item.color) {
+                        if (typeof item === 'object' && item.color) {
                             return acc + `%${item.color}%${item.text}`;
                         }
-                        return acc + item.text;
+                        return acc + (typeof item === 'object' ? item.text : item);
                     }, '');
                     status.motd_json = formatMOTD(asString)
                 } else {
