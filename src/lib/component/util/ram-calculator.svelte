@@ -10,87 +10,71 @@
         "Modpack size"
     ]
     let width:any;
-            $: {
-                if (selectedType === "Mods") {
-                    width = "80px";
-                } else if (selectedType === "Modpack size") {
-                    width = "140px";
-                }
-            }
+    $: {
+        if (selectedType === "Mods") {
+            width = "80px";
+            mods = 0
+        } else if (selectedType === "Modpack size") {
+            width = "140px";
+            mods = 0
+        }
+    }
     
     let recommendedRam: any
+
     $: {
-        if (players == 5 && mods >= 0 && mods <= 10 && selectedType === "Mods") {
-            recommendedRam = 2
+        const playersToRam:any = {
+            5: 2,
+            10: 4,
+            26: 6,
+            51: 8
         }
-        if (players == 5 && mods >= 11 && mods <= 25 && selectedType === "Mods") {
-            recommendedRam = 4
+        const modsToRam:any = {
+            0: 0,
+            1: 2,
+            11: 4,
+            26: 6
         }
-        if (players == 5 && mods >= 26 && mods <= 50 && selectedType === "Mods") {
-            recommendedRam = 6
+        const modpacktoRam:any = {
+            0: 2,
+            1: 4,
+            2: 6
         }
-        if (players >= 10 && players <= 25 && mods >= 0 && mods <= 10 && selectedType === "Mods") {
-            recommendedRam = 4
+
+        function getPlayers(): number {
+            if (players >= 5 && players < 10) {
+                return 5
+            } else if (players >= 10 && players <= 25) {
+                return 10
+            } else if (players >= 26 && players <= 50) {
+                return 26
+            } else if (players >= 51 && players <= 100) {
+                return 51
+            }
+            return NaN
         }
-        if (players >= 10 && players <= 25 && mods >= 11 && mods <= 25 && selectedType === "Mods") {
-            recommendedRam = 6
+
+        function getMods(): number{
+            if (selectedType === "Mods") {
+                if (mods >= 1 && mods <= 10) {
+                    return 1
+                } else if (mods >= 11 && mods <= 25) {
+                    return 11
+                } else if (mods >= 26 && mods <= 50) {
+                    return 26
+                } else if (mods === 0) {
+                    return 0
+                }
+            } else if (selectedType === "Modpack size") {
+                return mods
+            }
+            return NaN
         }
-        if (players >= 10 && players <= 25 && mods >= 26 && mods <= 50 && selectedType === "Mods") {
-            recommendedRam = 8
-        }
-        if (players >= 26 && players <= 50 && mods >= 0 && mods <= 10 && selectedType === "Mods") {
-            recommendedRam = 6
-        }
-        if (players >= 26 && players <= 50 && mods >= 11 && mods <= 25 && selectedType === "Mods") {
-            recommendedRam = 8
-        }
-        if (players >= 26 && players <= 50 && mods >= 26 && mods <= 50 && selectedType === "Mods") {
-            recommendedRam = 10
-        }
-        if (players >= 51 && players <= 100 && mods >= 0 && mods <= 10 && selectedType === "Mods") {
-            recommendedRam = 8
-        }
-        if (players >= 51 && players <= 100 && mods >= 11 && mods <= 25 && selectedType === "Mods") {
-            recommendedRam = 10
-        }
-        if (players >= 51 && players <= 100 && mods >= 26 && mods <= 50 && selectedType === "Mods") {
-            recommendedRam = 12
-        }
-        if (players == 5 && mods === 0 && selectedType === "Modpack size") {
-            recommendedRam = 2
-        }
-        if (players == 5 && mods === 1 && selectedType === "Modpack size") {
-            recommendedRam = 4
-        }
-        if (players == 5 && mods === 2 && selectedType === "Modpack size") {
-            recommendedRam = 6
-        }
-        if (players >= 10 && players <= 25 && mods === 0 && selectedType === "Modpack size") {
-            recommendedRam = 4
-        }
-        if (players >= 10 && players <= 25 && mods === 1 && selectedType === "Modpack size") {
-            recommendedRam = 6
-        }
-        if (players >= 10 && players <= 25 && mods === 2 && selectedType === "Modpack size") {
-            recommendedRam = 8
-        }
-        if (players >= 26 && players <= 50 && mods === 0 && selectedType === "Modpack size") {
-            recommendedRam = 6
-        }
-        if (players >= 26 && players <= 50 && mods === 1 && selectedType === "Modpack size") {
-            recommendedRam = 8
-        }
-        if (players >= 26 && players <= 50 && mods === 2 && selectedType === "Modpack size") {
-            recommendedRam = 10
-        }
-        if (players >= 51 && players <= 100 && mods === 0 && selectedType === "Modpack size") {
-            recommendedRam = 8
-        }
-        if (players >= 51 && players <= 100 && mods === 1 && selectedType === "Modpack size") {
-            recommendedRam = 10
-        }
-        if (players >= 51 && players <= 100 && mods === 2 && selectedType === "Modpack size") {
-            recommendedRam = 12
+        
+        if (selectedType === "Mods") {
+            recommendedRam = playersToRam[getPlayers()] + modsToRam[getMods()]
+        } else if (selectedType === "Modpack size") {
+            recommendedRam = playersToRam[getPlayers()] + modpacktoRam[mods]
         }
     }
 
