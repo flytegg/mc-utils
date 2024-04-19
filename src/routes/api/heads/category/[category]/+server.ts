@@ -40,12 +40,20 @@ export const GET: RequestHandler = (async ({fetch, params}) => {
             }
 
             for (let key in response) {
+                const head = response[key]
+                const oldCommand = head.command
+
+                const skullOwnerId = oldCommand.slice(oldCommand.indexOf('Id:"') + 4, oldCommand.indexOf('",Properties:{textures:'))
+                const textureValue = oldCommand.slice(oldCommand.indexOf('Value:"') + 7, oldCommand.indexOf('"}]}}}'))
+
+                const modernCommand = `/give @p minecraft:player_head{display:{Name:'{"text":"${head.name}"}',Lore:['{"text":"Skull from HeadDB.org"}']},SkullOwner:{Id:"${skullOwnerId}",Properties:{textures:[{Value:"${textureValue}"}]}}}`
+
                 heads.push({
-                    name: response[key].name,
-                    uuid: response[key].uuid,
-                    headUrl: response[key].valueDecoded.textures.SKIN.url,
+                    name: head.name,
+                    uuid: head.uuid,
+                    headUrl: head.valueDecoded.textures.SKIN.url,
                     category: category,
-                    command: response[key].command
+                    command: modernCommand
                 });
             }
         }
