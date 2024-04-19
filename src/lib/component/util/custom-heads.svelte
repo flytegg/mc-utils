@@ -116,7 +116,7 @@
 
 <button class="button mx-auto mt-8" on:click={() => loadMore()}>Load More</button>
 
-<a class="flex gap-2 mt-10" href="https://headdb.com/" aria-label='GitHub' target="_blank">
+<a class="flex gap-2 mt-10" href="https://headdb.com/" aria-label='Website' target="_blank">
     <p class="text-[#cecece] text-md">See the HeadDB Website</p>
     <img src="/icon/new-tab.svg" alt="New Tab Icon" class="justify-center">
 </a>
