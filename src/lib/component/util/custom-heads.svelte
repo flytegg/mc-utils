@@ -43,6 +43,7 @@
     }
 
    const loadCategory = async (category: Category) => {
+        searchValue = ""
         if (category === Category.ALL) {
             heads = totalHeads.slice(0, 20)
             return
@@ -52,7 +53,26 @@
 
     onMount(fetchHeads)
 
+    const updateSearch = async (query: string) => {
+        heads = totalHeads.filter((head) => head.name.toLowerCase().includes(query.toLowerCase())).slice(0, 20)
+    }
+
+    let searchValue: string
+
+    const handleKeyPress = (event: KeyboardEvent) => {
+        if (event.key === "Enter") updateSearch(searchValue)
+    }
+
+    const handleInput = () => {
+        updateSearch(searchValue)
+    }
+
     const loadMore = () => {
+        if (searchValue !== undefined || searchValue !== "") {
+            heads = totalHeads.filter((head) => head.name.toLowerCase().includes(searchValue.toLowerCase())).slice(0, heads.length + 20)
+            return
+        }
+
         const category = heads[0].category // seems a little bit cheesy, but is the simplest way to do it, and it works
         heads = totalHeads.filter((head) => head.category === category.toLocaleLowerCase()).slice(0, heads.length + 20)
     }
@@ -68,6 +88,8 @@
         })
     }
 </script>
+
+<input class="search w-[26rem] mb-4" bind:value={searchValue} on:input={handleInput} type="text" placeholder="Enter head name..." on:keypress={handleKeyPress} on:blur={handleInput}>
 
 <div class="flex list-none text-[#cecece] mb-8">
     {#each Object.values(Category) as category}
