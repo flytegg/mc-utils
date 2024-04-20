@@ -1,6 +1,7 @@
 <script lang="ts">
     import { Slider } from "svelte-awesome-slider"
 
+    // Default values for the amount of players and mods
     let players = 5
     let mods = 0
 
@@ -9,38 +10,45 @@
         "Mods",
         "Modpack size"
     ]
-    let width:any;
+
+    // Switching widths of the select element
+    let width: string
     $: {
         if (selectedType === "Mods") {
-            width = "80px";
+            width = "80px"
             mods = 0
         } else if (selectedType === "Modpack size") {
-            width = "140px";
+            width = "140px"
             mods = 0
         }
     }
     
     let recommendedRam: any
 
+    // This is the calculation for the recommended ram
     $: {
+        // These are the values added for each player increase
         const playersToRam:any = {
             5: 2,
             10: 4,
             26: 6,
             51: 8
         }
+        // These are the values added for each mod increase
         const modsToRam:any = {
             0: 0,
             1: 2,
             11: 4,
             26: 6
         }
+        // These are the values added for each modpack size
         const modpacktoRam:any = {
             0: 2,
             1: 4,
-            2: 6
+            2: 8
         }
 
+        // This function converts the amount of players to the correlating value in playersToRam
         function getPlayers(): number {
             if (players >= 5 && players < 10) {
                 return 5
@@ -54,15 +62,16 @@
             return NaN
         }
 
+        // This function converts the amount of mods to the correlating value in modsToRam
         function getMods(): number{
             if (selectedType === "Mods") {
-                if (mods >= 1 && mods <= 10) {
+                if (mods >= 5 && mods <= 10) {
                     return 1
                 } else if (mods >= 11 && mods <= 25) {
                     return 11
                 } else if (mods >= 26 && mods <= 50) {
                     return 26
-                } else if (mods === 0) {
+                } else if (mods <= 5) {
                     return 0
                 }
             } else if (selectedType === "Modpack size") {
@@ -71,6 +80,7 @@
             return NaN
         }
         
+        // Adds the values of the players and mods together to get the recommended ram
         if (selectedType === "Mods") {
             recommendedRam = playersToRam[getPlayers()] + modsToRam[getMods()]
         } else if (selectedType === "Modpack size") {
@@ -78,8 +88,9 @@
         }
     }
 
+    // This function redirects the user to the start file generator with the recommended ram
     function StartFile() {
-        window.location.href = `/start-file-generator?ram=${recommendedRam}GB`;
+        window.location.href = `/start-file-generator?ram=${recommendedRam}GB`
     }
 </script>
 
@@ -98,6 +109,8 @@
             {/each}
         </select>
     </h3>
+    <!-- Switching between mods and modpack size -->
+    <!-- Giving a different slider and text -->
     {#if selectedType === "Mods"}
         <p class="text-gray-400 text-lg mb-1 text-left">{mods === 50 ? '50+' : mods}</p>
         <Slider min={0} max={50} bind:value={mods} step={1} name="Mods" --track-background="rgba(255,255,255,0.6)" --thumb-background="#FFF"/>
@@ -111,6 +124,7 @@
     </h3>
     <p class="text-gray-400 text-lg mb-6 text-left">{recommendedRam} GB</p>
 
-    <button class="button w-fit text-sm" on:click={StartFile}>Use this in the start file</button>
+    <!-- Button redirecting to the Start File Generator page with the recommended ram -->
+    <button class="button w-fit text-sm" on:click={StartFile}>Create start file</button>
 
 </main>
