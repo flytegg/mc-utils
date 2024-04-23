@@ -16,6 +16,10 @@
     "display": "Spigot",
     "jars": [
       {
+        "version": "1.20.5",
+        "release": "April 23rd 2023"
+      },
+      {
         "version": "1.20.4",
         "release": "December 13th 2023"
       },
