@@ -2,6 +2,7 @@
     import * as SkinViewer from "skinview3d"
     import { onMount } from "svelte"
     import {toast} from "@zerodevx/svelte-toast";
+    import {incrementTracker} from "$lib/tracker/tracker";
 
     let currentSearch: string
     let currentSkin: string
@@ -44,6 +45,8 @@
         if (!/^[a-zA-Z0-9_]+$/.test(username)) return
         if (username == currentSearch) return
 
+        incrementTracker("skins-searched")
+
         loading = true
         currentSearch = username
 
@@ -85,6 +88,8 @@
                 '--toastBarBackground': '#2F855A'
             }
         })
+
+        incrementTracker("skins-served")
     }
 
     function copyLink() {

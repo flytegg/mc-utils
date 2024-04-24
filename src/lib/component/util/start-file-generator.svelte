@@ -1,5 +1,6 @@
 <script lang="ts">
     import {toast} from "@zerodevx/svelte-toast";
+    import {incrementTracker} from "$lib/tracker/tracker";
 
     let activeTab = 0;
 
@@ -69,6 +70,8 @@
                 '--toastBarBackground': '#2F855A'
             }
         })
+
+        incrementTracker("start-files-served")
     }
 
     function downloadStartBat() {
@@ -87,6 +90,8 @@
                 '--toastBarBackground': '#2F855A'
             }
         })
+
+        incrementTracker("start-files-served")
     }
 
     function isProxySelected() {

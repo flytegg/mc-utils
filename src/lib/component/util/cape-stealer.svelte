@@ -1,11 +1,10 @@
 <script lang="ts">
     import { onMount } from "svelte"
     import {toast} from "@zerodevx/svelte-toast";
- 
- 
+    import {incrementTracker} from "$lib/tracker/tracker";
+
     let currentSearch: string | undefined = undefined
- 
- 
+
     onMount(async () => {
         const urlParams = new URLSearchParams(window.location.hash.slice(1));
         let ign = urlParams.get('ign')
@@ -14,13 +13,11 @@
             link = "https://mcutils.com/cape-stealer#ign=" + ign
         }
     })
- 
- 
+
     let loading = false
     let noCapes = false
     let data: any[] = []
- 
- 
+
     const replacements = {
         minecraft: "Minecraft",
         optifine: "Optifine",
@@ -29,17 +26,16 @@
         "5zig": "5zig",
         tlauncher: "TLauncher"
     };
- 
- 
+
     const updateSkin = async (username: string) => {
         if (!username || username.length > 16) return
         if (!/^[a-zA-Z0-9_]+$/.test(username)) return
         if (username == currentSearch) return
- 
+
+        incrementTracker("capes-searched")
  
         loading = true
         currentSearch = username
- 
  
         const response = await fetch(`https://api.capes.dev/load/${username}`)
         if (response.ok) {
@@ -52,22 +48,17 @@
         loading = false
     }
  
- 
     let searchValue: string
- 
- 
+
     const handleKeyPress = (event: KeyboardEvent) => {
         if (event.key === "Enter") updateSkin(searchValue)
     }
  
- 
     const handleInput = () => {
         link = "https://mcutils.com/cape-stealer#ign=" + searchValue
     };
- 
- 
+
     let link = "https://mcutils.com/cape-stealer#ign="
- 
  
     async function downloadSkin(imageUrl: string) {
         const blob = await fetch(imageUrl).then(res => res.blob());
@@ -78,7 +69,6 @@
         a.click();
         document.body.removeChild(a);
  
- 
         toast.push('Downloaded successfully!', {
             theme: {
                 '--toastColor': 'mintcream',
@@ -86,9 +76,10 @@
                 '--toastBarBackground': '#2F855A'
             }
         })
+
+        incrementTracker("capes-served")
     }
- 
- 
+
     function copyLink() {
         navigator.clipboard.writeText(link)
         toast.push('Copied successfully!', {
@@ -99,7 +90,6 @@
             }
         })
     }
- 
  
     function disallowSpaces(event: KeyboardEvent) {
         if (event.key === " ") {
@@ -152,4 +142,3 @@
         image-rendering: crisp-edges;
     }
  </style>
- 

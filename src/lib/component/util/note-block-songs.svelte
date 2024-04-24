@@ -1,6 +1,7 @@
 <script lang="ts">
     import {onMount} from "svelte"
     import {toast} from "@zerodevx/svelte-toast";
+    import {incrementTracker} from "$lib/tracker/tracker";
     let searchResults: Song[]
 
     type Song = {
@@ -54,6 +55,8 @@
                 '--toastBarBackground': '#2F855A'
             }
         })
+
+        incrementTracker("note-block-songs-served")
     }
 </script>
 

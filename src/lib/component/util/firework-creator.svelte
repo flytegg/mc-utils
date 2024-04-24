@@ -179,6 +179,7 @@ firework.setItemMeta(meta);`;
   }
 
   import { toast } from "@zerodevx/svelte-toast";
+  import {incrementTracker} from "$lib/tracker/tracker";
 
   function copyValue(text: string) {
     navigator.clipboard.writeText(text);
@@ -189,6 +190,8 @@ firework.setItemMeta(meta);`;
         "--toastBarBackground": "#2F855A",
       },
     });
+
+    incrementTracker("fireworks-served")
   }
 
   function selectShape(shape: string) {

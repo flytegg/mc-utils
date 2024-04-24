@@ -1,6 +1,7 @@
 <script lang="ts">
     import {toast} from "@zerodevx/svelte-toast";
     import Gradient from "javascript-color-gradient";
+    import {incrementTracker} from "$lib/tracker/tracker";
 
     let text = "MC Utils"
 
@@ -47,6 +48,8 @@
                 '--toastBarBackground': '#2F855A'
             }
         })
+
+        incrementTracker("gradients-copied")
     }
 
     function copyMinimessageValue() {
@@ -58,6 +61,8 @@
                 '--toastBarBackground': '#2F855A'
             }
         })
+
+        incrementTracker("gradients-copied")
     }
 </script>
 

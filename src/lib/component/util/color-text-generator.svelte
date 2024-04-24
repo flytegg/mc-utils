@@ -246,6 +246,7 @@
     }
 
     import { toast } from '@zerodevx/svelte-toast'
+    import {incrementTracker} from "$lib/tracker/tracker";
 
     function copyValue() {
         navigator.clipboard.writeText(text)
@@ -256,6 +257,8 @@
                 '--toastBarBackground': '#2F855A'
             }
         })
+
+        incrementTracker("color-text-copied")
     }
 
     function autoSizeTextArea(event) {

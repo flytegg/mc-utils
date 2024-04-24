@@ -1,7 +1,7 @@
 <script lang="ts">
     import {toast} from "@zerodevx/svelte-toast";
-    import {trackEvent} from "$lib/google/gtag";
-    import { onMount } from "svelte";
+    import {onMount} from "svelte";
+    import {incrementTracker} from "$lib/tracker/tracker";
 
     let selectedType = "paper"
     let selectedVersion = "1.20.4"
@@ -34,8 +34,6 @@
                 '--toastBarBackground': '#2F855A'
             }
         })
-
-        trackEvent('server-jars-download', 'type', `${selectedType}-${selectedVersion}`);
     }
 </script>
 

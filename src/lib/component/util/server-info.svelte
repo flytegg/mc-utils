@@ -1,6 +1,7 @@
 <script lang="ts">
     import {toast} from "@zerodevx/svelte-toast";
     import {onMount} from "svelte";
+    import {incrementTracker} from "$lib/tracker/tracker";
 
     let searchValue: string
 
@@ -27,6 +28,8 @@
             const response = await fetch(url);
             status = await response.json();
             if (status.status != "error") {
+                incrementTracker("server-infos-served")
+
                 if (status.motd_json.extra) {
                     let asString = status.motd_json.extra.reduce((acc, item) => {
                         if (item.color) {

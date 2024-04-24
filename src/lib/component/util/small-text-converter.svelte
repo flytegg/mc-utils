@@ -1,5 +1,6 @@
 <script>
     import {toast} from "@zerodevx/svelte-toast";
+    import {incrementTracker} from "$lib/tracker/tracker";
 
     let inputText = '';
 
@@ -39,6 +40,8 @@
                 '--toastBarBackground': '#2F855A'
             }
         })
+
+        incrementTracker("small-text-copied")
     }
 </script>
 

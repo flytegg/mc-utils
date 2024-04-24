@@ -1,4 +1,6 @@
 <script lang="ts">
+    import {incrementTracker} from "$lib/tracker/tracker";
+
     let activeTab = 0;
     let tabData = [
         {
@@ -258,6 +260,8 @@
                 '--toastBarBackground': '#2F855A'
             }
         })
+
+        incrementTracker("banners-served")
     }
 
     import { onMount } from 'svelte';
