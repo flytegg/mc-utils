@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
     import {toast} from "@zerodevx/svelte-toast";
     import {incrementTracker} from "$lib/tracker/tracker";
 
@@ -20,6 +21,15 @@
     let flags = "aikar"
     let gui = false
     let autoRestart = false
+
+    onMount(() => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const ramParam = urlParams.get('ram');
+        if (ramParam) {
+            ram = ramParam;
+            calculateResult();
+        }
+    })
 
     function calculateResult() {
         let java = "java %ram% %flags% -jar %filename% %gui%"
@@ -62,7 +72,8 @@
     }
 
     function copyValue() {
-        navigator.clipboard.writeText(tabData[activeTab].content)
+        const content = tabData[activeTab].content.replace(/<br>/g, '\n')
+        navigator.clipboard.writeText(content)
         toast.push('Copied successfully!', {
             theme: {
                 '--toastColor': 'mintcream',
@@ -97,6 +108,10 @@
     function isProxySelected() {
         return flags === "proxy"
     }
+
+    function CalculateRam() {
+        window.location.href = `/ram-calculator`;
+    }
 </script>
 
 <div class="place-items-center text-center items-start grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-10 mt-3">
@@ -105,7 +120,10 @@
         <input bind:value={serverJarName} on:input={calculateResult} id="serverJarName" class="w-[160px] py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-200 text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
     </div>
     <div class="flex flex-col">
-        <h3 class="font-medium text-white text-[20px] text-left">RAM</h3>
+        <div class="flex flex-row gap-4">
+            <h3 class="font-medium text-white text-[20px] text-left">RAM</h3>
+            <button on:click={CalculateRam} class="button text-sm w-fit px-2 py-1">Calculate</button>
+        </div>
         <input type="text" inputmode="numeric" pattern="[0-9]*" bind:value={ram} on:input={updateStorageValue} class="w-[160px] py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-200 text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
     </div>
     <div class="flex flex-col w-[160px]">

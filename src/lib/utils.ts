@@ -32,6 +32,14 @@ const utils: Util[] = [
             "A minimal script generator to produce start.bat or start.command files for Minecraft Spigot/Paper servers with customisable RAM and Flags (proxy & Aikar's flags).",
     },
     {
+        path: "ram-calculator",
+        name: "RAM Calculator",
+        description: "Calculate the recommended RAM for your server.",
+        shortDescription: "Calculate recommended RAM",
+        seoDescription:
+            "Calculate the recommended amount of RAM for your Minecraft server based on the number of players and plugins.",
+    },
+    {
         path: "server-info",
         name: "Server Info",
         description: "Ping an address to get live server data.",
