@@ -79,6 +79,14 @@ const utils: Util[] = [
             "Generate text using Minecraft color codes & custom hex codes and preview as text, in sign, a book, chat and MOTD.",
     },
     {
+        path: "custom-heads",
+        name: "Custom Heads",
+        description: "List of 900+ custom Minecraft heads.",
+        shortDescription: "List of custom heads.",
+        seoDescription:
+            "Find the perfect head to decorate your build through our amazing collection of 900+ custom Minecraft heads!",
+    },
+    {
         path: "gradient-generator",
         name: "Gradient Generator",
         description: "Create a gradient between two colors for in-game text.",
