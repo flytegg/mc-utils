@@ -16,7 +16,7 @@
 
     const updateSelected = async () => selectedDownloadUrl = await getServerJarDownloadUrl(selectedType, selectedVersion)
 
-    const getServerJarPlatforms = async () => await (await fetch("/api/server-jars")).json()
+    const getServerJarPlatforms = async () => (await (await fetch("/api/server-jars")).json()).filter(item => item.key !== "spigot" && item.key !== "craftbukkit");
     const getServerJarVersions = async (type: string) => await (await fetch(`/api/server-jars/${type}`)).json()
     const getServerJarDownloadUrl = async (type: string, version: string) => (await (await fetch(`/api/server-jars/${type}/${await getLatestServerJarVersionIfNotExists(type, version)}`)).json()).downloadUrl
     const getServerJarVersionsInfo = async (type: string) => Promise.all((await (await fetch(`/api/server-jars/${type}`)).json()).map(async (version: any) => await (await fetch(`/api/server-jars/${type}/${version.version}`)).json()))
