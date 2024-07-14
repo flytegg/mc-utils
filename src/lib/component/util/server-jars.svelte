@@ -80,9 +80,9 @@
 <div class="place-items-center text-center items-start grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-10">
     <div class="flex flex-col">
         <h3 class="font-medium text-white text-[20px] text-left">Type</h3>
-        <select bind:value={selectedType} on:change={handleTypeChange} id="platformType" class="w-[140px] scroll">
+        <select bind:value={selectedType} on:change={handleTypeChange} id="type" class="w-[140px] scroll">
             {#each platforms as platform}
-                <option value={platform.key}>{platform.name}</option>
+                <option value={platform.key} class="scroll-option">{platform.name}</option>
             {/each}
         </select>
     </div>
@@ -90,7 +90,7 @@
         <h3 class="font-medium text-white text-[20px] text-left">Version</h3>
         <select bind:value={selectedVersion} on:change={handleVersionChange} id="underline_select2" class="w-[120px] scroll">
             {#each versions as version}
-                <option value={version.version}>{version.version}</option>
+                <option value={version.version} class="scroll-option">{version.version}</option>
             {/each}
         </select>
     </div>
