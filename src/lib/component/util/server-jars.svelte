@@ -123,7 +123,7 @@
         {#each versions as version}
             <tr class="border-b-[1px] border-b-[#232324] text-[#cecece]">
                 <td class="p-2 ">{version.version}</td>
-                <td class="">{version.release}</td>
+                <td class="">{selectedType === "fabric" ? 'Not known' : version.release}</td>
                 <td class="justify-end">
                     <div class="flex justify-end items-center h-full pr-1">
                         <a aria-label='Download Jar' href={version.downloadUrl}>
