@@ -2,11 +2,11 @@
     <title>MC Utils</title>
     <meta content="MC Utils" property="og:title" />
     <meta content="MC Utils" property="og:site_name" />
-    <meta content="Community powered Minecraft utilities for developers, builders and players." property="og:description" />
+    <meta content="Minecraft tools for server admins, developers, and players. Download server jars, view item IDs, steal skins and capes, view inventory slot IDs, generate banners and fireworks, get color codes and more." property="og:description" />
     <meta content="https://mcutils.com" property="og:url" />
     <meta content="https://mcutils.com/favicon.png" property="og:image" />
     <meta content="#2b2d31" data-react-helmet="true" name="theme-color" />
-    <meta name="description" content="Community powered Minecraft utilities for developers, builders and players.">
+    <meta name="description" content="Minecraft tools for server admins, developers, and players. Download server jars, view item IDs, steal skins and capes, view inventory slot IDs, generate banners and fireworks, get color codes and more.">
     <meta name="keywords" content="mcutils, mc, utils, minecraft, server, spigot, paper, api, unicode, banner, colors, chat, gradient, inventory, slots, noteblock, skin">
     <link rel="icon" href="/favicon.png">
     <link rel="sitemap" href="/sitemap.xml" />
