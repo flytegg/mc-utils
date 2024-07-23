@@ -17,68 +17,68 @@ export async function GET() {
                 <priority>1.0</priority>
             </url>
             <url>
-                <loc>${website}/color-codes</loc>
+                <loc>${website}/server-jars</loc>
                 <changefreq>daily</changefreq>
+                <priority>0.9</priority>
+            </url>
+            <url>
+                <loc>${website}/color-codes</loc>
+                <changefreq>weekly</changefreq>
                 <priority>0.8</priority>
             </url>
             <url>
                 <loc>${website}/color-text-generator</loc>
-                <changefreq>daily</changefreq>
+                <changefreq>weekly</changefreq>
                 <priority>0.8</priority>
             </url>
             <url>
                 <loc>${website}/gradient-generator</loc>
-                <changefreq>daily</changefreq>
+                <changefreq>weekly</changefreq>
                 <priority>0.8</priority>
             </url>
             <url>
                 <loc>${website}/inventory-slots</loc>
-                <changefreq>daily</changefreq>
+                <changefreq>weekly</changefreq>
                 <priority>0.8</priority>
             </url>
             <url>
                 <loc>${website}/note-block-songs</loc>
-                <changefreq>daily</changefreq>
+                <changefreq>weekly</changefreq>
                 <priority>0.8</priority>
             </url>
             <url>
                 <loc>${website}/server-info</loc>
-                <changefreq>daily</changefreq>
+                <changefreq>weekly</changefreq>
                 <priority>0.8</priority>
             </url>
             <url>
-                <loc>${website}/server-jars</loc>
-                <changefreq>daily</changefreq>
-                <priority>0.6</priority>
-            </url>
-            <url>
                 <loc>${website}/skin-stealer</loc>
-                <changefreq>daily</changefreq>
+                <changefreq>weekly</changefreq>
                 <priority>0.8</priority>
             </url>
             <url>
                 <loc>${website}/start-file-generator</loc>
-                <changefreq>daily</changefreq>
+                <changefreq>weekly</changefreq>
                 <priority>0.8</priority>
             </url>
             <url>
                 <loc>${website}/banner-creator</loc>
-                <changefreq>daily</changefreq>
+                <changefreq>weekly</changefreq>
                 <priority>0.8</priority>
             </url>
             <url>
                 <loc>${website}/small-text-converter</loc>
-                <changefreq>daily</changefreq>
+                <changefreq>weekly</changefreq>
                 <priority>0.8</priority>
             </url>
             <url>
                 <loc>${website}/daylight-cycle</loc>
-                <changefreq>daily</changefreq>
+                <changefreq>weekly</changefreq>
                 <priority>0.8</priority>
             </url>
             <url>
                 <loc>${website}/item-ids</loc>
-                <changefreq>daily</changefreq>
+                <changefreq>weekly</changefreq>
                 <priority>0.8</priority>
             </url>
         </urlset>`.trim(),
