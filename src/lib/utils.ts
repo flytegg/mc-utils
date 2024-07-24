@@ -81,7 +81,7 @@ const utils: Util[] = [
         name: "Small Text Converter",
         description: "Convert into sᴍᴀʟʟ ᴛᴇxᴛ seen on new era servers.",
         shortDescription: "Convert into sᴍᴀʟʟ ᴛᴇxᴛ",
-        seoDescription: "Transform your Minecraft text into stylish small caps. Convert regular text to the trendy, compact font used on popular servers like MCCI, Mineclub, TubNe. Stand out in chat, signs, and names with the easy-to-use small text converter.",
+        seoDescription: "Transform your Minecraft text into stylish small caps. Convert regular text to the trendy, compact font used on popular servers like MCCI, Mineclub, TubNet. Stand out in chat, signs, and names with the easy-to-use small text converter.",
     },
     {
         path: "server-icon-converter",
