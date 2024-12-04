@@ -91,8 +91,9 @@
     <span class="flex items-center gap-1.5">
         We've just released
         <img src="img/mcl-white.png" alt="MCL Logo" class="w-4 sm:w-5">
+        MC License
     </span>
-    — sign up for free today!
+    — sign up!
 </a>
 
 <button on:click={() => navShown = !navShown} class="lg:hidden absolute top-[60px] left-8 z-50 {navShown ? '' : ''}">
