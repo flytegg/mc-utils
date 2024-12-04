@@ -64,7 +64,7 @@
     })
 </script>
 
-<div class="flex flex-col items-center mt-16 mx-14">
+<div class="flex flex-col items-center mt-16 mx-6 sm:mx-8 md:mx-14">
     <div class="flex flex-col items-center gap-y-10">
         <img src={logo} alt="MC Utils Logo" class="h-20">
         <h1 class="text-white/60 text-xl text-center">Community powered Minecraft utilities for developers, builders and players.</h1>
