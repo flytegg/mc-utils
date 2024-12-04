@@ -85,7 +85,17 @@
     let navShown = false
 </script>
 
-<button on:click={() => navShown = !navShown} class="lg:hidden absolute top-8 left-8 z-50 {navShown ? '' : ''}">
+<a href="https://mclicense.org"
+   target="_blank"
+   class="w-full bg-gradient-to-r from-[#018FFF] to-[#0157FF] flex justify-center items-center gap-2 py-3 sm:py-4 text-sm sm:text-base text-white font-medium hover:underline focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0157FF] lg:hidden whitespace-nowrap">
+    <span class="flex items-center gap-1.5">
+        We've just released
+        <img src="img/mcl-white.png" alt="MCL Logo" class="w-4 sm:w-5">
+    </span>
+    — sign up for free today!
+</a>
+
+<button on:click={() => navShown = !navShown} class="lg:hidden absolute top-[60px] left-8 z-50 {navShown ? '' : ''}">
     <img src="/icon/{navShown ? 'x.svg' : 'hamburger.svg'}" alt="Hamburger" class="h-7">
 </button>
 
@@ -130,6 +140,9 @@
     </div>
     <div class="flex flex-col w-full justify-between">
         <div class="flex flex-col w-full items-center">
+            <a href="https://mclicense.org" target="_blank" class="hidden py-1 w-full bg-gradient-to-r from-[#018FFF] to-[#0157FF] lg:flex justify-center items-center gap-1.5 text-xl text-white font-medium hover:underline">
+                We've just released <img src="img/mcl-white.png" alt="MCL Logo" class="w-6 mb-0.5"> MC License — sign up for free today!
+            </a>
             <slot/>
         </div>
         <div class="my-8">
