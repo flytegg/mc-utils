@@ -96,7 +96,7 @@
     — sign up!
 </a>
 
-<button on:click={() => navShown = !navShown} class="lg:hidden absolute top-[60px] left-8 z-50 {navShown ? '' : ''}">
+<button on:click={() => navShown = !navShown} class="lg:hidden absolute sm:top-[72px] top-[60px] left-8 z-50 {navShown ? '' : ''}">
     <img src="/icon/{navShown ? 'x.svg' : 'hamburger.svg'}" alt="Hamburger" class="h-7">
 </button>
 
