@@ -33,7 +33,6 @@
         // Check to see if there is only 1 image in the clipboard
         if (items.length === 1 && items[0].type.indexOf('image') !== -1) {
             const imageFile = items[0].getAsFile()
-            console.log(imageFile)
             processImageFile(imageFile)
         } else {
             toast.push('Please paste an image.', {
