@@ -2,10 +2,17 @@
     import {toast} from "@zerodevx/svelte-toast";
     import {incrementTracker} from "$lib/tracker/tracker";
 
+    let resizedImage = '/display/packpng.svg'
+    let fileInput
+
     function onFileSelected(e) {
-        let imageFile = e.target.files[0];
+        let imageFile = e.target.files[0]
+        processImageFile(imageFile)
+    }
+
+    function processImageFile(imageFile) {
         let reader = new FileReader();
-        reader.onload = e => {
+        reader.onload = (e) => {
             let image = new Image();
             image.src = e.target.result;
 
@@ -16,13 +23,28 @@
                 canvas.height = 64;
                 ctx.drawImage(image, 0, 0, 64, 64);
                 resizedImage = canvas.toDataURL('image/png'); // Use 'image/png' to preserve transparency
-
-                // Set the src attribute of the <img> element to the resized image data URL
-                document.getElementById('resizedImage').src = resizedImage;
             };
         };
         reader.readAsDataURL(imageFile);
     }
+
+    document.addEventListener('paste', function (event) {
+        const items = event.clipboardData.items
+        // Check to see if there is only 1 image in the clipboard
+        if (items.length === 1 && items[0].type.indexOf('image') !== -1) {
+            const imageFile = items[0].getAsFile()
+            console.log(imageFile)
+            processImageFile(imageFile)
+        } else {
+            toast.push('Please paste an image.', {
+                theme: {
+                    '--toastColor': 'mintcream',
+                    '--toastBackground': '#F56565',
+                    '--toastBarBackground': '#C53030',
+                },
+            })
+        }
+    })
 
     function downloadToast() {
         toast.push('Downloaded successfully!', {
@@ -35,14 +57,12 @@
 
         incrementTracker("server-icons-served")
     }
-
-    let fileInput, resizedImage
 </script>
 
 <main class="w-[90%] lg:w-[60%] mt-5 flex-col flex justify-center items-center">
 
     <h3 class="font-medium text-white text-20px text-left mb-2.5">
-        Upload an image
+        Upload or paste an image
     </h3>
     <input type="file" accept=".jpg, .jpeg, .png" class="button w-[300px] md:w-[500px]" on:change={(e)=>onFileSelected(e)}
            bind:this={fileInput}>
