@@ -14,10 +14,14 @@
     UtilList.set(data.utils)
 
     let currentUrl = "";
+    let showBanner = false;
 
     // Load favourites from cookies on page load
     onMount(() => {
         currentUrl = window.location.pathname.substring(1);
+
+        // Check if banner was previously dismissed
+        showBanner = !localStorage.getItem('mcu-banner-dismissed');
 
         const cookies = document.cookie.split(";")
         let favourites: string[] = []
@@ -27,6 +31,11 @@
         Favourites.set(favouriteUtilsFromArray(favourites))
         UtilList.set(data.utils.filter((util: { path: string }) => !favourites.includes(util.path)))
     })
+
+    const dismissBanner = () => {
+        showBanner = false;
+        localStorage.setItem('mcu-banner-dismissed', 'true');
+    }
 
     const updateFavourites = (path: string) => {
         const cookies = document.cookie.split(";")
@@ -84,17 +93,35 @@
     let showFavourites = true
     let navShown = false
 </script>
+<button 
+    class="fixed bottom-4 right-4 bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg text-sm"
+    on:click={() => {
+        localStorage.removeItem('mcu-banner-dismissed');
+        location.reload();
+    }}
+>
+    Reset Banner
+</button>
 
-<a href="https://mclicense.org"
-   target="_blank"
-   class="w-full bg-gradient-to-r from-[#018FFF] to-[#0157FF] flex justify-center items-center gap-2 py-3 sm:py-4 text-sm sm:text-base text-white font-medium hover:underline focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0157FF] lg:hidden whitespace-nowrap">
-    <span class="flex items-center gap-1.5">
-        We've just released
-        <img src="img/mcl-white.png" alt="MCL Logo" class="w-4 sm:w-5">
-        MC License
-    </span>
-    — sign up!
-</a>
+{#if showBanner}
+    <div class="relative w-full">
+        <a href="https://mclicense.org"
+            target="_blank" 
+        class="w-full bg-gradient-to-r from-[#018FFF] to-[#0157FF] flex justify-center items-center gap-2 py-3 sm:py-4 text-sm sm:text-base text-white font-medium hover:underline focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0157FF] lg:hidden whitespace-nowrap">
+            <span class="flex items-center gap-1.5">
+                We've just released
+                <img src="img/mcl-white.png" alt="MCL Logo" class="w-4 sm:w-5">
+                MC License
+            </span>
+            — sign up!
+        </a>
+        <button on:click={dismissBanner} class="absolute right-4 top-2 text-white hover:opacity-80">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+        </button>
+    </div>
+{/if}
 
 <button on:click={() => navShown = !navShown} class="lg:hidden absolute sm:top-[72px] top-[60px] left-8 z-50 {navShown ? '' : ''}">
     <img src="/icon/{navShown ? 'x.svg' : 'hamburger.svg'}" alt="Hamburger" class="h-7">
@@ -141,9 +168,11 @@
     </div>
     <div class="flex flex-col w-full justify-between">
         <div class="flex flex-col w-full items-center">
-            <a href="https://mclicense.org" target="_blank" class="hidden py-1 w-full bg-gradient-to-r from-[#018FFF] to-[#0157FF] lg:flex justify-center items-center gap-1.5 text-xl text-white font-medium hover:underline">
-                We've just released <img src="img/mcl-white.png" alt="MCL Logo" class="w-6 mb-0.5"> MC License — sign up for free today!
-            </a>
+            {#if showBanner}
+                <a href="https://mclicense.org" target="_blank" class="hidden py-1 w-full bg-gradient-to-r from-[#018FFF] to-[#0157FF] lg:flex justify-center items-center gap-1.5 text-xl text-white font-medium hover:underline">
+                    We've just released <img src="img/mcl-white.png" alt="MCL Logo" class="w-6 mb-0.5"> MC License — sign up for free today!
+                </a>
+            {/if}
             <slot/>
         </div>
         <div class="my-8">
