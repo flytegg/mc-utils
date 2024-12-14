@@ -93,15 +93,6 @@
     let showFavourites = true
     let navShown = false
 </script>
-<button 
-    class="fixed bottom-4 right-4 bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg text-sm"
-    on:click={() => {
-        localStorage.removeItem('mcu-banner-dismissed');
-        location.reload();
-    }}
->
-    Reset Banner
-</button>
 
 {#if showBanner}
     <div class="relative w-full">
