@@ -23,7 +23,7 @@ const utils: Util[] = [
     {
         path: "sound-explorer",
         name: "Sound Explorer",
-        description: "Browse all the Minecraft sounds",
+        description: "Browse all Minecraft sounds.",
         shortDescription: "Browse Minecraft Sounds",
         seoDescription: "Browse the sounds used in Minecraft. Experiment with different volume and pitch. See command to use the sound in-game and download all the sounds with a click of your mouse."
     },
