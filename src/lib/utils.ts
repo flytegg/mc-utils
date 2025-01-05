@@ -126,6 +126,13 @@ const utils: Util[] = [
         shortDescription: "Build custom fireworks",
         seoDescription: "Craft spectacular Minecraft fireworks with a custom creator. Design unique explosions, effects, colors, and durations. Instantly receive in-game commands and crafting recipes for your creations. Perfect for celebrations, events, or adding flair to your Minecraft world.",
     },
+    {
+        path: "sound-explorer",
+        name: "Sound Explorer",
+        description: "Browse all the Minecraft sounds",
+        shortDescription: "Browse Minecraft Sounds",
+        seoDescription: "Browse the sounds used in Minecraft. Experiment with different volume and pitch. See command to use the sound in-game and download all the sounds with a click of your mouse."
+    }
 ];
 
 type Util = {
