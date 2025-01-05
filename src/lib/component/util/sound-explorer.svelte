@@ -201,6 +201,10 @@
         updateFilteredSounds();
     }
 
+    function handleSubCategoryChange() {
+        updateFilteredSounds();
+    }
+
     $: showType = selectedCategory && soundStructure[selectedCategory]?.subCategories;
 
     function disallowSpaces(event: KeyboardEvent) {
@@ -239,6 +243,7 @@
                 <h3 class="font-medium text-white text-[20px] text-left">Type</h3>
                 <select
                         bind:value={selectedSubCategory}
+                        on:change={handleSubCategoryChange}
                         id="underline_select2"
                         class="w-[120px] scroll"
                         disabled={!showType}
