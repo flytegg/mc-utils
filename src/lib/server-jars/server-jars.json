@@ -556,6 +556,11 @@
     "display": "Forge",
     "jars": [
       {
+        "version": "1.20.6",
+        "release": "January 4th 2025",
+        "downloadUrl": "https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.6-50.1.32/forge-1.20.6-50.1.32-installer.jar"
+      },
+      {
         "version": "1.20.4",
         "release": "December 13th 2023",
         "downloadUrl": "https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.4-49.0.9/forge-1.20.4-49.0.9-installer.jar"
