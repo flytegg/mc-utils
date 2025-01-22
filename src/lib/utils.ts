@@ -21,6 +21,13 @@ const utils: Util[] = [
         seoDescription: "Comprehensive Minecraft item ID database. Search and explore all current and legacy item IDs (data values). Essential tool for modders, plugin developers, and command block enthusiasts.",
     },
     {
+        path: "sound-explorer",
+        name: "Sound Explorer",
+        description: "Browse all Minecraft sounds.",
+        shortDescription: "Browse Minecraft Sounds",
+        seoDescription: "Browse the sounds used in Minecraft. Experiment with different volume and pitch. See command to use the sound in-game and download all the sounds with a click of your mouse."
+    },
+    {
         path: "start-file-generator",
         name: "Start File Generator",
         description: "Generate server start file with varying settings and flags.",
@@ -125,13 +132,6 @@ const utils: Util[] = [
         description: "Create a firework and get in-game commands and recipe.",
         shortDescription: "Build custom fireworks",
         seoDescription: "Craft spectacular Minecraft fireworks with a custom creator. Design unique explosions, effects, colors, and durations. Instantly receive in-game commands and crafting recipes for your creations. Perfect for celebrations, events, or adding flair to your Minecraft world.",
-    },
-    {
-        path: "sound-explorer",
-        name: "Sound Explorer",
-        description: "Browse all the Minecraft sounds",
-        shortDescription: "Browse Minecraft Sounds",
-        seoDescription: "Browse the sounds used in Minecraft. Experiment with different volume and pitch. See command to use the sound in-game and download all the sounds with a click of your mouse."
     }
 ];
 
