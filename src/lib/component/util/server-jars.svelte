@@ -126,13 +126,19 @@
                 <td class="">{selectedType === "fabric" ? 'Not known' : version.release}</td>
                 <td class="justify-end">
                     <div class="flex justify-end items-center h-full pr-1">
-                        <a aria-label='Download Jar' href={version.downloadUrl}>
-                            <button on:click={downloadSuccess}>
-                                <svg class="fill-[#626875] pl-4 h-5" viewBox="0 0 384 512">
-                                    <path d="M32 480c-17.7 0-32-14.3-32-32s14.3-32 32-32H352c17.7 0 32 14.3 32 32s-14.3 32-32 32H32zM214.6 342.6c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 242.7V64c0-17.7 14.3-32 32-32s32 14.3 32 32V242.7l73.4-73.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3l-128 128z"/>
-                                </svg>
-                            </button>
-                        </a>
+                        {#if version.downloadUrl}
+                            <a aria-label='Download Jar' href={version.downloadUrl}>
+                                <button on:click={downloadSuccess}>
+                                    <svg class="fill-[#626875] pl-4 h-5" viewBox="0 0 384 512">
+                                        <path d="M32 480c-17.7 0-32-14.3-32-32s14.3-32 32-32H352c17.7 0 32 14.3 32 32s-14.3 32-32 32H32zM214.6 342.6c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 242.7V64c0-17.7 14.3-32 32-32s32 14.3 32 32V242.7l73.4-73.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3l-128 128z"/>
+                                    </svg>
+                                </button>
+                            </a>
+                        {:else}
+                            <svg class="fill-[#626875] pl-4 h-5 opacity-30 cursor-not-allowed" viewBox="0 0 384 512">
+                                <path d="M32 480c-17.7 0-32-14.3-32-32s14.3-32 32-32H352c17.7 0 32 14.3 32 32s-14.3 32-32 32H32zM214.6 342.6c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 242.7V64c0-17.7 14.3-32 32-32s32 14.3 32 32V242.7l73.4-73.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3l-128 128z"/>
+                            </svg>
+                        {/if}
                     </div>
                 </td>
             </tr>
