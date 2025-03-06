@@ -44,7 +44,12 @@ const handle = async (handleVersions: boolean, platform: string, version: string
         case "forge":
             versions = await fetchManualVersionsFor(platform)
             return handleVersions ? versions : fetchManualDetailsFor(platform, await handleVersion(version!!, versions))
-
+        case "neoforge":
+            versions = await fetchNeoforgeVersions()
+            return handleVersions ? versions : fetchNeoforgeDetailsFor(await handleVersion(version!!, versions))
+        case "quilt":
+            versions = await fetchQuiltVersions()
+            return handleVersions ? versions: fetchQuiltDetailsFor(await handleVersion(version!!, versions))
         default:
             return null
     }
@@ -153,6 +158,57 @@ export const fetchFabricDetailsFor = async (version: string) => {
 
 // End Fabric
 
+// Start NeoForge
+const NEOFORGE_BASE_URL = "https://maven.neoforged.net"
+const NEOFORGE_MAVEN_PATH = "/releases/net/neoforged/neoforge"
+
+export const fetchNeoforgeVersions = async () => {
+    // @ts-ignore
+    return info.find((item) => item.platform === "neoforge").jars.map((version: any) => version.version)
+}
+
+export const fetchNeoforgeDetailsFor = async (version: string) => {
+    // @ts-ignore
+    const platformResponse = info.find((item) => item.platform === "neoforge")!!
+    // @ts-ignore
+    const versionResponse = platformResponse.jars.find((item) => item.version === version)!!
+
+    return {
+        platform: platformResponse.platform,
+        display: platformResponse.display,
+        version: versionResponse.version,
+        release: versionResponse.release,
+        downloadUrl: `${NEOFORGE_BASE_URL}${NEOFORGE_MAVEN_PATH}/${version}/neoforge-${version}-installer.jar`
+    }
+}
+
+// End NeoForge
+
+// Start Quilt
+const QUILT_API_URL = "https://maven.quiltmc.org/repository/release/org/quiltmc/quilt-installer"
+
+export const fetchQuiltVersions = async () => {
+    // @ts-ignore
+    return info.find((item) => item.platform === "quilt").jars.map((version: any) => version.version)
+}
+
+export const fetchQuiltDetailsFor = async (version: string) => {
+    // @ts-ignore
+    const platformResponse = info.find((item) => item.platform === "quilt")!!
+    // @ts-ignore
+    const versionResponse = platformResponse.jars.find((item) => item.version === version)!!
+
+    return {
+        platform: platformResponse.platform,
+        display: platformResponse.display,
+        version: versionResponse.version,
+        release: versionResponse.release,
+        downloadUrl: `${QUILT_API_URL}/${version}/quilt-installer-${version}.jar`
+    }
+}
+// End Quilt
+
+
 // Start Vanilla
 
 const VANILLA_VERSIONS_API_URL = "https://launchermeta.mojang.com/mc/game/version_manifest.json"
@@ -167,7 +223,7 @@ export const fetchVanillaDetailsFor = async (version: string) => {
         display: "Vanilla",
         version: version,
         release: formatDate(new Date(response.releaseTime)),
-        downloadUrl: details.downloads.server.url
+        downloadUrl: details.downloads.server?.url
     }
 }
 

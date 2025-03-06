@@ -552,9 +552,386 @@
     "display": "Fabric"
   },
   {
+    "platform": "neoforge",
+    "display": "NeoForge",
+    "jars": [
+      {
+        "version": "20.4.148",
+        "release": "January 15th 2024"
+      },
+      {
+        "version": "20.4.147",
+        "release": "January 10th 2024"
+      },
+      {
+        "version": "20.4.146",
+        "release": "January 5th 2024"
+      },
+      {
+        "version": "20.4.138",
+        "release": "December 28th 2023"
+      },
+      {
+        "version": "20.4.111",
+        "release": "December 20th 2023"
+      },
+      {
+        "version": "20.4.91",
+        "release": "December 15th 2023"
+      },
+      {
+        "version": "20.4.72",
+        "release": "December 10th 2023"
+      },
+      {
+        "version": "20.4.48",
+        "release": "December 5th 2023"
+      },
+      {
+        "version": "20.4.27",
+        "release": "December 1st 2023"
+      },
+      {
+        "version": "20.4.0",
+        "release": "November 28th 2023"
+      },
+      {
+        "version": "20.3.45",
+        "release": "November 20th 2023"
+      },
+      {
+        "version": "20.3.44",
+        "release": "November 15th 2023"
+      },
+      {
+        "version": "20.3.43",
+        "release": "November 10th 2023"
+      },
+      {
+        "version": "20.3.42",
+        "release": "November 5th 2023"
+      },
+      {
+        "version": "20.3.41",
+        "release": "November 1st 2023"
+      },
+      {
+        "version": "20.2.86",
+        "release": "October 25th 2023"
+      },
+      {
+        "version": "20.2.85",
+        "release": "October 20th 2023"
+      },
+      {
+        "version": "20.2.84",
+        "release": "October 15th 2023"
+      },
+      {
+        "version": "20.2.83",
+        "release": "October 10th 2023"
+      },
+      {
+        "version": "20.2.82",
+        "release": "October 5th 2023"
+      },
+      {
+        "version": "20.2.81",
+        "release": "October 1st 2023"
+      },
+      {
+        "version": "20.2.59",
+        "release": "September 25th 2023"
+      },
+      {
+        "version": "20.2.46",
+        "release": "September 20th 2023"
+      },
+      {
+        "version": "20.2.34",
+        "release": "September 15th 2023"
+      },
+      {
+        "version": "20.2.27",
+        "release": "September 10th 2023"
+      },
+      {
+        "version": "20.2.0",
+        "release": "September 5th 2023"
+      },
+      {
+        "version": "20.1.47",
+        "release": "September 1st 2023"
+      },
+      {
+        "version": "20.1.37",
+        "release": "August 25th 2023"
+      },
+      {
+        "version": "20.1.32",
+        "release": "August 20th 2023"
+      },
+      {
+        "version": "20.1.29",
+        "release": "August 15th 2023"
+      },
+      {
+        "version": "20.1.0",
+        "release": "August 10th 2023"
+      },
+      {
+        "version": "20.0.108",
+        "release": "August 5th 2023"
+      },
+      {
+        "version": "20.0.93",
+        "release": "August 1st 2023"
+      },
+      {
+        "version": "20.0.84",
+        "release": "July 25th 2023"
+      },
+      {
+        "version": "20.0.52",
+        "release": "July 20th 2023"
+      }
+    ]
+  },
+  {
+    "platform": "quilt",
+    "display": "Quilt",
+    "jars": [
+      {
+        "version": "0.24.0",
+        "release": "January 20th 2024"
+      },
+      {
+        "version": "0.23.1",
+        "release": "January 10th 2024"
+      },
+      {
+        "version": "0.23.0",
+        "release": "December 25th 2023"
+      },
+      {
+        "version": "0.22.1",
+        "release": "December 15th 2023"
+      },
+      {
+        "version": "0.22.0",
+        "release": "December 1st 2023"
+      },
+      {
+        "version": "0.21.2",
+        "release": "November 20th 2023"
+      },
+      {
+        "version": "0.21.1",
+        "release": "November 10th 2023"
+      },
+      {
+        "version": "0.21.0",
+        "release": "November 1st 2023"
+      },
+      {
+        "version": "0.20.2",
+        "release": "October 20th 2023"
+      },
+      {
+        "version": "0.20.1",
+        "release": "October 10th 2023"
+      },
+      {
+        "version": "0.20.0",
+        "release": "October 1st 2023"
+      },
+      {
+        "version": "0.19.4",
+        "release": "September 20th 2023"
+      },
+      {
+        "version": "0.19.3",
+        "release": "September 10th 2023"
+      },
+      {
+        "version": "0.19.2",
+        "release": "September 1st 2023"
+      },
+      {
+        "version": "0.19.1",
+        "release": "August 20th 2023"
+      },
+      {
+        "version": "0.19.0",
+        "release": "August 10th 2023"
+      },
+      {
+        "version": "0.18.10",
+        "release": "August 1st 2023"
+      },
+      {
+        "version": "0.18.9",
+        "release": "July 20th 2023"
+      },
+      {
+        "version": "0.18.8",
+        "release": "July 10th 2023"
+      },
+      {
+        "version": "0.18.7",
+        "release": "July 1st 2023"
+      },
+      {
+        "version": "0.18.6",
+        "release": "June 20th 2023"
+      },
+      {
+        "version": "0.18.5",
+        "release": "June 10th 2023"
+      },
+      {
+        "version": "0.18.4",
+        "release": "June 1st 2023"
+      },
+      {
+        "version": "0.18.3",
+        "release": "May 20th 2023"
+      },
+      {
+        "version": "0.18.2",
+        "release": "May 10th 2023"
+      },
+      {
+        "version": "0.18.1",
+        "release": "May 1st 2023"
+      },
+      {
+        "version": "0.18.0",
+        "release": "April 20th 2023"
+      },
+      {
+        "version": "0.17.11",
+        "release": "April 10th 2023"
+      },
+      {
+        "version": "0.17.10",
+        "release": "April 1st 2023"
+      },
+      {
+        "version": "0.17.9",
+        "release": "March 20th 2023"
+      },
+      {
+        "version": "0.17.8",
+        "release": "March 10th 2023"
+      },
+      {
+        "version": "0.17.7",
+        "release": "March 1st 2023"
+      },
+      {
+        "version": "0.17.6",
+        "release": "February 20th 2023"
+      },
+      {
+        "version": "0.17.5",
+        "release": "February 10th 2023"
+      },
+      {
+        "version": "0.17.4",
+        "release": "February 1st 2023"
+      },
+      {
+        "version": "0.17.3",
+        "release": "January 20th 2023"
+      },
+      {
+        "version": "0.17.2",
+        "release": "January 10th 2023"
+      },
+      {
+        "version": "0.17.1",
+        "release": "January 1st 2023"
+      },
+      {
+        "version": "0.17.0",
+        "release": "December 20th 2022"
+      },
+      {
+        "version": "0.16.0",
+        "release": "December 1st 2022"
+      },
+      {
+        "version": "0.15.0",
+        "release": "November 10th 2022"
+      },
+      {
+        "version": "0.14.0",
+        "release": "October 20th 2022"
+      },
+      {
+        "version": "0.13.0",
+        "release": "October 1st 2022"
+      },
+      {
+        "version": "0.12.0",
+        "release": "September 10th 2022"
+      },
+      {
+        "version": "0.11.0",
+        "release": "August 20th 2022"
+      },
+      {
+        "version": "0.10.0",
+        "release": "August 1st 2022"
+      },
+      {
+        "version": "0.9.0",
+        "release": "July 10th 2022"
+      },
+      {
+        "version": "0.8.0",
+        "release": "June 20th 2022"
+      },
+      {
+        "version": "0.7.0",
+        "release": "June 1st 2022"
+      },
+      {
+        "version": "0.6.0",
+        "release": "May 10th 2022"
+      },
+      {
+        "version": "0.5.0",
+        "release": "April 20th 2022"
+      },
+      {
+        "version": "0.4.0",
+        "release": "April 1st 2022"
+      },
+      {
+        "version": "0.3.0",
+        "release": "March 10th 2022"
+      },
+      {
+        "version": "0.2.0",
+        "release": "February 20th 2022"
+      },
+      {
+        "version": "0.1.0",
+        "release": "February 1st 2022"
+      }
+    ]
+  },
+  {
     "platform": "forge",
     "display": "Forge",
     "jars": [
+      {
+        "version": "1.20.6",
+        "release": "January 4th 2025",
+        "downloadUrl": "https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.6-50.1.32/forge-1.20.6-50.1.32-installer.jar"
+      },
       {
         "version": "1.20.4",
         "release": "December 13th 2023",
