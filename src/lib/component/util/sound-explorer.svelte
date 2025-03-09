@@ -8,6 +8,7 @@
     let searchValue: string = '';
     let audioElement: HTMLAudioElement | null = null;
     let filteredSounds: Sound[] = [];
+    let soundIdMapping: Record<string, string> = {};
 
     interface Sound {
         category: string;
@@ -15,6 +16,12 @@
         name: string;
         path: string;
         displayPath: string;
+        commandId?: string;
+    }
+
+    interface SoundData {
+        sounds: Array<string | { name: string; pitch?: number; volume?: number }>;
+        subtitle?: string;
     }
 
     let soundFiles;
@@ -22,9 +29,39 @@
     let soundControls: Record<string, { pitch: number; volume: number }> = {};
 
     onMount(async () => {
+        await loadSoundJson();
         await loadSoundFiles();
         initializeSounds();
     });
+
+    async function loadSoundJson() {
+        try {
+            const response = await fetch('/static/sounds/sounds.json');
+            if (!response.ok) {
+                console.error('Failed to load sounds.json');
+                return;
+            }
+
+            const soundData: Record<string, SoundData> = await response.json();
+
+            // Build the reverse mapping (resource path → command ID)
+            Object.entries(soundData).forEach(([commandId, data]) => {
+                if (data.sounds && Array.isArray(data.sounds)) {
+                    data.sounds.forEach(sound => {
+                        if (typeof sound === 'string') {
+                            soundIdMapping[sound] = commandId;
+                        } else if (sound) {
+                            soundIdMapping[sound.name] = commandId;
+                        }
+                    });
+                }
+            });
+
+            console.log('Sound ID mapping loaded:', soundIdMapping);
+        } catch (error) {
+            console.error('Error loading sounds.json:', error);
+        }
+    }
 
     async function loadSoundFiles() {
         soundFiles = import.meta.glob('/static/sounds/**/*.{mp3,ogg,wav}', {
@@ -69,11 +106,13 @@
         Object.entries(soundStructure).forEach(([category, data]) => {
             if (data.sounds) {
                 data.sounds.forEach(sound => {
+                    const resourcePath = `${category}/${sound}`;
                     const newSound = {
                         category,
                         name: sound,
-                        path: `${category}/${sound}`,
-                        displayPath: sound
+                        path: resourcePath,
+                        displayPath: sound,
+                        commandId: getCommandId(resourcePath)
                     };
                     sounds.push(newSound);
                     soundControls[newSound.path] = { pitch: 1, volume: 1 };
@@ -82,12 +121,14 @@
             if (data.subCategories) {
                 Object.entries(data.subCategories).forEach(([subCategory, subSounds]) => {
                     subSounds.forEach(sound => {
+                        const resourcePath = `${category}/${subCategory}/${sound}`;
                         const newSound = {
                             category,
                             subCategory,
                             name: sound,
-                            path: `${category}/${subCategory}/${sound}`,
-                            displayPath: sound
+                            path: resourcePath,
+                            displayPath: sound,
+                            commandId: getCommandId(resourcePath)
                         };
                         sounds.push(newSound);
                         soundControls[newSound.path] = { pitch: 1, volume: 1 };
@@ -96,6 +137,25 @@
             }
         });
         updateFilteredSounds();
+    }
+
+    function getCommandId(resourcePath: string): string {
+        // Try exact match first
+        if (soundIdMapping[resourcePath]) {
+            return soundIdMapping[resourcePath];
+        }
+
+        const pathWithoutExt = resourcePath.replace(/\.(mp3|ogg|wav)$/, '');
+        if (soundIdMapping[pathWithoutExt]) {
+            return soundIdMapping[pathWithoutExt];
+        }
+
+        if (resourcePath.startsWith('mob/')) {
+            const entityPath = 'entity.' + resourcePath.substring(4).replace(/\//g, '.');
+            return entityPath.replace(/\.(mp3|ogg|wav)$/, '');
+        }
+
+        return resourcePath.replace(/\//g, '.').replace(/\.(mp3|ogg|wav)$/, '');
     }
 
     interface SoundCategory {
@@ -109,6 +169,10 @@
     }
 
     function formatSoundPath(sound: Sound): string {
+        // Use the commandId if available, otherwise fall back to the formatted path
+        if (sound.commandId) {
+            return sound.commandId;
+        }
         return sound.path.replace(/\//g, '.');
     }
 
@@ -119,7 +183,8 @@
     function updateFilteredSounds() {
         filteredSounds = sounds.filter(sound => {
             const matchesSearch = !searchValue ||
-                sound.path.toLowerCase().includes(searchValue.toLowerCase());
+                sound.path.toLowerCase().includes(searchValue.toLowerCase()) ||
+                (sound.commandId && sound.commandId.toLowerCase().includes(searchValue.toLowerCase()));
             const matchesCategory = !selectedCategory ||
                 sound.category === selectedCategory;
             const matchesSubCategory =
@@ -129,7 +194,7 @@
 
             let displayPath = sound.name;
             if (!selectedCategory) {
-                displayPath = formatSoundPath(sound);
+                displayPath = sound.commandId || formatSoundPath(sound);
             } else if (!selectedSubCategory && sound.subCategory) {
                 displayPath = `${sound.subCategory}.${sound.name}`;
             }
