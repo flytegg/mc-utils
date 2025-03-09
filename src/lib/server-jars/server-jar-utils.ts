@@ -223,7 +223,7 @@ export const fetchVanillaDetailsFor = async (version: string) => {
         display: "Vanilla",
         version: version,
         release: formatDate(new Date(response.releaseTime)),
-        downloadUrl: details.downloads.server.url
+        downloadUrl: details.downloads.server?.url
     }
 }
 
