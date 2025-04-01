@@ -132,6 +132,13 @@ const utils: Util[] = [
         description: "Create a firework and get in-game commands and recipe.",
         shortDescription: "Build custom fireworks",
         seoDescription: "Craft spectacular Minecraft fireworks with a custom creator. Design unique explosions, effects, colors, and durations. Instantly receive in-game commands and crafting recipes for your creations. Perfect for celebrations, events, or adding flair to your Minecraft world.",
+    },
+    {
+        path: "nether-coords",
+        name: "Coordinates Converter",
+        description: "Convert coordinates from Overworld to Nether ones or viceverse.",
+        shortDescription: "Convert coordinates",
+        seoDescription: "Convert Minecraft coordinates between Overworld and Nether dimensions instantly. Calculate precise coordinates for fast travel, portal linking, and efficient navigation. Get accurate 8:1 ratio conversions for both directions, making your Nether travel planning quick and easy.",
     }
 ];
 
