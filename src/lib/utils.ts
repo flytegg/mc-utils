@@ -136,7 +136,7 @@ const utils: Util[] = [
     {
         "path": "nether-coords",
         "name": "Coordinates Converter",
-        "description": "Convert coordinates between the Overworld and the Nether, or viceversa.",
+        "description": "Convert coordinates between the Overworld and the Nether, or vice versa.",
         "shortDescription": "Convert coordinates",
         "seoDescription": "Convert Minecraft coordinates between the Overworld and the Nether instantly. Calculate precise coordinates for fast travel, portal linking, and efficient navigation. Get accurate 8:1 ratio conversions for both directions, making your Nether travel planning quick and easy."
     }    
