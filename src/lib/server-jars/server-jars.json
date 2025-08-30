@@ -928,6 +928,46 @@
     "display": "Forge",
     "jars": [
       {
+        "version": "1.21.8",
+        "release": "August 27th 2025",
+        "downloadUrl": "https://maven.minecraftforge.net/net/minecraftforge/forge/1.21.8-58.1.0/forge-1.21.8-58.1.0-installer.jar"
+      },
+      {
+        "version": "1.21.7",
+        "release": "July 16th 2025",
+        "downloadUrl": "https://maven.minecraftforge.net/net/minecraftforge/forge/1.21.7-57.0.3/forge-1.21.7-57.0.3-installer.jar"
+      },
+      {
+        "version": "1.21.6",
+        "release": "June 25th 2025",
+        "downloadUrl": "https://maven.minecraftforge.net/net/minecraftforge/forge/1.21.6-56.0.9/forge-1.21.6-56.0.9-installer.jar"
+      },
+      {
+        "version": "1.21.5",
+        "release": "August 27th 2025",
+        "downloadUrl": "https://maven.minecraftforge.net/net/minecraftforge/forge/1.21.5-55.1.0/forge-1.21.5-55.1.0-installer.jar"
+      },
+      {
+        "version": "1.21.4",
+        "release": "February 12th 2025",
+        "downloadUrl": "https://maven.minecraftforge.net/net/minecraftforge/forge/1.21.4-54.1.0/forge-1.21.4-54.1.0-installer.jar"
+      },
+      {
+        "version": "1.21.3",
+        "release": "March 2th 2025",
+        "downloadUrl": "https://maven.minecraftforge.net/net/minecraftforge/forge/1.21.3-53.1.0/forge-1.21.3-53.1.0-installer.jar"
+      },
+      {
+        "version": "1.21.1",
+        "release": "March 5th 2025",
+        "downloadUrl": "https://maven.minecraftforge.net/net/minecraftforge/forge/1.21.1-52.1.0/forge-1.21.1-52.1.0-installer.jar"
+      },
+      {
+        "version": "1.21",
+        "release": "August 8th 2024",
+        "downloadUrl": "https://maven.minecraftforge.net/net/minecraftforge/forge/1.21-51.0.33/forge-1.21-51.0.33-installer.jar"
+      },
+      {
         "version": "1.20.6",
         "release": "January 4th 2025",
         "downloadUrl": "https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.6-50.1.32/forge-1.20.6-50.1.32-installer.jar"
