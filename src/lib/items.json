@@ -7302,28 +7302,28 @@
   },
   {
     "newID": "music_disc_13",
-    "legacyID": 2256,
+    "legacyID": "2256",
     "name": "Music Disc",
     "stackSize": 1,
     "texture": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAeElEQVQ4T92Ryw3AIAxDWcEjcPEcrMD23SY9GeWDaK9tJAsk8p6U0No/q/duOU9MgMYYJUfZDppzrlN3L9vCvtmutpKlQSKBfxRI0lRZUgRF4mo3ShCQLPP7HeT9kIx7AGAkVzIgSAFQfwKAKb7ZQ0qBT7LX0HfrBhBUzmu87GZiAAAAAElFTkSuQmCC"
   },
   {
     "newID": "music_disc_cat",
-    "legacyID": 2257,
+    "legacyID": "2257",
     "name": "Music Disc",
     "stackSize": 1,
     "texture": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAgElEQVR42mNgGJ5AUVHxPzomSZODgwMGxmsYNk2BgYFwGsZGNgyrZmTFPv8Z4BjdUBRDYAYgS4I0yWcw/FdTUwPT2AzBMACbIcguQPcKigEgm9D9jxwG6OEDUo8SDoKCgmBBGMYWC8jyIPUYMQEShGFkxciaYJhgmkBWTLSmoQsAWjLBrfzuqzsAAAAASUVORK5CYII\u003d"
   },
   {
     "newID": "music_disc_blocks",
-    "legacyID": 2258,
+      "legacyID": "2258",
     "name": "Music Disc",
     "stackSize": 1,
     "texture": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAeklEQVR42mNgGJ5AUVHxPzomSZODgwMGxmsYNk2BgYFwGsZGNgyrZmTFj0Ks4RjdUBRDYAYgS8I0qqmp4TQEwwBchsA0o3sFxQCQTej+Rw4D9PABqUcJB0FBQbAgDGOLBWR5kHqMmAAJwjCyYmRNMEwwTSArJlrT0AUA6CDEsZxtybIAAAAASUVORK5CYII\u003d"
   },
   {
     "newID": "music_disc_chirp",
-    "legacyID": 2259,
+    "legacyID": "2259",
     "name": "Music Disc",
     "stackSize": 1,
     "texture": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAfklEQVQ4T92Q0QnAIAxEQ+kCjuCPc7iCE3V0S4ST5Ay2v23gUDTviRH5Z+WcO+eJcVCtdclWFkGttblib2UhbJu7nP2SY4SlTgKBvVRIBaWUKWLJIogkEEVfcQJ9if9vZ8Dz0X43h5TSOEQYAIRov3DpIWKbLYQs8E72Gvpu3fu8vVlFzt4bAAAAAElFTkSuQmCC"
