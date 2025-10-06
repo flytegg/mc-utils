@@ -554,148 +554,5156 @@
   {
     "platform": "neoforge",
     "display": "NeoForge",
-    "jars": [
-      {
-        "version": "20.4.148",
-        "release": "January 15th 2024"
-      },
-      {
-        "version": "20.4.147",
-        "release": "January 10th 2024"
-      },
-      {
-        "version": "20.4.146",
-        "release": "January 5th 2024"
-      },
-      {
-        "version": "20.4.138",
-        "release": "December 28th 2023"
-      },
-      {
-        "version": "20.4.111",
-        "release": "December 20th 2023"
-      },
-      {
-        "version": "20.4.91",
-        "release": "December 15th 2023"
-      },
-      {
-        "version": "20.4.72",
-        "release": "December 10th 2023"
-      },
-      {
-        "version": "20.4.48",
-        "release": "December 5th 2023"
-      },
-      {
-        "version": "20.4.27",
-        "release": "December 1st 2023"
-      },
-      {
-        "version": "20.4.0",
-        "release": "November 28th 2023"
-      },
-      {
-        "version": "20.3.45",
-        "release": "November 20th 2023"
-      },
-      {
-        "version": "20.3.44",
-        "release": "November 15th 2023"
-      },
-      {
-        "version": "20.3.43",
-        "release": "November 10th 2023"
-      },
-      {
-        "version": "20.3.42",
-        "release": "November 5th 2023"
-      },
-      {
-        "version": "20.3.41",
-        "release": "November 1st 2023"
-      },
-      {
-        "version": "20.2.86",
-        "release": "October 25th 2023"
-      },
-      {
-        "version": "20.2.85",
-        "release": "October 20th 2023"
-      },
-      {
-        "version": "20.2.84",
-        "release": "October 15th 2023"
-      },
-      {
-        "version": "20.2.83",
-        "release": "October 10th 2023"
-      },
-      {
-        "version": "20.2.82",
-        "release": "October 5th 2023"
-      },
-      {
-        "version": "20.2.81",
-        "release": "October 1st 2023"
-      },
-      {
-        "version": "20.2.59",
-        "release": "September 25th 2023"
-      },
-      {
-        "version": "20.2.46",
-        "release": "September 20th 2023"
-      },
-      {
-        "version": "20.2.34",
-        "release": "September 15th 2023"
-      },
-      {
-        "version": "20.2.27",
-        "release": "September 10th 2023"
-      },
-      {
-        "version": "20.2.0",
-        "release": "September 5th 2023"
-      },
-      {
-        "version": "20.1.47",
-        "release": "September 1st 2023"
-      },
-      {
-        "version": "20.1.37",
-        "release": "August 25th 2023"
-      },
-      {
-        "version": "20.1.32",
-        "release": "August 20th 2023"
-      },
-      {
-        "version": "20.1.29",
-        "release": "August 15th 2023"
-      },
-      {
-        "version": "20.1.0",
-        "release": "August 10th 2023"
-      },
-      {
-        "version": "20.0.108",
-        "release": "August 5th 2023"
-      },
-      {
-        "version": "20.0.93",
-        "release": "August 1st 2023"
-      },
-      {
-        "version": "20.0.84",
-        "release": "July 25th 2023"
-      },
-      {
-        "version": "20.0.52",
-        "release": "July 20th 2023"
-      }
-    ]
+  "jars": [
+    {
+      "version": "21.8.47",
+      "release": "September 14th 2025"
+    },
+    {
+      "version": "21.8.46",
+      "release": ""
+    },
+    {
+      "version": "21.8.45",
+      "release": ""
+    },
+    {
+      "version": "21.8.44",
+      "release": ""
+    },
+    {
+      "version": "21.8.43",
+      "release": ""
+    },
+    {
+      "version": "21.8.42",
+      "release": ""
+    },
+    {
+      "version": "21.8.41",
+      "release": ""
+    },
+    {
+      "version": "21.8.40",
+      "release": ""
+    },
+    {
+      "version": "21.8.39",
+      "release": "August 26th 2025"
+    },
+    {
+      "version": "21.8.38",
+      "release": "August 26th 2025"
+    },
+    {
+      "version": "21.5.93",
+      "release": "August 26th 2025"
+    },
+    {
+      "version": "21.4.152",
+      "release": "August 26th 2025"
+    },
+    {
+      "version": "21.8.37",
+      "release": "August 26th 2025"
+    },
+    {
+      "version": "21.8.36",
+      "release": "August 20th 2025"
+    },
+    {
+      "version": "21.8.35",
+      "release": "August 19th 2025"
+    },
+    {
+      "version": "21.5.92",
+      "release": "August 19th 2025"
+    },
+    {
+      "version": "21.4.151",
+      "release": "August 19th 2025"
+    },
+    {
+      "version": "21.8.34",
+      "release": "August 19th 2025"
+    },
+    {
+      "version": "21.8.33",
+      "release": "August 19th 2025"
+    },
+    {
+      "version": "21.8.32",
+      "release": "August 16th 2025"
+    },
+    {
+      "version": "21.8.31",
+      "release": ""
+    },
+    {
+      "version": "21.8.30",
+      "release": ""
+    },
+    {
+      "version": "21.8.29",
+      "release": ""
+    },
+    {
+      "version": "21.8.28",
+      "release": ""
+    },
+    {
+      "version": "21.8.27",
+      "release": ""
+    },
+    {
+      "version": "21.8.26",
+      "release": ""
+    },
+    {
+      "version": "21.8.25",
+      "release": ""
+    },
+    {
+      "version": "21.8.24",
+      "release": ""
+    },
+    {
+      "version": "21.5.89",
+      "release": "July 29th 2025"
+    },
+    {
+      "version": "21.4.148",
+      "release": "July 29th 2025"
+    },
+    {
+      "version": "21.8.23",
+      "release": "July 29th 2025"
+    },
+    {
+      "version": "21.8.22",
+      "release": "July 29th 2025"
+    },
+    {
+      "version": "21.8.21",
+      "release": "July 29th 2025"
+    },
+    {
+      "version": "21.8.20",
+      "release": "July 28th 2025"
+    },
+    {
+      "version": "21.8.19",
+      "release": "July 28th 2025"
+    },
+    {
+      "version": "21.8.18",
+      "release": "July 28th 2025"
+    },
+    {
+      "version": "21.8.17",
+      "release": "July 27th 2025"
+    },
+    {
+      "version": "21.8.16",
+      "release": "July 27th 2025"
+    },
+    {
+      "version": "21.8.15",
+      "release": "July 25th 2025"
+    },
+    {
+      "version": "21.8.14",
+      "release": "July 25th 2025"
+    },
+    {
+      "version": "21.8.13",
+      "release": "July 24th 2025"
+    },
+    {
+      "version": "21.8.12",
+      "release": "July 24th 2025"
+    },
+    {
+      "version": "21.8.11",
+      "release": "July 23rd 2025"
+    },
+    {
+      "version": "21.8.10",
+      "release": "July 22nd 2025"
+    },
+    {
+      "version": "21.8.9",
+      "release": "July 22nd 2025"
+    },
+    {
+      "version": "21.8.8-beta",
+      "release": "July 22nd 2025"
+    },
+    {
+      "version": "21.8.7-beta",
+      "release": "July 22nd 2025"
+    },
+    {
+      "version": "21.5.88",
+      "release": "July 22nd 2025"
+    },
+    {
+      "version": "21.8.6-beta",
+      "release": "July 22nd 2025"
+    },
+    {
+      "version": "21.8.5-beta",
+      "release": "July 21st 2025"
+    },
+    {
+      "version": "21.8.4-beta",
+      "release": "July 20th 2025"
+    },
+    {
+      "version": "21.8.3-beta",
+      "release": "July 20th 2025"
+    },
+    {
+      "version": "21.8.2-beta",
+      "release": "July 18th 2025"
+    },
+    {
+      "version": "21.8.1-beta",
+      "release": "July 17th 2025"
+    },
+    {
+      "version": "21.8.0-beta",
+      "release": "July 17th 2025"
+    },
+    {
+      "version": "21.7.25-beta",
+      "release": "July 16th 2025"
+    },
+    {
+      "version": "21.7.24-beta",
+      "release": "July 16th 2025"
+    },
+    {
+      "version": "21.7.23-beta",
+      "release": "July 14th 2025"
+    },
+    {
+      "version": "21.7.22-beta",
+      "release": "July 13th 2025"
+    },
+    {
+      "version": "21.7.21-beta",
+      "release": "July 13th 2025"
+    },
+    {
+      "version": "21.4.147",
+      "release": "July 12th 2025"
+    },
+    {
+      "version": "21.5.87",
+      "release": "July 12th 2025"
+    },
+    {
+      "version": "21.7.20-beta",
+      "release": "July 12th 2025"
+    },
+    {
+      "version": "21.7.19-beta",
+      "release": "July 11th 2025"
+    },
+    {
+      "version": "21.7.18-beta",
+      "release": "July 11th 2025"
+    },
+    {
+      "version": "21.7.17-beta",
+      "release": "July 10th 2025"
+    },
+    {
+      "version": "21.7.16-beta",
+      "release": "July 10th 2025"
+    },
+    {
+      "version": "21.7.15-beta",
+      "release": "July 10th 2025"
+    },
+    {
+      "version": "21.7.14-beta",
+      "release": ""
+    },
+    {
+      "version": "21.7.13-beta",
+      "release": ""
+    },
+    {
+      "version": "21.7.12-beta",
+      "release": ""
+    },
+    {
+      "version": "21.7.11-beta",
+      "release": ""
+    },
+    {
+      "version": "21.7.10-beta",
+      "release": ""
+    },
+    {
+      "version": "21.7.9-beta",
+      "release": ""
+    },
+    {
+      "version": "21.7.8-beta",
+      "release": ""
+    },
+    {
+      "version": "21.7.7-beta",
+      "release": ""
+    },
+    {
+      "version": "21.7.6-beta",
+      "release": ""
+    },
+    {
+      "version": "21.7.5-beta",
+      "release": ""
+    },
+    {
+      "version": "21.7.4-beta",
+      "release": ""
+    },
+    {
+      "version": "21.7.3-beta",
+      "release": ""
+    },
+    {
+      "version": "21.7.2-beta",
+      "release": ""
+    },
+    {
+      "version": "21.7.1-beta",
+      "release": "June 30th 2025"
+    },
+    {
+      "version": "21.7.0-beta",
+      "release": "June 30th 2025"
+    },
+    {
+      "version": "21.6.20-beta",
+      "release": "June 26th 2025"
+    },
+    {
+      "version": "21.6.19-beta",
+      "release": "June 25th 2025"
+    },
+    {
+      "version": "21.6.18-beta",
+      "release": "June 25th 2025"
+    },
+    {
+      "version": "21.6.17-beta",
+      "release": "June 25th 2025"
+    },
+    {
+      "version": "21.6.16-beta",
+      "release": "June 24th 2025"
+    },
+    {
+      "version": "21.6.15-beta",
+      "release": "June 24th 2025"
+    },
+    {
+      "version": "21.6.14-beta",
+      "release": "June 24th 2025"
+    },
+    {
+      "version": "21.6.13-beta",
+      "release": "June 24th 2025"
+    },
+    {
+      "version": "21.6.12-beta",
+      "release": "June 22nd 2025"
+    },
+    {
+      "version": "21.6.11-beta",
+      "release": "June 20th 2025"
+    },
+    {
+      "version": "21.6.10-beta",
+      "release": "June 20th 2025"
+    },
+    {
+      "version": "21.6.9-beta",
+      "release": "June 20th 2025"
+    },
+    {
+      "version": "21.6.8-beta",
+      "release": "June 19th 2025"
+    },
+    {
+      "version": "21.6.7-beta",
+      "release": "June 19th 2025"
+    },
+    {
+      "version": "21.6.6-beta",
+      "release": "June 19th 2025"
+    },
+    {
+      "version": "21.5.95",
+      "release": ""
+    },
+    {
+      "version": "21.5.94",
+      "release": ""
+    },
+    {
+      "version": "21.5.91",
+      "release": ""
+    },
+    {
+      "version": "21.5.90",
+      "release": ""
+    },
+    {
+      "version": "21.5.82",
+      "release": ""
+    },
+    {
+      "version": "21.4.146",
+      "release": "July 11th 2025"
+    },
+    {
+      "version": "21.5.86",
+      "release": "July 11th 2025"
+    },
+    {
+      "version": "21.5.83",
+      "release": ""
+    },
+    {
+      "version": "21.4.145",
+      "release": "July 10th 2025"
+    },
+    {
+      "version": "21.5.85",
+      "release": "July 10th 2025"
+    },
+    {
+      "version": "21.4.144",
+      "release": "July 10th 2025"
+    },
+    {
+      "version": "21.5.84",
+      "release": "July 10th 2025"
+    },
+    {
+      "version": "21.4.141",
+      "release": "June 24th 2025"
+    },
+    {
+      "version": "21.5.81",
+      "release": "June 24th 2025"
+    },
+    {
+      "version": "21.5.80",
+      "release": "June 22nd 2025"
+    },
+    {
+      "version": "21.5.79",
+      "release": "June 21st 2025"
+    },
+    {
+      "version": "21.5.78",
+      "release": "June 20th 2025"
+    },
+    {
+      "version": "21.4.140",
+      "release": "June 20th 2025"
+    },
+    {
+      "version": "21.4.139",
+      "release": "June 20th 2025"
+    },
+    {
+      "version": "21.5.77",
+      "release": "June 18th 2025"
+    },
+    {
+      "version": "21.6.5-beta",
+      "release": "June 18th 2025"
+    },
+    {
+      "version": "21.6.4-beta",
+      "release": "June 17th 2025"
+    },
+    {
+      "version": "21.6.3-beta",
+      "release": "June 17th 2025"
+    },
+    {
+      "version": "21.6.2-beta",
+      "release": "June 17th 2025"
+    },
+    {
+      "version": "21.5.76",
+      "release": "June 17th 2025"
+    },
+    {
+      "version": "21.6.1-beta",
+      "release": "June 17th 2025"
+    },
+    {
+      "version": "21.6.0-beta",
+      "release": "June 17th 2025"
+    },
+    {
+      "version": "21.5.75",
+      "release": "May 31st 2025"
+    },
+    {
+      "version": "21.5.74",
+      "release": "May 31st 2025"
+    },
+    {
+      "version": "21.5.73-beta",
+      "release": "May 29th 2025"
+    },
+    {
+      "version": "21.5.72-beta",
+      "release": "May 29th 2025"
+    },
+    {
+      "version": "21.5.71-beta",
+      "release": "May 28th 2025"
+    },
+    {
+      "version": "21.5.70-beta",
+      "release": "May 27th 2025"
+    },
+    {
+      "version": "21.5.69-beta",
+      "release": "May 25th 2025"
+    },
+    {
+      "version": "21.5.68-beta",
+      "release": "May 25th 2025"
+    },
+    {
+      "version": "21.5.67-beta",
+      "release": "May 21st 2025"
+    },
+    {
+      "version": "21.5.66-beta",
+      "release": "May 11th 2025"
+    },
+    {
+      "version": "21.5.65-beta",
+      "release": ""
+    },
+    {
+      "version": "21.5.64-beta",
+      "release": ""
+    },
+    {
+      "version": "21.4.138",
+      "release": "June 11th 2025"
+    },
+    {
+      "version": "21.4.137",
+      "release": "May 31st 2025"
+    },
+    {
+      "version": "21.5.63-beta",
+      "release": "April 29th 2025"
+    },
+    {
+      "version": "21.5.62-beta",
+      "release": "April 26th 2025"
+    },
+    {
+      "version": "21.5.61-beta",
+      "release": "April 26th 2025"
+    },
+    {
+      "version": "21.5.60-beta",
+      "release": "April 26th 2025"
+    },
+    {
+      "version": "21.5.59-beta",
+      "release": "April 26th 2025"
+    },
+    {
+      "version": "21.5.58-beta",
+      "release": "April 26th 2025"
+    },
+    {
+      "version": "21.5.57-beta",
+      "release": "April 26th 2025"
+    },
+    {
+      "version": "21.5.56-beta",
+      "release": "April 24th 2025"
+    },
+    {
+      "version": "21.5.55-beta",
+      "release": "April 23rd 2025"
+    },
+    {
+      "version": "21.5.54-beta",
+      "release": "April 22nd 2025"
+    },
+    {
+      "version": "21.5.53-beta",
+      "release": "April 22nd 2025"
+    },
+    {
+      "version": "21.5.52-beta",
+      "release": "April 20th 2025"
+    },
+    {
+      "version": "21.5.51-beta",
+      "release": "April 20th 2025"
+    },
+    {
+      "version": "21.5.50-beta",
+      "release": "April 20th 2025"
+    },
+    {
+      "version": "21.5.49-beta",
+      "release": "April 20th 2025"
+    },
+    {
+      "version": "21.5.48-beta",
+      "release": "April 20th 2025"
+    },
+    {
+      "version": "21.5.47-beta",
+      "release": "April 19th 2025"
+    },
+    {
+      "version": "21.5.46-beta",
+      "release": "April 19th 2025"
+    },
+    {
+      "version": "21.5.45-beta",
+      "release": "April 19th 2025"
+    },
+    {
+      "version": "21.5.44-beta",
+      "release": "April 18th 2025"
+    },
+    {
+      "version": "21.5.43-beta",
+      "release": "April 18th 2025"
+    },
+    {
+      "version": "21.5.42-beta",
+      "release": "April 17th 2025"
+    },
+    {
+      "version": "21.5.41-beta",
+      "release": "April 17th 2025"
+    },
+    {
+      "version": "21.5.40-beta",
+      "release": "April 15th 2025"
+    },
+    {
+      "version": "21.5.39-beta",
+      "release": "April 14th 2025"
+    },
+    {
+      "version": "21.5.38-beta",
+      "release": "April 13th 2025"
+    },
+    {
+      "version": "21.5.37-beta",
+      "release": "April 13th 2025"
+    },
+    {
+      "version": "21.5.36-beta",
+      "release": "April 13th 2025"
+    },
+    {
+      "version": "21.5.35-beta",
+      "release": "April 12th 2025"
+    },
+    {
+      "version": "21.5.34-beta",
+      "release": "April 11th 2025"
+    },
+    {
+      "version": "21.5.33-beta",
+      "release": "April 11th 2025"
+    },
+    {
+      "version": "21.5.32-beta",
+      "release": "April 10th 2025"
+    },
+    {
+      "version": "21.5.31-beta",
+      "release": "April 10th 2025"
+    },
+    {
+      "version": "21.5.30-beta",
+      "release": ""
+    },
+    {
+      "version": "21.5.29-beta",
+      "release": ""
+    },
+    {
+      "version": "21.5.28-beta",
+      "release": ""
+    },
+    {
+      "version": "21.5.26-beta",
+      "release": ""
+    },
+    {
+      "version": "21.5.25-beta",
+      "release": ""
+    },
+    {
+      "version": "21.5.24-beta",
+      "release": ""
+    },
+    {
+      "version": "21.5.23-beta",
+      "release": ""
+    },
+    {
+      "version": "21.5.22-beta",
+      "release": ""
+    },
+    {
+      "version": "21.5.21-beta",
+      "release": ""
+    },
+    {
+      "version": "21.5.20-beta",
+      "release": ""
+    },
+    {
+      "version": "21.5.19-beta",
+      "release": ""
+    },
+    {
+      "version": "21.5.18-beta",
+      "release": ""
+    },
+    {
+      "version": "21.5.17-beta",
+      "release": ""
+    },
+    {
+      "version": "21.5.16-beta",
+      "release": ""
+    },
+    {
+      "version": "21.5.15-beta",
+      "release": ""
+    },
+    {
+      "version": "21.5.14-beta",
+      "release": "March 30th 2025"
+    },
+    {
+      "version": "21.5.13-beta",
+      "release": "March 30th 2025"
+    },
+    {
+      "version": "21.5.12-beta",
+      "release": "March 30th 2025"
+    },
+    {
+      "version": "21.5.11-beta",
+      "release": "March 30th 2025"
+    },
+    {
+      "version": "21.5.10-beta",
+      "release": "March 30th 2025"
+    },
+    {
+      "version": "21.5.9-beta",
+      "release": "March 30th 2025"
+    },
+    {
+      "version": "21.5.8-beta",
+      "release": "March 30th 2025"
+    },
+    {
+      "version": "21.5.7-beta",
+      "release": "March 29th 2025"
+    },
+    {
+      "version": "21.5.6-beta",
+      "release": "March 28th 2025"
+    },
+    {
+      "version": "21.5.5-beta",
+      "release": "March 28th 2025"
+    },
+    {
+      "version": "21.5.3-beta",
+      "release": "March 27th 2025"
+    },
+    {
+      "version": "21.5.4-beta",
+      "release": "March 27th 2025"
+    },
+    {
+      "version": "21.5.2-beta",
+      "release": "March 26th 2025"
+    },
+    {
+      "version": "21.5.1-beta",
+      "release": "March 25th 2025"
+    },
+    {
+      "version": "21.5.0-beta",
+      "release": "March 25th 2025"
+    },
+    {
+      "version": "21.4.154",
+      "release": ""
+    },
+    {
+      "version": "21.4.153",
+      "release": ""
+    },
+    {
+      "version": "21.4.150",
+      "release": ""
+    },
+    {
+      "version": "21.4.149",
+      "release": ""
+    },
+    {
+      "version": "21.4.143",
+      "release": ""
+    },
+    {
+      "version": "21.4.142",
+      "release": ""
+    },
+    {
+      "version": "21.4.136",
+      "release": ""
+    },
+    {
+      "version": "21.4.124",
+      "release": ""
+    },
+    {
+      "version": "21.4.110-beta",
+      "release": ""
+    },
+    {
+      "version": "21.4.109-beta",
+      "release": ""
+    },
+    {
+      "version": "21.4.108-beta",
+      "release": ""
+    },
+    {
+      "version": "21.4.107-beta",
+      "release": ""
+    },
+    {
+      "version": "21.4.106-beta",
+      "release": ""
+    },
+    {
+      "version": "21.4.105-beta",
+      "release": ""
+    },
+    {
+      "version": "21.4.104-beta",
+      "release": ""
+    },
+    {
+      "version": "21.4.103-beta",
+      "release": ""
+    },
+    {
+      "version": "21.4.102-beta",
+      "release": ""
+    },
+    {
+      "version": "21.4.101-beta",
+      "release": ""
+    },
+    {
+      "version": "21.4.88-beta",
+      "release": ""
+    },
+    {
+      "version": "21.4.87-beta",
+      "release": ""
+    },
+    {
+      "version": "21.4.86-beta",
+      "release": ""
+    },
+    {
+      "version": "21.4.85-beta",
+      "release": ""
+    },
+    {
+      "version": "21.4.84-beta",
+      "release": ""
+    },
+    {
+      "version": "21.4.83-beta",
+      "release": ""
+    },
+    {
+      "version": "21.4.82-beta",
+      "release": ""
+    },
+    {
+      "version": "21.4.81-beta",
+      "release": ""
+    },
+    {
+      "version": "21.4.80-beta",
+      "release": ""
+    },
+    {
+      "version": "21.4.79-beta",
+      "release": ""
+    },
+    {
+      "version": "21.4.50-beta",
+      "release": ""
+    },
+    {
+      "version": "21.4.49-beta",
+      "release": ""
+    },
+    {
+      "version": "21.4.48-beta",
+      "release": ""
+    },
+    {
+      "version": "21.4.13-beta",
+      "release": ""
+    },
+    {
+      "version": "21.4.12-beta",
+      "release": ""
+    },
+    {
+      "version": "21.4.11-beta",
+      "release": ""
+    },
+    {
+      "version": "21.4.10-beta",
+      "release": ""
+    },
+    {
+      "version": "21.4.9-beta",
+      "release": ""
+    },
+    {
+      "version": "21.4.8-beta",
+      "release": ""
+    },
+    {
+      "version": "21.4.7-beta",
+      "release": ""
+    },
+    {
+      "version": "21.4.6-beta",
+      "release": ""
+    },
+    {
+      "version": "21.4.5-beta",
+      "release": ""
+    },
+    {
+      "version": "21.4.4-beta",
+      "release": ""
+    },
+    {
+      "version": "21.4.3-beta",
+      "release": ""
+    },
+    {
+      "version": "21.4.2-beta",
+      "release": ""
+    },
+    {
+      "version": "21.4.1-beta",
+      "release": ""
+    },
+    {
+      "version": "21.4.0-beta",
+      "release": ""
+    },
+    {
+      "version": "21.3.93",
+      "release": ""
+    },
+    {
+      "version": "21.3.92",
+      "release": ""
+    },
+    {
+      "version": "21.3.91",
+      "release": "August 26th 2025"
+    },
+    {
+      "version": "21.3.90",
+      "release": "August 19th 2025"
+    },
+    {
+      "version": "21.3.89",
+      "release": ""
+    },
+    {
+      "version": "21.3.88",
+      "release": ""
+    },
+    {
+      "version": "21.3.82",
+      "release": ""
+    },
+    {
+      "version": "21.3.81",
+      "release": ""
+    },
+    {
+      "version": "21.3.65",
+      "release": ""
+    },
+    {
+      "version": "21.3.63",
+      "release": ""
+    },
+    {
+      "version": "21.3.62",
+      "release": ""
+    },
+    {
+      "version": "21.3.61",
+      "release": ""
+    },
+    {
+      "version": "21.3.57",
+      "release": ""
+    },
+    {
+      "version": "21.3.16-beta",
+      "release": ""
+    },
+    {
+      "version": "21.3.15-beta",
+      "release": ""
+    },
+    {
+      "version": "21.3.14-beta",
+      "release": ""
+    },
+    {
+      "version": "21.3.13-beta",
+      "release": ""
+    },
+    {
+      "version": "21.3.12-beta",
+      "release": ""
+    },
+    {
+      "version": "21.3.11-beta",
+      "release": ""
+    },
+    {
+      "version": "21.3.10-beta",
+      "release": ""
+    },
+    {
+      "version": "21.3.9-beta",
+      "release": ""
+    },
+    {
+      "version": "21.3.8-beta",
+      "release": ""
+    },
+    {
+      "version": "21.3.7-beta",
+      "release": ""
+    },
+    {
+      "version": "21.1.209",
+      "release": "September 15th 2025"
+    },
+    {
+      "version": "21.1.208",
+      "release": ""
+    },
+    {
+      "version": "21.1.207",
+      "release": ""
+    },
+    {
+      "version": "21.1.206",
+      "release": "August 27th 2025"
+    },
+    {
+      "version": "21.1.205",
+      "release": "August 26th 2025"
+    },
+    {
+      "version": "21.1.204",
+      "release": "August 26th 2025"
+    },
+    {
+      "version": "21.1.203",
+      "release": "August 19th 2025"
+    },
+    {
+      "version": "21.1.202",
+      "release": "August 19th 2025"
+    },
+    {
+      "version": "21.1.201",
+      "release": "August 17th 2025"
+    },
+    {
+      "version": "21.3.87",
+      "release": "July 29th 2025"
+    },
+    {
+      "version": "21.3.86",
+      "release": "July 12th 2025"
+    },
+    {
+      "version": "21.3.85",
+      "release": "July 11th 2025"
+    },
+    {
+      "version": "21.3.84",
+      "release": "July 10th 2025"
+    },
+    {
+      "version": "21.3.83",
+      "release": "July 10th 2025"
+    },
+    {
+      "version": "21.3.80",
+      "release": "June 24th 2025"
+    },
+    {
+      "version": "21.3.79",
+      "release": "June 20th 2025"
+    },
+    {
+      "version": "21.3.78",
+      "release": "June 20th 2025"
+    },
+    {
+      "version": "21.3.77",
+      "release": "June 11th 2025"
+    },
+    {
+      "version": "21.1.200",
+      "release": ""
+    },
+    {
+      "version": "21.1.199",
+      "release": ""
+    },
+    {
+      "version": "21.1.198",
+      "release": ""
+    },
+    {
+      "version": "21.1.197",
+      "release": "July 31st 2025"
+    },
+    {
+      "version": "21.1.196",
+      "release": "July 29th 2025"
+    },
+    {
+      "version": "21.1.195",
+      "release": "July 29th 2025"
+    },
+    {
+      "version": "21.1.194",
+      "release": "July 23rd 2025"
+    },
+    {
+      "version": "21.1.193",
+      "release": "July 17th 2025"
+    },
+    {
+      "version": "21.1.192",
+      "release": "July 12th 2025"
+    },
+    {
+      "version": "21.1.191",
+      "release": "July 11th 2025"
+    },
+    {
+      "version": "21.1.190",
+      "release": "July 10th 2025"
+    },
+    {
+      "version": "21.1.189",
+      "release": "July 10th 2025"
+    },
+    {
+      "version": "21.1.188",
+      "release": ""
+    },
+    {
+      "version": "21.1.187",
+      "release": ""
+    },
+    {
+      "version": "21.1.186",
+      "release": "June 26th 2025"
+    },
+    {
+      "version": "21.1.185",
+      "release": "June 24th 2025"
+    },
+    {
+      "version": "21.1.184",
+      "release": "June 22nd 2025"
+    },
+    {
+      "version": "21.1.183",
+      "release": "June 22nd 2025"
+    },
+    {
+      "version": "21.1.182",
+      "release": "June 21st 2025"
+    },
+    {
+      "version": "21.1.181",
+      "release": "June 20th 2025"
+    },
+    {
+      "version": "21.1.180",
+      "release": "June 17th 2025"
+    },
+    {
+      "version": "21.1.179",
+      "release": "June 12th 2025"
+    },
+    {
+      "version": "21.1.178",
+      "release": "June 12th 2025"
+    },
+    {
+      "version": "21.1.177",
+      "release": "June 11th 2025"
+    },
+    {
+      "version": "21.1.176",
+      "release": ""
+    },
+    {
+      "version": "21.1.175",
+      "release": ""
+    },
+    {
+      "version": "20.4.250",
+      "release": "August 11th 2025"
+    },
+    {
+      "version": "20.6.137",
+      "release": "July 18th 2025"
+    },
+    {
+      "version": "21.1.173",
+      "release": "May 27th 2025"
+    },
+    {
+      "version": "21.1.172",
+      "release": "May 12th 2025"
+    },
+    {
+      "version": "21.1.171",
+      "release": "May 12th 2025"
+    },
+    {
+      "version": "21.1.170",
+      "release": ""
+    },
+    {
+      "version": "20.4.249",
+      "release": "July 18th 2025"
+    },
+    {
+      "version": "21.1.174",
+      "release": "May 31st 2025"
+    },
+    {
+      "version": "21.1.169",
+      "release": "April 30th 2025"
+    },
+    {
+      "version": "21.1.168",
+      "release": "April 28th 2025"
+    },
+    {
+      "version": "21.1.167",
+      "release": "April 27th 2025"
+    },
+    {
+      "version": "21.1.166",
+      "release": "April 27th 2025"
+    },
+    {
+      "version": "21.1.165",
+      "release": "April 27th 2025"
+    },
+    {
+      "version": "21.1.164",
+      "release": "April 26th 2025"
+    },
+    {
+      "version": "21.1.163",
+      "release": "April 26th 2025"
+    },
+    {
+      "version": "21.3.76",
+      "release": "April 25th 2025"
+    },
+    {
+      "version": "21.4.135",
+      "release": "April 23rd 2025"
+    },
+    {
+      "version": "21.1.162",
+      "release": "April 23rd 2025"
+    },
+    {
+      "version": "21.3.75",
+      "release": "April 23rd 2025"
+    },
+    {
+      "version": "21.4.134",
+      "release": "April 23rd 2025"
+    },
+    {
+      "version": "21.1.161",
+      "release": "April 22nd 2025"
+    },
+    {
+      "version": "21.1.160",
+      "release": "April 21st 2025"
+    },
+    {
+      "version": "21.4.133",
+      "release": "April 20th 2025"
+    },
+    {
+      "version": "21.1.159",
+      "release": "April 20th 2025"
+    },
+    {
+      "version": "21.4.132",
+      "release": "April 20th 2025"
+    },
+    {
+      "version": "21.3.74",
+      "release": "April 20th 2025"
+    },
+    {
+      "version": "21.1.158",
+      "release": "April 20th 2025"
+    },
+    {
+      "version": "21.1.157",
+      "release": "April 20th 2025"
+    },
+    {
+      "version": "21.4.131",
+      "release": "April 19th 2025"
+    },
+    {
+      "version": "21.3.73",
+      "release": "April 19th 2025"
+    },
+    {
+      "version": "21.1.156",
+      "release": "April 19th 2025"
+    },
+    {
+      "version": "21.4.130",
+      "release": "April 19th 2025"
+    },
+    {
+      "version": "21.3.72",
+      "release": "April 19th 2025"
+    },
+    {
+      "version": "21.1.155",
+      "release": "April 19th 2025"
+    },
+    {
+      "version": "21.1.154",
+      "release": "April 19th 2025"
+    },
+    {
+      "version": "21.3.71",
+      "release": "April 19th 2025"
+    },
+    {
+      "version": "21.4.129",
+      "release": "April 19th 2025"
+    },
+    {
+      "version": "21.3.70",
+      "release": "April 18th 2025"
+    },
+    {
+      "version": "21.4.128",
+      "release": "April 18th 2025"
+    },
+    {
+      "version": "21.1.153",
+      "release": "April 18th 2025"
+    },
+    {
+      "version": "21.3.69",
+      "release": "April 18th 2025"
+    },
+    {
+      "version": "21.1.152",
+      "release": "April 18th 2025"
+    },
+    {
+      "version": "21.4.127",
+      "release": "April 18th 2025"
+    },
+    {
+      "version": "21.4.126",
+      "release": "April 18th 2025"
+    },
+    {
+      "version": "21.3.68",
+      "release": "April 18th 2025"
+    },
+    {
+      "version": "21.1.151",
+      "release": "April 18th 2025"
+    },
+    {
+      "version": "21.1.150",
+      "release": "April 17th 2025"
+    },
+    {
+      "version": "21.3.67",
+      "release": "April 17th 2025"
+    },
+    {
+      "version": "21.1.149",
+      "release": "April 17th 2025"
+    },
+    {
+      "version": "21.4.125",
+      "release": "April 17th 2025"
+    },
+    {
+      "version": "21.1.148",
+      "release": "April 15th 2025"
+    },
+    {
+      "version": "21.1.147",
+      "release": "April 13th 2025"
+    },
+    {
+      "version": "21.1.146",
+      "release": "April 11th 2025"
+    },
+    {
+      "version": "21.4.123",
+      "release": "March 21st 2025"
+    },
+    {
+      "version": "21.4.122",
+      "release": "March 21st 2025"
+    },
+    {
+      "version": "21.4.121",
+      "release": "March 21st 2025"
+    },
+    {
+      "version": "21.4.120-beta",
+      "release": "March 20th 2025"
+    },
+    {
+      "version": "21.4.119-beta",
+      "release": "March 19th 2025"
+    },
+    {
+      "version": "21.4.118-beta",
+      "release": "March 19th 2025"
+    },
+    {
+      "version": "21.4.116-beta",
+      "release": "March 18th 2025"
+    },
+    {
+      "version": "21.3.66",
+      "release": "March 18th 2025"
+    },
+    {
+      "version": "21.4.115-beta",
+      "release": "March 18th 2025"
+    },
+    {
+      "version": "21.4.114-beta",
+      "release": "March 16th 2025"
+    },
+    {
+      "version": "21.4.113-beta",
+      "release": "March 16th 2025"
+    },
+    {
+      "version": "21.4.112-beta",
+      "release": "March 15th 2025"
+    },
+    {
+      "version": "21.4.111-beta",
+      "release": "March 10th 2025"
+    },
+    {
+      "version": "21.4.100-beta",
+      "release": "February 28th 2025"
+    },
+    {
+      "version": "21.4.99-beta",
+      "release": "February 27th 2025"
+    },
+    {
+      "version": "21.3.64",
+      "release": "February 27th 2025"
+    },
+    {
+      "version": "21.4.98-beta",
+      "release": "February 27th 2025"
+    },
+    {
+      "version": "21.4.97-beta",
+      "release": "February 25th 2025"
+    },
+    {
+      "version": "21.4.96-beta",
+      "release": "February 25th 2025"
+    },
+    {
+      "version": "21.4.95-beta",
+      "release": "February 23rd 2025"
+    },
+    {
+      "version": "21.4.94-beta",
+      "release": "February 20th 2025"
+    },
+    {
+      "version": "21.4.93-beta",
+      "release": "February 20th 2025"
+    },
+    {
+      "version": "21.4.92-beta",
+      "release": "February 18th 2025"
+    },
+    {
+      "version": "21.4.91-beta",
+      "release": "February 17th 2025"
+    },
+    {
+      "version": "21.4.90-beta",
+      "release": "February 17th 2025"
+    },
+    {
+      "version": "21.4.89-beta",
+      "release": "February 12th 2025"
+    },
+    {
+      "version": "21.4.78-beta",
+      "release": "January 29th 2025"
+    },
+    {
+      "version": "21.3.60",
+      "release": "January 29th 2025"
+    },
+    {
+      "version": "21.4.77-beta",
+      "release": "January 28th 2025"
+    },
+    {
+      "version": "21.3.59",
+      "release": "January 28th 2025"
+    },
+    {
+      "version": "21.4.76-beta",
+      "release": "January 25th 2025"
+    },
+    {
+      "version": "21.4.75-beta",
+      "release": "January 24th 2025"
+    },
+    {
+      "version": "21.1.145",
+      "release": ""
+    },
+    {
+      "version": "21.1.144",
+      "release": ""
+    },
+    {
+      "version": "21.1.143",
+      "release": ""
+    },
+    {
+      "version": "21.1.142",
+      "release": ""
+    },
+    {
+      "version": "21.1.133",
+      "release": ""
+    },
+    {
+      "version": "21.1.132",
+      "release": ""
+    },
+    {
+      "version": "21.1.131",
+      "release": ""
+    },
+    {
+      "version": "21.1.130",
+      "release": ""
+    },
+    {
+      "version": "21.1.129",
+      "release": ""
+    },
+    {
+      "version": "21.1.128",
+      "release": ""
+    },
+    {
+      "version": "20.6.134",
+      "release": "April 23rd 2025"
+    },
+    {
+      "version": "20.4.247",
+      "release": "April 23rd 2025"
+    },
+    {
+      "version": "20.2.93",
+      "release": "April 21st 2025"
+    },
+    {
+      "version": "20.6.133",
+      "release": "April 20th 2025"
+    },
+    {
+      "version": "20.4.246",
+      "release": "April 20th 2025"
+    },
+    {
+      "version": "20.2.92",
+      "release": "April 20th 2025"
+    },
+    {
+      "version": "20.6.132",
+      "release": "April 19th 2025"
+    },
+    {
+      "version": "20.4.245",
+      "release": "April 19th 2025"
+    },
+    {
+      "version": "20.4.244",
+      "release": "April 19th 2025"
+    },
+    {
+      "version": "20.2.91",
+      "release": "April 19th 2025"
+    },
+    {
+      "version": "20.6.131",
+      "release": "April 19th 2025"
+    },
+    {
+      "version": "20.6.130",
+      "release": "April 19th 2025"
+    },
+    {
+      "version": "20.6.129",
+      "release": "April 18th 2025"
+    },
+    {
+      "version": "20.2.90",
+      "release": "April 18th 2025"
+    },
+    {
+      "version": "20.4.243",
+      "release": "April 18th 2025"
+    },
+    {
+      "version": "20.2.89",
+      "release": "April 18th 2025"
+    },
+    {
+      "version": "20.6.128",
+      "release": "April 18th 2025"
+    },
+    {
+      "version": "20.4.242",
+      "release": "April 18th 2025"
+    },
+    {
+      "version": "20.4.241",
+      "release": "April 18th 2025"
+    },
+    {
+      "version": "20.6.127",
+      "release": "April 18th 2025"
+    },
+    {
+      "version": "20.4.240",
+      "release": "April 18th 2025"
+    },
+    {
+      "version": "21.1.141",
+      "release": "March 29th 2025"
+    },
+    {
+      "version": "21.1.140",
+      "release": "March 28th 2025"
+    },
+    {
+      "version": "21.1.139",
+      "release": "March 24th 2025"
+    },
+    {
+      "version": "21.1.138",
+      "release": "March 22nd 2025"
+    },
+    {
+      "version": "21.1.137",
+      "release": "March 19th 2025"
+    },
+    {
+      "version": "21.1.136",
+      "release": "March 18th 2025"
+    },
+    {
+      "version": "21.1.135",
+      "release": "March 18th 2025"
+    },
+    {
+      "version": "21.1.134",
+      "release": "March 18th 2025"
+    },
+    {
+      "version": "21.1.127",
+      "release": "February 28th 2025"
+    },
+    {
+      "version": "21.1.126",
+      "release": "February 28th 2025"
+    },
+    {
+      "version": "21.1.125",
+      "release": "February 27th 2025"
+    },
+    {
+      "version": "21.1.124",
+      "release": "February 27th 2025"
+    },
+    {
+      "version": "21.1.123",
+      "release": "February 25th 2025"
+    },
+    {
+      "version": "21.1.122",
+      "release": "February 20th 2025"
+    },
+    {
+      "version": "21.1.121",
+      "release": "February 18th 2025"
+    },
+    {
+      "version": "21.1.120",
+      "release": "February 17th 2025"
+    },
+    {
+      "version": "21.1.119",
+      "release": "February 12th 2025"
+    },
+    {
+      "version": "21.1.118",
+      "release": "February 12th 2025"
+    },
+    {
+      "version": "21.1.117",
+      "release": ""
+    },
+    {
+      "version": "21.1.116",
+      "release": ""
+    },
+    {
+      "version": "20.6.125",
+      "release": "January 28th 2025"
+    },
+    {
+      "version": "21.1.115",
+      "release": "January 27th 2025"
+    },
+    {
+      "version": "21.1.114",
+      "release": "January 26th 2025"
+    },
+    {
+      "version": "21.1.113",
+      "release": "January 24th 2025"
+    },
+    {
+      "version": "21.1.112",
+      "release": "January 24th 2025"
+    },
+    {
+      "version": "21.1.111",
+      "release": "January 24th 2025"
+    },
+    {
+      "version": "21.1.110",
+      "release": "January 24th 2025"
+    },
+    {
+      "version": "21.1.109",
+      "release": "January 24th 2025"
+    },
+    {
+      "version": "21.1.108",
+      "release": "January 24th 2025"
+    },
+    {
+      "version": "21.1.107",
+      "release": "January 23rd 2025"
+    },
+    {
+      "version": "21.1.106",
+      "release": "January 23rd 2025"
+    },
+    {
+      "version": "21.1.105",
+      "release": "January 23rd 2025"
+    },
+    {
+      "version": "21.1.104",
+      "release": "January 23rd 2025"
+    },
+    {
+      "version": "21.1.103",
+      "release": "January 23rd 2025"
+    },
+    {
+      "version": "21.4.74-beta",
+      "release": "January 23rd 2025"
+    },
+    {
+      "version": "21.1.102",
+      "release": "January 23rd 2025"
+    },
+    {
+      "version": "21.1.100",
+      "release": "January 23rd 2025"
+    },
+    {
+      "version": "21.1.101",
+      "release": "January 23rd 2025"
+    },
+    {
+      "version": "21.1.99",
+      "release": "January 23rd 2025"
+    },
+    {
+      "version": "21.1.98",
+      "release": "January 23rd 2025"
+    },
+    {
+      "version": "21.4.73-beta",
+      "release": "January 23rd 2025"
+    },
+    {
+      "version": "21.4.72-beta",
+      "release": "January 21st 2025"
+    },
+    {
+      "version": "21.4.71-beta",
+      "release": "January 21st 2025"
+    },
+    {
+      "version": "21.4.70-beta",
+      "release": "January 21st 2025"
+    },
+    {
+      "version": "21.4.69-beta",
+      "release": "January 21st 2025"
+    },
+    {
+      "version": "21.4.68-beta",
+      "release": "January 20th 2025"
+    },
+    {
+      "version": "21.4.67-beta",
+      "release": "January 20th 2025"
+    },
+    {
+      "version": "21.4.66-beta",
+      "release": "January 19th 2025"
+    },
+    {
+      "version": "21.1.97",
+      "release": "January 19th 2025"
+    },
+    {
+      "version": "21.4.65-beta",
+      "release": "January 19th 2025"
+    },
+    {
+      "version": "21.1.96",
+      "release": "January 19th 2025"
+    },
+    {
+      "version": "21.4.64-beta",
+      "release": "January 18th 2025"
+    },
+    {
+      "version": "21.4.63-beta",
+      "release": "January 18th 2025"
+    },
+    {
+      "version": "21.4.62-beta",
+      "release": "January 18th 2025"
+    },
+    {
+      "version": "21.4.61-beta",
+      "release": "January 18th 2025"
+    },
+    {
+      "version": "21.4.60-beta",
+      "release": "January 18th 2025"
+    },
+    {
+      "version": "21.4.59-beta",
+      "release": "January 15th 2025"
+    },
+    {
+      "version": "21.4.58-beta",
+      "release": "January 14th 2025"
+    },
+    {
+      "version": "21.4.57-beta",
+      "release": "January 14th 2025"
+    },
+    {
+      "version": "21.1.95",
+      "release": "January 14th 2025"
+    },
+    {
+      "version": "21.4.56-beta",
+      "release": "January 14th 2025"
+    },
+    {
+      "version": "21.4.55-beta",
+      "release": "January 14th 2025"
+    },
+    {
+      "version": "21.1.94",
+      "release": "January 13th 2025"
+    },
+    {
+      "version": "21.4.54-beta",
+      "release": "January 13th 2025"
+    },
+    {
+      "version": "21.4.53-beta",
+      "release": "January 13th 2025"
+    },
+    {
+      "version": "21.4.52-beta",
+      "release": "January 12th 2025"
+    },
+    {
+      "version": "21.4.51-beta",
+      "release": "January 10th 2025"
+    },
+    {
+      "version": "21.4.47-beta",
+      "release": "December 28th 2024"
+    },
+    {
+      "version": "21.1.92",
+      "release": "December 28th 2024"
+    },
+    {
+      "version": "21.1.91",
+      "release": "December 27th 2024"
+    },
+    {
+      "version": "21.4.46-beta",
+      "release": "December 27th 2024"
+    },
+    {
+      "version": "21.4.45-beta",
+      "release": "December 27th 2024"
+    },
+    {
+      "version": "21.4.44-beta",
+      "release": "December 27th 2024"
+    },
+    {
+      "version": "21.4.43-beta",
+      "release": "December 25th 2024"
+    },
+    {
+      "version": "21.4.42-beta",
+      "release": "December 24th 2024"
+    },
+    {
+      "version": "21.4.41-beta",
+      "release": "December 24th 2024"
+    },
+    {
+      "version": "21.4.40-beta",
+      "release": "December 24th 2024"
+    },
+    {
+      "version": "21.4.39-beta",
+      "release": "December 23rd 2024"
+    },
+    {
+      "version": "21.4.38-beta",
+      "release": "December 21st 2024"
+    },
+    {
+      "version": "21.4.37-beta",
+      "release": "December 21st 2024"
+    },
+    {
+      "version": "21.4.36-beta",
+      "release": "December 21st 2024"
+    },
+    {
+      "version": "21.4.35-beta",
+      "release": "December 21st 2024"
+    },
+    {
+      "version": "21.4.34-beta",
+      "release": "December 21st 2024"
+    },
+    {
+      "version": "21.4.33-beta",
+      "release": "December 19th 2024"
+    },
+    {
+      "version": "21.4.32-beta",
+      "release": "December 18th 2024"
+    },
+    {
+      "version": "21.4.31-beta",
+      "release": "December 18th 2024"
+    },
+    {
+      "version": "21.4.30-beta",
+      "release": "December 16th 2024"
+    },
+    {
+      "version": "21.4.29-beta",
+      "release": "December 16th 2024"
+    },
+    {
+      "version": "21.4.28-beta",
+      "release": "December 16th 2024"
+    },
+    {
+      "version": "21.4.27-beta",
+      "release": "December 15th 2024"
+    },
+    {
+      "version": "21.4.26-beta",
+      "release": "December 15th 2024"
+    },
+    {
+      "version": "21.4.25-beta",
+      "release": "December 15th 2024"
+    },
+    {
+      "version": "21.1.90",
+      "release": "December 15th 2024"
+    },
+    {
+      "version": "21.4.24-beta",
+      "release": "December 15th 2024"
+    },
+    {
+      "version": "21.4.23-beta",
+      "release": "December 14th 2024"
+    },
+    {
+      "version": "21.4.22-beta",
+      "release": "December 13th 2024"
+    },
+    {
+      "version": "21.4.21-beta",
+      "release": "December 13th 2024"
+    },
+    {
+      "version": "21.4.20-beta",
+      "release": "December 12th 2024"
+    },
+    {
+      "version": "21.4.19-beta",
+      "release": "December 12th 2024"
+    },
+    {
+      "version": "21.4.18-beta",
+      "release": "December 11th 2024"
+    },
+    {
+      "version": "21.1.89",
+      "release": "December 11th 2024"
+    },
+    {
+      "version": "21.3.58",
+      "release": "December 11th 2024"
+    },
+    {
+      "version": "21.4.17-beta",
+      "release": "December 11th 2024"
+    },
+    {
+      "version": "21.1.88",
+      "release": "December 11th 2024"
+    },
+    {
+      "version": "21.1.87",
+      "release": "December 11th 2024"
+    },
+    {
+      "version": "21.4.16-beta",
+      "release": "December 11th 2024"
+    },
+    {
+      "version": "21.4.15-beta",
+      "release": "December 11th 2024"
+    },
+    {
+      "version": "21.1.86",
+      "release": "December 11th 2024"
+    },
+    {
+      "version": "21.4.14-beta",
+      "release": "December 11th 2024"
+    },
+    {
+      "version": "21.3.56",
+      "release": "November 30th 2024"
+    },
+    {
+      "version": "21.3.55-beta",
+      "release": "November 29th 2024"
+    },
+    {
+      "version": "21.3.54-beta",
+      "release": "November 29th 2024"
+    },
+    {
+      "version": "21.3.53-beta",
+      "release": "November 29th 2024"
+    },
+    {
+      "version": "21.3.52-beta",
+      "release": "November 29th 2024"
+    },
+    {
+      "version": "21.3.51-beta",
+      "release": "November 28th 2024"
+    },
+    {
+      "version": "21.3.50-beta",
+      "release": "November 28th 2024"
+    },
+    {
+      "version": "21.1.83",
+      "release": "November 28th 2024"
+    },
+    {
+      "version": "21.3.49-beta",
+      "release": "November 28th 2024"
+    },
+    {
+      "version": "21.1.82",
+      "release": "November 27th 2024"
+    },
+    {
+      "version": "21.3.48-beta",
+      "release": "November 27th 2024"
+    },
+    {
+      "version": "21.3.47-beta",
+      "release": "November 27th 2024"
+    },
+    {
+      "version": "21.3.46-beta",
+      "release": "November 27th 2024"
+    },
+    {
+      "version": "21.3.45-beta",
+      "release": "November 27th 2024"
+    },
+    {
+      "version": "21.3.44-beta",
+      "release": "November 27th 2024"
+    },
+    {
+      "version": "21.3.43-beta",
+      "release": "November 27th 2024"
+    },
+    {
+      "version": "21.3.42-beta",
+      "release": "November 26th 2024"
+    },
+    {
+      "version": "21.1.81",
+      "release": "November 26th 2024"
+    },
+    {
+      "version": "21.3.41-beta",
+      "release": "November 26th 2024"
+    },
+    {
+      "version": "21.3.40-beta",
+      "release": "November 24th 2024"
+    },
+    {
+      "version": "21.3.39-beta",
+      "release": "November 24th 2024"
+    },
+    {
+      "version": "21.3.38-beta",
+      "release": "November 22nd 2024"
+    },
+    {
+      "version": "21.3.37-beta",
+      "release": "November 21st 2024"
+    },
+    {
+      "version": "21.3.36-beta",
+      "release": "November 19th 2024"
+    },
+    {
+      "version": "21.3.35-beta",
+      "release": "November 19th 2024"
+    },
+    {
+      "version": "21.3.34-beta",
+      "release": "November 18th 2024"
+    },
+    {
+      "version": "21.3.33-beta",
+      "release": "November 18th 2024"
+    },
+    {
+      "version": "21.3.32-beta",
+      "release": "November 18th 2024"
+    },
+    {
+      "version": "21.3.31-beta",
+      "release": "November 15th 2024"
+    },
+    {
+      "version": "21.3.30-beta",
+      "release": "November 15th 2024"
+    },
+    {
+      "version": "21.3.29-beta",
+      "release": "November 14th 2024"
+    },
+    {
+      "version": "21.3.28-beta",
+      "release": "November 11th 2024"
+    },
+    {
+      "version": "21.3.27-beta",
+      "release": "November 11th 2024"
+    },
+    {
+      "version": "21.3.26-beta",
+      "release": "November 10th 2024"
+    },
+    {
+      "version": "21.3.25-beta",
+      "release": "November 10th 2024"
+    },
+    {
+      "version": "21.3.24-beta",
+      "release": "November 10th 2024"
+    },
+    {
+      "version": "21.3.21-beta",
+      "release": "November 10th 2024"
+    },
+    {
+      "version": "21.3.23-beta",
+      "release": "November 10th 2024"
+    },
+    {
+      "version": "21.3.20-beta",
+      "release": "November 10th 2024"
+    },
+    {
+      "version": "21.3.22-beta",
+      "release": "November 10th 2024"
+    },
+    {
+      "version": "21.3.19-beta",
+      "release": "November 10th 2024"
+    },
+    {
+      "version": "21.3.18-beta",
+      "release": "November 10th 2024"
+    },
+    {
+      "version": "21.3.17-beta",
+      "release": "November 10th 2024"
+    },
+    {
+      "version": "21.3.6-beta",
+      "release": "October 31st 2024"
+    },
+    {
+      "version": "21.3.5-beta",
+      "release": "October 29th 2024"
+    },
+    {
+      "version": "21.3.4-beta",
+      "release": "October 27th 2024"
+    },
+    {
+      "version": "21.3.3-beta",
+      "release": "October 25th 2024"
+    },
+    {
+      "version": "21.3.2-beta",
+      "release": "October 24th 2024"
+    },
+    {
+      "version": "21.3.1-beta",
+      "release": "October 23rd 2024"
+    },
+    {
+      "version": "21.3.0-beta",
+      "release": "October 23rd 2024"
+    },
+    {
+      "version": "21.2.1-beta",
+      "release": "October 23rd 2024"
+    },
+    {
+      "version": "21.2.0-beta",
+      "release": "October 22nd 2024"
+    },
+    {
+      "version": "21.1.93",
+      "release": ""
+    },
+    {
+      "version": "21.1.85",
+      "release": ""
+    },
+    {
+      "version": "21.1.84",
+      "release": ""
+    },
+    {
+      "version": "21.1.80",
+      "release": "November 18th 2024"
+    },
+    {
+      "version": "21.1.79",
+      "release": "November 15th 2024"
+    },
+    {
+      "version": "21.1.78",
+      "release": "November 15th 2024"
+    },
+    {
+      "version": "21.1.77",
+      "release": "November 11th 2024"
+    },
+    {
+      "version": "21.1.76",
+      "release": ""
+    },
+    {
+      "version": "21.1.75",
+      "release": ""
+    },
+    {
+      "version": "21.1.74",
+      "release": ""
+    },
+    {
+      "version": "21.1.73",
+      "release": "October 27th 2024"
+    },
+    {
+      "version": "21.1.72",
+      "release": "October 17th 2024"
+    },
+    {
+      "version": "21.1.71",
+      "release": "October 15th 2024"
+    },
+    {
+      "version": "21.1.70",
+      "release": "October 15th 2024"
+    },
+    {
+      "version": "21.1.69",
+      "release": "October 13th 2024"
+    },
+    {
+      "version": "21.1.68",
+      "release": "October 10th 2024"
+    },
+    {
+      "version": "21.1.66",
+      "release": ""
+    },
+    {
+      "version": "21.1.65",
+      "release": "September 30th 2024"
+    },
+    {
+      "version": "21.1.64",
+      "release": "September 29th 2024"
+    },
+    {
+      "version": "21.1.63",
+      "release": "September 28th 2024"
+    },
+    {
+      "version": "21.1.62",
+      "release": "September 26th 2024"
+    },
+    {
+      "version": "21.1.61",
+      "release": "September 24th 2024"
+    },
+    {
+      "version": "21.1.60",
+      "release": "September 24th 2024"
+    },
+    {
+      "version": "21.1.59",
+      "release": "September 23rd 2024"
+    },
+    {
+      "version": "21.1.58",
+      "release": "September 23rd 2024"
+    },
+    {
+      "version": "21.1.57",
+      "release": "September 20th 2024"
+    },
+    {
+      "version": "21.1.56",
+      "release": "September 19th 2024"
+    },
+    {
+      "version": "21.1.55",
+      "release": "September 18th 2024"
+    },
+    {
+      "version": "21.1.54",
+      "release": "September 15th 2024"
+    },
+    {
+      "version": "21.1.53",
+      "release": "September 15th 2024"
+    },
+    {
+      "version": "21.1.52",
+      "release": "September 15th 2024"
+    },
+    {
+      "version": "21.1.51",
+      "release": "September 12th 2024"
+    },
+    {
+      "version": "21.1.50",
+      "release": "September 10th 2024"
+    },
+    {
+      "version": "21.1.49",
+      "release": "September 10th 2024"
+    },
+    {
+      "version": "21.1.48",
+      "release": "September 10th 2024"
+    },
+    {
+      "version": "21.1.47",
+      "release": ""
+    },
+    {
+      "version": "21.1.46",
+      "release": ""
+    },
+    {
+      "version": "21.1.45",
+      "release": ""
+    },
+    {
+      "version": "21.1.44",
+      "release": ""
+    },
+    {
+      "version": "21.1.43",
+      "release": ""
+    },
+    {
+      "version": "21.1.42",
+      "release": ""
+    },
+    {
+      "version": "21.1.41",
+      "release": ""
+    },
+    {
+      "version": "21.1.40",
+      "release": ""
+    },
+    {
+      "version": "21.1.39",
+      "release": ""
+    },
+    {
+      "version": "21.1.37",
+      "release": ""
+    },
+    {
+      "version": "21.1.36",
+      "release": ""
+    },
+    {
+      "version": "21.1.35",
+      "release": ""
+    },
+    {
+      "version": "21.1.34",
+      "release": "August 31st 2024"
+    },
+    {
+      "version": "21.1.33",
+      "release": "August 31st 2024"
+    },
+    {
+      "version": "21.1.32",
+      "release": "August 31st 2024"
+    },
+    {
+      "version": "21.1.31",
+      "release": "August 27th 2024"
+    },
+    {
+      "version": "21.1.30",
+      "release": "August 27th 2024"
+    },
+    {
+      "version": "21.1.29",
+      "release": "August 27th 2024"
+    },
+    {
+      "version": "21.1.28",
+      "release": "August 26th 2024"
+    },
+    {
+      "version": "21.1.27",
+      "release": "August 26th 2024"
+    },
+    {
+      "version": "21.1.26",
+      "release": "August 25th 2024"
+    },
+    {
+      "version": "21.1.25",
+      "release": "August 25th 2024"
+    },
+    {
+      "version": "21.1.24",
+      "release": "August 25th 2024"
+    },
+    {
+      "version": "21.1.23",
+      "release": "August 22nd 2024"
+    },
+    {
+      "version": "21.1.22",
+      "release": "August 19th 2024"
+    },
+    {
+      "version": "21.1.21",
+      "release": "August 19th 2024"
+    },
+    {
+      "version": "21.1.20",
+      "release": "August 18th 2024"
+    },
+    {
+      "version": "21.1.19",
+      "release": "August 18th 2024"
+    },
+    {
+      "version": "21.1.18",
+      "release": "August 17th 2024"
+    },
+    {
+      "version": "21.1.17",
+      "release": "August 17th 2024"
+    },
+    {
+      "version": "21.1.16",
+      "release": "August 17th 2024"
+    },
+    {
+      "version": "21.1.15",
+      "release": "August 16th 2024"
+    },
+    {
+      "version": "21.1.13",
+      "release": "August 16th 2024"
+    },
+    {
+      "version": "21.1.12",
+      "release": "August 15th 2024"
+    },
+    {
+      "version": "21.1.11",
+      "release": "August 15th 2024"
+    },
+    {
+      "version": "21.1.10",
+      "release": "August 15th 2024"
+    },
+    {
+      "version": "21.1.9",
+      "release": "August 13th 2024"
+    },
+    {
+      "version": "21.1.8",
+      "release": "August 12th 2024"
+    },
+    {
+      "version": "21.1.7",
+      "release": "August 12th 2024"
+    },
+    {
+      "version": "21.1.6",
+      "release": "August 11th 2024"
+    },
+    {
+      "version": "21.1.5",
+      "release": "August 11th 2024"
+    },
+    {
+      "version": "21.1.4",
+      "release": ""
+    },
+    {
+      "version": "21.1.3",
+      "release": ""
+    },
+    {
+      "version": "21.1.2",
+      "release": ""
+    },
+    {
+      "version": "21.1.1",
+      "release": ""
+    },
+    {
+      "version": "21.0.167",
+      "release": ""
+    },
+    {
+      "version": "21.0.166",
+      "release": ""
+    },
+    {
+      "version": "21.0.165",
+      "release": ""
+    },
+    {
+      "version": "21.0.164",
+      "release": ""
+    },
+    {
+      "version": "21.0.163",
+      "release": ""
+    },
+    {
+      "version": "21.0.162",
+      "release": ""
+    },
+    {
+      "version": "21.0.161",
+      "release": ""
+    },
+    {
+      "version": "21.0.160",
+      "release": ""
+    },
+    {
+      "version": "21.0.159",
+      "release": ""
+    },
+    {
+      "version": "21.0.158",
+      "release": ""
+    },
+    {
+      "version": "21.0.157",
+      "release": ""
+    },
+    {
+      "version": "21.0.154",
+      "release": ""
+    },
+    {
+      "version": "21.0.153",
+      "release": ""
+    },
+    {
+      "version": "21.0.152",
+      "release": ""
+    },
+    {
+      "version": "21.0.151",
+      "release": ""
+    },
+    {
+      "version": "21.0.150",
+      "release": ""
+    },
+    {
+      "version": "21.0.149",
+      "release": ""
+    },
+    {
+      "version": "21.0.148",
+      "release": ""
+    },
+    {
+      "version": "20.6.124",
+      "release": "December 30th 2024"
+    },
+    {
+      "version": "20.6.123",
+      "release": "December 26th 2024"
+    },
+    {
+      "version": "20.4.238",
+      "release": "December 18th 2024"
+    },
+    {
+      "version": "20.6.122",
+      "release": "December 15th 2024"
+    },
+    {
+      "version": "20.6.120",
+      "release": "August 27th 2024"
+    },
+    {
+      "version": "21.0.147",
+      "release": "July 31st 2024"
+    },
+    {
+      "version": "21.0.146",
+      "release": "July 30th 2024"
+    },
+    {
+      "version": "21.0.145",
+      "release": "July 29th 2024"
+    },
+    {
+      "version": "21.0.144",
+      "release": "July 29th 2024"
+    },
+    {
+      "version": "21.0.143",
+      "release": "July 28th 2024"
+    },
+    {
+      "version": "21.0.142-beta",
+      "release": "July 28th 2024"
+    },
+    {
+      "version": "21.0.141-beta",
+      "release": "July 28th 2024"
+    },
+    {
+      "version": "21.0.140-beta",
+      "release": "July 27th 2024"
+    },
+    {
+      "version": "21.0.139-beta",
+      "release": "July 26th 2024"
+    },
+    {
+      "version": "21.0.138-beta",
+      "release": "July 26th 2024"
+    },
+    {
+      "version": "21.0.137-beta",
+      "release": "July 26th 2024"
+    },
+    {
+      "version": "21.0.136-beta",
+      "release": "July 26th 2024"
+    },
+    {
+      "version": "21.0.135-beta",
+      "release": "July 26th 2024"
+    },
+    {
+      "version": "21.0.134-beta",
+      "release": "July 25th 2024"
+    },
+    {
+      "version": "21.0.133-beta",
+      "release": "July 24th 2024"
+    },
+    {
+      "version": "21.0.132-beta",
+      "release": "July 24th 2024"
+    },
+    {
+      "version": "21.0.131-beta",
+      "release": "July 24th 2024"
+    },
+    {
+      "version": "21.0.130-beta",
+      "release": "July 24th 2024"
+    },
+    {
+      "version": "21.0.129-beta",
+      "release": "July 24th 2024"
+    },
+    {
+      "version": "21.0.128-beta",
+      "release": "July 24th 2024"
+    },
+    {
+      "version": "21.0.127-beta",
+      "release": "July 24th 2024"
+    },
+    {
+      "version": "21.0.126-beta",
+      "release": "July 24th 2024"
+    },
+    {
+      "version": "21.0.125-beta",
+      "release": "July 24th 2024"
+    },
+    {
+      "version": "21.0.124-beta",
+      "release": "July 24th 2024"
+    },
+    {
+      "version": "21.0.123-beta",
+      "release": "July 24th 2024"
+    },
+    {
+      "version": "21.0.122-beta",
+      "release": "July 24th 2024"
+    },
+    {
+      "version": "21.0.121-beta",
+      "release": "July 24th 2024"
+    },
+    {
+      "version": "21.0.120-beta",
+      "release": "July 24th 2024"
+    },
+    {
+      "version": "21.0.119-beta",
+      "release": "July 24th 2024"
+    },
+    {
+      "version": "21.0.118-beta",
+      "release": "July 24th 2024"
+    },
+    {
+      "version": "21.0.117-beta",
+      "release": "July 23rd 2024"
+    },
+    {
+      "version": "21.0.116-beta",
+      "release": "July 23rd 2024"
+    },
+    {
+      "version": "21.0.115-beta",
+      "release": "July 23rd 2024"
+    },
+    {
+      "version": "21.0.114-beta",
+      "release": "July 21st 2024"
+    },
+    {
+      "version": "21.0.113-beta",
+      "release": "July 20th 2024"
+    },
+    {
+      "version": "21.0.112-beta",
+      "release": "July 19th 2024"
+    },
+    {
+      "version": "21.0.111-beta",
+      "release": "July 19th 2024"
+    },
+    {
+      "version": "21.0.110-beta",
+      "release": "July 19th 2024"
+    },
+    {
+      "version": "21.0.107-beta",
+      "release": "July 19th 2024"
+    },
+    {
+      "version": "21.0.109-beta",
+      "release": "July 19th 2024"
+    },
+    {
+      "version": "21.0.108-beta",
+      "release": "July 19th 2024"
+    },
+    {
+      "version": "21.0.106-beta",
+      "release": "July 18th 2024"
+    },
+    {
+      "version": "21.0.104-beta",
+      "release": "July 18th 2024"
+    },
+    {
+      "version": "21.0.105-beta",
+      "release": "July 18th 2024"
+    },
+    {
+      "version": "21.0.103-beta",
+      "release": "July 17th 2024"
+    },
+    {
+      "version": "21.0.102-beta",
+      "release": "July 17th 2024"
+    },
+    {
+      "version": "21.0.100-beta",
+      "release": "July 17th 2024"
+    },
+    {
+      "version": "21.0.101-beta",
+      "release": "July 17th 2024"
+    },
+    {
+      "version": "21.0.99-beta",
+      "release": "July 17th 2024"
+    },
+    {
+      "version": "21.0.98-beta",
+      "release": "July 16th 2024"
+    },
+    {
+      "version": "21.0.97-beta",
+      "release": "July 16th 2024"
+    },
+    {
+      "version": "21.0.96-beta",
+      "release": "July 16th 2024"
+    },
+    {
+      "version": "21.0.95-beta",
+      "release": "July 14th 2024"
+    },
+    {
+      "version": "21.0.94-beta",
+      "release": "July 14th 2024"
+    },
+    {
+      "version": "21.0.93-beta",
+      "release": "July 14th 2024"
+    },
+    {
+      "version": "21.0.92-beta",
+      "release": "July 14th 2024"
+    },
+    {
+      "version": "21.0.91-beta",
+      "release": "July 13th 2024"
+    },
+    {
+      "version": "21.0.90-beta",
+      "release": "July 13th 2024"
+    },
+    {
+      "version": "21.0.89-beta",
+      "release": "July 13th 2024"
+    },
+    {
+      "version": "21.0.88-beta",
+      "release": "July 13th 2024"
+    },
+    {
+      "version": "21.0.87-beta",
+      "release": "July 12th 2024"
+    },
+    {
+      "version": "21.0.86-beta",
+      "release": "July 11th 2024"
+    },
+    {
+      "version": "21.0.85-beta",
+      "release": "July 11th 2024"
+    },
+    {
+      "version": "21.0.84-beta",
+      "release": "July 11th 2024"
+    },
+    {
+      "version": "21.0.83-beta",
+      "release": "July 10th 2024"
+    },
+    {
+      "version": "21.0.82-beta",
+      "release": "July 10th 2024"
+    },
+    {
+      "version": "21.0.81-beta",
+      "release": "July 10th 2024"
+    },
+    {
+      "version": "21.0.80-beta",
+      "release": "July 10th 2024"
+    },
+    {
+      "version": "21.0.79-beta",
+      "release": "July 10th 2024"
+    },
+    {
+      "version": "21.0.78-beta",
+      "release": ""
+    },
+    {
+      "version": "21.0.77-beta",
+      "release": ""
+    },
+    {
+      "version": "21.0.76-beta",
+      "release": ""
+    },
+    {
+      "version": "21.0.75-beta",
+      "release": ""
+    },
+    {
+      "version": "21.0.74-beta",
+      "release": ""
+    },
+    {
+      "version": "21.0.73-beta",
+      "release": ""
+    },
+    {
+      "version": "21.0.72-beta",
+      "release": ""
+    },
+    {
+      "version": "21.0.71-beta",
+      "release": ""
+    },
+    {
+      "version": "21.0.70-beta",
+      "release": ""
+    },
+    {
+      "version": "21.0.69-beta",
+      "release": ""
+    },
+    {
+      "version": "21.0.68-beta",
+      "release": ""
+    },
+    {
+      "version": "21.0.67-beta",
+      "release": ""
+    },
+    {
+      "version": "21.0.66-beta",
+      "release": ""
+    },
+    {
+      "version": "21.0.65-beta",
+      "release": ""
+    },
+    {
+      "version": "21.0.64-beta",
+      "release": ""
+    },
+    {
+      "version": "21.0.63-beta",
+      "release": ""
+    },
+    {
+      "version": "21.0.62-beta",
+      "release": ""
+    },
+    {
+      "version": "21.0.61-beta",
+      "release": ""
+    },
+    {
+      "version": "21.0.60-beta",
+      "release": ""
+    },
+    {
+      "version": "21.0.59-beta",
+      "release": ""
+    },
+    {
+      "version": "21.0.58-beta",
+      "release": ""
+    },
+    {
+      "version": "21.0.57-beta",
+      "release": ""
+    },
+    {
+      "version": "21.0.56-beta",
+      "release": ""
+    },
+    {
+      "version": "21.0.55-beta",
+      "release": ""
+    },
+    {
+      "version": "21.0.54-beta",
+      "release": ""
+    },
+    {
+      "version": "21.0.53-beta",
+      "release": ""
+    },
+    {
+      "version": "21.0.52-beta",
+      "release": ""
+    },
+    {
+      "version": "21.0.51-beta",
+      "release": ""
+    },
+    {
+      "version": "21.0.50-beta",
+      "release": ""
+    },
+    {
+      "version": "21.0.49-beta",
+      "release": ""
+    },
+    {
+      "version": "21.0.48-beta",
+      "release": ""
+    },
+    {
+      "version": "21.0.47-beta",
+      "release": ""
+    },
+    {
+      "version": "21.0.46-beta",
+      "release": ""
+    },
+    {
+      "version": "21.0.45-beta",
+      "release": ""
+    },
+    {
+      "version": "21.0.44-beta",
+      "release": ""
+    },
+    {
+      "version": "21.0.43-beta",
+      "release": "June 30th 2024"
+    },
+    {
+      "version": "21.0.42-beta",
+      "release": "June 27th 2024"
+    },
+    {
+      "version": "21.0.41-beta",
+      "release": "June 27th 2024"
+    },
+    {
+      "version": "21.0.40-beta",
+      "release": "June 26th 2024"
+    },
+    {
+      "version": "21.0.39-beta",
+      "release": "June 26th 2024"
+    },
+    {
+      "version": "21.0.38-beta",
+      "release": "June 26th 2024"
+    },
+    {
+      "version": "21.0.37-beta",
+      "release": "June 24th 2024"
+    },
+    {
+      "version": "21.0.36-beta",
+      "release": "June 24th 2024"
+    },
+    {
+      "version": "21.0.35-beta",
+      "release": "June 24th 2024"
+    },
+    {
+      "version": "21.0.33-beta",
+      "release": "June 24th 2024"
+    },
+    {
+      "version": "21.0.32-beta",
+      "release": "June 24th 2024"
+    },
+    {
+      "version": "21.0.31-beta",
+      "release": "June 24th 2024"
+    },
+    {
+      "version": "21.0.30-beta",
+      "release": "June 23rd 2024"
+    },
+    {
+      "version": "21.0.29-beta",
+      "release": "June 22nd 2024"
+    },
+    {
+      "version": "21.0.28-beta",
+      "release": "June 22nd 2024"
+    },
+    {
+      "version": "21.0.27-beta",
+      "release": "June 22nd 2024"
+    },
+    {
+      "version": "21.0.26-beta",
+      "release": "June 22nd 2024"
+    },
+    {
+      "version": "21.0.25-beta",
+      "release": "June 22nd 2024"
+    },
+    {
+      "version": "21.0.24-beta",
+      "release": "June 22nd 2024"
+    },
+    {
+      "version": "21.0.23-beta",
+      "release": "June 22nd 2024"
+    },
+    {
+      "version": "21.0.22-beta",
+      "release": "June 22nd 2024"
+    },
+    {
+      "version": "21.0.21-beta",
+      "release": "June 20th 2024"
+    },
+    {
+      "version": "21.0.20-beta",
+      "release": "June 19th 2024"
+    },
+    {
+      "version": "21.0.19-beta",
+      "release": "June 19th 2024"
+    },
+    {
+      "version": "21.0.18-beta",
+      "release": "June 18th 2024"
+    },
+    {
+      "version": "21.0.17-beta",
+      "release": "June 18th 2024"
+    },
+    {
+      "version": "21.0.16-beta",
+      "release": "June 17th 2024"
+    },
+    {
+      "version": "21.0.15-beta",
+      "release": "June 17th 2024"
+    },
+    {
+      "version": "21.0.14-beta",
+      "release": "June 17th 2024"
+    },
+    {
+      "version": "21.0.13-beta",
+      "release": "June 16th 2024"
+    },
+    {
+      "version": "21.0.12-beta",
+      "release": "June 16th 2024"
+    },
+    {
+      "version": "21.0.11-beta",
+      "release": "June 16th 2024"
+    },
+    {
+      "version": "21.0.10-beta",
+      "release": "June 15th 2024"
+    },
+    {
+      "version": "21.0.9-beta",
+      "release": "June 15th 2024"
+    },
+    {
+      "version": "21.0.7-beta",
+      "release": "June 15th 2024"
+    },
+    {
+      "version": "21.0.8-beta",
+      "release": "June 15th 2024"
+    },
+    {
+      "version": "21.0.6-beta",
+      "release": "June 14th 2024"
+    },
+    {
+      "version": "21.0.5-beta",
+      "release": "June 14th 2024"
+    },
+    {
+      "version": "21.0.4-beta",
+      "release": "June 14th 2024"
+    },
+    {
+      "version": "21.0.3-beta",
+      "release": "June 14th 2024"
+    },
+    {
+      "version": "21.0.2-beta",
+      "release": "June 14th 2024"
+    },
+    {
+      "version": "21.0.1-beta",
+      "release": "June 14th 2024"
+    },
+    {
+      "version": "21.0.0-beta",
+      "release": "June 13th 2024"
+    },
+    {
+      "version": "20.6.138",
+      "release": ""
+    },
+    {
+      "version": "20.6.136",
+      "release": ""
+    },
+    {
+      "version": "20.6.135",
+      "release": ""
+    },
+    {
+      "version": "20.6.121",
+      "release": ""
+    },
+    {
+      "version": "20.6.119",
+      "release": "June 15th 2024"
+    },
+    {
+      "version": "20.6.118",
+      "release": "June 15th 2024"
+    },
+    {
+      "version": "20.6.117",
+      "release": "June 14th 2024"
+    },
+    {
+      "version": "20.6.116",
+      "release": "June 11th 2024"
+    },
+    {
+      "version": "20.6.115",
+      "release": "June 10th 2024"
+    },
+    {
+      "version": "20.6.114-beta",
+      "release": "June 10th 2024"
+    },
+    {
+      "version": "20.6.113-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.112-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.111-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.110-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.109-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.108-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.107-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.106-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.105-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.104-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.103-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.100-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.99-beta",
+      "release": "May 31st 2024"
+    },
+    {
+      "version": "20.6.98-beta",
+      "release": "May 29th 2024"
+    },
+    {
+      "version": "20.6.97-beta",
+      "release": "May 29th 2024"
+    },
+    {
+      "version": "20.6.96-beta",
+      "release": "May 29th 2024"
+    },
+    {
+      "version": "20.6.94-beta",
+      "release": "May 29th 2024"
+    },
+    {
+      "version": "20.6.95-beta",
+      "release": "May 29th 2024"
+    },
+    {
+      "version": "20.6.93-beta",
+      "release": "May 28th 2024"
+    },
+    {
+      "version": "20.6.92-beta",
+      "release": "May 28th 2024"
+    },
+    {
+      "version": "20.6.90-beta",
+      "release": "May 28th 2024"
+    },
+    {
+      "version": "20.6.91-beta",
+      "release": "May 28th 2024"
+    },
+    {
+      "version": "20.6.89-beta",
+      "release": "May 28th 2024"
+    },
+    {
+      "version": "20.6.88-beta",
+      "release": "May 27th 2024"
+    },
+    {
+      "version": "20.6.87-beta",
+      "release": "May 26th 2024"
+    },
+    {
+      "version": "20.6.85-beta",
+      "release": "May 26th 2024"
+    },
+    {
+      "version": "20.6.84-beta",
+      "release": "May 26th 2024"
+    },
+    {
+      "version": "20.6.83-beta",
+      "release": "May 26th 2024"
+    },
+    {
+      "version": "20.4.235",
+      "release": "May 26th 2024"
+    },
+    {
+      "version": "20.6.82-beta",
+      "release": "May 26th 2024"
+    },
+    {
+      "version": "20.6.81-beta",
+      "release": "May 26th 2024"
+    },
+    {
+      "version": "20.6.79-beta",
+      "release": "May 25th 2024"
+    },
+    {
+      "version": "20.6.80-beta",
+      "release": "May 25th 2024"
+    },
+    {
+      "version": "20.6.78-beta",
+      "release": "May 25th 2024"
+    },
+    {
+      "version": "20.6.77-beta",
+      "release": "May 25th 2024"
+    },
+    {
+      "version": "20.6.76-beta",
+      "release": "May 25th 2024"
+    },
+    {
+      "version": "20.6.75-beta",
+      "release": "May 22nd 2024"
+    },
+    {
+      "version": "20.6.74-beta",
+      "release": "May 21st 2024"
+    },
+    {
+      "version": "20.6.73-beta",
+      "release": "May 21st 2024"
+    },
+    {
+      "version": "20.6.72-beta",
+      "release": "May 18th 2024"
+    },
+    {
+      "version": "20.6.71-beta",
+      "release": "May 18th 2024"
+    },
+    {
+      "version": "20.6.70-beta",
+      "release": "May 17th 2024"
+    },
+    {
+      "version": "20.6.69-beta",
+      "release": "May 17th 2024"
+    },
+    {
+      "version": "20.6.67-beta",
+      "release": "May 17th 2024"
+    },
+    {
+      "version": "20.6.68-beta",
+      "release": "May 17th 2024"
+    },
+    {
+      "version": "20.6.66-beta",
+      "release": "May 17th 2024"
+    },
+    {
+      "version": "20.6.63-beta",
+      "release": "May 15th 2024"
+    },
+    {
+      "version": "20.6.62-beta",
+      "release": "May 13th 2024"
+    },
+    {
+      "version": "20.6.61-beta",
+      "release": "May 11th 2024"
+    },
+    {
+      "version": "20.6.60-beta",
+      "release": "May 11th 2024"
+    },
+    {
+      "version": "20.6.59-beta",
+      "release": "May 11th 2024"
+    },
+    {
+      "version": "20.6.57-beta",
+      "release": "May 11th 2024"
+    },
+    {
+      "version": "20.6.56-beta",
+      "release": "May 10th 2024"
+    },
+    {
+      "version": "20.6.54-beta",
+      "release": "May 10th 2024"
+    },
+    {
+      "version": "20.6.55-beta",
+      "release": "May 10th 2024"
+    },
+    {
+      "version": "20.6.53-beta",
+      "release": "May 10th 2024"
+    },
+    {
+      "version": "20.6.52-beta",
+      "release": "May 10th 2024"
+    },
+    {
+      "version": "20.6.51-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.50-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.49-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.48-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.47-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.46-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.45-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.44-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.43-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.42-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.41-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.40-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.39-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.32-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.31-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.30-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.29-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.28-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.27-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.26-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.25-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.24-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.23-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.22-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.21-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.20-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.19-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.18-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.17-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.16-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.15-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.14-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.13-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.12-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.11-beta",
+      "release": ""
+    },
+    {
+      "version": "20.6.10-beta",
+      "release": "April 30th 2024"
+    },
+    {
+      "version": "20.6.9-beta",
+      "release": "April 30th 2024"
+    },
+    {
+      "version": "20.6.8-beta",
+      "release": "April 30th 2024"
+    },
+    {
+      "version": "20.6.7-beta",
+      "release": "April 30th 2024"
+    },
+    {
+      "version": "20.6.6-beta",
+      "release": "April 30th 2024"
+    },
+    {
+      "version": "20.6.5-beta",
+      "release": "April 30th 2024"
+    },
+    {
+      "version": "20.4.234",
+      "release": "April 30th 2024"
+    },
+    {
+      "version": "20.6.4-beta",
+      "release": "April 30th 2024"
+    },
+    {
+      "version": "20.6.3-beta",
+      "release": "April 29th 2024"
+    },
+    {
+      "version": "20.6.2-beta",
+      "release": "April 29th 2024"
+    },
+    {
+      "version": "20.6.1-beta",
+      "release": "April 29th 2024"
+    },
+    {
+      "version": "20.5.21-beta",
+      "release": "April 29th 2024"
+    },
+    {
+      "version": "20.5.20-beta",
+      "release": "April 28th 2024"
+    },
+    {
+      "version": "20.5.19-beta",
+      "release": "April 28th 2024"
+    },
+    {
+      "version": "20.5.18-beta",
+      "release": "April 28th 2024"
+    },
+    {
+      "version": "20.5.17-beta",
+      "release": "April 28th 2024"
+    },
+    {
+      "version": "20.5.16-beta",
+      "release": "April 28th 2024"
+    },
+    {
+      "version": "20.5.15-beta",
+      "release": "April 27th 2024"
+    },
+    {
+      "version": "20.5.14-beta",
+      "release": "April 27th 2024"
+    },
+    {
+      "version": "20.5.13-beta",
+      "release": "April 27th 2024"
+    },
+    {
+      "version": "20.5.12-beta",
+      "release": "April 27th 2024"
+    },
+    {
+      "version": "20.5.11-beta",
+      "release": "April 27th 2024"
+    },
+    {
+      "version": "20.5.10-beta",
+      "release": "April 27th 2024"
+    },
+    {
+      "version": "20.5.9-beta",
+      "release": "April 27th 2024"
+    },
+    {
+      "version": "20.5.8-beta",
+      "release": "April 27th 2024"
+    },
+    {
+      "version": "20.5.7-beta",
+      "release": "April 27th 2024"
+    },
+    {
+      "version": "20.5.6-beta",
+      "release": "April 26th 2024"
+    },
+    {
+      "version": "20.5.5-beta",
+      "release": "April 26th 2024"
+    },
+    {
+      "version": "20.5.4-beta",
+      "release": "April 25th 2024"
+    },
+    {
+      "version": "20.5.3-beta",
+      "release": "April 24th 2024"
+    },
+    {
+      "version": "20.4.248",
+      "release": ""
+    },
+    {
+      "version": "20.4.239",
+      "release": ""
+    },
+    {
+      "version": "20.4.233",
+      "release": "April 24th 2024"
+    },
+    {
+      "version": "20.5.2-beta",
+      "release": "April 24th 2024"
+    },
+    {
+      "version": "20.5.1-beta",
+      "release": "April 24th 2024"
+    },
+    {
+      "version": "20.5.0-beta",
+      "release": "April 23rd 2024"
+    },
+    {
+      "version": "20.4.237",
+      "release": ""
+    },
+    {
+      "version": "20.4.236",
+      "release": ""
+    },
+    {
+      "version": "20.4.232",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.99-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.98-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.97-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.96-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.95-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.94-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.93-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.92-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.91-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.89-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.9-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.88-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.87-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.85-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.84-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.83-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.82-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.81-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.80-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.8-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.79-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.78-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.77-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.76-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.75-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.74-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.73-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.72-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.71-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.70-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.69-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.68-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.7-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.67-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.66-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.65-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.64-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.63-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.62-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.61-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.60-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.59-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.6-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.58-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.57-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.56-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.55-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.54-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.53-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.52-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.51-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.50-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.49-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.48-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.47-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.5-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.46-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.45-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.44-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.43-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.42-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.41-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.40-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.39-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.38-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.37-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.4-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.36-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.35-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.34-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.33-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.31-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.30-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.3-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.29-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.28-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.27-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.26-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.24-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.231",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.230",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.229",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.228",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.227",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.226",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.225",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.224",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.223",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.222",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.221",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.22-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.219",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.218",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.217",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.216",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.215",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.214",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.213",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.212",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.211",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.210",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.209",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.21-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.208",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.207",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.206",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.205",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.204",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.203",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.202",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.201",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.200",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.20-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.2-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.199",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.198",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.197",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.196",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.195",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.194",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.193",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.192",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.191",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.190",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.189",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.188",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.187",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.19-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.186",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.185",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.184",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.183",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.182",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.181",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.180",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.179",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.178",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.18-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.177",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.176",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.175",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.174",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.173",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.172",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.171",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.170",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.169",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.167",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.166-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.17-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.165-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.164-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.163-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.162-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.161-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.160-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.159-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.158-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.16-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.157-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.156-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.155-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.154-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.153-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.152-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.151-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.150-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.149-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.15-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.148-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.147-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.146-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.145-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.144-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.143-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.142-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.141-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.140-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.14-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.139-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.138-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.137-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.136-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.135-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.134-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.133-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.132-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.131-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.130-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.129-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.13-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.128-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.127-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.126-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.125-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.124-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.123-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.122-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.121-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.120-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.119-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.118-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.12-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.117-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.116-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.115-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.114-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.113-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.112-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.111-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.109-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.11-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.108-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.107-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.106-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.105-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.104-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.103-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.102-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.101-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.100-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.10-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.1-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.4.0-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.3.8-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.3.7-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.3.6-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.3.4-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.3.3-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.3.2-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.3.1-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.88",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.86",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.85-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.84-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.83-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.82-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.81-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.80-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.78-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.8-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.77-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.76-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.75-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.74-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.73-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.72-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.71-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.70-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.69-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.67-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.66-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.65-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.64-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.63-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.62-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.61-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.60-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.59-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.57-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.6-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.56-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.55-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.54-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.53-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.52-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.51-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.50-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.49-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.48-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.47-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.5-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.46-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.44-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.43-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.42-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.41-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.4-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.39-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.38-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.37-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.36-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.35-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.34-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.33-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.31-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.30-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.29-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.28-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.26-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.3-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.25-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.24-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.23-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.22-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.21-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.20-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.19-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.18-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.17-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.16-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.15-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.14-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.13-beta",
+      "release": "April 14th 2024"
+    },
+    {
+      "version": "20.2.12-beta",
+      "release": "April 14th 2024"
+    }
+  ]
   },
   {
     "platform": "quilt",
