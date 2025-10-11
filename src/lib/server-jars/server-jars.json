@@ -5936,6 +5936,16 @@
     "display": "Forge",
     "jars": [
       {
+        "version": "1.21.10",
+        "release": "Oktober 11th 2025",
+        "downloadUrl": "https://maven.minecraftforge.net/net/minecraftforge/forge/1.21.10-60.0.4/forge-1.21.10-60.0.4-installer.jar"
+      },
+      {
+        "version": "1.21.9",
+        "release": "Oktober 6th 2025",
+        "downloadUrl": "https://maven.minecraftforge.net/net/minecraftforge/forge/1.21.9-59.0.5/forge-1.21.9-59.0.5-installer.jar"
+      },
+      {
         "version": "1.21.8",
         "release": "August 27th 2025",
         "downloadUrl": "https://maven.minecraftforge.net/net/minecraftforge/forge/1.21.8-58.1.0/forge-1.21.8-58.1.0-installer.jar"
