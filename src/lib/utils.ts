@@ -18,7 +18,7 @@ const utils: Util[] = [
         name: "Item IDs",
         description: "Search all in-game items and IDs.",
         shortDescription: "Modern & legacy item IDs",
-        seoDescription: "Comprehensive Minecraft item ID database. Search and explore all current and legacy item IDs (data values). Essential tool for modders, plugin developers, and command block enthusiasts.",
+        seoDescription: "Comprehensive Minecraft item ID database. Search and explore all current and legacy item IDs (data values). Essential tool for modders, plugin developers, and command block enthusiasts."
     },
     {
         path: "sound-explorer",
@@ -39,7 +39,7 @@ const utils: Util[] = [
         name: "RAM Calculator",
         description: "Calculate the recommended RAM for your server.",
         shortDescription: "Calculate recommended RAM",
-        seoDescription: "Optimize your Minecraft server performance with a RAM calculator. Get precise memory recommendations based on player count and installed plugins. Ensure smooth gameplay and maximize server efficiency with accurate RAM allocation.",
+        seoDescription: "Optimize your Minecraft server performance with a RAM calculator. Get precise memory recommendations based on player count and installed plugins. Ensure smooth gameplay and maximize server efficiency with accurate RAM allocation."
     },
     {
         path: "server-info",
@@ -53,42 +53,42 @@ const utils: Util[] = [
         name: "Skin Stealer",
         description: "Steal a player's skin from their IGN.",
         shortDescription: "Steal another player's skin",
-        seoDescription: "Discover and download Minecraft player skins instantly. Search by in-game name to view, save, and use any player's unique skin. Perfect for inspiration, cosplay, or trying new looks in Minecraft.",
+        seoDescription: "Discover and download Minecraft player skins instantly. Search by in-game name to view, save, and use any player's unique skin. Perfect for inspiration, cosplay, or trying new looks in Minecraft."
     },
     {
         path: "cape-stealer",
         name: "Cape Stealer",
         description: "Steal a player's cape from their IGN.",
         shortDescription: "Steal another player's cape",
-        seoDescription: "Explore and download rare Minecraft capes. Find Mojang, Minecon, and Optifine capes by player name. View, save, and admire exclusive Minecraft capes from any player. Ideal for cape enthusiasts and collectors.",
+        seoDescription: "Explore and download rare Minecraft capes. Find Mojang, Minecon, and Optifine capes by player name. View, save, and admire exclusive Minecraft capes from any player. Ideal for cape enthusiasts and collectors."
     },
     {
         path: "color-codes",
         name: "Color Codes",
         description: "List of built in color and format codes.",
         shortDescription: "All default color codes",
-        seoDescription: "Complete Minecraft color code reference guide. Access chat codes (&), MiniMessage tags, MOTD codes, and hex values. Enhance your server's visual appeal with our comprehensive color code table for text formatting and customization.",
+        seoDescription: "Complete Minecraft color code reference guide. Access chat codes (&), MiniMessage tags, MOTD codes, and hex values. Enhance your server's visual appeal with our comprehensive color code table for text formatting and customization."
     },
     {
         path: "color-text-generator",
         name: "Color Text Generator",
         description: "Generate and preview text with color codes.",
         shortDescription: "Create text with color codes",
-        seoDescription: "Create vibrant Minecraft text with our color code generator. Preview custom colored messages in chat, signs, books, MOTD, item name, item lore and kick message. Supports both standard color codes and custom hex values for unlimited creativity.",
+        seoDescription: "Create vibrant Minecraft text with our color code generator. Preview custom colored messages in chat, signs, books, MOTD, item name, item lore and kick message. Supports both standard color codes and custom hex values for unlimited creativity."
     },
     {
         path: "gradient-generator",
         name: "Gradient Generator",
         description: "Create a gradient between two colors for in-game text.",
         shortDescription: "Create chat color gradient",
-        seoDescription: "Design color gradients for Minecraft text, creating smooth transitions between any two colors. Get instant Spigot ChatColor and MiniMessage outputs for easy implementation in plugins.",
+        seoDescription: "Design color gradients for Minecraft text, creating smooth transitions between any two colors. Get instant Spigot ChatColor and MiniMessage outputs for easy implementation in plugins."
     },
     {
         path: "small-text-converter",
         name: "Small Text Converter",
         description: "Convert into sᴍᴀʟʟ ᴛᴇxᴛ seen on new era servers.",
         shortDescription: "Convert into sᴍᴀʟʟ ᴛᴇxᴛ",
-        seoDescription: "Transform your Minecraft text into stylish small caps. Convert regular text to the trendy, compact font used on popular servers like MCCI, Mineclub, TubNet. Stand out in chat, signs, and names with the easy-to-use small text converter.",
+        seoDescription: "Transform your Minecraft text into stylish small caps. Convert regular text to the trendy, compact font used on popular servers like MCCI, Mineclub, TubNet. Stand out in chat, signs, and names with the easy-to-use small text converter."
     },
     {
         path: "server-icon-converter",
@@ -102,7 +102,7 @@ const utils: Util[] = [
         name: "Unicode Symbols",
         description: "Collection of allowed in-game unicode characters.",
         shortDescription: "All allowed unicode symbols",
-        seoDescription: "Explore hundreds of Minecraft-compatible Unicode symbols. Enhance your chat, GUIs, and MOTDs with unique characters. The curated collection ensures all symbols display correctly in-game.",
+        seoDescription: "Explore hundreds of Minecraft-compatible Unicode symbols. Enhance your chat, GUIs, and MOTDs with unique characters. The curated collection ensures all symbols display correctly in-game."
     },
     {
         path: "note-block-songs",
@@ -139,8 +139,15 @@ const utils: Util[] = [
         "description": "Convert coordinates between the Overworld and the Nether, or vice versa.",
         "shortDescription": "Convert coordinates",
         "seoDescription": "Convert Minecraft coordinates between the Overworld and the Nether instantly. Calculate precise coordinates for fast travel, portal linking, and efficient navigation. Get accurate 8:1 ratio conversions for both directions, making your Nether travel planning quick and easy."
+    },
+    {
+        path: "luck-perms",
+        name: "LuckPerms Generator",
+        description: "Build LuckPerms groups with prefix, weight and permissions. Export a .json.gz file ready for the editor.",
+        shortDescription: "Generate LuckPerms groups",
+        seoDescription: "Create LuckPerms group configurations with colored prefixes, weights, and permissions. Export a compressed .json.gz compatible with the LuckPerms web editor."
     }    
-];
+  ];
 
 type Util = {
     path: string;
