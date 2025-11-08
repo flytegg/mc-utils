@@ -5,7 +5,7 @@ The project is powered by the team at [Flyte](https://flyte.gg/) and our generou
 
 If you want to support, or chat with the team, come join our Discord:
 
-[![Discord Banner](https://discordapp.com/api/guilds/835561528299880518/widget.png?style=banner2)](https://discord.gg/flyte)
+[![Discord Banner](https://discordapp.com/api/guilds/835561528299880518/widget.png?style=banner2)](https://flyte.gg/discord)
 
 
 ## 📝 Contributing
