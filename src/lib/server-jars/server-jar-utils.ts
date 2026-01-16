@@ -13,9 +13,9 @@ export const fetchDetailsFor = async (platform: string, version: string) => awai
 const handleVersion = async (version: string, versions: string[]) => version.toLowerCase() === "latest" ? findLatestVersion(versions) : version
 
 const handle = async (handleVersions: boolean, platform: string, version: string | null) => {
-    let versions
+let versions
 
-    switch (platform.toLowerCase()) {
+switch (platform.toLowerCase()) {
         case "paper":
         case "waterfall":
         case "velocity":
@@ -77,15 +77,60 @@ export const fetchManualDetailsFor = async (platform: string, version: string) =
 
 // End Manual Platforms
 
-// Start PaperMC Platforms 
+// Start PaperMC Platforms
 
 const PAPERMC_API_URL = "https://api.papermc.io/v2/projects"
 
-export const fetchPaperMcVersionsFor = async (platform: string) => (await (await fetch(`${PAPERMC_API_URL}/${platform}`)).json()).versions.reverse()
+// Cache for versions with 5 minute TTL
+const versionCache = new Map<string, { data: string[], timestamp: number }>()
+const CACHE_TTL = 30 * 60 * 1000 // 30 minutes
+
+export const fetchPaperMcVersionsFor = async (platform: string) => {
+    // Check cache first
+    const cached = versionCache.get(platform)
+    if (cached && Date.now() - cached.timestamp < CACHE_TTL) {
+        return cached.data
+    }
+
+    const versions = (await (await fetch(`${PAPERMC_API_URL}/${platform}`)).json()).versions.reverse()
+
+    // Check versions in parallel with batching to avoid overloading API
+    const batchSize = 10
+    const validVersions = []
+
+    for (let i = 0; i < versions.length; i += batchSize) {
+        const batch = versions.slice(i, i + batchSize)
+        const results = await Promise.allSettled(
+            batch.map(async (version) => {
+                const url = `${PAPERMC_API_URL}/${platform}/versions/${version}`
+                const buildsResponse = await (await fetch(url)).json()
+                const latestBuild = buildsResponse.builds[buildsResponse.builds.length - 1]
+                const buildResponse = await (await fetch(`${url}/builds/${latestBuild}`)).json()
+
+                return buildResponse.downloads?.application ? version : null
+            })
+)
+
+// Add successful results that aren't null
+results.forEach((result) => {
+            if (result.status === 'fulfilled' && result.value) {
+                validVersions.push(result.value)
+            }
+        })
+    }
+
+    // Cache the result
+    versionCache.set(platform, { data: validVersions, timestamp: Date.now() })
+
+    return validVersions
+}
 
 export const fetchPaperMcDetailsFor = async (platform: string, version: string) => {
-    const url = `${PAPERMC_API_URL}/${platform}/versions/${version}`;
-    const response = await (await fetch(`${url}/builds/${(await (await fetch(url)).json()).builds.reverse()[0]}`)).json()
+    const url = `${PAPERMC_API_URL}/${platform}/versions/${version}`
+    const buildsResponse = await (await fetch(url)).json()
+    const latestBuild = buildsResponse.builds[buildsResponse.builds.length - 1]
+    const response = await (await fetch(`${url}/builds/${latestBuild}`)).json()
+
     return {
         platform: response.project_id,
         display: response.project_name,
