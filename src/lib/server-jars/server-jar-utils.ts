@@ -79,7 +79,13 @@ export const fetchManualDetailsFor = async (platform: string, version: string) =
 
 // Start PaperMC Platforms
 
-const PAPERMC_API_URL = "https://api.papermc.io/v2/projects"
+const PAPERMC_API_URL = "https://fill.papermc.io/v3/projects"
+
+// PaperMC requires a non-generic User-Agent header on all requests to the fill API.
+// Use a clear identifier and contact URL so requests are accepted by the service.
+// Allow overriding via environment variable `PAPERMC_USER_AGENT`. Fall back to a
+// sensible default when not provided.
+const PAPERMC_USER_AGENT = process?.env?.PAPERMC_USER_AGENT || "mc-utils/1.0 (https://github.com/flytegg/mc-utils)"
 
 // Cache for versions with 5 minute TTL
 const versionCache = new Map<string, { data: string[], timestamp: number }>()
@@ -92,27 +98,32 @@ export const fetchPaperMcVersionsFor = async (platform: string) => {
         return cached.data
     }
 
-    const versions = (await (await fetch(`${PAPERMC_API_URL}/${platform}`)).json()).versions.reverse()
+    // Fetch list of versions for the project. The API groups versions so we expect
+    // an object with a `versions` property. Support both array and grouped object
+    // formats returned by the fill API.
+    const json = await (await fetch(`${PAPERMC_API_URL}/${platform}`, { headers: { 'User-Agent': PAPERMC_USER_AGENT } })).json()
+    let versionsList: string[] = (Object.values(json.versions) as string[][]).flat()
+        .filter((element, index) => !(index > 0 && element.includes("pre") || element.includes("rc")))
 
     // Check versions in parallel with batching to avoid overloading API
     const batchSize = 10
-    const validVersions = []
+    const validVersions: string[] = []
 
-    for (let i = 0; i < versions.length; i += batchSize) {
-        const batch = versions.slice(i, i + batchSize)
+    for (let i = 0; i < versionsList.length; i += batchSize) {
+        const batch = versionsList.slice(i, i + batchSize)
         const results = await Promise.allSettled(
             batch.map(async (version) => {
                 const url = `${PAPERMC_API_URL}/${platform}/versions/${version}`
-                const buildsResponse = await (await fetch(url)).json()
-                const latestBuild = buildsResponse.builds[buildsResponse.builds.length - 1]
-                const buildResponse = await (await fetch(`${url}/builds/${latestBuild}`)).json()
+                const buildsResponse = await (await fetch(url, { headers: { 'User-Agent': PAPERMC_USER_AGENT } })).json()
+                const latestBuild = buildsResponse.builds[0]
+                const buildResponse = await (await fetch(`${url}/builds/${latestBuild}`, { headers: { 'User-Agent': PAPERMC_USER_AGENT } })).json()
 
-                return buildResponse.downloads?.application ? version : null
+                return buildResponse.downloads['server:default'] ? version : null
             })
-)
+        )
 
-// Add successful results that aren't null
-results.forEach((result) => {
+        // Add successful results that aren't null
+        results.forEach((result) => {
             if (result.status === 'fulfilled' && result.value) {
                 validVersions.push(result.value)
             }
@@ -127,16 +138,16 @@ results.forEach((result) => {
 
 export const fetchPaperMcDetailsFor = async (platform: string, version: string) => {
     const url = `${PAPERMC_API_URL}/${platform}/versions/${version}`
-    const buildsResponse = await (await fetch(url)).json()
-    const latestBuild = buildsResponse.builds[buildsResponse.builds.length - 1]
-    const response = await (await fetch(`${url}/builds/${latestBuild}`)).json()
+    const buildsResponse = await (await fetch(url, { headers: { 'User-Agent': PAPERMC_USER_AGENT } })).json()
+    const latestBuild = buildsResponse.builds[0]
+    const response = await (await fetch(`${url}/builds/${latestBuild}`, { headers: { 'User-Agent': PAPERMC_USER_AGENT } })).json()
 
     return {
-        platform: response.project_id,
-        display: response.project_name,
-        version: response.version,
+        platform: response.platform,
+        display: response.platform,
+        version: `${buildsResponse.version.id}-${latestBuild}`,
         release: formatDate(new Date(response.time)),
-        downloadUrl: `${url}/builds/${response.build}/downloads/${response.downloads.application.name}`
+        downloadUrl: `${response.downloads['server:default'].url}`
     }
 }
 
