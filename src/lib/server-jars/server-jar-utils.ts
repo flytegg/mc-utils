@@ -85,7 +85,7 @@ const PAPERMC_API_URL = "https://fill.papermc.io/v3/projects"
 // Use a clear identifier and contact URL so requests are accepted by the service.
 // Allow overriding via environment variable `PAPERMC_USER_AGENT`. Fall back to a
 // sensible default when not provided.
-const PAPERMC_USER_AGENT = process?.env?.PAPERMC_USER_AGENT || "mc-utils/1.0 (https://github.com/flytegg/mc-utils)"
+const PAPERMC_USER_AGENT = (typeof process !== "undefined" ? process.env?.PAPERMC_USER_AGENT : undefined) || "mc-utils/1.0 (https://github.com/flytegg/mc-utils)"
 
 // Cache for versions with 5 minute TTL
 const versionCache = new Map<string, { data: string[], timestamp: number }>()
