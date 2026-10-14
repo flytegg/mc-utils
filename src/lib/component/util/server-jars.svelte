@@ -120,8 +120,8 @@
             <th class="rounded-tl-lg rounded-bl-lg p-2 font-medium text-left">{selectedType === "velocity" ? 'Version' : 'Minecraft Version'}</th>
             <th class="font-medium text-left">Release Date</th>
         </tr>
-        {#each versions as version}
-            <tr class="border-b-[1px] border-b-[#232324] text-[#cecece]">
+        {#each versions as version, i}
+            <tr class="border-b-[1px] border-b-[#232324] text-[#cecece] {i % 2 === 0 ? 'bg-[#232324]' : 'bg-[#131314]'}">
                 <td class="p-2 ">{version.version}</td>
                 <td class="">{selectedType === "fabric" ? 'Not known' : version.release}</td>
                 <td class="justify-end">

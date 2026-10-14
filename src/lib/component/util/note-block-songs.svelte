@@ -73,8 +73,8 @@
             </a>
         </th>
     </tr>
-    {#each searchResults ? searchResults : songs as song}
-        <tr class="border-b-[1px] border-b-[#232324] text-[#cecece]">
+    {#each searchResults ? searchResults : songs as song, i}
+        <tr class="border-b-[1px] border-b-[#232324] text-[#cecece] {i % 2 === 0 ? 'bg-[#232324]' : 'bg-[#131314]'}" >
             <td class="p-2">{song.fileName}</td>
             <td class="justify-end">
                 <div class="flex justify-end items-center h-full pr-1">

@@ -193,8 +193,8 @@ const colors = [
         <td class="text-left pr-3 w-[15%] border-b-[1.5px] border-b-[#232324]">MOTD</td>
         <td class="text-left pr-3 w-[15%] border-b-[1.5px] border-b-[#232324]">Hex</td>
     </tr>
-    {#each colors as color}
-        <tr class="">
+    {#each colors as color, i}
+        <tr class="{i % 2 === 0 ? 'bg-[#232324]' : 'bg-[#131314]'}">
             <td class="p-1.5 pr-5 border-b-2 border-b-[#1D1F24] text-gray-400">
                 <div class="bg-[{color.hex}] rounded-md w-[90px] h-[25px]"></div>
             </td>
@@ -206,8 +206,8 @@ const colors = [
         </tr>
     {/each}
 
-    {#each formats as format}
-        <tr class="">
+    {#each formats as format, i}
+        <tr class="{i % 2 === 0 ? 'bg-[#232324]' : 'bg-[#131314]'}">
             <td class="border-b-2 border-b-[#1D1F24] text-gray-400 p-1.5">
                 {#if format.name === "Magic"}
                     {@html obfuscated}
