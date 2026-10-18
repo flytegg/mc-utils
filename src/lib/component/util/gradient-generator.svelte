@@ -12,8 +12,11 @@
     let color1 = "#0040FF"
     let color2 = "#00FBFF"
 
+    const segmenter = new Intl.Segmenter(undefined, { granularity: "grapheme" })
+
     function calculateResult() {
-        const coloredLength = text.replace(/\s/g, "").length
+        const characters = Array.from(segmenter.segment(text), ({ segment }) => segment)
+        const coloredLength = characters.filter(char => !/\s/.test(char)).length
         const colors = coloredLength > 0
             ? new Gradient()
                 .setColorGradient(color1, color2)
@@ -23,9 +26,7 @@
 
         let hexIndex = 0;
         let output = ""
-        for (let i = 0; i < text.length; i++) {
-            const char = text[i];
-
+        for (const char of characters) {
             if (!/\s/.test(char) && colors.length) {
                 output += "&" + colors[hexIndex % colors.length];
                 hexIndex++;

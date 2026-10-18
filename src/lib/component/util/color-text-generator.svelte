@@ -307,7 +307,7 @@
             </div>
             <div class="preview-area mt-8 w-full" bind:this={previewRoot}>
                 {#if activeTab === 0} <!-- Text -->
-                    <p class="font-['Minecraft'] break-words text-2xl text-center" style="white-space: pre-wrap">{@html previewText}</p>
+                    <p class="font-['Minecraft'] [overflow-wrap:anywhere] text-2xl text-center" style="white-space: pre-wrap">{@html previewText}</p>
                 {:else if activeTab === 1} <!-- Sign -->
                     <div class="preview-box" style="max-width: 500px;">
                         <img src="/display/sign.png" alt="Sign" class="w-[100%] block">
