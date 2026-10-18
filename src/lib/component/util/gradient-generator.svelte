@@ -13,17 +13,20 @@
     let color2 = "#00FBFF"
 
     function calculateResult() {
-        const colors = new Gradient()
-            .setColorGradient(color1, color2)
-            .setMidpoint(text.replace(/\s/g, "").length)
-            .getColors()
+        const coloredLength = text.replace(/\s/g, "").length
+        const colors = coloredLength > 0
+            ? new Gradient()
+                .setColorGradient(color1, color2)
+                .setMidpoint(coloredLength)
+                .getColors()
+            : []
 
         let hexIndex = 0;
         let output = ""
         for (let i = 0; i < text.length; i++) {
             const char = text[i];
 
-            if (char.match(/[a-z]/i)) {
+            if (!/\s/.test(char) && colors.length) {
                 output += "&" + colors[hexIndex % colors.length];
                 hexIndex++;
             }

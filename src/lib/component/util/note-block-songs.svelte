@@ -29,6 +29,7 @@
                 fileName: file.name,
                 downloadUrl: file.download_url,
             }))
+            .sort((a, b) => a.fileName.localeCompare(b.fileName, undefined, { sensitivity: 'base' }))
     }
 
     onMount(fetchFilesFromRepo);

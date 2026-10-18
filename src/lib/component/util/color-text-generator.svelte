@@ -1,252 +1,63 @@
 <script lang="ts">
-    import { afterUpdate } from 'svelte';
+    import { onMount, tick } from 'svelte';
+    import { toast } from '@zerodevx/svelte-toast'
+    import { incrementTracker } from "$lib/tracker/tracker";
 
     let activeTab = 0;
     let text = "";
-    let isPreviewingSign = false;
+    let color = "#FFFFFF";
+    let previewRoot: HTMLElement;
 
     const tabData = [
-        {
-            name: 'Text',
-            content: '',
-        },
-        {
-            name: 'Sign',
-            content: '',
-        },
-        {
-            name: 'Book',
-            content: '',
-        },
-        {
-            name: 'Chat',
-            content: '',
-        },
-        {
-            name: 'MOTD',
-            content: '',
-        },
-        {
-            name: 'Name',
-            content: '',
-        },
-        {
-            name: 'Lore',
-            content: '',
-        },
-        {
-            name: 'Kick',
-            content: '',
-        }
+        { name: 'Text' },
+        { name: 'Sign' },
+        { name: 'Book' },
+        { name: 'Chat' },
+        { name: 'MOTD' },
+        { name: 'Name' },
+        { name: 'Lore' },
+        { name: 'Kick' }
     ];
 
-    function insertTextAtCursor(value) {
-        const inputBox = document.getElementById("textinput");
+    // ---------------------------------------------------------------------
+    // Input helpers
+    // ---------------------------------------------------------------------
+
+    function autoSize(target: HTMLTextAreaElement) {
+        if (!target.value.includes("\n")) {
+            // removes all inline styles from this element
+            target.setAttribute("style", '')
+        } else {
+            target.setAttribute("style", "height:auto")
+            target.setAttribute("style", "height:" + target.scrollHeight + "px")
+        }
+    }
+
+    function autoSizeTextArea(event: Event) {
+        autoSize(event.target as HTMLTextAreaElement)
+    }
+
+    function insertTextAtCursor(value: string) {
+        const inputBox = document.getElementById("textinput") as HTMLTextAreaElement;
         const startPos = inputBox.selectionStart;
         const endPos = inputBox.selectionEnd;
         const currentValue = inputBox.value;
 
-        const newText = currentValue.substring(0, startPos) + value + currentValue.substring(endPos);
-        text = newText;
+        text = currentValue.substring(0, startPos) + value + currentValue.substring(endPos);
 
-        // Get the updated cursor position after the text update
         const updatedCursorPosition = startPos + value.length;
 
         inputBox.focus();
-        // Use requestAnimationFrame to ensure setting selection works after the element repaints
-        requestAnimationFrame(() => {
+        // wait for the DOM to update before restoring the cursor / resizing
+        tick().then(() => {
             inputBox.setSelectionRange(updatedCursorPosition, updatedCursorPosition);
+            autoSize(inputBox);
         });
     }
 
-    function setActiveTab(index) {
+    function setActiveTab(index: number) {
         activeTab = index;
-        isPreviewingSign = false; // Reset the sign preview flag when changing tabs
     }
-
-    let previewText = '';
-
-    afterUpdate(() => {
-        previewText = applyMinecraftFormatting(text);
-    });
-
-    function applyMinecraftFormatting(text) {
-        let htmlText = ""
-
-        function isValidColorChar(char) {
-            return (char >= '0' && char <= '9') || (char >= 'a' && char <= 'f') || (char >= 'A' && char <= 'F');
-        }
-
-        function isValidDecorationChar(char) {
-            return (char >= 'k' && char <= 'o') || (char >= 'K' && char <= 'O');
-        }
-
-        function getColorStyleFromChar(char) {
-            const colorMap = {
-                "0": "000000",  // Black
-                "1": "0000AA",  // Dark Blue
-                "2": "00AA00",  // Dark Green
-                "3": "00AAAA",  // Dark Aqua
-                "4": "AA0000",  // Dark Red
-                "5": "AA00AA",  // Dark Purple
-                "6": "FFAA00",  // Gold
-                "7": "AAAAAA",  // Gray
-                "8": "555555",  // Dark Gray
-                "9": "5555FF",  // Blue
-                "a": "55FF55",  // Green
-                "b": "55FFFF",  // Aqua
-                "c": "FF5555",  // Red
-                "d": "FF55FF",  // Light Purple
-                "e": "FFFF55",  // Yellow
-                "f": "FFFFFF",  // White
-            };
-            return colorMap[`${char}`]
-        }
-
-        function getDecorationStyleFromChar(char) {
-            const decorationMap = {
-                "k": "font-weight: bold;",
-                "l": "font-weight: bold;",
-                "m": "text-decoration: line-through;",
-                "n": "text-decoration: underline;",
-                "o": "font-style: italic;"
-            }
-            return decorationMap[`${char}`]
-        }
-
-        let coloringMode = false
-        let colorType = ""
-        let coloredText = ""
-
-        let decorationMode = false
-        let decorationStyles = ""
-        let decorationColorType = ""
-        let decorationText = ""
-
-        function releaseTextOfColorMode() {
-            if (!coloringMode) return
-            htmlText += `<span style="color: #${colorType};">${coloredText}</span>`
-
-            // reset
-            coloringMode = false
-            coloredText = ""
-            colorType = ""
-        }
-
-        function releaseTextOfDecorationMode() {
-            if (!decorationMode) return
-            htmlText += `<span style="color: #${decorationColorType}; ${decorationStyles}">${decorationText}</span>`
-
-            // reset
-            decorationMode = false
-            decorationText = ""
-            decorationStyles = ""
-            decorationColorType = ""
-        }
-
-        function isGradient(text) {
-            const regex = /&#([A-Fa-f0-9]{6})/g;
-            return regex.test(text);
-        }
-
-        function getGradientColor(text) {
-            const regex = /&#([A-Fa-f0-9]{6})/g;
-
-            let gradientColor = ""
-            text.replace(regex, (match, color) => gradientColor = color);
-            return gradientColor
-        }
-
-        for (let i = 0; i < text.length; i++) {
-            const c = text[i]
-
-            const nextC = text.charAt(i + 1)
-            let hasFormatSign = c === "&";
-
-            let gradient = false
-            let hexSlice = text.slice(i, i + 8);
-            if (hasFormatSign && (isValidColorChar(nextC) || (gradient = isGradient(hexSlice)))) {
-                // skip to next char
-                if (gradient) {
-                    i += 7
-                } else {
-                    i += 1
-                }
-
-                // release previous color/decoration
-                releaseTextOfColorMode();
-                releaseTextOfDecorationMode();
-
-                if (gradient) {
-                    colorType = getGradientColor(hexSlice)
-                } else {
-                    colorType = getColorStyleFromChar(nextC)
-                }
-                coloringMode = true
-                continue
-            } else if (hasFormatSign && isValidDecorationChar(nextC)) {
-                // skip to next char
-                i += 1
-
-                // release and inherit current decoration style and color
-                if (decorationMode) {
-                    const inheritDecorations = decorationStyles
-                    const inheritDecorationsColor = decorationColorType
-                    releaseTextOfDecorationMode();
-                    decorationStyles += inheritDecorations
-                    decorationColorType = inheritDecorationsColor
-                }
-
-                // release and inherit current colors
-                if (coloringMode) {
-                    decorationColorType = colorType
-                    releaseTextOfColorMode()
-                }
-
-                decorationStyles += getDecorationStyleFromChar(nextC)
-                decorationMode = true
-                continue
-            } else if (hasFormatSign && nextC === "r") {
-                // skip to next char
-                i += 1
-
-                releaseTextOfColorMode()
-                releaseTextOfDecorationMode()
-                continue
-            }
-
-            if (coloringMode) {
-                coloredText += c
-            } else if (decorationMode) {
-                decorationText += c
-            } else {
-                htmlText += c
-            }
-        }
-
-        // release leftovers
-        releaseTextOfColorMode()
-        releaseTextOfDecorationMode()
-
-        document.getElementById("textinput").focus();
-
-        return getResetStyle() + htmlText;
-    }
-
-    function getResetStyle() {
-        if (activeTab === 0 || activeTab === 3 || activeTab === 5 || activeTab === 6 || activeTab === 7) {
-            return `<span style="color: #FFFFFF;">`;
-        } else if (activeTab === 1 || activeTab === 2) {
-            return `<span style="color: #000000;">`;
-        } else if (activeTab === 4) {
-            return `<span style="color: #AAAAAA;">`;
-        } else {
-            return `<span>`; // Default - No color
-        }
-    }
-
-    import { toast } from '@zerodevx/svelte-toast'
-    import {incrementTracker} from "$lib/tracker/tracker";
 
     function copyValue() {
         navigator.clipboard.writeText(text)
@@ -261,21 +72,173 @@
         incrementTracker("color-text-copied")
     }
 
-    function autoSizeTextArea(event) {
-        const target = event.target;
-        if (!target.value.includes("\n")) {
-            // removes all inline styles from this element
-            target.setAttribute("style", '')
-        } else {
-            target.setAttribute("style", "height:auto")
-            target.setAttribute("style", "height:" + target.scrollHeight + "px")
-        }
+    // ---------------------------------------------------------------------
+    // Minecraft formatting
+    // ---------------------------------------------------------------------
+
+    const COLOR_MAP: Record<string, string> = {
+        "0": "#000000",  // Black
+        "1": "#0000AA",  // Dark Blue
+        "2": "#00AA00",  // Dark Green
+        "3": "#00AAAA",  // Dark Aqua
+        "4": "#AA0000",  // Dark Red
+        "5": "#AA00AA",  // Dark Purple
+        "6": "#FFAA00",  // Gold
+        "7": "#AAAAAA",  // Gray
+        "8": "#555555",  // Dark Gray
+        "9": "#5555FF",  // Blue
+        "a": "#55FF55",  // Green
+        "b": "#55FFFF",  // Aqua
+        "c": "#FF5555",  // Red
+        "d": "#FF55FF",  // Light Purple
+        "e": "#FFFF55",  // Yellow
+        "f": "#FFFFFF",  // White
+    };
+
+    const HEX_REGEX = /^&#[0-9a-fA-F]{6}$/;
+
+    function escapeHtml(value: string): string {
+        return value
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#39;");
     }
 
-    let color = "#FFFFFF";
+    // Default text colour of each preview
+    function getBaseColor(tab: number): string {
+        if (tab === 1 || tab === 2) return "#000000";   // Sign, Book
+        if (tab === 4) return "#AAAAAA";                 // MOTD
+        return "#FFFFFF";
+    }
+
+    function applyMinecraftFormatting(input: string, tab: number): string {
+        const baseColor = getBaseColor(tab);
+
+        let color: string | null = null;
+        let bold = false;
+        let italic = false;
+        let underline = false;
+        let strike = false;
+        let magic = false;
+
+        let buffer = "";
+        let html = "";
+
+        function flush() {
+            if (!buffer) return;
+
+            const lines = [`color: ${color ?? baseColor};`];
+            if (bold) lines.push("font-weight: bold;");
+            if (italic) lines.push("font-style: italic;");
+            const decorations = [underline ? "underline" : "", strike ? "line-through" : ""].filter(Boolean);
+            if (decorations.length) lines.push(`text-decoration: ${decorations.join(" ")};`);
+
+            const escaped = escapeHtml(buffer);
+            if (magic) {
+                html += `<span class="mc-magic" data-text="${escaped}" style="${lines.join(" ")}">${escaped}</span>`;
+            } else {
+                html += `<span style="${lines.join(" ")}">${escaped}</span>`;
+            }
+            buffer = "";
+        }
+
+        // Colour codes (and hex codes) wipe every active decoration, like in-game
+        function setColor(value: string) {
+            flush();
+            color = value;
+            bold = italic = underline = strike = magic = false;
+        }
+
+        // &r resets EVERYTHING: colour and all decorations
+        function resetAll() {
+            flush();
+            color = null;
+            bold = italic = underline = strike = magic = false;
+        }
+
+        for (let i = 0; i < input.length; i++) {
+            const c = input[i];
+
+            if (c === "&") {
+                // &#RRGGBB
+                const hexSlice = input.slice(i, i + 8);
+                if (HEX_REGEX.test(hexSlice)) {
+                    setColor("#" + hexSlice.slice(2));
+                    i += 7;
+                    continue;
+                }
+
+                const code = input.charAt(i + 1).toLowerCase();
+
+                if (code && COLOR_MAP[code]) {
+                    setColor(COLOR_MAP[code]);
+                    i += 1;
+                    continue;
+                }
+
+                if (code === "r") {
+                    resetAll();
+                    i += 1;
+                    continue;
+                }
+
+                if (code === "k" || code === "l" || code === "m" || code === "n" || code === "o") {
+                    flush();
+                    if (code === "k") magic = true;
+                    if (code === "l") bold = true;
+                    if (code === "m") strike = true;
+                    if (code === "n") underline = true;
+                    if (code === "o") italic = true;
+                    i += 1;
+                    continue;
+                }
+            }
+
+            buffer += c;
+        }
+
+        flush();
+
+        return html;
+    }
+
+    $: previewText = applyMinecraftFormatting(text, activeTab);
+
+    // ---------------------------------------------------------------------
+    // Magic (obfuscated) text: keep scrambling characters
+    // ---------------------------------------------------------------------
+
+    const NARROW_CHARS = "!.,:;'|i";
+    const WIDE_CHARS = "abcdeghjmnopqrsuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ0123456789#$%&?@";
+
+    function scramble(original: string): string {
+        let out = "";
+        for (const ch of original) {
+            if (ch === " " || ch === "\n" || ch === "\t") {
+                out += ch;
+            } else {
+                const pool = NARROW_CHARS.includes(ch) ? NARROW_CHARS : WIDE_CHARS;
+                out += pool[Math.floor(Math.random() * pool.length)];
+            }
+        }
+        return out;
+    }
+
+    onMount(() => {
+        const interval = setInterval(() => {
+            if (!previewRoot) return;
+            previewRoot.querySelectorAll<HTMLElement>(".mc-magic").forEach((el) => {
+                el.textContent = scramble(el.dataset.text ?? "");
+            });
+        }, 60);
+
+        return () => clearInterval(interval);
+    });
 </script>
 
-<main class="w-[60%]">
+<main class="w-full lg:w-[60%] min-w-0">
     <div class="flex-col flex">
         <div class="place-items-center text-center items-start grid grid-cols-1 xl:flex justify-center gap-6">
             <div class="flex-col flex gap-1">
@@ -331,9 +294,10 @@
     <div class="flex flex-col">
         <h3 class="font-medium text-white text-[20px] mt-8 text-center mb-5">Preview</h3>
         <div class="tab-system w-[100%] flex flex-col">
-            <div class="self-center grid xl:grid-cols-8 md:grid-cols-4 grid-cols-2 -mt-2 z-50">
+            <!-- Tabs sit above every preview so nothing can ever cover them -->
+            <div class="tab-bar self-center flex flex-wrap justify-center gap-2">
                 {#each tabData as tab, index}
-                    <button class="button px-4 py-2 mr-2 mt-2 rounded focus:outline-none"
+                    <button class="button px-4 py-2 rounded focus:outline-none"
                             class:bg-gray-200={index === activeTab}
                             class:text-black={index === activeTab}
                             on:click={() => setActiveTab(index)}>
@@ -341,57 +305,55 @@
                     </button>
                 {/each}
             </div>
-            <div class="mt-8 self-center">
+            <div class="preview-area mt-8 w-full" bind:this={previewRoot}>
                 {#if activeTab === 0} <!-- Text -->
-                    <p class="font-['Minecraft'] break-all text-2xl text-center" style="white-space: pre-wrap">{@html previewText}</p>
+                    <p class="font-['Minecraft'] break-words text-2xl text-center" style="white-space: pre-wrap">{@html previewText}</p>
                 {:else if activeTab === 1} <!-- Sign -->
-                    <div class="self-center relative w-[500px] mx-auto">
-                        <img src="/display/sign.png" alt="Sign" class="w-[100%] self-center items-center">
+                    <div class="preview-box" style="max-width: 500px;">
+                        <img src="/display/sign.png" alt="Sign" class="w-[100%] block">
                         <div class="sign-content overflow-y-hidden">
                             <p class="sign-text">{@html previewText}</p>
                         </div>
                     </div>
                 {:else if activeTab === 2} <!-- Book -->
-                    <div class="self-center relative w-[250px] mx-auto">
-                        <img src="/display/book.svg" alt="Sign" class="w-[100%] self-center items-center">
-                        <div class="book-content overflow-y-hidden ">
+                    <div class="preview-box" style="max-width: 250px;">
+                        <img src="/display/book.svg" alt="Book" class="w-[100%] block">
+                        <div class="book-content overflow-y-hidden">
                             <p class="book-text">{@html previewText}</p>
                         </div>
                     </div>
                 {:else if activeTab === 3} <!-- Chat -->
-                    <div class="self-center relative w-[650px] mx-auto">
-                        <img src="/display/chat.svg" alt="Sign" class="w-[100%] self-center items-center ">
+                    <div class="preview-box" style="max-width: 650px;">
+                        <img src="/display/chat.svg" alt="Chat" class="w-[100%] block">
                         <div class="chat-content overflow-y-hidden bg-black bg-opacity-40">
                             <p class="chat-text">{@html previewText}</p>
                         </div>
                     </div>
                 {:else if activeTab === 4} <!-- MOTD -->
-                    <div class="self-center relative w-[650px] mx-auto">
-                        <img src="/display/motd.svg" alt="Sign" class="w-[100%]">
-                        <div class="text-left mr-auto mc-server-content overflow-y-hidden">
+                    <div class="preview-box" style="max-width: 650px;">
+                        <img src="/display/motd.svg" alt="MOTD" class="w-[100%] block">
+                        <div class="motd-content overflow-y-hidden">
                             <p class="minecraft-server text-white">Minecraft Server</p>
-                        </div>
-                        <div class="mr-auto text-start motd-content overflow-y-hidden">
-                            <p class="motd-text text-start"><br>{@html previewText}</p>
+                            <p class="motd-text">{@html previewText}</p>
                         </div>
                     </div>
                 {:else if activeTab === 5} <!-- Name -->
-                    <div class="self-center relative w-[500px] mx-auto">
-                        <img src="/display/name.svg" alt="Name" class="w-[100%] self-center items-center">
+                    <div class="preview-box" style="max-width: 500px;">
+                        <img src="/display/name.svg" alt="Name" class="w-[100%] block">
                         <div class="name-content overflow-y-hidden">
                             <p class="name-text">{@html previewText}</p>
                         </div>
                     </div>
                 {:else if activeTab === 6} <!-- Lore -->
-                    <div class="self-center relative w-[500px] mx-auto">
-                        <img src="/display/lore.svg" alt="Lore" class="w-[100%] self-center items-center">
+                    <div class="preview-box" style="max-width: 500px;">
+                        <img src="/display/lore.svg" alt="Lore" class="w-[100%] block">
                         <div class="lore-content overflow-y-hidden">
                             <p class="lore-text">{@html previewText}</p>
                         </div>
                     </div>
                 {:else if activeTab === 7} <!-- Kick -->
-                    <div class="self-center relative w-[550px] mx-auto">
-                        <img src="/display/kick.svg" alt="Kick" class="w-[100%] self-center items-center">
+                    <div class="preview-box" style="max-width: 550px;">
+                        <img src="/display/kick.svg" alt="Kick" class="w-[100%] block">
                         <div class="kick-content overflow-y-hidden">
                             <p class="kick-text">{@html previewText}</p>
                         </div>
@@ -403,20 +365,33 @@
 </main>
 
 <style>
-    .tab-system .tab {
-        display: none;
+    /*
+     * Every preview is a scalable box: it is as wide as its parent (up to the
+     * max-width set inline) and all inner sizes use cqw units (1cqw = 1% of the
+     * box width), so text and offsets scale together with the image.
+     * Sizes below were converted from the original pixel values:
+     *   cqw = px / base-width * 100
+     */
+    .preview-box {
+        position: relative;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        container-type: inline-size;
     }
 
-    .tab-system .tab.active {
-        display: block;
+    .tab-bar {
+        position: relative;
+        z-index: 50;
     }
 
+    /* Sign (base 500px) */
     .sign-content {
         position: absolute;
-        top: 10px;
-        left: 10px;
-        right: 10px;
-        bottom: 10px;
+        top: 2cqw;
+        left: 2cqw;
+        right: 2cqw;
+        bottom: 2cqw;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -424,23 +399,25 @@
 
     .sign-text {
         font-family: 'Minecraft', monospace;
-        font-size: 40px;
+        font-size: 8cqw;
         line-height: 1.3;
         text-align: center;
-        max-height: calc(100% - 20px);
+        max-height: calc(100% - 4cqw);
         overflow: hidden;
         white-space: pre-wrap;
         word-wrap: break-word;
+        overflow-wrap: anywhere;
     }
 
+    /* Kick (base 550px) */
     .kick-content {
-        padding-left: 30px;
-        padding-right: 30px;
+        padding-left: 5.5cqw;
+        padding-right: 5.5cqw;
         position: absolute;
-        top: 55px;
-        left: 10px;
-        right: 10px;
-        bottom: 10px;
+        top: 10cqw;
+        left: 1.8cqw;
+        right: 1.8cqw;
+        bottom: 1.8cqw;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -448,140 +425,146 @@
 
     .kick-text {
         font-family: 'Minecraft', monospace;
-        font-size: 17px;
+        font-size: 3.1cqw;
         line-height: 1.3;
         text-align: center;
-        max-height: calc(100% - 20px);
+        max-height: calc(100% - 3.6cqw);
         overflow: hidden;
         white-space: pre-wrap;
         word-wrap: break-word;
+        overflow-wrap: anywhere;
         height: 100%;
     }
 
+    /* Lore (base 500px) */
     .lore-content {
         position: absolute;
-        top: 60px;
-        left: 24px;
-        right: 24px;
-        bottom: 25px;
+        top: 12cqw;
+        left: 4.8cqw;
+        right: 4.8cqw;
+        bottom: 5cqw;
         display: flex;
     }
 
     .lore-text {
         font-family: 'Minecraft', monospace;
-        font-size: 30px;
+        font-size: 6cqw;
         line-height: 1.3;
         text-align: left;
-        max-height: calc(100% - 20px);
+        max-height: calc(100% - 4cqw);
         overflow: hidden;
         white-space: pre-wrap;
         word-wrap: break-word;
+        overflow-wrap: anywhere;
     }
 
+    /* Name (base 500px) */
     .name-content {
         position: absolute;
-        top: 16px;
+        top: 3.2cqw;
         right: 0;
         bottom: 0;
         overflow: hidden;
-        left: 24px;
+        left: 4.8cqw;
         display: flex;
     }
 
     .name-text {
         font-family: 'Minecraft', monospace;
-        font-size: 30px;
+        font-size: 6cqw;
         line-height: 1.3;
         text-align: left;
-        max-height: calc(100% - 20px);
+        max-height: calc(100% - 4cqw);
         overflow: hidden;
         white-space: pre-wrap;
         word-wrap: break-word;
+        overflow-wrap: anywhere;
     }
 
+    /* Book (base 250px) - text is aligned to the TOP */
     .book-content {
         position: absolute;
-        top: 10px;
-        left: 30px;
-        right: 30px;
-        bottom: 10px;
+        top: 6cqw;
+        left: 12cqw;
+        right: 12cqw;
+        bottom: 4cqw;
         display: flex;
-        align-items: center;
-        justify-content: center;
+        align-items: flex-start;
+        justify-content: flex-start;
     }
 
     .book-text {
+        width: 100%;
         font-family: 'Minecraft', monospace;
-        font-size: 15px;
+        font-size: 6cqw;
         line-height: 1.3;
         text-align: start;
-        max-height: calc(100% - 20px);
+        max-height: 100%;
         overflow: hidden;
         white-space: pre-wrap;
         word-wrap: break-word;
+        overflow-wrap: anywhere;
     }
 
+    /*
+     * MOTD (base 650px). The title and the MOTD now live in ONE in-flow
+     * container (no more negative offsets), so the overlay can no longer
+     * spill over the tab buttons.
+     */
     .motd-content {
         position: absolute;
-        top: 5px;
-        left: 125px;
-        right: 30px;
-        bottom: 10px;
+        top: 2.6cqw;
+        left: 19.2cqw;
+        right: 4.6cqw;
+        bottom: 1.5cqw;
         display: flex;
-    }
-
-    .motd-text {
-        margin-top: 13px;
-        font-family: 'Minecraft', monospace;
-        font-size: 22px;
-        line-height: 1.3;
+        flex-direction: column;
         text-align: left;
-        max-height: calc(100% - 20px);
-        overflow: hidden;
-        white-space: pre-wrap;
-        word-wrap: break-word;
+        pointer-events: none;
     }
 
     .minecraft-server {
         font-family: 'Minecraft', monospace;
-        font-size: 22px;
+        font-size: 3.4cqw;
         line-height: 1.3;
         text-align: left;
         white-space: pre-wrap;
         word-wrap: break-word;
     }
 
-    .mc-server-content {
-        position: absolute;
-        top: -50px;
-        left: -132px;
-        right: 30px;
-        bottom: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    .motd-text {
+        font-family: 'Minecraft', monospace;
+        font-size: 3.4cqw;
+        line-height: 1.3;
+        text-align: left;
+        max-height: 100%;
+        overflow: hidden;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        overflow-wrap: anywhere;
     }
 
+    /* Chat (base 650px) */
     .chat-content {
         position: absolute;
-        top: 10px;
-        left: 10px;
-        right: 30px;
-        bottom: 10px;
+        top: 1.5cqw;
+        left: 1.5cqw;
+        bottom: 1.5cqw;
+        width: 73.8cqw;
         display: flex;
-        width: 480px;
         flex-direction: column-reverse;
     }
 
     .chat-text {
         font-family: 'Minecraft', monospace;
-        font-size: 15px;
-        margin: 6px;
+        font-size: 2.3cqw;
+        margin: 0.9cqw;
         line-height: 1.3;
         text-align: left;
         overflow: hidden;
         white-space: pre-wrap;
         word-wrap: break-word;
+        overflow-wrap: anywhere;
     }
 
     input::-webkit-color-swatch {

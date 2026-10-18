@@ -73,7 +73,7 @@
     }
 
     function copyValue() {
-        const content = tabData[activeTab].content.replace(/<br>/g, '\n')
+        const content = tabData[activeTab].content.replace(/<br>/g, '\n').replace(/&emsp;/g, ' ').trim()
         navigator.clipboard.writeText(content)
         toast.push('Copied successfully!', {
             theme: {
