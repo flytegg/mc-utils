@@ -41,7 +41,7 @@ export function parseColoredText(input: string, baseColor = '#FFFFFF'): TextRun[
     return runs;
 }
 
-export type ItemVersion = 'legacy' | 'json-components' | 'snbt-components';
+export type ItemVersion = 'legacy' | 'json-components' | 'snbt-components' | '26.3';
 
 // JSON is also valid compound SNBT for these string and boolean fields.
 export function itemNameComponent(input: string): string {
@@ -59,9 +59,21 @@ export function quoteSnbt(value: string): string {
 
 export function itemNameOutput(input: string, version: ItemVersion, itemId: string) {
     const component = itemNameComponent(input);
-    const value = version === 'snbt-components' ? component : quoteSnbt(component);
+    const value = version === 'snbt-components' || version === '26.3' ? component : quoteSnbt(component);
     const field = version === 'legacy' ? `Name:${value}` : `minecraft:custom_name=${value}`;
     const validItem = /^(?:[a-z0-9_.-]+:)?[a-z0-9_./-]+$/.test(itemId);
     const suffix = version === 'legacy' ? `{display:{${field}}}` : `[${field}]`;
     return { value, field, command: validItem ? `/give @s ${itemId}${suffix} 1` : '' };
+}
+
+/** Inline item modifiers are supported from Java 1.20.5 onward. */
+export function renameHeldItem(input: string, version: ItemVersion): string {
+    if (version === 'legacy') {
+        // Player NBT cannot be edited with /data. Edit a dropped item instead.
+        return `/data modify entity @e[type=minecraft:item,sort=nearest,limit=1,distance=..3] Item.tag.display.Name set value ${quoteSnbt(itemNameComponent(input))}`;
+    }
+    return `/item modify entity @s weapon.mainhand ${JSON.stringify({
+        [version === '26.3' ? 'type' : 'function']: 'minecraft:set_name',
+        name: JSON.parse(itemNameComponent(input))
+    })}`;
 }
