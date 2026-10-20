@@ -10,7 +10,7 @@ Local Chrome captures from October 19, 2026. Red outlines mark command output. T
 
 ## Validation
 
-- `bun test tests/item-name.test.ts tests/item-data.test.ts`: 22 passing tests. Covers version syntax, formatting resets, escaping, Unicode, data preservation, removed components, malformed input, and input bounds.
+- `bun test tests/item-name.test.ts tests/item-data.test.ts`: 23 passing tests. Covers version syntax, formatting resets, escaping, Unicode, data preservation, removed components, malformed input, input bounds, and single-line commands from formatted SNBT.
 - Local Chrome: real clipboard matches displayed commands for all four version options. Held-item mode, modern and legacy pasted data, invalid-data copy prevention, gradient updates, and 320px/390px layouts pass. No page errors.
 - `bun run build`: passes with the existing Cloudflare route-exclusion warning.
 - `bun run check`: the same 66 errors and 11 warnings in 14 files as master. No new diagnostics.
