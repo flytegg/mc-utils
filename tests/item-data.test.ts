@@ -93,3 +93,12 @@ it('keeps removed components removed, while replacing a removed name', () => {
     assert.ok(!result.data.includes('!minecraft:custom_name'));
     assert.throws(() => renameItemData('{id:{wrong:1}}', 'Blade', '26.3', 'diamond_sword'));
 });
+
+it('copies formatted SNBT as one command line without changing quoted text', () => {
+    const source = `{\n  id: "diamond_sword",\n  Count: 1b,\n  tag: { display: { Lore: ['"Won in battle"'] }, Damage: 2 }\n}`;
+    const result = renameItemData(source, 'Ember Blade', 'legacy', 'stone');
+    assert.ok(!result.command.includes('\n'));
+    assert.ok(result.command.includes('Won in battle'));
+    assert.ok(result.command.includes('Ember Blade'));
+    assert.ok(result.data.includes('\n  Count: 1b,'));
+});

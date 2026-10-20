@@ -76,6 +76,25 @@ function setField(node: Node, key: string, value: string): string {
     return `${body}${node.entries.length && !body.endsWith(',') ? ',' : ''}${JSON.stringify(key)}:${value}}`;
 }
 
+/** Commands are pasted on one line; keep whitespace inside strings unchanged. */
+function commandSnbt(value: string): string {
+    let result = '';
+    let quote = '';
+    let escaped = false;
+    for (const char of value) {
+        if (quote) {
+            result += char;
+            if (escaped) escaped = false;
+            else if (char === '\\') escaped = true;
+            else if (char === quote) quote = '';
+        } else if (char === '"' || char === "'") {
+            quote = char;
+            result += char;
+        } else if (!/\s/.test(char)) result += char;
+    }
+    return result;
+}
+
 export function renameItemData(source: string, input: string, version: ItemVersion, fallbackId: string) {
     const root = parseSnbt(source.trim());
     const id = field(root, 'id');
@@ -116,6 +135,6 @@ export function renameItemData(source: string, input: string, version: ItemVersi
     const suffix = legacy ? updated : `[${parseSnbt(updated).entries!.map(({ key, value }) => key.startsWith('!') ? key : `${key}=${value.raw}`).join(',')}]`;
     return {
         data: fullStack ? setField(root, containerKey, updated) : updated,
-        command: `/give @s ${itemId}${suffix} ${count}`
+        command: `/give @s ${itemId}${commandSnbt(suffix)} ${count}`
     };
 }
