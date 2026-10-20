@@ -3,6 +3,8 @@
     import Gradient from "javascript-color-gradient";
     import {incrementTracker} from "$lib/tracker/tracker";
 
+    import ItemNameOutput from "$lib/component/other/item-name-output.svelte";
+
     let text = "MC Utils"
 
     let outputText = ""
@@ -14,7 +16,7 @@
 
     const segmenter = new Intl.Segmenter(undefined, { granularity: "grapheme" })
 
-    function calculateResult() {
+    function calculateResult(text: string, color1: string, color2: string) {
         const characters = Array.from(segmenter.segment(text), ({ segment }) => segment)
         const coloredLength = characters.filter(char => !/\s/.test(char)).length
         const colors = coloredLength > 0
@@ -41,7 +43,7 @@
         previewText = outputText.replace(regex, (match, color) => `<span style="color: #${color}">`);
     }
 
-    calculateResult()
+    $: calculateResult(text, color1, color2)
 
     function copyValue() {
         navigator.clipboard.writeText(outputText)
@@ -70,20 +72,20 @@
     }
 </script>
 
-<main class="w-[60%]">
+<main class="w-full lg:w-[60%] min-w-0">
     <div class="place-items-center text-center items-start grid grid-cols-1 xl:flex justify-center gap-6">
         <div class="flex flex-col">
             <h3 class="font-medium text-white text-20px text-left">Message</h3>
-            <input bind:value={text} on:input={calculateResult} id="serverJarName" class="w-[160px] py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-200 text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+            <input bind:value={text} id="serverJarName" class="w-[160px] py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-200 text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
         </div>
         <div class="flex gap-6">
             <div class="flex flex-col">
                 <h3 class="font-medium text-white text-20px text-left">Color #1</h3>
-                <input type="color" bind:value={color1} on:input={calculateResult} class="rounded-full bg-transparent border-none self-center" />
+                <input type="color" bind:value={color1} class="rounded-full bg-transparent border-none self-center" />
             </div>
             <div class="flex flex-col h-full">
                 <h3 class="font-medium text-white text-20px text-left">Color #2</h3>
-                <input type="color" bind:value={color2} on:input={calculateResult} class="rounded-full bg-transparent border-none self-center" />
+                <input type="color" bind:value={color2} class="rounded-full bg-transparent border-none self-center" />
             </div>
         </div>
     </div>
@@ -103,6 +105,9 @@
             <button class="w-fit text-sm px-2 py-1.5 button h-fit inline-block mt-5" on:click={copyMinimessageValue}>Copy</button>
         </div>
     </div>
+
+    <p class="text-sm text-gray-400 mt-3">Chat Colors and MiniMessage need a compatible server plugin. For vanilla Java item names, use the output below.</p>
+    <ItemNameOutput input={outputText} />
 
     <div class="flex flex-col">
         <h3 class="font-medium text-white text-[20px] mt-8 text-center">Preview</h3>
