@@ -10,12 +10,15 @@
     export let duration: number
     export let volume: number
     export let hasNext: boolean
+    // Sits at the top of the screen while the visualiser is open
+    export let expanded = false
 
     const dispatch = createEventDispatcher<{
         toggle: void
         previous: void
         next: void
         seek: number
+        expand: void
         close: void
     }>()
 
@@ -42,10 +45,10 @@
     }
 </script>
 
-<div class="fixed bottom-4 inset-x-0 z-50 flex justify-center px-4 pointer-events-none" transition:fly={{y: 40, duration: 250}}>
+<div class="fixed inset-x-0 z-50 flex justify-center px-4 pointer-events-none {expanded ? 'top-4' : 'bottom-4'}" transition:fly={{y: expanded ? -40 : 40, duration: 250}}>
     <div class="pointer-events-auto w-full max-w-3xl rounded-2xl border border-white/10 bg-[#1c1c1e]/70 backdrop-blur-xl shadow-2xl shadow-black/60 px-4 pt-3 pb-2.5 text-white">
         <div class="flex items-center gap-3">
-            <div class="flex shrink-0 justify-center items-center h-11 w-11 rounded-lg bg-gradient-to-br from-[#3a3a3c] to-[#18181a]">
+            <div class="hidden sm:flex shrink-0 justify-center items-center h-11 w-11 rounded-lg bg-gradient-to-br from-[#3a3a3c] to-[#18181a]">
                 <svg class="h-5 fill-white/70" viewBox="0 0 512 512"><path d="M499.1 6.3c8.1 6 12.9 15.6 12.9 25.7v72V368c0 44.2-43 80-96 80s-96-35.8-96-80s43-80 96-80c11.2 0 22 1.6 32 4.6V147L192 223.8V432c0 44.2-43 80-96 80s-96-35.8-96-80s43-80 96-80c11.2 0 22 1.6 32 4.6V200 128c0-14.1 9.3-26.6 22.8-30.7l320-96c9.7-2.9 20.2-1.1 28.3 5z"/></svg>
             </div>
 
@@ -77,7 +80,14 @@
                 <input class="range w-24" type="range" min="0" max="1" step="0.01" aria-label="Volume" bind:value={volume} style="--fill: {volume * 100}%">
             </div>
 
-            <button class="control shrink-0 ml-1" aria-label="Close Player" on:click={() => dispatch("close")}>
+            <button class="control shrink-0 ml-1" aria-label={expanded ? "Close Visualiser" : "Open Visualiser"} on:click={() => dispatch("expand")}>
+                {#if expanded}
+                    <svg class="h-3.5" viewBox="0 0 448 512"><path d="M160 64c0-17.7-14.3-32-32-32s-32 14.3-32 32v64H32c-17.7 0-32 14.3-32 32s14.3 32 32 32h96c17.7 0 32-14.3 32-32V64zM32 320c-17.7 0-32 14.3-32 32s14.3 32 32 32H96v64c0 17.7 14.3 32 32 32s32-14.3 32-32V352c0-17.7-14.3-32-32-32H32zM352 64c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7 14.3 32 32 32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H352V64zM320 320c-17.7 0-32 14.3-32 32v96c0 17.7 14.3 32 32 32s32-14.3 32-32V384h64c17.7 0 32-14.3 32-32s-14.3-32-32-32H320z"/></svg>
+                {:else}
+                    <svg class="h-3.5" viewBox="0 0 448 512"><path d="M32 32C14.3 32 0 46.3 0 64v96c0 17.7 14.3 32 32 32s32-14.3 32-32V96h64c17.7 0 32-14.3 32-32s-14.3-32-32-32H32zM64 352c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7 14.3 32 32 32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H64V352zM320 32c-17.7 0-32 14.3-32 32s14.3 32 32 32h64v64c0 17.7 14.3 32 32 32s32-14.3 32-32V64c0-17.7-14.3-32-32-32H320zM448 352c0-17.7-14.3-32-32-32s-32 14.3-32 32v64H320c-17.7 0-32 14.3-32 32s14.3 32 32 32h96c17.7 0 32-14.3 32-32V352z"/></svg>
+                {/if}
+            </button>
+            <button class="control shrink-0" aria-label="Close Player" on:click={() => dispatch("close")}>
                 <svg class="h-3.5" viewBox="0 0 384 512"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
             </button>
         </div>

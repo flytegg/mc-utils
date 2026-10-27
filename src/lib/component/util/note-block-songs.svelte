@@ -4,6 +4,8 @@
     import {incrementTracker} from "$lib/tracker/tracker";
     import {NbsPlayer} from "$lib/nbs-player";
     import NoteBlockPlayer from "$lib/component/nbs/note-block-player.svelte";
+    import NoteBlockVisualiser from "$lib/component/nbs/note-block-visualiser.svelte";
+    import type {ScheduledNote} from "$lib/nbs-player";
     let searchResults: Song[]
 
     type Song = {
@@ -73,6 +75,8 @@
     let duration = 0
     let volume = 1
     let frame: number | null = null
+    let notes: readonly ScheduledNote[] = []
+    let expanded = false
 
     $: player.setVolume(volume)
     $: visibleSongs = searchResults ? searchResults : songs
@@ -116,6 +120,7 @@
         artist = ""
         position = 0
         duration = 0
+        notes = []
 
         try {
             let data = songCache.get(song.downloadUrl)
@@ -132,6 +137,7 @@
 
             artist = info.author || "Note Block Song"
             duration = player.duration
+            notes = player.getNotes()
             loading = false
 
             await player.play()
@@ -193,6 +199,7 @@
         currentSong = null
         playing = false
         loading = false
+        expanded = false
     }
 
     onDestroy(() => {
@@ -252,6 +259,10 @@
     <!-- Keeps the last rows reachable above the player -->
     <div class="h-32"></div>
 
+    {#if expanded}
+        <NoteBlockVisualiser {notes} {position} on:close={() => expanded = false}/>
+    {/if}
+
     <NoteBlockPlayer
         title={currentSong.fileName.replace(/\.nbs$/i, "")}
         {artist}
@@ -260,7 +271,9 @@
         {position}
         {duration}
         {hasNext}
+        {expanded}
         bind:volume
+        on:expand={() => expanded = !expanded}
         on:toggle={togglePlaying}
         on:previous={playPrevious}
         on:next={playNext}

@@ -14,8 +14,10 @@ const lookahead = 0.2
 const hiddenLookahead = 1.5
 const schedulerInterval = 25
 
-type ScheduledNote = {
+export type ScheduledNote = {
     time: number
+    // 0 (A0) to 87 (C8), the same range as a piano
+    key: number
     instrument: number
     rate: number
     gain: number
@@ -59,12 +61,14 @@ export class NbsPlayer {
             const layerPan = layer.stereo ?? 0
 
             for (const [tick, note] of layer.notes) {
-                const key = (note.key ?? baseKey) - baseKey + (note.pitch ?? 0) / 100
+                const key = note.key ?? baseKey
+                const semitones = key - baseKey + (note.pitch ?? 0) / 100
 
                 notes.push({
                     time: tick / tempo,
+                    key,
                     instrument: note.instrument < instrumentSounds.length ? note.instrument : 0,
-                    rate: Math.pow(2, key / 12),
+                    rate: Math.pow(2, semitones / 12),
                     gain: (note.velocity ?? 100) / 100 * layerVolume,
                     // NBS uses -100 for right, Web Audio uses -1 for left
                     pan: -(layerPan + (note.panning ?? 0)) / 200,
@@ -127,6 +131,11 @@ export class NbsPlayer {
     setVolume(volume: number) {
         this.volume = volume
         if (this.master) this.master.gain.value = volume
+    }
+
+    // Sorted by time
+    getNotes(): readonly ScheduledNote[] {
+        return this.notes
     }
 
     getPosition() {
