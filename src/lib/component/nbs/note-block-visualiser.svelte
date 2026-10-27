@@ -2,6 +2,7 @@
     import {createEventDispatcher, onDestroy, onMount} from "svelte"
     import {fade} from "svelte/transition"
     import type {ScheduledNote} from "$lib/nbs-player"
+    import {NavOverlay} from "$lib/store"
 
     export let notes: readonly ScheduledNote[]
     export let position: number
@@ -224,10 +225,15 @@
         previousGutter = root.style.scrollbarGutter
         root.style.scrollbarGutter = "stable"
         root.style.overflow = "hidden"
+
+        // Lets the layout show its menu button over the visualiser on desktop
+        NavOverlay.set(true)
     })
 
     onDestroy(() => {
         if (typeof document === "undefined") return
+
+        NavOverlay.set(false)
 
         const root = document.documentElement
         root.style.overflow = previousOverflow
