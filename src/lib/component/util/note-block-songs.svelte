@@ -1,7 +1,9 @@
 <script lang="ts">
-    import {onMount} from "svelte"
+    import {onDestroy, onMount} from "svelte"
     import {toast} from "@zerodevx/svelte-toast";
     import {incrementTracker} from "$lib/tracker/tracker";
+    import {NbsPlayer} from "$lib/nbs-player";
+    import NoteBlockPlayer from "$lib/component/nbs/note-block-player.svelte";
     let searchResults: Song[]
 
     type Song = {
@@ -59,6 +61,144 @@
 
         incrementTracker("note-block-songs-served")
     }
+
+    const player = new NbsPlayer()
+    const songCache = new Map<string, ArrayBuffer>()
+
+    let currentSong: Song | null = null
+    let artist = ""
+    let playing = false
+    let loading = false
+    let position = 0
+    let duration = 0
+    let volume = 1
+    let frame: number | null = null
+
+    $: player.setVolume(volume)
+    $: visibleSongs = searchResults ? searchResults : songs
+    $: currentIndex = currentSong ? visibleSongs.indexOf(currentSong) : -1
+    $: hasNext = currentIndex < visibleSongs.length - 1
+
+    player.onEnd = () => {
+        playing = false
+        position = 0
+        stopTracking()
+    }
+
+    const track = () => {
+        position = player.getPosition()
+        frame = requestAnimationFrame(track)
+    }
+
+    const startTracking = () => {
+        stopTracking()
+        track()
+    }
+
+    const stopTracking = () => {
+        if (frame !== null) cancelAnimationFrame(frame)
+        frame = null
+    }
+
+    async function playSong(song: Song) {
+        player.unlock()
+
+        if (song === currentSong) {
+            if (!loading) togglePlaying()
+            return
+        }
+
+        player.stop()
+        stopTracking()
+        currentSong = song
+        loading = true
+        playing = false
+        artist = ""
+        position = 0
+        duration = 0
+
+        try {
+            let data = songCache.get(song.downloadUrl)
+            if (!data) {
+                const response = await fetch(song.downloadUrl)
+                if (!response.ok) throw new Error(`Failed to fetch ${song.fileName}`)
+                data = await response.arrayBuffer()
+                songCache.set(song.downloadUrl, data)
+            }
+            if (currentSong !== song) return
+
+            const info = await player.load(data)
+            if (currentSong !== song) return
+
+            artist = info.author || "Note Block Song"
+            duration = player.duration
+            loading = false
+
+            await player.play()
+            playing = player.playing
+            if (playing) startTracking()
+        } catch (error) {
+            if (currentSong !== song) return
+
+            console.error(error)
+            closePlayer()
+            toast.push('Could not play this song.', {
+                theme: {
+                    '--toastColor': 'mintcream',
+                    '--toastBackground': 'rgba(187,72,72,0.9)',
+                    '--toastBarBackground': '#852F2F'
+                }
+            })
+        }
+    }
+
+    async function togglePlaying() {
+        player.unlock()
+
+        if (player.playing) {
+            player.pause()
+            playing = false
+            stopTracking()
+            position = player.getPosition()
+            return
+        }
+
+        await player.play()
+        playing = player.playing
+        if (playing) startTracking()
+    }
+
+    function playPrevious() {
+        // Like most players, go back to the start unless the song has only just begun
+        if (position > 3 || currentIndex <= 0) {
+            seek(0)
+            return
+        }
+
+        playSong(visibleSongs[currentIndex - 1])
+    }
+
+    function playNext() {
+        if (hasNext) playSong(visibleSongs[currentIndex + 1])
+    }
+
+    function seek(seconds: number) {
+        player.seek(seconds)
+        position = player.getPosition()
+    }
+
+    function closePlayer() {
+        player.stop()
+        stopTracking()
+        currentSong = null
+        playing = false
+        loading = false
+    }
+
+    onDestroy(() => {
+        stopTracking()
+        player.destroy()
+    })
 </script>
 
 <input class="search w-[26rem]" bind:value={searchValue} on:input={handleInput} type="text" placeholder="Enter song name..." on:keypress={handleKeyPress} on:blur={handleInput}>
@@ -74,9 +214,22 @@
             </a>
         </th>
     </tr>
-    {#each searchResults ? searchResults : songs as song}
+    {#each visibleSongs as song}
         <tr class="border-b-[1px] border-b-[#232324] text-[#cecece]">
-            <td class="p-2">{song.fileName}</td>
+            <td class="p-2">
+                <div class="flex items-center gap-3">
+                    <button class="flex shrink-0 justify-center items-center h-6 w-6 rounded-full fill-[#626875] transition-colors hover:fill-white" aria-label={song === currentSong && playing ? 'Pause Song' : 'Play Song'} on:click={() => playSong(song)}>
+                        {#if song === currentSong && loading}
+                            <div class="h-3.5 w-3.5 rounded-full border-2 border-white/20 border-t-white/90 animate-spin"></div>
+                        {:else if song === currentSong && playing}
+                            <svg class="h-3.5 fill-white" viewBox="0 0 320 512"><path d="M48 64C21.5 64 0 85.5 0 112V400c0 26.5 21.5 48 48 48H80c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zm192 0c-26.5 0-48 21.5-48 48V400c0 26.5 21.5 48 48 48h32c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H240z"/></svg>
+                        {:else}
+                            <svg class="h-3.5" viewBox="0 0 384 512"><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
+                        {/if}
+                    </button>
+                    <span class:text-white={song === currentSong}>{song.fileName}</span>
+                </div>
+            </td>
             <td class="justify-end">
                 <div class="flex justify-end items-center h-full pr-1">
                     <a aria-label='Download Song' download={song.downloadUrl} href="{song.downloadUrl}">
@@ -94,3 +247,24 @@
     <p class="text-[#cecece] text-md">See the GitHub </p>
     <img src="/icon/new-tab.svg" alt="New Tab Icon" class="justify-center">
 </a>
+
+{#if currentSong}
+    <!-- Keeps the last rows reachable above the player -->
+    <div class="h-32"></div>
+
+    <NoteBlockPlayer
+        title={currentSong.fileName.replace(/\.nbs$/i, "")}
+        {artist}
+        {playing}
+        {loading}
+        {position}
+        {duration}
+        {hasNext}
+        bind:volume
+        on:toggle={togglePlaying}
+        on:previous={playPrevious}
+        on:next={playNext}
+        on:seek={event => seek(event.detail)}
+        on:close={closePlayer}
+    />
+{/if}

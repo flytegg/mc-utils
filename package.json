@@ -30,6 +30,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@nbsjs/core": "^6.1.0",
 		"carbon-components-svelte": "^0.80.0",
 		"figlet": "^1.6.0",
 		"javascript-color-gradient": "^2.4.4",
