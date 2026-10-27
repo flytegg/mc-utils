@@ -38,6 +38,22 @@
 
     onMount(fetchFilesFromRepo);
 
+    // Runtimes in seconds by file name, generated with `npm run nbs-durations`
+    let durations: Record<string, number> = {}
+
+    onMount(async () => {
+        try {
+            durations = await fetch('/nbs/durations.json').then(response => response.json())
+        } catch (error) {
+            console.error(error)
+        }
+    })
+
+    const formatDuration = (seconds: number) => {
+        const total = Math.round(seconds)
+        return `${Math.floor(total / 60)}:${(total % 60).toString().padStart(2, "0")}`
+    }
+
     const updateSearch = async (query: string) => {
         searchResults = songs.filter(song => song.fileName.toLowerCase().includes(query.toLowerCase()))
     }
@@ -208,18 +224,25 @@
     })
 </script>
 
-<input class="search w-[26rem]" bind:value={searchValue} on:input={handleInput} type="text" placeholder="Enter song name..." on:keypress={handleKeyPress} on:blur={handleInput}>
+<div class="flex flex-wrap justify-center items-center gap-3 w-[90%] lg:w-auto">
+    <input class="search w-[26rem] max-w-full" bind:value={searchValue} on:input={handleInput} type="text" placeholder="Enter song name..." on:keypress={handleKeyPress} on:blur={handleInput}>
+    <a aria-label='Download All Songs' href="https://api.github.com/repos/flytegg/nbs-songs/zipball/master" download="https://api.github.com/repos/flytegg/nbs-songs/zipball/master">
+        <button class="button flex items-center gap-2 whitespace-nowrap" on:click={downloadSuccess}>
+            <svg class="h-4 fill-current" viewBox="0 0 384 512"><path d="M32 480c-17.7 0-32-14.3-32-32s14.3-32 32-32H352c17.7 0 32 14.3 32 32s-14.3 32-32 32H32zM214.6 342.6c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 242.7V64c0-17.7 14.3-32 32-32s32 14.3 32 32V242.7l73.4-73.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3l-128 128z"/></svg>
+            Download All
+        </button>
+    </a>
+</div>
 
 <table class="w-[90%] lg:w-[60%] text-white mt-12">
     <tr class="border-b-[1.5px] border-b-[#232324] text-[#9d9d9e]">
         <th class="rounded-tl-lg rounded-bl-lg p-2 font-medium text-left">
             <p>Title</p>
         </th>
-        <th class="flex justify-end relative">
-            <a aria-label='Download All Songs' href="https://api.github.com/repos/flytegg/nbs-songs/zipball/master" download="https://api.github.com/repos/flytegg/nbs-songs/zipball/master" class="absolute -bottom-6">
-                <button class="button text-sm p-1.5 w-[120px]" on:click={downloadSuccess}>Download All</button>
-            </a>
+        <th class="p-2 font-medium text-right w-px whitespace-nowrap">
+            <p>Duration</p>
         </th>
+        <th></th>
     </tr>
     {#each visibleSongs as song}
         <tr class="border-b-[1px] border-b-[#232324] text-[#cecece]">
@@ -234,8 +257,12 @@
                             <svg class="h-3.5" viewBox="0 0 384 512"><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
                         {/if}
                     </button>
-                    <span class:text-white={song === currentSong}>{song.fileName}</span>
+                    <!-- Some file names have no spaces, so let them wrap anywhere rather than widen the table on phones -->
+                    <span class="[overflow-wrap:anywhere]" class:text-white={song === currentSong}>{song.fileName}</span>
                 </div>
+            </td>
+            <td class="p-2 text-center text-sm tabular-nums text-[#9d9d9e] whitespace-nowrap">
+                {song.fileName in durations ? formatDuration(durations[song.fileName]) : '—'}
             </td>
             <td class="justify-end">
                 <div class="flex justify-end items-center h-full pr-1">

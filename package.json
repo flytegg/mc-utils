@@ -7,7 +7,8 @@
 		"build": "vite build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"nbs-durations": "node scripts/generate-nbs-durations.js"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-cloudflare": "^4.1.0",
@@ -17,6 +18,7 @@
 		"@types/node": "^18.15.10",
 		"@zerodevx/svelte-toast": "^0.9.3",
 		"autoprefixer": "^10.4.14",
+		"fflate": "^0.8.2",
 		"postcss": "^8.4.21",
 		"svelte": "^4.2.12",
 		"svelte-awesome-color-picker": "^2.4.5",
