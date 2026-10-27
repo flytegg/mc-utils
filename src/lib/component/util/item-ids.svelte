@@ -38,8 +38,8 @@
         <td class="text-left pr-3 w-[15%] border-b-[1.5px] border-b-[#232324]">Stack Size</td>
     </tr>
 
-    {#each searchResults as item}
-        <tr class="text-[#cecece]">
+    {#each searchResults as item, i}
+        <tr class="text-[#cecece] {i % 2 === 0 ? 'bg-[#232324]' : 'bg-[#131314]'}" >
             <td class="lg:ml-6 p-1.5 ">
                 {#if item.texture}
                     <img src={item.texture} alt="{item.name} Icon" class="h-5 w-5">

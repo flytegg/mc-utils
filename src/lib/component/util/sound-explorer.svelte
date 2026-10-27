@@ -334,8 +334,8 @@
         </tr>
         </thead>
         <tbody>
-        {#each filteredSounds as sound}
-            <tr class="border-b-[1px] border-b-[#232324] text-[#cecece]">
+        {#each filteredSounds as sound, i}
+            <tr class="border-b-[1px] border-b-[#232324] text-[#cecece] {i % 2 === 0 ? 'bg-[#232324]' : 'bg-[#131314]'}">
                 <td class="p-2">{sound.displayPath}</td>
                 <td class="p-2">
                     <div class="flex items-center gap-4 justify-center">
