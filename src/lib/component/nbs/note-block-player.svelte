@@ -45,12 +45,11 @@
     }
 </script>
 
-<div class="fixed inset-x-0 z-50 flex justify-center px-4 pointer-events-none {expanded ? 'top-4' : 'bottom-4'}" transition:fly={{y: expanded ? -40 : 40, duration: 250}}>
+<div class="fixed inset-x-0 z-[60] flex justify-center px-4 pointer-events-none {expanded ? 'top-4' : 'bottom-4'}" transition:fly={{y: expanded ? -40 : 40, duration: 250}}>
     <div class="pointer-events-auto w-full max-w-3xl rounded-2xl border border-white/10 bg-[#1c1c1e]/70 backdrop-blur-xl shadow-2xl shadow-black/60 px-4 pt-3 pb-2.5 text-white">
         <div class="flex items-center gap-3">
-            <div class="hidden sm:flex shrink-0 justify-center items-center h-11 w-11 rounded-lg bg-gradient-to-br from-[#3a3a3c] to-[#18181a]">
-                <svg class="h-5 fill-white/70" viewBox="0 0 512 512"><path d="M499.1 6.3c8.1 6 12.9 15.6 12.9 25.7v72V368c0 44.2-43 80-96 80s-96-35.8-96-80s43-80 96-80c11.2 0 22 1.6 32 4.6V147L192 223.8V432c0 44.2-43 80-96 80s-96-35.8-96-80s43-80 96-80c11.2 0 22 1.6 32 4.6V200 128c0-14.1 9.3-26.6 22.8-30.7l320-96c9.7-2.9 20.2-1.1 28.3 5z"/></svg>
-            </div>
+            <img class="hidden sm:block shrink-0 h-11 w-11 rounded-lg [image-rendering:pixelated]" src="/nbs/note_block.png" alt="Note Block">
+
 
             <div class="flex-1 min-w-0">
                 <p class="truncate text-sm font-medium text-white/90" title={title}>{title}</p>

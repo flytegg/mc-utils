@@ -14,6 +14,8 @@
     const windowStep = 0.5
     // Seconds a key stays lit after a note hits it
     const hitFade = 0.3
+    // Seconds a note particle takes to float up and fade
+    const particleLife = 0.9
 
     // Indexed by NBS instrument ID, matching the player's sounds
     const instruments = [
@@ -35,6 +37,29 @@
         {name: "Pling", color: "#60a5fa"},
     ]
 
+    // Minecraft's note particle colour, which cycles through the hues every 24 semitones starting green at F#3 (NBS key 33).
+    // Some white is mixed in so the darker blues still stand out against the background
+    const particleColors = Array.from({length: 88}, (_, key) => {
+        const step = ((key - 33) % 24 + 24) % 24 / 24
+        const channel = (offset: number) => {
+            const value = Math.max(0, Math.sin((step + offset) * Math.PI * 2) * 0.65 + 0.35)
+            return Math.round((value + (1 - value) * 0.35) * 255)
+        }
+        return `rgb(${channel(0)}, ${channel(1 / 3)}, ${channel(2 / 3)})`
+    })
+
+    // 8x8 pixel art of the note particle, as an SVG path
+    const particlePath = [
+        "....XX..",
+        "....XXX.",
+        "....X.XX",
+        "....X..X",
+        "..XXX...",
+        ".XXXX...",
+        ".XXXX...",
+        "..XX....",
+    ].flatMap((row, y) => [...row].map((pixel, x) => pixel === "X" ? `M${x} ${y}h1v1h-1z` : "")).join("")
+
     type PianoKey = {
         key: number
         black: boolean
@@ -48,6 +73,12 @@
         background: string
         glow: string
         strength: number
+    }
+
+    type Particle = {
+        id: number
+        key: number
+        progress: number
     }
 
     // NBS key 0 is A0, so shifting by 9 gives the semitone within a C-based octave
@@ -149,6 +180,23 @@
         return lit
     }
 
+    // One particle per key per hit, even when several instruments play the same note together
+    const getParticles = (position: number) => {
+        const particles: Particle[] = []
+        const seen = new Set<string>()
+
+        for (let i = findNote(position - particleLife); i < notes.length && notes[i].time <= position; i++) {
+            const note = notes[i]
+            const hit = `${note.key}:${note.time}`
+            if (seen.has(hit)) continue
+
+            seen.add(hit)
+            particles.push({id: i, key: note.key, progress: (position - note.time) / particleLife})
+        }
+
+        return particles
+    }
+
     let fallHeight = 0
 
     $: keyboard = getKeyboard(notes)
@@ -159,30 +207,42 @@
     $: windowStart = Math.floor(position / windowStep) * windowStep
     $: drawnNotes = notes && getDrawnNotes(windowStart)
     $: litKeys = notes && getLitKeys(position)
+    $: particles = notes && getParticles(position)
 
     const handleKeydown = (event: KeyboardEvent) => {
         if (event.key === "Escape") dispatch("close")
     }
 
+    // Locks page scrolling while keeping the scrollbar's space reserved, so the page never shifts sideways
+    // (the lock is only released once the fade out finishes, while the page is already showing)
     let previousOverflow = ""
+    let previousGutter = ""
 
     onMount(() => {
-        previousOverflow = document.body.style.overflow
-        document.body.style.overflow = "hidden"
+        const root = document.documentElement
+        previousOverflow = root.style.overflow
+        previousGutter = root.style.scrollbarGutter
+        root.style.scrollbarGutter = "stable"
+        root.style.overflow = "hidden"
     })
 
     onDestroy(() => {
-        if (typeof document !== "undefined") document.body.style.overflow = previousOverflow
+        if (typeof document === "undefined") return
+
+        const root = document.documentElement
+        root.style.overflow = previousOverflow
+        root.style.scrollbarGutter = previousGutter
     })
 </script>
 
 <svelte:window on:keydown={handleKeydown}/>
 
-<div class="visualiser fixed inset-0 z-40 flex flex-col" transition:fade={{duration: 200}}>
+<!-- Above the layout's z-50 menu button; the player shares z-60 but comes later in the page, so stays on top -->
+<div class="visualiser fixed inset-0 z-[60] flex flex-col" transition:fade={{duration: 200}}>
     <!-- Space for the player, which moves to the top while expanded -->
     <div class="h-[7.5rem] shrink-0"></div>
 
-    <div class="flex flex-wrap justify-center gap-x-4 gap-y-1.5 px-4 pb-4 text-xs text-white/60">
+    <div class="legend flex flex-wrap justify-center gap-x-4 gap-y-1.5 px-4 pb-4 text-xs text-white/70">
         {#each usedInstruments as instrument}
             <div class="flex items-center gap-1.5">
                 <span class="h-2 w-2 rounded-full" style="background: {instruments[instrument].color}; box-shadow: 0 0 6px {instruments[instrument].color}"></span>
@@ -221,6 +281,21 @@
                     <div class="flare" style="left: {key.left}%; width: {key.width}%; --color: {light.glow}; opacity: {light.strength * 0.7}"></div>
                 {/if}
             {/each}
+
+            {#each particles as particle (particle.id)}
+                {@const key = keyLookup.get(particle.key)}
+                {#if key}
+                    <!-- Each particle drifts a little to one side, picked from its ID so it doesn't change between frames -->
+                    <svg
+                        class="particle"
+                        viewBox="0 0 8.5 8.5"
+                        style="left: {key.left + key.width / 2}%; opacity: {1 - particle.progress}; transform: translate(calc(-50% + {(particle.id * 7) % 9 - 4}px), {-particle.progress * 110}px)"
+                    >
+                        <path d={particlePath} transform="translate(0.5 0.5)" fill="rgba(0, 0, 0, 0.7)"/>
+                        <path d={particlePath} fill={particleColors[particle.key]}/>
+                    </svg>
+                {/if}
+            {/each}
         </div>
 
         <div class="hit-line"></div>
@@ -243,7 +318,15 @@
         background:
             radial-gradient(ellipse 80% 50% at 50% 100%, rgba(139, 92, 246, 0.12), transparent),
             radial-gradient(ellipse 60% 40% at 50% 85%, rgba(34, 211, 238, 0.08), transparent),
+            linear-gradient(rgba(5, 5, 7, 0.86), rgba(5, 5, 7, 0.95)),
+            url("/nbs/deepslate.png") 0 0 / 64px 64px,
             #050507;
+        image-rendering: pixelated;
+    }
+
+    .legend {
+        font-family: "Minecraft", sans-serif;
+        text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.8);
     }
 
     .note {
@@ -256,6 +339,11 @@
         @apply absolute bottom-0 h-24 pointer-events-none;
         background: linear-gradient(to top, var(--color), transparent);
         filter: blur(6px);
+    }
+
+    .particle {
+        @apply absolute bottom-0 h-4 w-4 pointer-events-none;
+        shape-rendering: crispEdges;
     }
 
     .hit-line {
