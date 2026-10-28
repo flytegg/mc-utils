@@ -4,7 +4,8 @@
     export let data: PageData
 
     const components = import.meta.glob(`/src/lib/component/util/*.svelte`)
-    const component = components[`/src/lib/component/util/${data.util.path}.svelte`]
+    // Reactive so navigating between utils (which reuses this page) swaps in the new util
+    $: component = components[`/src/lib/component/util/${data.util.path}.svelte`]
 </script>
 
 <svelte:head>

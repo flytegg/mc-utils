@@ -8,33 +8,33 @@
 
     import { Favourites, UtilList } from "$lib/store"
     import { onMount } from "svelte";
+    import { page } from "$app/stores";
+    import { afterNavigate } from "$app/navigation";
 
     import logo from "$lib/image/logo.svg"
 
-    UtilList.set(data.utils)
+    $: currentUrl = $page.url.pathname.substring(1);
 
-    let currentUrl = "";
-    let showBanner = false;
+    // Comes from a cookie read on the server, so the banner doesn't pop in after the page loads
+    let showBanner = !data.bannerDismissed;
 
-    // Load favourites from cookies on page load
+    const saveCookie = (name: string, value: string) => {
+        const date = new Date()
+        date.setTime(date.getTime() + 360 * 24 * 60 * 60 * 1000) // Add 360 days
+        document.cookie = `${name}=${value};Expires=${date.toUTCString()};Secure;SameSite=Lax;Path=/`
+    }
+
     onMount(() => {
-        currentUrl = window.location.pathname.substring(1);
-
-        // Check if banner was previously dismissed
-        showBanner = !localStorage.getItem('mcu-banner2-dismissed');
-
-        const cookies = document.cookie.split(";")
-        let favourites: string[] = []
-        for (const i in cookies) {
-            if (cookies[i].includes("mcu-favourites=")) favourites = cookies[i].split("=")[1].split("//")
+        // Dismissals used to be kept in localStorage, which the server can't see, so move them to the cookie
+        if (localStorage.getItem('mcu-banner2-dismissed')) {
+            if (showBanner) dismissBanner();
+            localStorage.removeItem('mcu-banner2-dismissed');
         }
-        Favourites.set(favouriteUtilsFromArray(favourites))
-        UtilList.set(data.utils.filter((util: { path: string }) => !favourites.includes(util.path)))
     })
 
     const dismissBanner = () => {
         showBanner = false;
-        localStorage.setItem('mcu-banner2-dismissed', 'true');
+        saveCookie("mcu-banner2-dismissed", "true");
     }
 
     const updateFavourites = (path: string) => {
@@ -54,14 +54,16 @@
         Favourites.set(favouriteUtilsFromArray(favourites))
         UtilList.set(data.utils.filter((util: { path: string }) => !favourites.includes(util.path)))
 
-        const date = new Date()
-        date.setTime(date.getTime() + 360 * 24 * 60 * 60 * 1000) // Add 360 days
-        document.cookie = `mcu-favourites=${favourites.join("//")};Expires=${date.toUTCString()};Secure;SameSite=Lax;Path=/`
+        saveCookie("mcu-favourites", favourites.join("//"))
     }
 
     const favouriteUtilsFromArray = (favourites: string[]) => {
         return data.utils.filter((util: { path: string }) => favourites.includes(util.path))
     }
+
+    // Favourites come from a cookie read on the server, so the list renders in its final order with no reshuffle on load
+    Favourites.set(favouriteUtilsFromArray(data.favourites))
+    UtilList.set(data.utils.filter((util: { path: string }) => !data.favourites.includes(util.path)))
 
     const filterUtils = (query: string) => {
         showFavourites = query.trim() === "";
@@ -92,6 +94,9 @@
 
     let showFavourites = true
     let navShown = false
+
+    // The layout now stays on screen between utils, so close the mobile menu after picking one
+    afterNavigate(() => navShown = false)
 </script>
 
 {#if showBanner}
@@ -123,10 +128,10 @@
     <div class="{navShown ? 'block' : 'hidden'} lg:block lg:sticky lg:left-0 lg:top-0 lg:h-screen lg:min-w-[22rem] lg:max-w-[22rem] lg:min-h-screen z-40">
         <div class="flex flex-col h-full pl-6 border-r-white/10 border-r">
             <div class="flex w-full items-center flex-col space-y-6 my-6 pr-6">
-                <a href="/" on:click={() => currentUrl = "/"} aria-label='Home'><img src={logo} alt="" class="h-10"></a>
+                <a href="/" aria-label='Home'><img src={logo} alt="" class="h-10"></a>
                 <input class="search" bind:value={searchValue} on:input={handleInput} type="text" placeholder="Search for a utility" on:keypress={handleKeyPress} on:blur={handleInput}>
             </div>
-            <div data-sveltekit-reload class="overflow-y-scroll flex flex-col gap-y-5 mb-7">
+            <div class="overflow-y-scroll flex flex-col gap-y-5 mb-7">
                 {#if showFavourites}
                     {#if $Favourites.length > 0}
                         <div class="flex flex-col gap-y-5">
