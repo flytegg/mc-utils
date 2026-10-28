@@ -28,7 +28,8 @@
         reader.readAsDataURL(imageFile);
     }
 
-    document.addEventListener('paste', function (event) {
+    // Bound through svelte:document below, so it stops listening once you leave this util
+    function handlePaste(event) {
         const items = event.clipboardData.items
         // Check to see if there is only 1 image in the clipboard
         if (items.length === 1 && items[0].type.indexOf('image') !== -1) {
@@ -43,7 +44,7 @@
                 },
             })
         }
-    })
+    }
 
     function downloadToast() {
         toast.push('Downloaded successfully!', {
@@ -57,6 +58,8 @@
         incrementTracker("server-icons-served")
     }
 </script>
+
+<svelte:document on:paste={handlePaste}/>
 
 <main class="w-[90%] lg:w-[60%] mt-5 flex-col flex justify-center items-center">
 
