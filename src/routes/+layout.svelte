@@ -6,7 +6,7 @@
     import type { LayoutData } from "./$types"
     export let data: LayoutData
 
-    import { Favourites, UtilList } from "$lib/store"
+    import { Favourites, NavOverlay, UtilList } from "$lib/store"
     import { onMount } from "svelte";
 
     import logo from "$lib/image/logo.svg"
@@ -92,6 +92,12 @@
 
     let showFavourites = true
     let navShown = false
+
+    // Close the menu whenever an overlay opens or closes
+    $: $NavOverlay, (navShown = false)
+
+    // On desktop the sidebar is always on the page, so over an overlay it only needs lifting above it
+    $: navRaised = $NavOverlay && navShown
 </script>
 
 {#if showBanner}
@@ -115,12 +121,12 @@
     </div>
 {/if}
 
-<button on:click={() => navShown = !navShown} class="lg:hidden absolute sm:top-[72px] top-[60px] left-8 z-50 {navShown ? '' : ''}">
+<button on:click={() => navShown = !navShown} class="left-8 {$NavOverlay ? 'hidden lg:block fixed top-12 z-[70]' : 'lg:hidden absolute sm:top-[72px] top-[60px] z-50'}">
     <img src="/icon/{navShown ? 'x.svg' : 'hamburger.svg'}" alt="Hamburger" class="h-7">
 </button>
 
 <div class="flex lg:flex-row flex-col">
-    <div class="{navShown ? 'block' : 'hidden'} lg:block lg:sticky lg:left-0 lg:top-0 lg:h-screen lg:min-w-[22rem] lg:max-w-[22rem] lg:min-h-screen z-40">
+    <div class="{navShown ? 'block' : 'hidden'} lg:block lg:sticky lg:left-0 lg:top-0 lg:h-screen lg:min-w-[22rem] lg:max-w-[22rem] lg:min-h-screen {navRaised ? 'z-[65] bg-[#0B0B0C] shadow-2xl shadow-black/60' : 'z-40'}">
         <div class="flex flex-col h-full pl-6 border-r-white/10 border-r">
             <div class="flex w-full items-center flex-col space-y-6 my-6 pr-6">
                 <a href="/" on:click={() => currentUrl = "/"} aria-label='Home'><img src={logo} alt="" class="h-10"></a>
