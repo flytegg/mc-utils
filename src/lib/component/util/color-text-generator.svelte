@@ -3,6 +3,9 @@
     import { toast } from '@zerodevx/svelte-toast'
     import { incrementTracker } from "$lib/tracker/tracker";
 
+    import ItemNameOutput from "$lib/component/other/item-name-output.svelte";
+    import { parseColoredText } from "$lib/minecraft/item-name";
+
     let activeTab = 0;
     let text = "";
     let color = "#FFFFFF";
@@ -76,27 +79,6 @@
     // Minecraft formatting
     // ---------------------------------------------------------------------
 
-    const COLOR_MAP: Record<string, string> = {
-        "0": "#000000",  // Black
-        "1": "#0000AA",  // Dark Blue
-        "2": "#00AA00",  // Dark Green
-        "3": "#00AAAA",  // Dark Aqua
-        "4": "#AA0000",  // Dark Red
-        "5": "#AA00AA",  // Dark Purple
-        "6": "#FFAA00",  // Gold
-        "7": "#AAAAAA",  // Gray
-        "8": "#555555",  // Dark Gray
-        "9": "#5555FF",  // Blue
-        "a": "#55FF55",  // Green
-        "b": "#55FFFF",  // Aqua
-        "c": "#FF5555",  // Red
-        "d": "#FF55FF",  // Light Purple
-        "e": "#FFFF55",  // Yellow
-        "f": "#FFFFFF",  // White
-    };
-
-    const HEX_REGEX = /^&#[0-9a-fA-F]{6}$/;
-
     function escapeHtml(value: string): string {
         return value
             .replace(/&/g, "&amp;")
@@ -114,94 +96,16 @@
     }
 
     function applyMinecraftFormatting(input: string, tab: number): string {
-        const baseColor = getBaseColor(tab);
-
-        let color: string | null = null;
-        let bold = false;
-        let italic = false;
-        let underline = false;
-        let strike = false;
-        let magic = false;
-
-        let buffer = "";
-        let html = "";
-
-        function flush() {
-            if (!buffer) return;
-
-            const lines = [`color: ${color ?? baseColor};`];
-            if (bold) lines.push("font-weight: bold;");
-            if (italic) lines.push("font-style: italic;");
-            const decorations = [underline ? "underline" : "", strike ? "line-through" : ""].filter(Boolean);
-            if (decorations.length) lines.push(`text-decoration: ${decorations.join(" ")};`);
-
-            const escaped = escapeHtml(buffer);
-            if (magic) {
-                html += `<span class="mc-magic" data-text="${escaped}" style="${lines.join(" ")}">${escaped}</span>`;
-            } else {
-                html += `<span style="${lines.join(" ")}">${escaped}</span>`;
-            }
-            buffer = "";
-        }
-
-        // Colour codes (and hex codes) wipe every active decoration, like in-game
-        function setColor(value: string) {
-            flush();
-            color = value;
-            bold = italic = underline = strike = magic = false;
-        }
-
-        // &r resets EVERYTHING: colour and all decorations
-        function resetAll() {
-            flush();
-            color = null;
-            bold = italic = underline = strike = magic = false;
-        }
-
-        for (let i = 0; i < input.length; i++) {
-            const c = input[i];
-
-            if (c === "&") {
-                // &#RRGGBB
-                const hexSlice = input.slice(i, i + 8);
-                if (HEX_REGEX.test(hexSlice)) {
-                    setColor("#" + hexSlice.slice(2));
-                    i += 7;
-                    continue;
-                }
-
-                const code = input.charAt(i + 1).toLowerCase();
-
-                if (code && COLOR_MAP[code]) {
-                    setColor(COLOR_MAP[code]);
-                    i += 1;
-                    continue;
-                }
-
-                if (code === "r") {
-                    resetAll();
-                    i += 1;
-                    continue;
-                }
-
-                if (code === "k" || code === "l" || code === "m" || code === "n" || code === "o") {
-                    flush();
-                    if (code === "k") magic = true;
-                    if (code === "l") bold = true;
-                    if (code === "m") strike = true;
-                    if (code === "n") underline = true;
-                    if (code === "o") italic = true;
-                    i += 1;
-                    continue;
-                }
-            }
-
-            buffer += c;
-        }
-
-        flush();
-
-        return html;
+        return parseColoredText(input, getBaseColor(tab)).map(run => {
+            const styles = [`color: ${run.color};`];
+            if (run.bold) styles.push("font-weight: bold;");
+            if (run.italic) styles.push("font-style: italic;");
+            const decorations = [run.underlined ? "underline" : "", run.strikethrough ? "line-through" : ""].filter(Boolean);
+            if (decorations.length) styles.push(`text-decoration: ${decorations.join(" ")};`);
+            const escaped = escapeHtml(run.text);
+            const magic = run.obfuscated ? ` class="mc-magic" data-text="${escaped}"` : "";
+            return `<span${magic} style="${styles.join(" ")}">${escaped}</span>`;
+        }).join("");
     }
 
     $: previewText = applyMinecraftFormatting(text, activeTab);
@@ -286,10 +190,13 @@
         </div>
 
         <div class="flex gap-3">
-            <textarea id="textinput" on:input={autoSizeTextArea} bind:value={text} class="inline-block text-sm text-gray-400 font-mono rounded-md p-2 bg-[#141517] mt-8 h-[35px] w-[100%] max-w-[100%] overflow-y-hidden"></textarea>
-            <button class="w-fit text-sm px-2 py-1.5 button h-fit inline-block mt-8" on:click={copyValue}>Copy</button>
+            <textarea aria-label="Text with color codes" id="textinput" on:input={autoSizeTextArea} bind:value={text} class="inline-block text-sm text-gray-400 font-mono rounded-md p-2 bg-[#141517] mt-8 h-[35px] w-[100%] max-w-[100%] overflow-y-hidden"></textarea>
+            <button class="w-fit shrink-0 whitespace-nowrap text-sm px-2 py-1.5 button h-fit inline-block mt-8" on:click={copyValue}>Copy codes</button>
         </div>
     </div>
+
+    <p class="text-sm text-gray-400 mt-3">&amp; codes need a compatible server plugin. Vanilla anvils do not apply these colors.</p>
+    <ItemNameOutput input={text} />
 
     <div class="flex flex-col">
         <h3 class="font-medium text-white text-[20px] mt-8 text-center mb-5">Preview</h3>
