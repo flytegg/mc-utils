@@ -5,6 +5,7 @@
     import {NbsPlayer} from "$lib/nbs-player";
     import NoteBlockPlayer from "$lib/component/nbs/note-block-player.svelte";
     import NoteBlockVisualiser from "$lib/component/nbs/note-block-visualiser.svelte";
+    import NoteBlockUpload from "$lib/component/nbs/note-block-upload.svelte";
     import type {ScheduledNote} from "$lib/nbs-player";
     let searchResults: Song[]
 
@@ -93,6 +94,7 @@
     let frame: number | null = null
     let notes: readonly ScheduledNote[] = []
     let expanded = false
+    let uploadOpen = false
 
     $: player.setVolume(volume)
     $: visibleSongs = searchResults ? searchResults : songs
@@ -120,7 +122,8 @@
         frame = null
     }
 
-    async function playSong(song: Song) {
+    // Uploaded songs pass their file data directly and are never cached, so they're gone once something else plays
+    async function playSong(song: Song, upload?: ArrayBuffer) {
         player.unlock()
 
         if (song === currentSong) {
@@ -139,7 +142,7 @@
         notes = []
 
         try {
-            let data = songCache.get(song.downloadUrl)
+            let data = upload ?? songCache.get(song.downloadUrl)
             if (!data) {
                 const response = await fetch(song.downloadUrl)
                 if (!response.ok) throw new Error(`Failed to fetch ${song.fileName}`)
@@ -151,7 +154,7 @@
             const info = await player.load(data)
             if (currentSong !== song) return
 
-            artist = info.author || "Note Block Song"
+            artist = info.author || (upload ? "Your upload" : "Note Block Song")
             duration = player.duration
             notes = player.getNotes()
             loading = false
@@ -232,7 +235,19 @@
             Download All
         </button>
     </a>
+    <!-- Unlocks audio here, as the song only starts after the file has been read and Safari needs a click to allow it -->
+    <button class="button flex items-center gap-2 whitespace-nowrap" on:click={() => { player.unlock(); uploadOpen = true }}>
+        <svg class="h-4 fill-current" viewBox="0 0 448 512"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3V320c0 17.7 14.3 32 32 32s32-14.3 32-32V109.3l73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32s-32 14.3-32 32v64c0 53 43 96 96 96H352c53 0 96-43 96-96V352c0-17.7-14.3-32-32-32s-32 14.3-32 32v64c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V352z"/></svg>
+        Upload
+    </button>
 </div>
+
+{#if uploadOpen}
+    <NoteBlockUpload
+        on:upload={event => { uploadOpen = false; playSong({fileName: event.detail.name, downloadUrl: ""}, event.detail.data) }}
+        on:close={() => uploadOpen = false}
+    />
+{/if}
 
 <table class="w-[90%] lg:w-[60%] text-white mt-12">
     <tr class="border-b-[1.5px] border-b-[#232324] text-[#9d9d9e]">
@@ -287,7 +302,11 @@
     <div class="h-32"></div>
 
     {#if expanded}
-        <NoteBlockVisualiser {notes} {position} on:close={() => expanded = false}/>
+        <NoteBlockVisualiser
+            {notes}
+            {position}
+            on:close={() => expanded = false}
+        />
     {/if}
 
     <NoteBlockPlayer
