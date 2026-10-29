@@ -1,4 +1,6 @@
 <script lang="ts">
+import { onDestroy } from "svelte";
+
 const colors = [
     {
         "name": "Black",
@@ -181,7 +183,8 @@ const colors = [
         obfuscated = newString;
     }
 
-    setInterval(obfuscateString, 80);
+    const obfuscateInterval = setInterval(obfuscateString, 80);
+    onDestroy(() => clearInterval(obfuscateInterval));
 </script>
 
 <table class="w-[90%] lg:w-[60%] text-white">

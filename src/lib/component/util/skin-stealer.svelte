@@ -1,8 +1,10 @@
 <script lang="ts">
     import * as SkinViewer from "skinview3d"
-    import { onMount } from "svelte"
+    import { onDestroy, onMount } from "svelte"
     import {toast} from "@zerodevx/svelte-toast";
     import {incrementTracker} from "$lib/tracker/tracker";
+
+    onDestroy(() => skinViewer?.dispose())
 
     let currentSearch: string
     let currentSkin: string
@@ -13,6 +15,8 @@
     let noAccountFound = false
 
     async function loadSkinViewer() {
+        // Each search builds a new viewer, so free the previous one's WebGL context and render loop first
+        skinViewer?.dispose()
         skinViewer = new SkinViewer.SkinViewer({
             canvas: skinContainer as HTMLCanvasElement,
             height: 400,

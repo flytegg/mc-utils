@@ -1,12 +1,14 @@
 <script lang="ts">
     import {toast} from "@zerodevx/svelte-toast";
-    import {onMount} from "svelte";
+    import {onDestroy, onMount} from "svelte";
 
     let soundStructure: SoundStructure = {};
     let selectedCategory: string = '';
     let selectedSubCategory: string = '';
     let searchValue: string = '';
     let audioElement: HTMLAudioElement | null = null;
+    // Stop any sound still playing when leaving this util
+    onDestroy(() => audioElement?.pause());
     let filteredSounds: Sound[] = [];
     let soundIdMapping: Record<string, string> = {};
 
