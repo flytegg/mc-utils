@@ -2,64 +2,56 @@
     import { toast } from "@zerodevx/svelte-toast";
     import { onMount } from "svelte";
 
-    let platforms = [];
-    let versions = [];
-    let versionsInfo = [];
+    type Platform = { key: string, name: string, url: string, versionLabel: string };
+    type Version = { version: string, build?: string, release?: string, url: string, downloadUrl?: string };
+
+    let platforms: Platform[] = [];
+    let versions: Version[] = [];
     let selectedType = "paper";
     let selectedVersion = "";
     let selectedDownloadUrl = "";
     let isLoading = true;
+    let latestRequest = 0;
+
+    $: versionLabel = platforms.find(p => p.key === selectedType)?.versionLabel ?? "Minecraft Version";
+    $: showBuild = versions.some(version => version.build);
 
     onMount(async () => {
         platforms = await getServerJarPlatforms();
         await updateVersions();
-        updateSelectedDownloadUrl();
-        isLoading = false;
     });
 
     async function updateVersions() {
+        const request = ++latestRequest;
         isLoading = true;
-        versions = await getServerJarVersions(selectedType);
+        const result = await getServerJarVersions(selectedType);
+        // Ignore responses for a type that is no longer selected
+        if (request !== latestRequest) return;
+        versions = result;
         selectedVersion = versions[0]?.version || "";
         updateSelectedDownloadUrl();
-        versionsInfo = await getServerJarVersionsInfo(selectedType);
         isLoading = false;
     }
 
     function updateSelectedDownloadUrl() {
-        const selectedPlatform = platforms.find(p => p.key === selectedType);
-        if (selectedPlatform && selectedVersion) {
-            selectedDownloadUrl = `${selectedPlatform.url}/${selectedVersion}/download`;
-        } else {
-            selectedDownloadUrl = "";
-        }
+        selectedDownloadUrl = versions.find(v => v.version === selectedVersion)?.downloadUrl ?? "";
     }
 
-    async function getServerJarPlatforms() {
+    async function getServerJarPlatforms(): Promise<Platform[]> {
         const response = await fetch("/api/server-jars");
-        const data = await response.json();
+        const data: Platform[] = await response.json();
         return data.filter(item => item.key !== "spigot" && item.key !== "craftbukkit");
     }
 
-    async function getServerJarVersions(type) {
+    async function getServerJarVersions(type: string): Promise<Version[]> {
         const response = await fetch(`/api/server-jars/${type}`);
-        return await response.json();
-    }
-
-    async function getServerJarVersionsInfo(type) {
-        const versions = await getServerJarVersions(type);
-        const promises = versions.map(async (version) => {
-            const response = await fetch(`/api/server-jars/${type}/${version.version}`);
-            return await response.json();
-        });
-
-        return Promise.all(promises);
+        return response.ok ? await response.json() : [];
     }
 
     async function handleTypeChange() {
         selectedDownloadUrl = "";  // Clear the URL immediately
+        versions = [];
         await updateVersions();
-        updateSelectedDownloadUrl();
     }
 
     async function handleVersionChange() {
@@ -99,31 +91,27 @@
     </a>
 </div>
 
-{#await getServerJarVersionsInfo(selectedType)}
-    <svg class="h-10 animate-spin mt-40 w-10 self-center" fill="#3C414B" viewBox="0 0 576 512">
-        <svg class="h-10 animate-spin mt-40" fill="#3C414B" viewBox="0 0 576 512">
-            <defs>
-                <style>.fa-secondary {
-                    opacity: .4
-                }
-                </style>
-            </defs>
-            <path class="fa-primary"
-                  d="M256 32C256 14.33 270.3 0 288 0C429.4 0 544 114.6 544 256C544 302.6 531.5 346.4 509.7 384C500.9 399.3 481.3 404.6 465.1 395.7C450.7 386.9 445.5 367.3 454.3 351.1C470.6 323.8 480 291 480 255.1C480 149.1 394 63.1 288 63.1C270.3 63.1 256 49.67 256 31.1V32z"/>
-            <path class="fa-secondary"
-                  d="M287.1 64C181.1 64 95.1 149.1 95.1 256C95.1 362 181.1 448 287.1 448C358.1 448 419.3 410.5 452.9 354.4L453 354.5C446.1 369.4 451.5 387.3 465.1 395.7C481.3 404.6 500.9 399.3 509.7 384C509.9 383.7 510.1 383.4 510.2 383.1C466.1 460.1 383.1 512 288 512C146.6 512 32 397.4 32 256C32 114.6 146.6 0 288 0C270.3 0 256 14.33 256 32C256 49.67 270.3 64 288 64H287.1z"/>
-        </svg>
-    </svg>
-{:then versions}
+{#if isLoading}
+    <div class="flex flex-col items-center gap-3 mt-32" role="status">
+        <div class="h-9 w-9 rounded-full border-[3px] border-[#232324] border-t-[#9d9d9e] animate-spin"></div>
+        <span class="text-[#9d9d9e] text-sm font-medium">Loading versions...</span>
+    </div>
+{:else}
     <table class="w-[90%] lg:w-[60%] text-white mt-12">
         <tr class="border-b-[1.5px] border-b-[#232324] text-[#9d9d9e]">
-            <th class="rounded-tl-lg rounded-bl-lg p-2 font-medium text-left">{selectedType === "velocity" ? 'Version' : 'Minecraft Version'}</th>
+            <th class="rounded-tl-lg rounded-bl-lg p-2 font-medium text-left">{versionLabel}</th>
+            {#if showBuild}
+                <th class="font-medium text-left">Build</th>
+            {/if}
             <th class="font-medium text-left">Release Date</th>
         </tr>
         {#each versions as version}
             <tr class="border-b-[1px] border-b-[#232324] text-[#cecece]">
                 <td class="p-2 ">{version.version}</td>
-                <td class="">{selectedType === "fabric" ? 'Not known' : version.release}</td>
+                {#if showBuild}
+                    <td class="">{version.build ?? '-'}</td>
+                {/if}
+                <td class="">{version.release || 'Not known'}</td>
                 <td class="justify-end">
                     <div class="flex justify-end items-center h-full pr-1">
                         {#if version.downloadUrl}
@@ -144,4 +132,4 @@
             </tr>
         {/each}
     </table>
-{/await}
+{/if}

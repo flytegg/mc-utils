@@ -1,41 +1,29 @@
 import { error, json } from "@sveltejs/kit";
 import type { RequestHandler } from "./$types";
-import { fetchDetailsFor } from "$lib/server-jars/server-jar-utils";
+import { fetchListingFor, findEntry, legacyVersionFor } from "$lib/server-jars/server-jar-utils";
+import { waitUntilFrom } from "$lib/server-jars/cache";
 import { corsMiddleware } from "$lib/cors";
 
-const VANILLA_PROBLEMATIC_VERSIONS = new Set(['1.0', '1.1', '1.2.1', '1.2.2', '1.2.3', '1.2.4']);
-
-export const GET: RequestHandler = corsMiddleware(async ({ params, url }) => {
+export const GET: RequestHandler = corsMiddleware(async ({ params, url, platform }) => {
   if (!params.platform || !params.version) {
     throw error(400, {
       message: "Platform and version parameters are required",
     });
   }
-  const response: any | null = await fetchDetailsFor(
-    params.platform,
-    params.version
-  );
-  if (!response)
+  const listing = await fetchListingFor(params.platform, waitUntilFrom(platform));
+  const entry = listing && findEntry(listing, params.version);
+  if (!listing || !entry)
     throw error(404, {
       message: `Unknown platform or version: ${params.platform}, ${params.version}`,
     });
 
-  const responseData = {
-    platform: response.platform,
-    display: response.display,
-    version: response.version,
-    release: response.release,
-  };
-  if (params.platform === 'vanilla' && VANILLA_PROBLEMATIC_VERSIONS.has(params.version)) {
-    return json({
-      ...responseData,
-      size: undefined,
-      downloadUrl: undefined
-    });
-  }
   return json({
-    ...responseData,
-    size: response.size,
-    downloadUrl: `${url.href}/download`
+    platform: listing.platform,
+    display: listing.display,
+    version: legacyVersionFor(listing.platform, entry),
+    minecraftVersion: entry.version,
+    build: entry.build,
+    release: entry.release,
+    downloadUrl: entry.downloadable ? `${url.origin}${url.pathname}/download` : undefined
   });
 });
