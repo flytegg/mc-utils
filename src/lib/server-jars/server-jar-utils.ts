@@ -1,6 +1,10 @@
 import info from "$lib/server-jars/server-jars.json"
 import { cached, type WaitUntil } from "$lib/server-jars/cache"
 
+// Every platform is read live from its own API or Maven repository; server-jars.json only holds
+// platform names. Spigot and CraftBukkit are intentionally not served: neither has an official API
+// or download source, so they could only be offered by hosting jars ourselves and updating by hand.
+
 // A single downloadable jar. `version` is always the Minecraft version (or the project's own
 // version for proxies/installers) and `build` is the platform's build/loader version.
 export type JarEntry = {
@@ -29,6 +33,9 @@ const LISTING_TTL = 30 * MINUTE
 // version we only re-check the newest versions every refresh and the rest weekly.
 const OLD_VERSION_TTL = 7 * DAY
 const ALWAYS_REFRESH_NEWEST = 2
+// Part of every listing's cache key. Bump it whenever what a loader returns changes, so listings
+// cached by older code (kept for up to 30 days) are not served after a deploy.
+const LISTING_CACHE_VERSION = 2
 
 const VERSION_LABELS: Record<string, string> = {
     velocity: "Version",
@@ -42,13 +49,16 @@ export const fetchSupportedPlatforms = () => info.map((platform) => {
 
 const displayFor = (platform: string) => info.find((item) => item.platform === platform)?.display ?? platform
 
-const jarsFor = (platform: string): any[] => (info.find((item) => item.platform === platform) as any)?.jars ?? []
-
-const getJson = async (url: string, init?: RequestInit) => {
+const getResponse = async (url: string, init?: RequestInit) => {
     const response = await fetch(url, init)
     if (!response.ok) throw new Error(`${url} responded with ${response.status}`)
-    return response.json()
+    return response
 }
+
+const getJson = async (url: string, init?: RequestInit) => (await getResponse(url, init)).json()
+
+const getMavenVersions = async (metadataUrl: string): Promise<string[]> =>
+    [...(await (await getResponse(metadataUrl)).text()).matchAll(/<version>([^<]+)<\/version>/g)].map((match) => match[1])
 
 const mapInBatches = async <T, R>(items: T[], batchSize: number, mapper: (item: T, index: number) => Promise<R>) => {
     const results: PromiseSettledResult<R>[] = []
@@ -67,24 +77,16 @@ const LOADERS: Record<string, (previous?: JarEntry[]) => Promise<JarEntry[]>> = 
     pufferfish: () => fetchPufferfishEntries(),
     fabric: () => fetchFabricEntries(),
     vanilla: () => fetchVanillaEntries(),
-}
-
-const STATIC_LOADERS: Record<string, () => JarEntry[]> = {
-    spigot: () => manualEntries("spigot"),
-    craftbukkit: () => manualEntries("craftbukkit"),
-    forge: () => manualEntries("forge"),
-    neoforge: () => neoforgeEntries(),
-    quilt: () => quiltEntries(),
+    forge: async (previous) => withRecentReleaseDates(await fetchForgeEntries(), previous),
+    neoforge: async (previous) => withRecentReleaseDates(await fetchNeoforgeEntries(), previous),
+    quilt: () => fetchQuiltEntries(),
 }
 
 export const fetchListingFor = async (platform: string, waitUntil?: WaitUntil): Promise<JarListing | null> => {
     platform = platform.toLowerCase()
+    if (!LOADERS[platform]) return null
 
-    let entries: JarEntry[]
-    if (STATIC_LOADERS[platform]) entries = STATIC_LOADERS[platform]()
-    else if (LOADERS[platform]) entries = await cached(`listing:${platform}`, LISTING_TTL, LOADERS[platform], waitUntil)
-    else return null
-
+    const entries = await cached(`listing:v${LISTING_CACHE_VERSION}:${platform}`, LISTING_TTL, LOADERS[platform], waitUntil)
     return { platform, display: displayFor(platform), entries }
 }
 
@@ -107,21 +109,58 @@ export const resolveDownloadUrl = async (platform: string, entry: JarEntry): Pro
     return undefined
 }
 
-// Start Manual Platforms
+// Maven feeds don't include release dates, but each installer's Last-Modified header does. Looking
+// that up is one request per build, so only the newest few versions get a date, and a date is
+// reused until that version's build changes.
+const RELEASE_DATE_VERSIONS = 5
 
-const manualEntries = (platform: string): JarEntry[] => jarsFor(platform).map((jar) => {
-    // Forge urls look like .../forge-<mc version>-<forge version>-installer.jar
-    const forgeBuild = jar.downloadUrl?.match(/forge-[^/]+?-([^/-]+)-installer\.jar$/)?.[1]
-    return {
-        version: jar.version,
-        build: forgeBuild,
-        release: jar.release,
-        downloadUrl: jar.downloadUrl ?? `https://cdn.mcutils.com/jars/${platform}-${jar.version}.jar`,
-        downloadable: true,
-    }
-})
+const withRecentReleaseDates = async (entries: JarEntry[], previous?: JarEntry[]): Promise<JarEntry[]> => {
+    const recent = entries.slice(0, RELEASE_DATE_VERSIONS)
+    const dated = await Promise.all(recent.map(async (entry) => {
+        const cachedEntry = previous?.find((item) => item.version === entry.version && item.build === entry.build)
+        if (cachedEntry?.release) return { ...entry, release: cachedEntry.release }
+        try {
+            const lastModified = (await getResponse(entry.downloadUrl!, { method: "HEAD" })).headers.get("Last-Modified")
+            return lastModified ? { ...entry, release: formatDate(new Date(lastModified)) } : entry
+        } catch {
+            return entry
+        }
+    }))
+    return [...dated, ...entries.slice(RELEASE_DATE_VERSIONS)]
+}
 
-// End Manual Platforms
+// Start Forge
+
+const FORGE_MAVEN_URL = "https://maven.minecraftforge.net/net/minecraftforge/forge"
+const FORGE_PROMOTIONS_URL = "https://files.minecraftforge.net/net/minecraftforge/forge/promotions_slim.json"
+// Forge only started publishing installers with 1.5.2
+const FORGE_FIRST_INSTALLER_VERSION = "1.5.2"
+
+// Promotions list the recommended/latest build for every Minecraft version, and the Maven metadata
+// gives each build's full version, which for some older builds has the Minecraft version appended
+const fetchForgeEntries = async (): Promise<JarEntry[]> => {
+    const [{ promos }, mavenVersions] = await Promise.all([
+        getJson(FORGE_PROMOTIONS_URL),
+        getMavenVersions(`${FORGE_MAVEN_URL}/maven-metadata.xml`),
+    ])
+    const minecraftVersions = [...new Set(Object.keys(promos).map((key) => key.slice(0, key.lastIndexOf("-"))))]
+        .filter((version) => isNumericVersion(version) && compareNumericVersions(version, FORGE_FIRST_INSTALLER_VERSION) >= 0)
+        .sort((a, b) => compareNumericVersions(b, a))
+
+    return minecraftVersions.map((version): JarEntry | null => {
+        const build = promos[`${version}-recommended`] ?? promos[`${version}-latest`]
+        const mavenVersion = mavenVersions.find((item) => item === `${version}-${build}` || item.startsWith(`${version}-${build}-`))
+        if (!mavenVersion) return null
+        return {
+            version,
+            build,
+            downloadUrl: `${FORGE_MAVEN_URL}/${mavenVersion}/forge-${mavenVersion}-installer.jar`,
+            downloadable: true,
+        }
+    }).filter((entry): entry is JarEntry => !!entry)
+}
+
+// End Forge
 
 // Start PaperMC Platforms
 
@@ -265,6 +304,8 @@ export const neoforgeToMinecraftVersion = (neoforgeVersion: string) => {
     return patch === "0" ? `${major}.${minor}` : `${major}.${minor}.${patch}`
 }
 
+const isNumericVersion = (version: string) => /^\d+(\.\d+)*$/.test(version)
+
 const compareNumericVersions = (a: string, b: string) => {
     const left = a.split("-")[0].split(".").map(Number)
     const right = b.split("-")[0].split(".").map(Number)
@@ -275,45 +316,47 @@ const compareNumericVersions = (a: string, b: string) => {
     return 0
 }
 
-const neoforgeEntryFor = (jar: any): JarEntry => {
+// Matches regular NeoForge releases, skipping one-off builds such as 0.25w14craftmine.3-beta
+const NEOFORGE_VERSION_PATTERN = /^\d+\.\d+\.\d+(\.\d+)?(-beta)?$/
+
+const neoforgeEntryFor = (neoforgeVersion: string): JarEntry => {
     return {
-        version: neoforgeToMinecraftVersion(jar.version),
-        build: jar.version,
-        release: jar.release,
-        downloadUrl: `${NEOFORGE_BASE_URL}${NEOFORGE_MAVEN_PATH}/${jar.version}/neoforge-${jar.version}-installer.jar`,
+        version: neoforgeToMinecraftVersion(neoforgeVersion),
+        build: neoforgeVersion,
+        downloadUrl: `${NEOFORGE_BASE_URL}${NEOFORGE_MAVEN_PATH}/${neoforgeVersion}/neoforge-${neoforgeVersion}-installer.jar`,
         downloadable: true,
     }
 }
 
 // One row per Minecraft version, using its newest NeoForge build
-const neoforgeEntries = (): JarEntry[] => {
-    const latest = new Map<string, any>()
-    for (const jar of jarsFor("neoforge")) {
-        const minecraftVersion = neoforgeToMinecraftVersion(jar.version)
+const fetchNeoforgeEntries = async (): Promise<JarEntry[]> => {
+    const { versions } = await getJson(`${NEOFORGE_BASE_URL}/api/maven/versions${NEOFORGE_MAVEN_PATH}`)
+    const latest = new Map<string, string>()
+    for (const version of (versions as string[]).filter((item) => NEOFORGE_VERSION_PATTERN.test(item))) {
+        const minecraftVersion = neoforgeToMinecraftVersion(version)
         const current = latest.get(minecraftVersion)
-        if (!current || compareNumericVersions(jar.version, current.version) > 0) latest.set(minecraftVersion, jar)
+        if (!current || compareNumericVersions(version, current) > 0) latest.set(minecraftVersion, version)
     }
     return [...latest.values()]
-        .sort((a, b) => compareNumericVersions(b.version, a.version))
+        .sort((a, b) => compareNumericVersions(b, a))
         .map(neoforgeEntryFor)
 }
 
-const neoforgeEntry = (neoforgeVersion: string): JarEntry | undefined => {
-    const jar = jarsFor("neoforge").find((item) => item.version === neoforgeVersion)
-    return jar ? neoforgeEntryFor(jar) : undefined
-}
+// Older links refer to any NeoForge build by its own version, not just the newest per Minecraft version
+const neoforgeEntry = (neoforgeVersion: string): JarEntry | undefined =>
+    NEOFORGE_VERSION_PATTERN.test(neoforgeVersion) ? neoforgeEntryFor(neoforgeVersion) : undefined
 
 // End NeoForge
 
 // Start Quilt
-const QUILT_API_URL = "https://maven.quiltmc.org/repository/release/org/quiltmc/quilt-installer"
+
+const QUILT_API_URL = "https://meta.quiltmc.org/v3/versions/installer"
 
 // Quilt only publishes an installer, which works for every Minecraft version
-const quiltEntries = (): JarEntry[] => jarsFor("quilt").map((jar) => {
+const fetchQuiltEntries = async (): Promise<JarEntry[]> => (await getJson(QUILT_API_URL)).map((installer: any) => {
     return {
-        version: jar.version,
-        release: jar.release,
-        downloadUrl: `${QUILT_API_URL}/${jar.version}/quilt-installer-${jar.version}.jar`,
+        version: installer.version,
+        downloadUrl: installer.url,
         downloadable: true,
     }
 })

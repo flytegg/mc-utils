@@ -15,6 +15,7 @@
 
     $: versionLabel = platforms.find(p => p.key === selectedType)?.versionLabel ?? "Minecraft Version";
     $: showBuild = versions.some(version => version.build);
+    $: showRelease = versions.some(version => version.release);
 
     onMount(async () => {
         platforms = await getServerJarPlatforms();
@@ -39,8 +40,7 @@
 
     async function getServerJarPlatforms(): Promise<Platform[]> {
         const response = await fetch("/api/server-jars");
-        const data: Platform[] = await response.json();
-        return data.filter(item => item.key !== "spigot" && item.key !== "craftbukkit");
+        return await response.json();
     }
 
     async function getServerJarVersions(type: string): Promise<Version[]> {
@@ -103,7 +103,9 @@
             {#if showBuild}
                 <th class="font-medium text-left">Build</th>
             {/if}
-            <th class="font-medium text-left">Release Date</th>
+            {#if showRelease}
+                <th class="font-medium text-left">Release Date</th>
+            {/if}
         </tr>
         {#each versions as version}
             <tr class="border-b-[1px] border-b-[#232324] text-[#cecece]">
@@ -111,7 +113,9 @@
                 {#if showBuild}
                     <td class="">{version.build ?? '-'}</td>
                 {/if}
-                <td class="">{version.release || 'Not known'}</td>
+                {#if showRelease}
+                    <td class="">{version.release || '-'}</td>
+                {/if}
                 <td class="justify-end">
                     <div class="flex justify-end items-center h-full pr-1">
                         {#if version.downloadUrl}
