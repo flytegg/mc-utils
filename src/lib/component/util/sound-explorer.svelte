@@ -281,10 +281,10 @@
     }
 </script>
 
-<div class="sound-explorer p-4">
-    <div class="flex flex-col">
+<div class="sound-explorer w-full xl:w-[90%] px-4 pb-4">
+    <div class="flex flex-col md:flex-row md:items-end gap-4 md:gap-6">
         <input
-                class="search w-[26rem] mb-6"
+                class="search md:flex-1 md:min-w-0 md:max-w-[26rem]"
                 bind:value={searchValue}
                 type="text"
                 placeholder="Search sounds... "
@@ -292,13 +292,13 @@
         />
 
         <div class="flex gap-4">
-            <div class="flex flex-col">
+            <div class="flex flex-col flex-1 min-w-0 md:flex-none md:w-[140px]">
                 <h3 class="font-medium text-white text-[20px] text-left">Category</h3>
                 <select
                         bind:value={selectedCategory}
                         on:change={handleCategoryChange}
                         id="type"
-                        class="w-[140px] scroll"
+                        class="scroll"
                 >
                     {#each categories as category}
                         <option value={category} class="scroll-option">{category}</option>
@@ -306,13 +306,13 @@
                 </select>
             </div>
 
-            <div class="flex flex-col">
+            <div class="flex flex-col flex-1 min-w-0 md:flex-none md:w-[140px]">
                 <h3 class="font-medium text-white text-[20px] text-left">Type</h3>
                 <select
                         bind:value={selectedSubCategory}
                         on:change={handleSubCategoryChange}
                         id="underline_select2"
-                        class="w-[120px] scroll"
+                        class="scroll"
                         disabled={!showType}
                 >
                     {#if showType}
@@ -327,74 +327,78 @@
         </div>
     </div>
 
-    <table class="table-fixed w-full text-white mt-6">
-        <thead>
-        <tr class="border-b-[1.5px] border-b-[#232324] text-[#9d9d9e]">
-            <th class="p-2 font-medium text-left">Sound</th>
-            <th class="p-2 font-medium text-center">Controls</th>
-            <th class="p-2 font-medium text-center">Actions</th>
-        </tr>
-        </thead>
-        <tbody>
+    <!-- Stacked cards on mobile, three-column table layout from xl up -->
+    <div class="w-full text-white mt-6">
+        <div class="sound-row hidden xl:grid border-b-[1.5px] border-b-[#232324] text-[#9d9d9e] font-medium">
+            <span class="p-2 text-left">Sound</span>
+            <span class="p-2 text-center">Controls</span>
+            <span class="p-2 text-center">Actions</span>
+        </div>
         {#each filteredSounds as sound}
-            <tr class="border-b-[1px] border-b-[#232324] text-[#cecece]">
-                <td class="p-2">{sound.displayPath}</td>
-                <td class="p-2">
-                    <div class="flex items-center gap-4 justify-center">
-                        <div class="flex items-center gap-2">
-                            <span class="text-sm">Pitch:</span>
-                            <input
-                                    type="range"
-                                    bind:value={soundControls[sound.path].pitch}
-                                    min="0.5"
-                                    max="2"
-                                    step="0.1"
-                                    class="w-24"
-                            />
-                            <span class="text-sm w-12">
-                                {soundControls[sound.path].pitch.toFixed(1)}
-                            </span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <span class="text-sm">Volume:</span>
-                            <input
-                                    type="range"
-                                    bind:value={soundControls[sound.path].volume}
-                                    min="0"
-                                    max="1"
-                                    step="0.1"
-                                    class="w-24"
-                            />
-                            <span class="text-sm w-12">
-                                {(soundControls[sound.path].volume * 100).toFixed(0)}%
-                            </span>
-                        </div>
-                    </div>
-                </td>
-                <td class="p-2">
-                    <div class="flex justify-center gap-2">
-                        <button
-                                on:click={() => playSound(sound)}
-                                class="button"
-                        >
-                            Play
-                        </button>
-                        <button
-                                on:click={() => downloadSound(sound)}
-                                class="button"
-                        >
-                            Download
-                        </button>
-                        <button
-                                on:click={() => copyGameCommand(sound)}
-                                class="button"
-                        >
-                            Copy
-                        </button>
-                    </div>
-                </td>
-            </tr>
+            <div class="sound-row flex flex-col gap-3 py-4 xl:py-0 xl:gap-0 border-b-[1px] border-b-[#232324] text-[#cecece]">
+                <span class="xl:p-2 font-medium xl:font-normal [overflow-wrap:anywhere]">{sound.displayPath}</span>
+                <div class="xl:p-2 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2">
+                    <label class="flex items-center gap-2">
+                        <span class="text-sm w-14 shrink-0">Pitch</span>
+                        <input
+                                type="range"
+                                bind:value={soundControls[sound.path].pitch}
+                                min="0.5"
+                                max="2"
+                                step="0.1"
+                                class="flex-1 min-w-0 xl:w-24 xl:flex-none"
+                        />
+                        <span class="text-sm w-10 shrink-0 text-right tabular-nums">
+                            {soundControls[sound.path].pitch.toFixed(1)}
+                        </span>
+                    </label>
+                    <label class="flex items-center gap-2">
+                        <span class="text-sm w-14 shrink-0">Volume</span>
+                        <input
+                                type="range"
+                                bind:value={soundControls[sound.path].volume}
+                                min="0"
+                                max="1"
+                                step="0.1"
+                                class="flex-1 min-w-0 xl:w-24 xl:flex-none"
+                        />
+                        <span class="text-sm w-10 shrink-0 text-right tabular-nums">
+                            {(soundControls[sound.path].volume * 100).toFixed(0)}%
+                        </span>
+                    </label>
+                </div>
+                <div class="xl:p-2 grid grid-cols-3 xl:flex xl:justify-center gap-2">
+                    <button
+                            on:click={() => playSound(sound)}
+                            class="button px-2 py-2 text-sm xl:text-base xl:px-4 xl:py-2.5"
+                    >
+                        Play
+                    </button>
+                    <button
+                            on:click={() => downloadSound(sound)}
+                            class="button px-2 py-2 text-sm xl:text-base xl:px-4 xl:py-2.5"
+                    >
+                        Download
+                    </button>
+                    <button
+                            on:click={() => copyGameCommand(sound)}
+                            class="button px-2 py-2 text-sm xl:text-base xl:px-4 xl:py-2.5"
+                    >
+                        Copy
+                    </button>
+                </div>
+            </div>
         {/each}
-        </tbody>
-    </table>
+    </div>
 </div>
+
+<style>
+    @media (min-width: 1280px) {
+        .sound-row {
+            display: grid;
+            /* Fixed widths so the header and every row line up as columns */
+            grid-template-columns: minmax(0, 1fr) 440px 300px;
+            align-items: center;
+        }
+    }
+</style>
