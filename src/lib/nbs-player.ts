@@ -1,4 +1,4 @@
-import {fromArrayBuffer} from "@nbsjs/core"
+import {fromArrayBuffer, toArrayBuffer, Note, type Song} from "@nbsjs/core"
 
 // Indexed by NBS instrument ID; anything else (custom instruments) falls back to harp
 const instrumentSounds = [
@@ -22,7 +22,26 @@ export type ScheduledNote = {
     rate: number
     gain: number
     pan: number
+    // Where the note lives in the song, so the editor can find it again
+    tick: number
+    layer: number
 }
+
+export type NoteEdit = {
+    tick: number
+    key: number
+    instrument: number
+}
+
+export type SongMeta = {
+    name: string
+    author: string
+    originalAuthor: string
+    description: string
+}
+
+// Each undo step keeps a copy of the whole song, which is only a few kilobytes for most songs
+const historyLimit = 200
 
 export class NbsPlayer {
     onEnd: () => void = () => {}
@@ -33,6 +52,9 @@ export class NbsPlayer {
     private loadedBuffers: AudioBuffer[] = []
     private sources = new Set<AudioBufferSourceNode>()
 
+    private song: Song | null = null
+    private undoStack: ArrayBuffer[] = []
+    private redoStack: ArrayBuffer[] = []
     private notes: ScheduledNote[] = []
     private nextNote = 0
     private offset = 0
@@ -53,35 +75,141 @@ export class NbsPlayer {
         this.stop()
 
         const song = fromArrayBuffer(data)
-        const tempo = song.getTempo()
-        const notes: ScheduledNote[] = []
-
-        for (const layer of song.layers) {
-            const layerVolume = (layer.volume ?? 100) / 100
-            const layerPan = layer.stereo ?? 0
-
-            for (const [tick, note] of layer.notes) {
-                const key = note.key ?? baseKey
-                const semitones = key - baseKey + (note.pitch ?? 0) / 100
-
-                notes.push({
-                    time: tick / tempo,
-                    key,
-                    instrument: note.instrument < instrumentSounds.length ? note.instrument : 0,
-                    rate: Math.pow(2, semitones / 12),
-                    gain: (note.velocity ?? 100) / 100 * layerVolume,
-                    // NBS uses -100 for right, Web Audio uses -1 for left
-                    pan: -(layerPan + (note.panning ?? 0)) / 200,
-                })
-            }
-        }
-
-        this.notes = notes.sort((a, b) => a.time - b.time)
-        this.duration = song.getLength() / tempo
+        this.song = song
+        this.undoStack = []
+        this.redoStack = []
+        this.buildNotes()
 
         await this.getBuffers()
 
         return {author: song.author || song.originalAuthor}
+    }
+
+    // Ticks per second
+    getTempo() {
+        return this.song?.getTempo() ?? 10
+    }
+
+    // Ticks per beat, as shown by Note Block Studio
+    getTimeSignature() {
+        return this.song?.timeSignature ?? 4
+    }
+
+    // The editing methods change the loaded song in place (never the file it came from) and should only be used while paused.
+    // They return the note as it is now, since every edit rebuilds the note list
+    addNote(edit: NoteEdit) {
+        this.checkpoint()
+
+        const song = this.song!
+        const layer = this.findFreeLayer(edit.tick)
+        song.layers.all[layer].notes.add(edit.tick, new Note(edit.instrument, {key: edit.key}))
+
+        return this.rebuildAndFind(edit.tick, layer)
+    }
+
+    // Changes several notes as one undo step, returning them in the same order
+    editNotes(changes: {note: ScheduledNote, edit: NoteEdit}[]) {
+        const layers = this.song!.layers.all
+        const found = changes
+            .map(change => ({...change, original: layers[change.note.layer]?.notes.all[change.note.tick]}))
+            .filter(change => change.original)
+        if (!found.length) return []
+
+        this.checkpoint()
+
+        // Everything is lifted out first, so notes moving together don't bump into each other's old spots
+        for (const {note} of found) layers[note.layer].notes.delete(note.tick)
+
+        const placed = found.map(({note, edit, original}) => {
+            // Custom instruments are shown as harp, so they're only replaced when a new instrument is picked
+            if (edit.instrument !== note.instrument) original!.instrument = edit.instrument
+            original!.key = edit.key
+
+            // Stays on its own layer when it can, so its volume and stereo don't change
+            const layer = layers[note.layer].notes.all[edit.tick] ? this.findFreeLayer(edit.tick) : note.layer
+            layers[layer].notes.add(edit.tick, original!)
+            return `${edit.tick}:${layer}`
+        })
+
+        this.buildNotes()
+        const lookup = new Map(this.notes.map(note => [`${note.tick}:${note.layer}`, note]))
+        return placed.map(id => lookup.get(id)).filter((note): note is ScheduledNote => !!note)
+    }
+
+    removeNotes(notes: readonly ScheduledNote[]) {
+        if (!notes.length) return
+
+        this.checkpoint()
+        for (const note of notes) this.song!.layers.all[note.layer]?.notes.delete(note.tick)
+        this.buildNotes()
+    }
+
+    getMeta(): SongMeta {
+        const song = this.song
+        return {
+            name: song?.name ?? "",
+            author: song?.author ?? "",
+            originalAuthor: song?.originalAuthor ?? "",
+            description: song?.description ?? "",
+        }
+    }
+
+    setMeta(meta: SongMeta) {
+        this.checkpoint()
+
+        const song = this.song!
+        song.name = meta.name || undefined
+        song.author = meta.author || undefined
+        song.originalAuthor = meta.originalAuthor || undefined
+        song.description = meta.description || undefined
+    }
+
+    canUndo() {
+        return this.undoStack.length > 0
+    }
+
+    canRedo() {
+        return this.redoStack.length > 0
+    }
+
+    undo() {
+        const previous = this.undoStack.pop()
+        if (!previous) return
+
+        this.redoStack.push(this.export())
+        this.restore(previous)
+    }
+
+    redo() {
+        const next = this.redoStack.pop()
+        if (!next) return
+
+        this.undoStack.push(this.export())
+        this.restore(next)
+    }
+
+    // Plays one note straight away, so the editor can be heard while paused
+    preview(note: ScheduledNote) {
+        const context = this.context
+        if (!context || this.playing || !this.loadedBuffers.length) return
+
+        this.playNote(context, this.loadedBuffers[note.instrument], note, context.currentTime)
+    }
+
+    export(): ArrayBuffer {
+        // Copied, as the writer's buffer is resizable, which Blob doesn't accept everywhere
+        return toArrayBuffer(this.song!).slice(0) as ArrayBuffer
+    }
+
+    private checkpoint() {
+        this.undoStack.push(this.export())
+        if (this.undoStack.length > historyLimit) this.undoStack.shift()
+        this.redoStack = []
+    }
+
+    private restore(data: ArrayBuffer) {
+        this.song = fromArrayBuffer(data)
+        this.buildNotes()
     }
 
     async play() {
@@ -147,6 +275,52 @@ export class NbsPlayer {
         this.stop()
         this.context?.close()
         this.context = null
+    }
+
+    private buildNotes() {
+        const song = this.song!
+        const tempo = song.getTempo()
+        const notes: ScheduledNote[] = []
+
+        song.layers.all.forEach((layer, layerIndex) => {
+            const layerVolume = (layer.volume ?? 100) / 100
+            const layerPan = layer.stereo ?? 0
+
+            for (const [tick, note] of layer.notes) {
+                const key = note.key ?? baseKey
+                const semitones = key - baseKey + (note.pitch ?? 0) / 100
+
+                notes.push({
+                    time: tick / tempo,
+                    key,
+                    instrument: note.instrument < instrumentSounds.length ? note.instrument : 0,
+                    rate: Math.pow(2, semitones / 12),
+                    gain: (note.velocity ?? 100) / 100 * layerVolume,
+                    // NBS uses -100 for right, Web Audio uses -1 for left
+                    pan: -(layerPan + (note.panning ?? 0)) / 200,
+                    tick,
+                    layer: layerIndex,
+                })
+            }
+        })
+
+        this.notes = notes.sort((a, b) => a.time - b.time)
+        this.duration = song.getLength() / tempo
+    }
+
+    private rebuildAndFind(tick: number, layer: number) {
+        this.buildNotes()
+        return this.notes.find(note => note.tick === tick && note.layer === layer) ?? null
+    }
+
+    // An NBS layer holds one note per tick, so a new layer is made when they're all taken
+    private findFreeLayer(tick: number) {
+        const layers = this.song!.layers
+        const free = layers.all.findIndex(layer => !layer.notes.all[tick])
+        if (free !== -1) return free
+
+        layers.create()
+        return layers.all.length - 1
     }
 
     private schedule() {
