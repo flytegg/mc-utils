@@ -1,8 +1,11 @@
 <script lang="ts">
     import {createEventDispatcher, onDestroy, onMount} from "svelte"
     import {fade} from "svelte/transition"
-    import type {NoteEdit, ScheduledNote, SongMeta} from "$lib/nbs-player"
+    import type {NoteEdit, ScheduledNote, SongMeta} from "$lib/nbs/nbs-player"
     import {NavOverlay} from "$lib/store"
+    import {instruments, keyName} from "$lib/nbs/nbs-instruments"
+    import type {ConvertResult, MidiSource} from "$lib/nbs/midi-to-nbs"
+    import NoteBlockMidiSettings from "$lib/component/nbs/note-block-midi-settings.svelte"
 
     export let notes: readonly ScheduledNote[]
     export let position: number
@@ -18,6 +21,8 @@
     export let meta: SongMeta = {name: "", author: "", originalAuthor: "", description: ""}
     // Kept by the parent, as every edit rebuilds the notes and it has to find them again
     export let selected: readonly ScheduledNote[] = []
+    // Set for songs converted from a MIDI, which can be converted again with other settings while they play
+    export let midiSource: MidiSource | null = null
 
     type NoteChange = {note: ScheduledNote, edit: NoteEdit}
 
@@ -30,6 +35,7 @@
         undo: void
         redo: void
         meta: SongMeta
+        reconvert: ConvertResult
         download: void
     }>()
 
@@ -41,32 +47,6 @@
     const hitFade = 0.3
     // Seconds a note particle takes to float up and fade
     const particleLife = 0.9
-
-    // Indexed by NBS instrument ID, matching the player's sounds.
-    // Octave is how far each instrument sounds from harp at the same key; the drums have no pitch to keep
-    const instruments: {name: string, color: string, octave?: number}[] = [
-        {name: "Harp", color: "#22d3ee", octave: 0},
-        {name: "Bass", color: "#8b5cf6", octave: -2},
-        {name: "Bass Drum", color: "#ef4444"},
-        {name: "Snare", color: "#f97316"},
-        {name: "Click", color: "#facc15"},
-        {name: "Guitar", color: "#a3e635", octave: -1},
-        {name: "Flute", color: "#10b981", octave: 1},
-        {name: "Bell", color: "#f472b6", octave: 2},
-        {name: "Chime", color: "#7dd3fc", octave: 2},
-        {name: "Xylophone", color: "#e2e8f0", octave: 2},
-        {name: "Iron Xylophone", color: "#2dd4bf", octave: 0},
-        {name: "Cow Bell", color: "#d97706", octave: 1},
-        {name: "Didgeridoo", color: "#e879f9", octave: -2},
-        {name: "Bit", color: "#4ade80", octave: 0},
-        {name: "Banjo", color: "#fda4af", octave: 0},
-        {name: "Pling", color: "#60a5fa", octave: 0},
-    ]
-
-    const noteNames = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
-
-    // NBS key 0 is A0, the same as a piano
-    const keyName = (key: number) => `${noteNames[(key + 9) % 12]}${Math.floor((key + 9) / 12)}`
 
     const clampKey = (key: number) => Math.min(87, Math.max(0, key))
 
@@ -248,6 +228,7 @@
     // Moves notes by whole octaves when changing instrument, so they sound at the same pitch
     let keepPitch = true
     let metaOpen = false
+    let convertOpen = false
     let metaDraft: SongMeta = {...meta}
 
     // Dragging any selected note moves the whole selection by the same amount
@@ -347,9 +328,16 @@
     const moveChanges = (group: readonly ScheduledNote[], ticks: number, keys: number): NoteChange[] =>
         group.map(note => ({note, edit: {tick: note.tick + ticks, key: note.key + keys, instrument: note.instrument}}))
 
+    // Only one of the toolbar's panels is open at a time
     const openMeta = () => {
         metaDraft = {...meta}
         metaOpen = !metaOpen
+        convertOpen = false
+    }
+
+    const openConvert = () => {
+        convertOpen = !convertOpen
+        metaOpen = false
     }
 
     const saveMeta = () => {
@@ -590,6 +578,7 @@
     const handleKeydown = (event: KeyboardEvent) => {
         if (event.key === "Escape") {
             if (metaOpen) metaOpen = false
+            else if (convertOpen) convertOpen = false
             else if (selected.length) selected = []
             else if (adding) adding = false
             else dispatch("close")
@@ -597,7 +586,8 @@
         }
 
         // Typing in the song info shouldn't delete or move notes
-        const typing = event.target instanceof Element && event.target.closest("input[type=text], textarea")
+        // Dropdowns use the arrow keys too, so they're left alone as well
+        const typing = event.target instanceof Element && event.target.closest("input[type=text], textarea, select")
         if (typing || !canEdit) return
 
         const shortcut = event.metaKey || event.ctrlKey
@@ -696,6 +686,11 @@
                     </button>
                     <div class="mx-0.5 h-5 w-px bg-white/10"></div>
                 {/if}
+                {#if midiSource}
+                    <button class="tool" class:active={convertOpen} aria-label="Conversion Settings" title="Change how the MIDI was converted" on:click={openConvert} disabled={loading}>
+                        <svg class="h-3.5" viewBox="0 0 512 512"><path d="M0 416c0 17.7 14.3 32 32 32l54.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 448c17.7 0 32-14.3 32-32s-14.3-32-32-32l-246.7 0c-12.3-28.3-40.5-48-73.3-48s-61 19.7-73.3 48L32 384c-17.7 0-32 14.3-32 32zm128 0a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zM320 256a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm32-80c-32.8 0-61 19.7-73.3 48L32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l246.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48l54.7 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-54.7 0c-12.3-28.3-40.5-48-73.3-48zM192 128a32 32 0 1 1 0-64 32 32 0 1 1 0 64zm73.3-64C253 35.7 224.8 16 192 16s-61 19.7-73.3 48L32 64C14.3 64 0 78.3 0 96s14.3 32 32 32l86.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 128c17.7 0 32-14.3 32-32s-14.3-32-32-32L265.3 64z"/></svg>
+                    </button>
+                {/if}
                 <button class="tool" class:active={editing} aria-label={editing ? "Stop Editing" : "Edit Song"} title={editing ? "Stop editing" : "Edit song"} on:click={toggleEditing} disabled={loading}>
                     <svg class="h-3.5" viewBox="0 0 512 512"><path d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z"/></svg>
                 </button>
@@ -713,6 +708,20 @@
                         Drag to select, scroll to move through the song
                     {/if}
                 </p>
+            {/if}
+
+            <!-- Every change converts the song again and swaps it in where it's up to, so variations can be heard straight away -->
+            {#if convertOpen && midiSource}
+                <div class="convert-panel" transition:fade={{duration: 100}}>
+                    <p class="text-sm font-medium text-white/90">Conversion settings</p>
+                    <p class="mt-0.5 mb-4 text-xs text-white/40">Changes rebuild the song from the MIDI and replace any edits since. Undo brings the last version back.</p>
+                    <NoteBlockMidiSettings
+                        midi={midiSource.midi}
+                        name={midiSource.name}
+                        bind:settings={midiSource.settings}
+                        on:change={event => dispatch("reconvert", event.detail)}
+                    />
+                </div>
             {/if}
 
             {#if metaOpen}
@@ -1029,6 +1038,10 @@
 
     .meta-panel {
         @apply absolute right-0 top-full z-30 mt-2 flex w-72 flex-col gap-2.5 rounded-xl border border-white/10 bg-[#1c1c1e]/95 p-3 backdrop-blur-xl shadow-2xl shadow-black/60;
+    }
+
+    .convert-panel {
+        @apply absolute right-0 top-full z-30 mt-2 w-[24rem] max-w-[calc(100vw-2rem)] max-h-[calc(100vh-12rem)] overflow-y-auto rounded-xl border border-white/10 bg-[#1c1c1e]/95 p-4 text-left backdrop-blur-xl shadow-2xl shadow-black/60;
     }
 
     .meta-panel label {

@@ -156,12 +156,25 @@ export class NbsPlayer {
 
     setMeta(meta: SongMeta) {
         this.checkpoint()
+        this.applyMeta(meta)
+    }
 
-        const song = this.song!
-        song.name = meta.name || undefined
-        song.author = meta.author || undefined
-        song.originalAuthor = meta.originalAuthor || undefined
-        song.description = meta.description || undefined
+    // Swaps in a rebuilt version of the song (like a MIDI converted with other settings) as one undo step.
+    // Its name and details are kept, and it carries on from the same point in the song, still playing if it was
+    async replace(data: ArrayBuffer) {
+        const wasPlaying = this.playing
+        // A different tempo or grid changes the length in seconds, so the place is kept as a share of the song
+        const progress = this.duration ? this.getPosition() / this.duration : 0
+        const meta = this.getMeta()
+
+        this.pause()
+        this.checkpoint()
+        this.song = fromArrayBuffer(data)
+        this.applyMeta(meta)
+        this.buildNotes()
+        this.offset = Math.min(progress * this.duration, this.duration)
+
+        if (wasPlaying) await this.play()
     }
 
     canUndo() {
@@ -205,6 +218,14 @@ export class NbsPlayer {
         this.undoStack.push(this.export())
         if (this.undoStack.length > historyLimit) this.undoStack.shift()
         this.redoStack = []
+    }
+
+    private applyMeta(meta: SongMeta) {
+        const song = this.song!
+        song.name = meta.name || undefined
+        song.author = meta.author || undefined
+        song.originalAuthor = meta.originalAuthor || undefined
+        song.description = meta.description || undefined
     }
 
     private restore(data: ArrayBuffer) {
