@@ -9,6 +9,7 @@ export const GET: RequestHandler = corsMiddleware(async ({ url }) =>
       return {
         key: platform.key,
         name: platform.name,
+        versionLabel: platform.versionLabel,
         url: `${url.href}/${platform.key}`,
       };
     })

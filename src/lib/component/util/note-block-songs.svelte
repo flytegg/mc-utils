@@ -2,11 +2,12 @@
     import {onDestroy, onMount} from "svelte"
     import {toast} from "@zerodevx/svelte-toast";
     import {incrementTracker} from "$lib/tracker/tracker";
-    import {NbsPlayer} from "$lib/nbs-player";
+    import {NbsPlayer} from "$lib/nbs/nbs-player";
     import NoteBlockPlayer from "$lib/component/nbs/note-block-player.svelte";
     import NoteBlockVisualiser from "$lib/component/nbs/note-block-visualiser.svelte";
     import NoteBlockUpload from "$lib/component/nbs/note-block-upload.svelte";
-    import type {ScheduledNote} from "$lib/nbs-player";
+    import type {NoteEdit, ScheduledNote, SongMeta} from "$lib/nbs/nbs-player";
+    import type {ConvertResult, MidiSource} from "$lib/nbs/midi-to-nbs";
     let searchResults: Song[]
 
     type Song = {
@@ -69,7 +70,7 @@
         updateSearch(searchValue)
     }
 
-    function downloadSuccess() {
+    function showDownloaded() {
         toast.push('Downloaded successfully!', {
             theme: {
                 '--toastColor': 'mintcream',
@@ -77,7 +78,10 @@
                 '--toastBarBackground': '#2F855A'
             }
         })
+    }
 
+    function downloadSuccess() {
+        showDownloaded()
         incrementTracker("note-block-songs-served")
     }
 
@@ -95,6 +99,20 @@
     let notes: readonly ScheduledNote[] = []
     let expanded = false
     let uploadOpen = false
+    // Edits only change the loaded copy of the song, which can then be downloaded.
+    // Songs converted from MIDI are new, so can be downloaded before they're edited
+    let edited = false
+    let converted = false
+    // The MIDI a converted song came from, kept so it can be converted again with other settings
+    let midiSource: MidiSource | null = null
+    let canUndo = false
+    let canRedo = false
+    let selectedNotes: readonly ScheduledNote[] = []
+    let tempo = 10
+    let timeSignature = 4
+    let meta: SongMeta = player.getMeta()
+    // Shown when the song has no author of its own
+    let fallbackArtist = ""
 
     $: player.setVolume(volume)
     $: visibleSongs = searchResults ? searchResults : songs
@@ -123,7 +141,7 @@
     }
 
     // Uploaded songs pass their file data directly and are never cached, so they're gone once something else plays
-    async function playSong(song: Song, upload?: ArrayBuffer) {
+    async function playSong(song: Song, upload?: ArrayBuffer, source: MidiSource | null = null) {
         player.unlock()
 
         if (song === currentSong) {
@@ -140,6 +158,12 @@
         position = 0
         duration = 0
         notes = []
+        midiSource = source
+        converted = source !== null
+        edited = converted
+        canUndo = false
+        canRedo = false
+        selectedNotes = []
 
         try {
             let data = upload ?? songCache.get(song.downloadUrl)
@@ -151,12 +175,16 @@
             }
             if (currentSong !== song) return
 
-            const info = await player.load(data)
+            await player.load(data)
             if (currentSong !== song) return
 
-            artist = info.author || (upload ? "Your upload" : "Note Block Song")
+            fallbackArtist = converted ? "Converted from MIDI" : upload ? "Your upload" : "Note Block Song"
+            meta = player.getMeta()
+            artist = meta.author || meta.originalAuthor || fallbackArtist
             duration = player.duration
             notes = player.getNotes()
+            tempo = player.getTempo()
+            timeSignature = player.getTimeSignature()
             loading = false
 
             await player.play()
@@ -212,6 +240,88 @@
         position = player.getPosition()
     }
 
+    // An empty undo history means the song is back to how it loaded, so there's nothing new to download
+    function applyEdit(selected: readonly ScheduledNote[]) {
+        notes = player.getNotes()
+        duration = player.duration
+        position = player.getPosition()
+        meta = player.getMeta()
+        artist = meta.author || meta.originalAuthor || fallbackArtist
+        // Converting again or undoing back past it can change the tempo and grid
+        tempo = player.getTempo()
+        timeSignature = player.getTimeSignature()
+        selectedNotes = selected
+        canUndo = player.canUndo()
+        canRedo = player.canRedo()
+        edited = converted || canUndo
+    }
+
+    // Changed notes are played once, so you can hear what they sound like now.
+    // Big selections only play a few different sounds, rather than every note at once
+    const previewLimit = 6
+
+    function preview(notes: readonly ScheduledNote[]) {
+        const sounds = new Map(notes.map(note => [`${note.instrument}:${note.key}`, note]))
+        for (const note of [...sounds.values()].slice(0, previewLimit)) player.preview(note)
+    }
+
+    function addNote(edit: NoteEdit) {
+        const note = player.addNote(edit)
+        applyEdit(note ? [note] : [])
+        if (note) preview([note])
+    }
+
+    function editNotes(changes: {note: ScheduledNote, edit: NoteEdit}[]) {
+        const changed = player.editNotes(changes)
+        applyEdit(changed)
+        preview(changed)
+    }
+
+    function removeNotes(removed: readonly ScheduledNote[]) {
+        player.removeNotes(removed)
+        applyEdit([])
+    }
+
+    function undo() {
+        player.undo()
+        applyEdit([])
+    }
+
+    function redo() {
+        player.redo()
+        applyEdit([])
+    }
+
+    // Doesn't touch the notes, so the selection can stay
+    function setMeta(newMeta: SongMeta) {
+        player.setMeta(newMeta)
+        applyEdit(selectedNotes)
+    }
+
+    // Swaps in the song converted with new settings, carrying on from the same place (and playing, if it was)
+    async function reconvert(result: ConvertResult) {
+        await player.replace(result.data)
+        applyEdit([])
+        playing = player.playing
+        if (playing) startTracking()
+    }
+
+    function downloadEdited() {
+        if (!currentSong) return
+
+        const url = URL.createObjectURL(new Blob([player.export()], {type: "application/octet-stream"}))
+        const link = document.createElement("a")
+        link.href = url
+        const base = currentSong.fileName.replace(/\.nbs$/i, "")
+        // A converted song is new however much it's been changed, so it keeps its own name
+        link.download = converted ? `${base}.nbs` : `${base} (edited).nbs`
+        link.click()
+        // Safari can cancel the download if the URL is revoked straight away
+        setTimeout(() => URL.revokeObjectURL(url), 1000)
+
+        showDownloaded()
+    }
+
     function closePlayer() {
         player.stop()
         stopTracking()
@@ -244,7 +354,12 @@
 
 {#if uploadOpen}
     <NoteBlockUpload
-        on:upload={event => { uploadOpen = false; playSong({fileName: event.detail.name, downloadUrl: ""}, event.detail.data) }}
+        on:upload={event => {
+            uploadOpen = false
+            playSong({fileName: event.detail.name, downloadUrl: ""}, event.detail.data, event.detail.source)
+            // Opened straight away, so a converted song can be checked and touched up in the editor
+            if (event.detail.source) expanded = true
+        }}
         on:close={() => uploadOpen = false}
     />
 {/if}
@@ -305,7 +420,26 @@
         <NoteBlockVisualiser
             {notes}
             {position}
+            {playing}
+            {loading}
+            {edited}
+            {canUndo}
+            {canRedo}
+            {midiSource}
+            {meta}
+            {tempo}
+            {timeSignature}
+            bind:selected={selectedNotes}
             on:close={() => expanded = false}
+            on:seek={event => seek(event.detail)}
+            on:add={event => addNote(event.detail)}
+            on:edit={event => editNotes(event.detail)}
+            on:remove={event => removeNotes(event.detail)}
+            on:undo={undo}
+            on:redo={redo}
+            on:meta={event => setMeta(event.detail)}
+            on:reconvert={event => reconvert(event.detail)}
+            on:download={downloadEdited}
         />
     {/if}
 

@@ -4,7 +4,7 @@ const utils: Util[] = [
         name: "Server Jars",
         description: "Download jar files for popular server software.",
         shortDescription: "Download server software jar",
-        seoDescription: "Instantly download Minecraft server jars for all versions: Vanilla, Fabric, Forge, CraftBukkit, Spigot, Paper, Purpur, Folia, BungeeCord, Waterfall, and Velocity. Optimize your Minecraft server setup with our comprehensive jar collection."
+        seoDescription: "Instantly download Minecraft server jars for all versions: Vanilla, Paper, Purpur, Pufferfish, Folia, Fabric, Forge, NeoForge, Quilt, Waterfall, and Velocity. Optimize your Minecraft server setup with our comprehensive jar collection."
     },
     {
         path: "inventory-slots",
