@@ -1,0 +1,3 @@
+/item modify entity @s weapon.mainhand {"function":"minecraft:set_name","name":{"text":"","color":"#FFFFFF","italic":false,"extra":[{"text":"Emberblade","color":"#FF5555","bold":true}]}}
+/give @s minecraft:netherite_sword[minecraft:custom_name={"text":"","color":"#FFFFFF","italic":false,"extra":[{"text":"Emberblade","color":"#FF5555","bold":true}]}] 1
+/give @s minecraft:netherite_sword[minecraft:damage=17,minecraft:enchantments={"minecraft:sharpness":5},minecraft:custom_data={serial:9223372036854775807L},minecraft:lore=[{text:"Keep me"}],minecraft:custom_name={"text":"","color":"#FFFFFF","italic":false,"extra":[{"text":"Emberblade","color":"#FF5555","bold":true}]}] 1

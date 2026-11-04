@@ -1,0 +1,8 @@
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.joml.MemUtil$MemUtilUnsafe (file:/private/tmp/mc-item-codec/joml-1.10.9.jar)
+WARNING: Please consider reporting this to the maintainers of class org.joml.MemUtil$MemUtilUnsafe
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+[22:22:04] [main/INFO]: [STDOUT]: PARSED /item modify entity @s weapon.mainhand {"type":"minecraft:set_name","name":{"text":"","color":"#FFFFFF","italic":false,"extra":[{"text":"Emberblade","color":"#FF5555","bold":true}]}}
+[22:22:04] [main/INFO]: [STDOUT]: PARSED /give @s minecraft:netherite_sword[minecraft:custom_name={"text":"","color":"#FFFFFF","italic":false,"extra":[{"text":"Emberblade","color":"#FF5555","bold":true}]}] 1
+[22:22:04] [main/INFO]: [STDOUT]: PARSED /give @s minecraft:netherite_sword[minecraft:damage=17,minecraft:enchantments={"minecraft:sharpness":5},minecraft:custom_data={serial:9223372036854775807L},minecraft:lore=[{text:"Keep me"}],minecraft:custom_name={"text":"","color":"#FFFFFF","italic":false,"extra":[{"text":"Emberblade","color":"#FF5555","bold":true}]}] 1
+[22:22:04] [main/INFO]: [STDOUT]: PASS: real set_name function preserved enchantments, damage, lore, custom data, and count
